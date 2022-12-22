@@ -1,4 +1,4 @@
-import 'package:bukara/app/ui/Screens/profil_page.dart';
+import 'package:bukara/app/ui/Screens/profile_information_page.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -27,7 +27,7 @@ class _Details extends State<Details> {
   void _informationProfile() {
     setState(() {
       setState(() {
-        Navigator.pushNamed(context, Profile.routeName);
+        Navigator.pushNamed(context, InfoProfile.routeName);
       });
     });
   }

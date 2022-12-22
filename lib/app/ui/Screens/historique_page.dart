@@ -1,5 +1,5 @@
+import 'package:bukara/app/ui/Screens/profile_information_page.dart';
 import 'package:flutter/material.dart';
-import 'package:bukara/app/ui/Screens/profil_page.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -15,9 +15,11 @@ class Historique extends StatefulWidget {
 class _Historique extends State<Historique> {
   void _returnProfile() {
     setState(() {
-      Navigator.pushNamed(context, Profile.routeName);
+      Navigator.pushNamed(context, InfoProfile.routeName);
     });
   }
+
+  /// It's a syntax error.
 
   void _test() {
     setState(() {

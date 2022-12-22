@@ -1,3 +1,4 @@
+import 'package:bukara/app/ui/Screens/profile_information_page.dart';
 import 'package:bukara/app/ui/auth/new_password.dart';
 import 'package:bukara/app/ui/auth/otp_page.dart';
 import 'package:bukara/app/ui/auth/singup_page.dart';
@@ -6,9 +7,8 @@ import 'package:bukara/app/ui/Screens/app_page.dart';
 import 'package:bukara/app/ui/Screens/deatil_page.dart';
 import 'package:bukara/app/ui/Screens/historique_page.dart';
 import 'package:bukara/app/ui/Screens/home/home_page.dart';
-import 'package:bukara/app/ui/Screens/information_profile.dart';
-import 'package:bukara/app/ui/Screens/profil_page.dart';
 
+import '../../Screens/profile.dart';
 import '../../auth/login_page.dart';
 
 Map<String, Widget Function(BuildContext)> routes = {

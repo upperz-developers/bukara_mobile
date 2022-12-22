@@ -4,15 +4,15 @@ import 'package:velocity_x/velocity_x.dart';
 
 import '../shared/utils/widget.dart';
 
-class InfoProfile extends StatefulWidget {
+class Profile extends StatefulWidget {
   static String routeName = "/infoprofile";
-  const InfoProfile({Key? key}) : super(key: key);
+  const Profile({Key? key}) : super(key: key);
 
   @override
-  State<InfoProfile> createState() => _InfoProfile();
+  State<Profile> createState() => _Profile();
 }
 
-class _InfoProfile extends State<InfoProfile> {
+class _Profile extends State<Profile> {
   void _historique() {
     setState(() {
       setState(() {
@@ -36,7 +36,7 @@ class _InfoProfile extends State<InfoProfile> {
               children: [
                 50.heightBox,
                 const Text(
-                  "@username",
+                  "@john doe",
                   style: TextStyle(
                     fontSize: 16,
                     color: AppColors.BLACK_COLOR,

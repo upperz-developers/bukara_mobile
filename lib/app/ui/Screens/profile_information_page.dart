@@ -7,15 +7,15 @@ import 'package:iconsax/iconsax.dart';
 
 import '../shared/utils/widget.dart';
 
-class Profile extends StatefulWidget {
+class InfoProfile extends StatefulWidget {
   static String routeName = "/profile";
-  const Profile({Key? key}) : super(key: key);
+  const InfoProfile({Key? key}) : super(key: key);
 
   @override
-  State<Profile> createState() => _Profile();
+  State<InfoProfile> createState() => _InfoProfile();
 }
 
-class _Profile extends State<Profile> {
+class _InfoProfile extends State<InfoProfile> {
   void _returnDetail() {
     setState(() {
       Navigator.pushNamed(context, Details.routeName);
