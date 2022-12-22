@@ -22,13 +22,13 @@ class _InfoProfile extends State<InfoProfile> {
     });
   }
 
-  void _returnprofile() {
-    setState(() {
-      setState(() {
-        //Navigator.pushNamed(context, InfoProfile.routeName);
-      });
-    });
-  }
+  // void _returnprofile() {
+  //   setState(() {
+  //     setState(() {
+  //       //Navigator.pushNamed(context, InfoProfile.routeName);
+  //     });
+  //   });
+  // }
 
   void _historique() {
     setState(() {

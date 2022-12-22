@@ -1,11 +1,9 @@
-import 'package:bukara/app/ui/auth/new_password.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../Screens/home/home_page.dart';
 import '../shared/utils/utility.dart';
 import '../shared/style.dart';
 

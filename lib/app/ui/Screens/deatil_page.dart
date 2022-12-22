@@ -5,7 +5,6 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:iconsax/iconsax.dart';
 import '../shared/utils/widget.dart';
-import 'home/home_page.dart';
 import 'home/view_model/suite_detail.dart';
 
 class Details extends StatefulWidget {
