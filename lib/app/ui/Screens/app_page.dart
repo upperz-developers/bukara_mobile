@@ -8,13 +8,13 @@ import 'package:iconsax/iconsax.dart';
 List<IconData> selectedicons = [
   Iconsax.home_15,
   Iconsax.notification5,
-  Iconsax.user,
+  Iconsax.profile_circle5,
 ];
 
 List<IconData> unselectedicons = [
   Iconsax.home,
   Iconsax.notification,
-  Iconsax.user,
+  Iconsax.profile_circle,
 ];
 
 class AppPage extends StatefulWidget {

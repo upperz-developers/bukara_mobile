@@ -65,19 +65,18 @@ class _Details extends State<Details> {
                           fontSize: 16,
                           fontWeight: FontWeight.normal,
                           color: Color.fromARGB(255, 0, 0, 0)),
-                      textAlign: TextAlign.start,
                     ),
                   ),
                 ],
               ),
               5.heightBox,
-              module(Iconsax.document, "Collectivity housing"),
-              module(Iconsax.home, "1 living room"),
-              module(Iconsax.tag, "2 bath rooms"),
-              module(Iconsax.electricity4, "Electricity"),
-              module(Iconsax.wallet_check, "Water"),
-              module(Iconsax.convert_3d_cube5,
-                  "3 toilets - 2 internal, 1 external"),
+              modele(Iconsax.document, "Appartemenent no 23"),
+              modele(Iconsax.profile_circle5,
+                  "5,avenu du lac, quartier katindo1, commune de Goma,ville de Goma"),
+              modele(Iconsax.home_hashtag, "4 chambres"),
+              modele(Iconsax.home, "2 salons"),
+              modele(Iconsax.d_cube_scan, "1 toilette interne"),
+              modele2(Iconsax.activity, "0 toilette interne"),
               Padding(
                 padding: const EdgeInsets.only(
                   left: 30,
@@ -109,6 +108,33 @@ class _Details extends State<Details> {
                   ],
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 30,
+                  right: 30,
+                  top: 20,
+                ),
+                child: line(),
+              ),
+              Container(
+                padding: const EdgeInsets.only(left: 35),
+                height: 20,
+                width: 200,
+                child: const Text(
+                  "Autre information",
+                  style: TextStyle(
+                      fontSize: 16, color: Color.fromARGB(255, 0, 0, 0)),
+                ),
+              ),
+              5.heightBox,
+              modele(Iconsax.wifi, "Connexion"),
+              modele(Iconsax.flash, "Cash power"),
+              modele(Iconsax.home_trend_up, "Snel"),
+              modele(Icons.water, "Regideso"),
+              modele(Iconsax.d_cube_scan, "toilette interne"),
+              modele2(Iconsax.activity, "toilette externe"),
+              modele2(Iconsax.activity, "pisine"),
+              modele2(Iconsax.activity, "Parking"),
               line(),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -144,7 +170,37 @@ class _Details extends State<Details> {
                       textAlign: TextAlign.start,
                     ),
                     15.heightBox,
-                    calendar(),
+                    TableCalendar(
+                      rowHeight: 53,
+                      headerStyle: const HeaderStyle(
+                          formatButtonVisible: false,
+                          headerPadding: EdgeInsets.only(
+                            bottom: 10,
+                          ),
+                          titleCentered: true,
+                          leftChevronIcon: Icon(
+                            Iconsax.arrow_left_2,
+                          ),
+                          rightChevronIcon: Icon(
+                            Iconsax.arrow_right_3,
+                          ),
+                          titleTextStyle: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18)),
+                      calendarStyle: const CalendarStyle(
+                        selectedDecoration: BoxDecoration(
+                            color: Color.fromARGB(255, 0, 0, 0),
+                            shape: BoxShape.circle),
+                        todayDecoration: BoxDecoration(
+                            color: Color.fromARGB(255, 0, 0, 0),
+                            shape: BoxShape.circle),
+                      ),
+                      availableGestures: AvailableGestures.all,
+                      selectedDayPredicate: (day) => isSameDay(day, today),
+                      focusedDay: today,
+                      firstDay: DateTime.utc(2010, 10, 16),
+                      lastDay: DateTime.utc(2050, 3, 14),
+                      onDaySelected: _onDaySelected,
+                    ),
                   ],
                 ),
               ),
@@ -181,38 +237,36 @@ class _Details extends State<Details> {
     );
   }
 
-  Widget calendar() {
-    return TableCalendar(
-      rowHeight: 53,
-      headerStyle: const HeaderStyle(
-          formatButtonVisible: false,
-          headerPadding: EdgeInsets.only(
-            bottom: 10,
-          ),
-          titleCentered: true,
-          leftChevronIcon: Icon(
-            Iconsax.arrow_left_2,
-          ),
-          rightChevronIcon: Icon(
-            Iconsax.arrow_right_3,
-          ),
-          titleTextStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-      calendarStyle: const CalendarStyle(
-        selectedDecoration: BoxDecoration(
-            color: Color.fromARGB(255, 0, 0, 0), shape: BoxShape.circle),
-        todayDecoration: BoxDecoration(
-            color: Color.fromARGB(255, 0, 0, 0), shape: BoxShape.circle),
+  Widget modele(
+    IconData? icon,
+    String? message,
+  ) {
+    return Padding(
+      padding: const EdgeInsets.only(
+        left: 30,
+        right: 30,
+        top: 15,
       ),
-      availableGestures: AvailableGestures.all,
-      selectedDayPredicate: (day) => isSameDay(day, today),
-      focusedDay: today,
-      firstDay: DateTime.utc(2010, 10, 16),
-      lastDay: DateTime.utc(2050, 3, 14),
-      onDaySelected: _onDaySelected,
+      child: Row(
+        children: [
+          Icon(icon),
+          10.widthBox,
+          Expanded(
+            child: Text(
+              "$message",
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.normal,
+                color: Colors.black,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
-  Widget module(
+  Widget modele2(
     IconData? icon,
     String? message,
   ) {
@@ -232,7 +286,8 @@ class _Details extends State<Details> {
               style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.normal,
-                  color: Colors.black),
+                  color: Colors.black,
+                  decoration: TextDecoration.lineThrough),
             ),
           ),
         ],
