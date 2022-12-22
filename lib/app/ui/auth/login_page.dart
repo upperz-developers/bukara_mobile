@@ -1,4 +1,5 @@
-
+import 'package:bukara/app/ui/auth/new_password.dart';
+import 'package:bukara/app/ui/auth/singup_page.dart';
 import 'package:flutter/material.dart';
 import 'package:bukara/app/ui/Screens/app_page.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -21,20 +22,22 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPage extends State<LoginPage> {
-  double longSpace = 40;
-  double space = 20; // pour le grands espace
-  double shortSpace = 10;
-  // TapGestureRecognizer? _forgotpassword; // pour les distances courtes
-
   TextEditingController? password = TextEditingController();
   bool isObscure = true;
-  bool isPassObscure = true;
   TextEditingController? username = TextEditingController();
   TextEditingController? email = TextEditingController();
-  // AppBloc bloc = AppBloc();
+
   void _updatepass() {
     setState(() {
       isObscure = !isObscure;
+    });
+  }
+
+  void _checkmail() {
+    setState(() {
+      setState(() {
+        Navigator.pushNamed(context, Newpassword.routeName);
+      });
     });
   }
 
@@ -111,12 +114,15 @@ class _LoginPage extends State<LoginPage> {
                 ),
               ),
               10.heightBox,
-              const Align(
+              Align(
                 alignment: Alignment.topRight,
-                child: Text.rich(
-                  TextSpan(
-                      text: "Mots de passe oublie?",
-                      style: TextStyle(decoration: TextDecoration.underline)),
+                child: InkWell(
+                  onTap: _checkmail,
+                  child: const Text.rich(
+                    TextSpan(
+                        text: "Mots de passe oublie?",
+                        style: TextStyle(decoration: TextDecoration.underline)),
+                  ),
                 ),
               ),
               30.heightBox,
@@ -127,6 +133,16 @@ class _LoginPage extends State<LoginPage> {
                 colorText: Colors.white,
                 onTap: () {
                   Navigator.pushNamed(context, AppPage.routeName);
+                },
+              ),
+              15.heightBox,
+              custormButton(
+                context,
+                color: AppColors.BLACK_COLOR,
+                title: "Creation du compte",
+                colorText: Colors.white,
+                onTap: () {
+                  Navigator.pushNamed(context, SingUpPage.routeName);
                 },
               ),
             ],
