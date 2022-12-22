@@ -1,4 +1,5 @@
 import 'package:bukara/app/ui/Screens/profile_information_page.dart';
+import 'package:bukara/app/ui/auth/check_mail.dart';
 import 'package:bukara/app/ui/auth/new_password.dart';
 import 'package:bukara/app/ui/auth/otp_page.dart';
 import 'package:bukara/app/ui/auth/singup_page.dart';
@@ -20,6 +21,7 @@ Map<String, Widget Function(BuildContext)> routes = {
   Details.routeName: (context) => const Details(),
   AppPage.routeName: (context) => const AppPage(),
   SingUpPage.routeName: (context) => const SingUpPage(),
-  Newpassword.routeName: (context) => const Newpassword(),
+  Checkmail.routeName: (context) => const Checkmail(),
   Otp.routeName: (context) => const Otp(),
+  Newpassword.routeName: (context) => const Newpassword(),
 };

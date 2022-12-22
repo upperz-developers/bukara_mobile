@@ -88,40 +88,42 @@ class _Historique extends State<Historique> {
       padding: const EdgeInsets.only(
         top: 15,
       ),
-      child: Row(
-        children: [
-          Expanded(
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(
-                "$title",
-                style: const TextStyle(
-                  fontSize: 18,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              Text(
-                "$message",
-                style: const TextStyle(color: AppColors.SECOND_TEXT_COLOR),
-              ),
-              10.heightBox,
-              const Text(
-                "150\$",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.BLACK_COLOR,
-                ),
-              ),
-            ]),
-          ),
-          IconButton(
-            onPressed: _test,
-            icon: const Icon(
+      child: InkWell(
+        onTap: _test,
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "$title",
+                      style: const TextStyle(
+                        fontSize: 18,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    Text(
+                      "$message",
+                      style:
+                          const TextStyle(color: AppColors.SECOND_TEXT_COLOR),
+                    ),
+                    10.heightBox,
+                    const Text(
+                      "150\$",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.BLACK_COLOR,
+                      ),
+                    ),
+                  ]),
+            ),
+            const Icon(
               Iconsax.arrow_right_3,
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

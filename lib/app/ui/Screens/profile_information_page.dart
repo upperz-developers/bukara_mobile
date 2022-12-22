@@ -75,62 +75,59 @@ class _InfoProfile extends State<InfoProfile> {
                       ),
                     ),
                     30.heightBox,
-                    InkWell(
-                      onTap: _returnprofile,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Icon(Iconsax.home),
-                          15.widthBox,
-                          Expanded(
-                            child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
-                                  Text(
-                                    "Name of suite",
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black),
-                                    textAlign: TextAlign.center,
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Icon(Iconsax.home),
+                        15.widthBox,
+                        Expanded(
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: const [
+                                Text(
+                                  "Name of suite",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.normal,
+                                      color: Colors.black),
+                                  textAlign: TextAlign.center,
+                                ),
+                                Text(
+                                  "Goma, C de Goma, Q les volcan,av des avenues, num 10",
+                                  style: TextStyle(
+                                    color: AppColors.SECOND_TEXT_COLOR,
                                   ),
-                                  Text(
-                                    "Goma, C de Goma, Q les volcan,av des avenues, num 10",
-                                    style: TextStyle(
-                                      color: AppColors.SECOND_TEXT_COLOR,
-                                    ),
-                                  ),
-                                ]),
-                          ),
-                          const Icon(
-                            Iconsax.arrow_right_3,
-                          ),
-                        ],
-                      ),
+                                ),
+                              ]),
+                        ),
+                      ],
                     ),
-                    15.heightBox,
                     InkWell(
                       onTap: _historique,
-                      child: Row(
-                        children: [
-                          const Icon(
-                            Iconsax.rotate_left,
-                          ),
-                          15.widthBox,
-                          const Expanded(
-                            child: Text(
-                              "Historic of paiement",
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.black),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 15),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Iconsax.activity,
                             ),
-                          ),
-                          15.widthBox,
-                          const Icon(
-                            Iconsax.arrow_right_3,
-                          ),
-                        ],
+                            15.widthBox,
+                            const Expanded(
+                              child: Text(
+                                "Historic of paiement",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.black),
+                              ),
+                            ),
+                            15.widthBox,
+                            const Icon(
+                              Iconsax.arrow_right_3,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     10.heightBox,

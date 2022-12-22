@@ -1,4 +1,4 @@
-import 'package:bukara/app/ui/auth/new_password.dart';
+import 'package:bukara/app/ui/auth/check_mail.dart';
 import 'package:bukara/app/ui/auth/singup_page.dart';
 import 'package:flutter/material.dart';
 import 'package:bukara/app/ui/Screens/app_page.dart';
@@ -38,11 +38,14 @@ class _LoginPage extends State<LoginPage> {
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 30,
+            vertical: 30,
+          ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              130.heightBox,
-              icon(),
+              Align(alignment: Alignment.center, child: icon()),
               20.heightBox,
               subtitle("Username"),
               10.heightBox,
@@ -65,7 +68,10 @@ class _LoginPage extends State<LoginPage> {
                       color: AppColors.BLACK_COLOR,
                     ),
                   ),
-                  style: const TextStyle(color: Colors.black),
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                  ),
                   keyboardType: TextInputType.text,
                 ),
               ),
@@ -98,6 +104,7 @@ class _LoginPage extends State<LoginPage> {
                     ),
                     hintText: "mot de passe",
                     hintStyle: const TextStyle(
+                      fontSize: 14,
                       color: AppColors.BLACK_COLOR,
                     ),
                   ),
@@ -110,7 +117,7 @@ class _LoginPage extends State<LoginPage> {
                 alignment: Alignment.topRight,
                 child: InkWell(
                   onTap: (() {
-                    Navigator.pushNamed(context, Newpassword.routeName);
+                    Navigator.pushNamed(context, Checkmail.routeName);
                   }),
                   child: const Text.rich(
                     TextSpan(

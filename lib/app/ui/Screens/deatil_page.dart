@@ -53,25 +53,8 @@ class _Details extends State<Details> {
               const SuiteDetail(),
               card1(),
               line(),
-              Row(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.only(left: 35),
-                    height: 20,
-                    width: 200,
-                    child: const Text(
-                      "Suite details",
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.normal,
-                          color: Color.fromARGB(255, 0, 0, 0)),
-                    ),
-                  ),
-                ],
-              ),
-              5.heightBox,
               modele(Iconsax.document, "Appartemenent no 23"),
-              modele(Iconsax.profile_circle5,
+              modele(Iconsax.map,
                   "5,avenu du lac, quartier katindo1, commune de Goma,ville de Goma"),
               modele(Iconsax.home_hashtag, "4 chambres"),
               modele(Iconsax.home, "2 salons"),
@@ -112,7 +95,6 @@ class _Details extends State<Details> {
                 padding: const EdgeInsets.only(
                   left: 30,
                   right: 30,
-                  top: 20,
                 ),
                 child: line(),
               ),
@@ -123,10 +105,11 @@ class _Details extends State<Details> {
                 child: const Text(
                   "Autre information",
                   style: TextStyle(
-                      fontSize: 16, color: Color.fromARGB(255, 0, 0, 0)),
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 0, 0, 0)),
                 ),
               ),
-              5.heightBox,
+              25.heightBox,
               modele(Iconsax.wifi, "Connexion"),
               modele(Iconsax.flash, "Cash power"),
               modele(Iconsax.home_trend_up, "Snel"),
@@ -246,7 +229,7 @@ class _Details extends State<Details> {
       padding: const EdgeInsets.only(
         left: 30,
         right: 30,
-        top: 15,
+        bottom: 15,
       ),
       child: Row(
         children: [
@@ -320,12 +303,6 @@ class _Details extends State<Details> {
             ),
           ),
           15.heightBox,
-          const Text(
-            "Descirption",
-            style: TextStyle(),
-            textAlign: TextAlign.center,
-          ),
-          10.heightBox,
           Wrap(
             children: const [
               Text(
@@ -350,12 +327,11 @@ class _Details extends State<Details> {
           const Text(
             "Suite manager",
             style: TextStyle(
-                fontSize: 16,
                 fontWeight: FontWeight.normal,
                 color: Color.fromARGB(255, 0, 0, 0)),
             textAlign: TextAlign.start,
           ),
-          10.heightBox,
+          25.heightBox,
           InkWell(
             onTap: _informationProfile,
             child: Row(

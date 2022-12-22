@@ -21,27 +21,21 @@ Widget icon() {
 }
 
 Widget subtitle(String subtitle) {
-  return SizedBox(
-    width: 400,
-    child: Text(
-      subtitle,
-      textAlign: TextAlign.left,
-      style: const TextStyle(color: AppColors.BLACK_COLOR),
-    ),
+  return Text(
+    subtitle,
+    textAlign: TextAlign.left,
+    style: const TextStyle(color: AppColors.BLACK_COLOR),
   );
 }
 
 Widget title(String message) {
-  return SizedBox(
-    width: 400,
-    child: Text(
-      message,
-      textAlign: TextAlign.left,
-      style: const TextStyle(
-        fontSize: 36,
-        fontWeight: FontWeight.bold,
-        color: Color(0xFFebebeb),
-      ),
+  return Text(
+    message,
+    textAlign: TextAlign.left,
+    style: const TextStyle(
+      fontSize: 36,
+      fontWeight: FontWeight.bold,
+      color: Color(0xFFebebeb),
     ),
   );
 }
@@ -169,7 +163,6 @@ custormButton(
         "$title",
         style: TextStyle(
           color: colorText,
-          fontSize: 16,
           fontWeight: FontWeight.bold,
         ),
       ),

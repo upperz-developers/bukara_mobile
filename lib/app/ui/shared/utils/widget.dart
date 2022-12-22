@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget line() {
+Widget line({double? padding}) {
   return Column(
     children: [
       Padding(

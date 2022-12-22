@@ -1,9 +1,8 @@
-import 'package:bukara/app/ui/auth/new_password.dart';
+import 'package:bukara/app/ui/auth/otp_page.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../Screens/home/home_page.dart';
 import '../shared/utils/utility.dart';
 import '../shared/style.dart';
 
@@ -13,16 +12,16 @@ class AuthController {
   factory AuthController() => singleton;
 }
 
-class Otp extends StatefulWidget {
-  static String routeName = "/newpassword";
-  const Otp({Key? key}) : super(key: key);
+class Checkmail extends StatefulWidget {
+  static String routeName = "/Checkmail";
+  const Checkmail({Key? key}) : super(key: key);
 
   @override
-  State<Otp> createState() => _Otp();
+  State<Checkmail> createState() => _Checkmail();
 }
 
-class _Otp extends State<Otp> {
-  TextEditingController? sendcode = TextEditingController();
+class _Checkmail extends State<Checkmail> {
+  TextEditingController? email = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -46,14 +45,14 @@ class _Otp extends State<Otp> {
             Expanded(
               child: SingleChildScrollView(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 30,
-                  vertical: 25,
+                  horizontal: 24,
+                  vertical: 15,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     const Text(
-                      "Checking your email",
+                      "Account Recovery",
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -61,10 +60,10 @@ class _Otp extends State<Otp> {
                     ),
                     10.heightBox,
                     const Text(
-                      "We will send you a code in your mailbox please enter it in the field",
+                      "To retrieve your data, please enter your email address.",
                     ),
                     25.heightBox,
-                    subtitle("Enter your code"),
+                    subtitle("Adresse Mail"),
                     10.heightBox,
                     Container(
                       padding: const EdgeInsets.only(left: 10),
@@ -72,7 +71,7 @@ class _Otp extends State<Otp> {
                           borderRadius: BorderRadius.circular(4),
                           border: Border.all(color: AppColors.BOXSHADOW)),
                       child: TextField(
-                        controller: sendcode,
+                        controller: email,
                         decoration: const InputDecoration(
                           border: InputBorder.none,
                           focusedBorder: UnderlineInputBorder(
@@ -80,23 +79,23 @@ class _Otp extends State<Otp> {
                               color: AppColors.BOXSHADOW,
                             ),
                           ),
-                          hintText: "Confirmation code",
+                          hintText: "nom@gmail.com",
                           hintStyle: TextStyle(
                             color: AppColors.BLACK_COLOR,
                           ),
                         ),
                         style: const TextStyle(color: Colors.black),
-                        keyboardType: TextInputType.number,
+                        keyboardType: TextInputType.emailAddress,
                       ),
                     ),
                     30.heightBox,
                     custormButton(
                       context,
                       color: AppColors.BLACK_COLOR,
-                      title: "Send",
+                      title: "next",
                       colorText: Colors.white,
                       onTap: () {
-                        Navigator.pushNamed(context, Newpassword.routeName);
+                        Navigator.pushNamed(context, Otp.routeName);
                       },
                     ),
                   ],
