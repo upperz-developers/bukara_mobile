@@ -1,0 +1,60 @@
+name: bukara
+description: A new Flutter project.
+
+
+
+publish_to: 'none'
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  dio: ^4.0.6
+  velocity_x: 3.5.1
+  animate_do: ^2.1.0
+  cupertino_icons: ^1.0.2
+  table_calendar: ^3.0.8
+  carousel_slider: ^4.2.1
+  iconsax: ^0.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+
+flutter:
+  uses-material-design: true
+  
+  assets: 
+    #- assets/svg/
+    - assets/icons/
+    - assets/images/
+  fonts: 
+
+    - family: GoogleSans
+      fonts: 
+        - asset: assets/fonts/GoogleSans/GoogleSans-Bold.ttf
+        - asset: assets/fonts/GoogleSans/GoogleSans-BoldItalic.ttf
+        - asset: assets/fonts/GoogleSans/GoogleSans-Italic.ttf
+        - asset: assets/fonts/GoogleSans/GoogleSans-Medium.ttf
+        - asset: assets/fonts/GoogleSans/GoogleSans-MediumItalic.ttf
+        - asset: assets/fonts/GoogleSans/GoogleSans-Regular.ttf
+
+    - family: Montserrat
+      fonts: 
+        - asset: assets/fonts/Montserrat/Montserrat-Bold.ttf
+        - asset: assets/fonts/Montserrat/Montserrat-BoldItalic.ttf
+        - asset: assets/fonts/Montserrat/Montserrat-Italic.ttf
+        - asset: assets/fonts/Montserrat/Montserrat-Medium.ttf
+        - asset: assets/fonts/Montserrat/Montserrat-MediumItalic.ttf
+        - asset: assets/fonts/Montserrat/Montserrat-Regular.ttf
+
