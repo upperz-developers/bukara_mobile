@@ -34,7 +34,7 @@ class _Details extends State<Details> {
 
   void _returnHome() {
     setState(() {
-      Navigator.pushNamed(context, Home.routeName);
+      Navigator.pop(context);
     });
   }
 
@@ -210,7 +210,7 @@ class _Details extends State<Details> {
             child: IconButton(
               onPressed: _returnHome,
               icon: const Icon(
-                Iconsax.arrow_left_2,
+                Iconsax.arrow_left,
                 size: 18,
               ),
               color: const Color.fromARGB(169, 32, 32, 32),

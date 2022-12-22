@@ -1,6 +1,8 @@
 import 'package:bukara/app/ui/auth/new_password.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../Screens/home/home_page.dart';
@@ -65,39 +67,60 @@ class _Otp extends State<Otp> {
                     ),
                     25.heightBox,
                     subtitle("Enter your code"),
-                    10.heightBox,
-                    Container(
-                      padding: const EdgeInsets.only(left: 10),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          border: Border.all(color: AppColors.BOXSHADOW)),
-                      child: TextField(
-                        controller: sendcode,
-                        decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: AppColors.BOXSHADOW,
-                            ),
-                          ),
-                          hintText: "Confirmation code",
-                          hintStyle: TextStyle(
-                            color: AppColors.BLACK_COLOR,
-                          ),
-                        ),
-                        style: const TextStyle(color: Colors.black),
-                        keyboardType: TextInputType.number,
+                    20.heightBox,
+                    PinCodeTextField(
+                      errorTextSpace: 0,
+                      appContext: context,
+                      length: 6,
+                      obscureText: false,
+                      autoDismissKeyboard: false,
+                      keyboardType: TextInputType.number,
+                      animationType: AnimationType.fade,
+                      controller: sendcode,
+                      pinTheme: PinTheme(
+                        inactiveFillColor: Colors.white,
+                        selectedColor: Colors.black,
+                        borderWidth: 1,
+                        selectedFillColor: Colors.white,
+                        inactiveColor: AppColors.GREY_COLOR.withOpacity(0.2),
+                        activeColor: AppColors.GREY_COLOR.withOpacity(0.3),
+                        shape: PinCodeFieldShape.box,
+                        borderRadius: BorderRadius.circular(5),
+                        fieldHeight: 50,
+                        fieldWidth: 50,
+                        activeFillColor: Colors.white,
                       ),
+                      enableActiveFill: true,
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.digitsOnly
+                      ],
+                      animationDuration: const Duration(milliseconds: 300),
+                      backgroundColor: Colors.transparent,
+                      autoFocus: true,
+                      onCompleted: (otpCode) {},
+                      onChanged: (value) {
+                        // setState(() {
+                        //   hasCompleted = value.isNotEmpty;
+                        //   _currentValue = value;
+                        // });
+                      },
+                      beforeTextPaste: (text) {
+                        return true;
+                      },
                     ),
                     30.heightBox,
-                    custormButton(
-                      context,
-                      color: AppColors.BLACK_COLOR,
-                      title: "Send",
-                      colorText: Colors.white,
-                      onTap: () {
-                        Navigator.pushNamed(context, Newpassword.routeName);
-                      },
+                    const Text.rich(
+                      TextSpan(
+                          text: "Vous n'avez pas recu de code ? ",
+                          children: [
+                            TextSpan(
+                              text: "Renvoyer",
+                              style: TextStyle(
+                                decoration: TextDecoration.underline,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ]),
                     ),
                   ],
                 ),

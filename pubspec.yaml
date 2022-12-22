@@ -23,6 +23,7 @@ dependencies:
   table_calendar: ^3.0.8
   carousel_slider: ^4.2.1
   iconsax: ^0.0.8
+  pin_code_fields: ^7.4.0
 
 dev_dependencies:
   flutter_test:

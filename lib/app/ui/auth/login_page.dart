@@ -133,7 +133,7 @@ class _LoginPage extends State<LoginPage> {
                 title: "Login",
                 colorText: Colors.white,
                 onTap: () {
-                  Navigator.pushNamed(context, AppPage.routeName);
+                  Navigator.pushReplacementNamed(context, AppPage.routeName);
                 },
               ),
               15.heightBox,
