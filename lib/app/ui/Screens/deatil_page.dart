@@ -173,19 +173,20 @@ class _Details extends State<Details> {
                     TableCalendar(
                       rowHeight: 53,
                       headerStyle: const HeaderStyle(
-                          formatButtonVisible: false,
-                          headerPadding: EdgeInsets.only(
-                            bottom: 10,
-                          ),
-                          titleCentered: true,
-                          leftChevronIcon: Icon(
-                            Iconsax.arrow_left_2,
-                          ),
-                          rightChevronIcon: Icon(
-                            Iconsax.arrow_right_3,
-                          ),
-                          titleTextStyle: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18)),
+                        formatButtonVisible: false,
+                        headerPadding: EdgeInsets.only(
+                          bottom: 10,
+                        ),
+                        titleCentered: true,
+                        leftChevronIcon: Icon(
+                          Iconsax.arrow_left_2,
+                        ),
+                        rightChevronIcon: Icon(
+                          Iconsax.arrow_right_3,
+                        ),
+                        titleTextStyle: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 18),
+                      ),
                       calendarStyle: const CalendarStyle(
                         selectedDecoration: BoxDecoration(
                             color: Color.fromARGB(255, 0, 0, 0),

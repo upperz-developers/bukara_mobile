@@ -33,14 +33,6 @@ class _LoginPage extends State<LoginPage> {
     });
   }
 
-  void _checkmail() {
-    setState(() {
-      setState(() {
-        Navigator.pushNamed(context, Newpassword.routeName);
-      });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -117,10 +109,12 @@ class _LoginPage extends State<LoginPage> {
               Align(
                 alignment: Alignment.topRight,
                 child: InkWell(
-                  onTap: _checkmail,
+                  onTap: (() {
+                    Navigator.pushNamed(context, Newpassword.routeName);
+                  }),
                   child: const Text.rich(
                     TextSpan(
-                        text: "Mots de passe oublie?",
+                        text: "Forgot password?",
                         style: TextStyle(decoration: TextDecoration.underline)),
                   ),
                 ),
@@ -129,7 +123,7 @@ class _LoginPage extends State<LoginPage> {
               custormButton(
                 context,
                 color: AppColors.BLACK_COLOR,
-                title: "Connexion",
+                title: "Login",
                 colorText: Colors.white,
                 onTap: () {
                   Navigator.pushNamed(context, AppPage.routeName);
@@ -139,7 +133,7 @@ class _LoginPage extends State<LoginPage> {
               custormButton(
                 context,
                 color: AppColors.BLACK_COLOR,
-                title: "Creation du compte",
+                title: "Account creation",
                 colorText: Colors.white,
                 onTap: () {
                   Navigator.pushNamed(context, SingUpPage.routeName);
