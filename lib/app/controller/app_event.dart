@@ -9,3 +9,12 @@ class LOGIN implements AppEvent {
 
   const LOGIN({this.email, this.password});
 }
+
+class SINGUP implements AppEvent {
+  final String? email;
+  final String? password;
+  final String? confirmepassword;
+  final String? code;
+
+  const SINGUP({this.email, this.password, this.confirmepassword, this.code});
+}

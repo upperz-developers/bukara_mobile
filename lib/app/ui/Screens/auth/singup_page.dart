@@ -1,6 +1,10 @@
-import 'package:bukara/app/ui/Screens/home_page.dart';
+import 'package:bukara/app/controller/app_bloc.dart';
+import 'package:bukara/app/controller/app_event.dart';
+import 'package:bukara/app/controller/app_state.dart';
+import 'package:bukara/app/ui/view_controller/auth_controller.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../../shared/style.dart';
@@ -21,25 +25,7 @@ class SingUpPage extends StatefulWidget {
 }
 
 class _SingUpPage extends State<SingUpPage> {
-  TextEditingController? password = TextEditingController();
-  TextEditingController? confirmPassword = TextEditingController();
-  bool isObscure = true;
-  bool isPassObscure = true;
-  TextEditingController? username = TextEditingController();
-  TextEditingController? email = TextEditingController();
   TapGestureRecognizer? _login;
-  void _updatepass() {
-    setState(() {
-      isObscure = !isObscure;
-    });
-  }
-
-  void _updatepassconfirm() {
-    setState(() {
-      isPassObscure = !isPassObscure;
-    });
-  }
-
   @override
   void initState() {
     _login = TapGestureRecognizer()
@@ -49,6 +35,24 @@ class _SingUpPage extends State<SingUpPage> {
     super.initState();
   }
 
+  bool singupSubmitted = false;
+  void _submit() {
+    setState(() {
+      singupSubmitted = true;
+    });
+    if (singupController.singupValidate()) {
+      context.read<AppBloc>().add(
+            SINGUP(
+              email: singupController.mail.text.trim(),
+              password: singupController.password.text.trim(),
+              confirmepassword: singupController.confirmpasssword.text.trim(),
+              code: singupController.codeapp.text.trim(),
+            ),
+          );
+    }
+  }
+
+  AuthViewController singupController = AuthViewController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -85,142 +89,46 @@ class _SingUpPage extends State<SingUpPage> {
                     34.heightBox,
                     subtitle("Adresse Mail"),
                     10.heightBox,
-                    Container(
-                      padding: const EdgeInsets.only(left: 10),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          border: Border.all(color: AppColors.BOXSHADOW)),
-                      child: TextField(
-                        controller: email,
-                        decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: AppColors.BOXSHADOW,
-                            ),
-                          ),
-                          hintText: "nom@gmail.com",
-                          hintStyle: TextStyle(
-                            color: AppColors.BLACK_COLOR,
-                          ),
-                        ),
-                        style: const TextStyle(color: Colors.black),
-                        keyboardType: TextInputType.emailAddress,
-                      ),
+                    FormText(
+                      controller: singupController.mail,
+                      hint: "nom@gmail.com",
+                      submitted: singupSubmitted,
                     ),
                     20.heightBox,
                     subtitle("Password"),
                     10.heightBox,
-                    Container(
-                      padding: const EdgeInsets.only(left: 10),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          border: Border.all(color: AppColors.BOXSHADOW)),
-                      child: TextField(
-                        controller: password,
-                        obscureText: isObscure,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          focusedBorder: const UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color.fromARGB(255, 255, 255, 255),
-                            ),
-                          ),
-                          suffixIcon: IconButton(
-                            color: const Color.fromARGB(255, 127, 150, 171),
-                            icon: Icon(
-                              isObscure
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
-                              size: 18,
-                              color: AppColors.BLACK_COLOR,
-                            ),
-                            onPressed: _updatepass,
-                          ),
-                          hintText: "mot de passe",
-                          hintStyle: const TextStyle(
-                            color: AppColors.BLACK_COLOR,
-                          ),
-                        ),
-                        style: const TextStyle(color: Colors.black),
-                        keyboardType: TextInputType.text,
-                      ),
+                    FormPassWordText(
+                      controller: singupController.password,
+                      hint: "Entrez votre mot de passe",
+                      submitted: singupSubmitted,
                     ),
                     20.heightBox,
                     subtitle("Confirme your Password"),
                     10.heightBox,
-                    Container(
-                      padding: const EdgeInsets.only(left: 10),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          border: Border.all(color: AppColors.BOXSHADOW)),
-                      child: TextField(
-                        controller: confirmPassword,
-                        obscureText: isPassObscure,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          focusedBorder: const UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color.fromARGB(255, 255, 255, 255),
-                            ),
-                          ),
-                          suffixIcon: IconButton(
-                            color: const Color.fromARGB(255, 127, 150, 171),
-                            icon: Icon(
-                              isPassObscure
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
-                              size: 18,
-                              color: AppColors.BLACK_COLOR,
-                            ),
-                            onPressed: _updatepassconfirm,
-                          ),
-                          hintText: "mot de passe",
-                          hintStyle: const TextStyle(
-                            color: AppColors.BLACK_COLOR,
-                          ),
-                        ),
-                        style: const TextStyle(color: Colors.black),
-                        keyboardType: TextInputType.text,
-                      ),
+                    FormPassWordText(
+                      controller: singupController.confirmpasssword,
+                      hint: "Confirmez votre mot de passe",
+                      submitted: singupSubmitted,
                     ),
                     20.heightBox,
                     subtitle("Code application"),
                     10.heightBox,
-                    Container(
-                      padding: const EdgeInsets.only(left: 10),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          border: Border.all(color: AppColors.BOXSHADOW)),
-                      child: TextField(
-                        controller: username,
-                        decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: AppColors.BOXSHADOW,
-                            ),
-                          ),
-                          hintText: "Enter your username",
-                          hintStyle: TextStyle(
-                            color: AppColors.BLACK_COLOR,
-                          ),
-                        ),
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 14,
-                        ),
-                        keyboardType: TextInputType.number,
-                      ),
+                    FormText(
+                      controller: singupController.codeapp,
+                      hint: "Entrez votre code",
+                      submitted: singupSubmitted,
                     ),
                     30.heightBox,
-                    custormButton(
-                      context,
-                      color: AppColors.BLACK_COLOR,
-                      title: "Creation",
-                      colorText: Colors.white,
-                      onTap: () {
-                        Navigator.pushNamed(context, Home.routeName);
+                    BlocBuilder<AppBloc, AppState>(
+                      builder: (context, state) {
+                        return custormButton(
+                          context,
+                          color: AppColors.BLACK_COLOR,
+                          title: "Creation",
+                          colorText: Colors.white,
+                          state: state,
+                          onTap: _submit,
+                        );
                       },
                     ),
                   ],

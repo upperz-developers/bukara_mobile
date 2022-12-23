@@ -32,15 +32,13 @@ class _LoginPage extends State<LoginPage> {
     super.initState();
   }
 
-  bool submited = false;
+  bool loginSubmitted = false;
 
   void _submit() {
     setState(() {
-      submited = true;
+      loginSubmitted = true;
     });
-    print("Hey am here");
     if (loginController.loginValidate()) {
-      print("Hey am here");
       context.read<AppBloc>().add(
             LOGIN(
               email: loginController.mail.text.trim(),
@@ -73,7 +71,7 @@ class _LoginPage extends State<LoginPage> {
                     10.heightBox,
                     FormText(
                       controller: loginController.mail,
-                      submitted: submited,
+                      submitted: loginSubmitted,
                       hint: "Entrez votre adresse mail",
                     ),
                     // go check
@@ -83,7 +81,7 @@ class _LoginPage extends State<LoginPage> {
                     FormPassWordText(
                       controller: loginController.password,
                       hint: "Entrez votre mot de passe",
-                      submitted: submited,
+                      submitted: loginSubmitted,
                     ),
                     10.heightBox,
                     Align(
@@ -102,7 +100,6 @@ class _LoginPage extends State<LoginPage> {
                     ),
                     30.heightBox,
                     BlocBuilder<AppBloc, AppState>(builder: (context, state) {
-                      print(state);
                       return custormButton(
                         context,
                         color: AppColors.BLACK_COLOR,

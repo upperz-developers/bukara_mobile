@@ -44,8 +44,6 @@ Future<Response> httpPost(
   String lang =
       Platform.localeName.substring(0, Platform.localeName.indexOf('_'));
 
-  print(endPoint);
-
   return await DioApi().dio.post(
         endPoint!,
         options: Options(
