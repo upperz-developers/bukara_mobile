@@ -1,3 +1,4 @@
+import 'package:bukara/app/ui/Screens/change_password.dart';
 import 'package:flutter/material.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -13,14 +14,6 @@ class Profile extends StatefulWidget {
 }
 
 class _Profile extends State<Profile> {
-  void _historique() {
-    setState(() {
-      setState(() {
-        // Navigator.pushNamed(context, Historique.routeName);
-      });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -79,43 +72,50 @@ class _Profile extends State<Profile> {
   }
 
   Widget cardPassWord() {
-    return Row(
-      children: [
-        const Expanded(
-          child: Text(
-            "Change password",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
+    return InkWell(
+      onTap: () => Navigator.pushNamed(context, ChangePassword.routeName),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 15),
+        child: Row(
+          children: const [
+            Expanded(
+              child: Text(
+                "Change password",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
-          ),
-        ),
-        IconButton(
-            onPressed: _historique,
-            icon: const Icon(
+            Icon(
               Icons.arrow_forward_ios,
-            ))
-      ],
+            )
+          ],
+        ),
+      ),
     );
   }
 
   Widget cardAbout() {
-    return Row(
-      children: [
-        const Expanded(
-          child: Text(
-            "About App",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
+    return InkWell(
+      onTap: () {},
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 15),
+        child: Row(
+          children: const [
+            Expanded(
+              child: Text(
+                "About App",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
-          ),
+            Icon(
+              Icons.arrow_forward_ios,
+            ),
+          ],
         ),
-        IconButton(
-          onPressed: _historique,
-          icon: const Icon(
-            Icons.arrow_forward_ios,
-          ),
-        )
-      ],
+      ),
     );
   }
 }

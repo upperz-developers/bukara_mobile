@@ -10,6 +10,7 @@ import '../../Screens/auth/login_page.dart';
 import '../../Screens/auth/new_password.dart';
 import '../../Screens/auth/otp_page.dart';
 import '../../Screens/auth/singup_page.dart';
+import '../../Screens/change_password.dart';
 import '../../Screens/profile.dart';
 
 Map<String, Widget Function(BuildContext)> routes = {
@@ -24,4 +25,5 @@ Map<String, Widget Function(BuildContext)> routes = {
   Checkmail.routeName: (context) => const Checkmail(),
   Otp.routeName: (context) => const Otp(),
   Newpassword.routeName: (context) => const Newpassword(),
+  ChangePassword.routeName: (context) => const ChangePassword()
 };

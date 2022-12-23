@@ -2,8 +2,9 @@ import 'package:bukara/app/ui/Screens/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:velocity_x/velocity_x.dart';
-import '../../shared/style.dart';
-import '../../shared/utils/widget.dart';
+
+import '../shared/style.dart';
+import '../shared/utils/widget.dart';
 
 class AuthController {
   AuthController._internal();
@@ -11,25 +12,31 @@ class AuthController {
   factory AuthController() => singleton;
 }
 
-class SingUpPage extends StatefulWidget {
-  static String routeName = "/singUpPage";
-  const SingUpPage({Key? key}) : super(key: key);
+class ChangePassword extends StatefulWidget {
+  static String routeName = "/ChangePassword";
+  const ChangePassword({Key? key}) : super(key: key);
 
   @override
-  State<SingUpPage> createState() => _SingUpPage();
+  State<ChangePassword> createState() => _ChangePassword();
 }
 
-class _SingUpPage extends State<SingUpPage> {
+class _ChangePassword extends State<ChangePassword> {
   double longSpace = 40;
   double space = 20; // pour le grands espace
   double shortSpace = 10;
 
-  TextEditingController? password = TextEditingController();
-  TextEditingController? confirmPassword = TextEditingController();
+  TextEditingController? oldpassword = TextEditingController();
+  TextEditingController? newpassword = TextEditingController();
+  TextEditingController? confirmNewPassword = TextEditingController();
+  bool isObsureOld = true;
   bool isObscure = true;
   bool isPassObscure = true;
-  TextEditingController? username = TextEditingController();
-  TextEditingController? email = TextEditingController();
+
+  void _updateOldpassword() {
+    setState(() {
+      isObsureOld = !isObsureOld;
+    });
+  }
 
   void _updatepass() {
     setState(() {
@@ -70,12 +77,12 @@ class _SingUpPage extends State<SingUpPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     const Text(
-                      "Ceattion du compte",
+                      "Change your Password",
                       style:
                           TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                     ),
                     20.heightBox,
-                    subtitle("Adresse Mail"),
+                    subtitle("your old password"),
                     10.heightBox,
                     Container(
                       padding: const EdgeInsets.only(left: 10),
@@ -83,25 +90,37 @@ class _SingUpPage extends State<SingUpPage> {
                           borderRadius: BorderRadius.circular(4),
                           border: Border.all(color: AppColors.BOXSHADOW)),
                       child: TextField(
-                        controller: email,
-                        decoration: const InputDecoration(
+                        controller: oldpassword,
+                        obscureText: isObsureOld,
+                        decoration: InputDecoration(
                           border: InputBorder.none,
-                          focusedBorder: UnderlineInputBorder(
+                          focusedBorder: const UnderlineInputBorder(
                             borderSide: BorderSide(
-                              color: AppColors.BOXSHADOW,
+                              color: Color.fromARGB(255, 255, 255, 255),
                             ),
                           ),
-                          hintText: "nom@gmail.com",
-                          hintStyle: TextStyle(
+                          suffixIcon: IconButton(
+                            color: const Color.fromARGB(255, 127, 150, 171),
+                            icon: Icon(
+                              isObscure
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              size: 18,
+                              color: AppColors.BLACK_COLOR,
+                            ),
+                            onPressed: _updateOldpassword,
+                          ),
+                          hintText: "Entre your old password",
+                          hintStyle: const TextStyle(
                             color: AppColors.BLACK_COLOR,
                           ),
                         ),
                         style: const TextStyle(color: Colors.black),
-                        keyboardType: TextInputType.emailAddress,
+                        keyboardType: TextInputType.text,
                       ),
                     ),
                     20.heightBox,
-                    subtitle("Password"),
+                    subtitle("new Password"),
                     10.heightBox,
                     Container(
                       padding: const EdgeInsets.only(left: 10),
@@ -109,7 +128,7 @@ class _SingUpPage extends State<SingUpPage> {
                           borderRadius: BorderRadius.circular(4),
                           border: Border.all(color: AppColors.BOXSHADOW)),
                       child: TextField(
-                        controller: password,
+                        controller: newpassword,
                         obscureText: isObscure,
                         decoration: InputDecoration(
                           border: InputBorder.none,
@@ -129,7 +148,7 @@ class _SingUpPage extends State<SingUpPage> {
                             ),
                             onPressed: _updatepass,
                           ),
-                          hintText: "mot de passe",
+                          hintText: "Entre your new Password",
                           hintStyle: const TextStyle(
                             color: AppColors.BLACK_COLOR,
                           ),
@@ -139,7 +158,7 @@ class _SingUpPage extends State<SingUpPage> {
                       ),
                     ),
                     20.heightBox,
-                    subtitle("Confirme your Password"),
+                    subtitle("Confirme your new Password"),
                     10.heightBox,
                     Container(
                       padding: const EdgeInsets.only(left: 10),
@@ -147,7 +166,7 @@ class _SingUpPage extends State<SingUpPage> {
                           borderRadius: BorderRadius.circular(4),
                           border: Border.all(color: AppColors.BOXSHADOW)),
                       child: TextField(
-                        controller: confirmPassword,
+                        controller: confirmNewPassword,
                         obscureText: isPassObscure,
                         decoration: InputDecoration(
                           border: InputBorder.none,
@@ -167,7 +186,7 @@ class _SingUpPage extends State<SingUpPage> {
                             ),
                             onPressed: _updatepassconfirm,
                           ),
-                          hintText: "mot de passe",
+                          hintText: "Confrmed  your new password",
                           hintStyle: const TextStyle(
                             color: AppColors.BLACK_COLOR,
                           ),
@@ -183,7 +202,7 @@ class _SingUpPage extends State<SingUpPage> {
                       title: "Creation",
                       colorText: Colors.white,
                       onTap: () {
-                        Navigator.pushNamed(context, Home.routeName);
+                        Navigator.pop(context);
                       },
                     ),
                   ],
