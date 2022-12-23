@@ -1,10 +1,14 @@
-import 'package:bukara/app/ui/Screens/home/home_page.dart';
+<<<<<<< HEAD:lib/app/ui/auth/new_password.dart
+import 'package:bukara/app/ui/auth/login_page.dart';
+=======
+import 'package:bukara/app/ui/Screens/auth/login_page.dart';
+>>>>>>> dd3edcc9c0748d611de78bcb1335a7b46e65fa9d:lib/app/ui/Screens/auth/new_password.dart
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../shared/utils/utility.dart';
-import '../shared/style.dart';
+import '../../shared/style.dart';
+import '../../shared/utils/widget.dart';
 
 class AuthController {
   AuthController._internal();
@@ -12,15 +16,15 @@ class AuthController {
   factory AuthController() => singleton;
 }
 
-class SingUpPage extends StatefulWidget {
-  static String routeName = "/singUpPage";
-  const SingUpPage({Key? key}) : super(key: key);
+class Newpassword extends StatefulWidget {
+  static String routeName = "/Newpassword";
+  const Newpassword({Key? key}) : super(key: key);
 
   @override
-  State<SingUpPage> createState() => _SingUpPage();
+  State<Newpassword> createState() => _Newpassword();
 }
 
-class _SingUpPage extends State<SingUpPage> {
+class _Newpassword extends State<Newpassword> {
   double longSpace = 40;
   double space = 20; // pour le grands espace
   double shortSpace = 10;
@@ -71,35 +75,9 @@ class _SingUpPage extends State<SingUpPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     const Text(
-                      "Ceattion du compte",
+                      "Create a new password",
                       style:
                           TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                    ),
-                    20.heightBox,
-                    subtitle("Adresse Mail"),
-                    10.heightBox,
-                    Container(
-                      padding: const EdgeInsets.only(left: 10),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          border: Border.all(color: AppColors.BOXSHADOW)),
-                      child: TextField(
-                        controller: email,
-                        decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: AppColors.BOXSHADOW,
-                            ),
-                          ),
-                          hintText: "nom@gmail.com",
-                          hintStyle: TextStyle(
-                            color: AppColors.BLACK_COLOR,
-                          ),
-                        ),
-                        style: const TextStyle(color: Colors.black),
-                        keyboardType: TextInputType.emailAddress,
-                      ),
                     ),
                     20.heightBox,
                     subtitle("Password"),
@@ -184,7 +162,7 @@ class _SingUpPage extends State<SingUpPage> {
                       title: "Creation",
                       colorText: Colors.white,
                       onTap: () {
-                        Navigator.pushNamed(context, Home.routeName);
+                        Navigator.pushNamed(context, LoginPage.routeName);
                       },
                     ),
                   ],

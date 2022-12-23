@@ -1,6 +1,6 @@
 import 'package:bukara/app/ui/Screens/profile.dart';
 import 'package:flutter/material.dart';
-import 'package:bukara/app/ui/Screens/home/home_page.dart';
+import 'package:bukara/app/ui/Screens/home_page.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter/services.dart';
 import 'package:iconsax/iconsax.dart';

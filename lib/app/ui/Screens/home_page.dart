@@ -4,7 +4,7 @@ import 'package:bukara/app/ui/Screens/home/view_model/suite.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:iconsax/iconsax.dart';
-import '../../shared/style.dart';
+import '../shared/style.dart';
 
 class Home extends StatefulWidget {
   static String routeName = "/home";
@@ -185,7 +185,7 @@ class _Home extends State<Home> with SingleTickerProviderStateMixin {
         decoration: (InputDecoration(
           isDense: true,
           border: InputBorder.none,
-          hintText: "Seach your historic commande",
+          hintText: "Seach your apparemement",
           icon: Icon(Iconsax.search_normal_1),
         )),
       ),

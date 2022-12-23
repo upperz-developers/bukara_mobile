@@ -23,20 +23,6 @@ class _Details extends State<Details> {
     });
   }
 
-  void _informationProfile() {
-    setState(() {
-      setState(() {
-        Navigator.pushNamed(context, InfoProfile.routeName);
-      });
-    });
-  }
-
-  void _returnHome() {
-    setState(() {
-      Navigator.pop(context);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -207,7 +193,7 @@ class _Details extends State<Details> {
               ],
             ),
             child: IconButton(
-              onPressed: _returnHome,
+              onPressed: () => Navigator.pop(context),
               icon: const Icon(
                 Iconsax.arrow_left,
                 size: 18,
@@ -332,7 +318,7 @@ class _Details extends State<Details> {
           ),
           25.heightBox,
           InkWell(
-            onTap: _informationProfile,
+            onTap: () => Navigator.pushNamed(context, InfoProfile.routeName),
             child: Row(
               children: [
                 Container(

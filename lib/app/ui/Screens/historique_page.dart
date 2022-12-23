@@ -1,4 +1,3 @@
-import 'package:bukara/app/ui/Screens/profile_information_page.dart';
 import 'package:flutter/material.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:iconsax/iconsax.dart';
@@ -13,22 +12,6 @@ class Historique extends StatefulWidget {
 }
 
 class _Historique extends State<Historique> {
-  void _returnProfile() {
-    setState(() {
-      Navigator.pushNamed(context, InfoProfile.routeName);
-    });
-  }
-
-  /// It's a syntax error.
-
-  void _test() {
-    setState(() {
-      setState(() {
-        // Navigator.pushNamed(context, InfoProfile.routeName);
-      });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -37,9 +20,9 @@ class _Historique extends State<Historique> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             IconButton(
-              onPressed: _returnProfile,
+              onPressed: (() => Navigator.pop(context)),
               icon: const Icon(
-                Iconsax.arrow_left_2,
+                Iconsax.arrow_left,
               ),
               color: const Color.fromARGB(169, 32, 32, 32),
             ),
@@ -89,7 +72,7 @@ class _Historique extends State<Historique> {
         top: 15,
       ),
       child: InkWell(
-        onTap: _test,
+        onTap: () {},
         child: Row(
           children: [
             Expanded(
