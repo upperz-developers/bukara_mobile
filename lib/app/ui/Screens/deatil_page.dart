@@ -148,9 +148,11 @@ class _Details extends State<Details> {
                         titleCentered: true,
                         leftChevronIcon: Icon(
                           Iconsax.arrow_left_2,
+                          color: Colors.black,
                         ),
                         rightChevronIcon: Icon(
                           Iconsax.arrow_right_3,
+                          color: Colors.black,
                         ),
                         titleTextStyle: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 18),

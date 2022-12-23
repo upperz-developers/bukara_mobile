@@ -1,4 +1,5 @@
 import 'package:bukara/app/ui/Screens/home_page.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -20,17 +21,13 @@ class SingUpPage extends StatefulWidget {
 }
 
 class _SingUpPage extends State<SingUpPage> {
-  double longSpace = 40;
-  double space = 20; // pour le grands espace
-  double shortSpace = 10;
-
   TextEditingController? password = TextEditingController();
   TextEditingController? confirmPassword = TextEditingController();
   bool isObscure = true;
   bool isPassObscure = true;
   TextEditingController? username = TextEditingController();
   TextEditingController? email = TextEditingController();
-
+  TapGestureRecognizer? _login;
   void _updatepass() {
     setState(() {
       isObscure = !isObscure;
@@ -41,6 +38,15 @@ class _SingUpPage extends State<SingUpPage> {
     setState(() {
       isPassObscure = !isPassObscure;
     });
+  }
+
+  @override
+  void initState() {
+    _login = TapGestureRecognizer()
+      ..onTap = () {
+        Navigator.pop(context);
+      };
+    super.initState();
   }
 
   @override
@@ -176,6 +182,35 @@ class _SingUpPage extends State<SingUpPage> {
                         keyboardType: TextInputType.text,
                       ),
                     ),
+                    20.heightBox,
+                    subtitle("Code application"),
+                    10.heightBox,
+                    Container(
+                      padding: const EdgeInsets.only(left: 10),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4),
+                          border: Border.all(color: AppColors.BOXSHADOW)),
+                      child: TextField(
+                        controller: username,
+                        decoration: const InputDecoration(
+                          border: InputBorder.none,
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: AppColors.BOXSHADOW,
+                            ),
+                          ),
+                          hintText: "Enter your username",
+                          hintStyle: TextStyle(
+                            color: AppColors.BLACK_COLOR,
+                          ),
+                        ),
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 14,
+                        ),
+                        keyboardType: TextInputType.number,
+                      ),
+                    ),
                     30.heightBox,
                     custormButton(
                       context,
@@ -187,6 +222,23 @@ class _SingUpPage extends State<SingUpPage> {
                       },
                     ),
                   ],
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: Padding(
+                padding: const EdgeInsets.all(30),
+                child: Text.rich(
+                  TextSpan(text: "Vous avez deja un compte? ", children: [
+                    TextSpan(
+                        text: " se connecte",
+                        recognizer: _login,
+                        style: const TextStyle(
+                          decoration: TextDecoration.underline,
+                          fontWeight: FontWeight.bold,
+                        )),
+                  ]),
                 ),
               ),
             ),

@@ -4,13 +4,8 @@ import 'package:iconsax/iconsax.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-<<<<<<< HEAD:lib/app/ui/auth/otp_page.dart
-import '../shared/utils/utility.dart';
-import '../shared/style.dart';
-=======
 import '../../shared/style.dart';
 import '../../shared/utils/widget.dart';
->>>>>>> dd3edcc9c0748d611de78bcb1335a7b46e65fa9d:lib/app/ui/Screens/auth/otp_page.dart
 
 class AuthController {
   AuthController._internal();

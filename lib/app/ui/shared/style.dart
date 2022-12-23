@@ -12,6 +12,18 @@ class Style {
   static ThemeData? themeData(bool isDarkTheme, BuildContext context) {
     return ThemeData(
       textTheme: textTheme,
+      primarySwatch: const MaterialColor(0xFF99cc, {
+        50: Colors.black,
+        100: Colors.black,
+        200: Colors.black,
+        300: Colors.black,
+        400: Colors.black,
+        500: Colors.black,
+        600: Colors.black,
+        700: Colors.black,
+        800: Colors.black,
+        900: Colors.black,
+      }),
       fontFamily: "Montserrat",
       scaffoldBackgroundColor: isDarkTheme
           ? const Color.fromARGB(255, 15, 15, 15)
