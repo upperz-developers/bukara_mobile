@@ -68,5 +68,5 @@ class AppColors {
   static const ON_CONTAINER_COLOR = Color(0xFFe8f0f0);
   static const BOXSHADOW = Color(0xFFd0d1ce);
 
-  static const BORDER_COLOR = Color.fromARGB(255, 48, 48, 48);
+  static const BORDER_COLOR = Color.fromARGB(255, 198, 198, 198);
 }
