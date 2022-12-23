@@ -185,7 +185,7 @@ class _Home extends State<Home> with SingleTickerProviderStateMixin {
         decoration: (InputDecoration(
           isDense: true,
           border: InputBorder.none,
-          hintText: "Seach your historic commande",
+          hintText: "Seach your apparemement",
           icon: Icon(Iconsax.search_normal_1),
         )),
       ),

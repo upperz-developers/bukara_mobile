@@ -22,7 +22,7 @@ class _Historique extends State<Historique> {
             IconButton(
               onPressed: (() => Navigator.pop(context)),
               icon: const Icon(
-                Iconsax.arrow_left_2,
+                Iconsax.arrow_left,
               ),
               color: const Color.fromARGB(169, 32, 32, 32),
             ),
