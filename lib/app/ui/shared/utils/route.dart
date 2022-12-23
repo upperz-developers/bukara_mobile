@@ -1,3 +1,4 @@
+import 'package:bukara/app/ui/Screens/home/about_page.dart';
 import 'package:bukara/app/ui/Screens/profile_information_page.dart';
 import 'package:flutter/material.dart';
 import 'package:bukara/app/ui/Screens/home/app_page.dart';
@@ -25,5 +26,6 @@ Map<String, Widget Function(BuildContext)> routes = {
   Checkmail.routeName: (context) => const Checkmail(),
   Otp.routeName: (context) => const Otp(),
   Newpassword.routeName: (context) => const Newpassword(),
-  ChangePassword.routeName: (context) => const ChangePassword()
+  ChangePassword.routeName: (context) => const ChangePassword(),
+  AboutPage.routeName: (context) => const AboutPage(),
 };

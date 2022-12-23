@@ -1,4 +1,5 @@
 import 'package:bukara/app/ui/Screens/change_password.dart';
+import 'package:bukara/app/ui/Screens/home/about_page.dart';
 import 'package:flutter/material.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -97,7 +98,7 @@ class _Profile extends State<Profile> {
 
   Widget cardAbout() {
     return InkWell(
-      onTap: () {},
+      onTap: () => Navigator.pushNamed(context, AboutPage.routeName),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 15),
         child: Row(
