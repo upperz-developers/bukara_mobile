@@ -71,16 +71,18 @@ class _SingUpPage extends State<SingUpPage> {
             Expanded(
               child: SingleChildScrollView(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
+                    const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     const Text(
-                      "Ceattion du compte",
-                      style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                      "Creation du compte",
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                    20.heightBox,
+                    34.heightBox,
                     subtitle("Adresse Mail"),
                     10.heightBox,
                     Container(
