@@ -1,8 +1,4 @@
-<<<<<<< HEAD:lib/app/ui/auth/new_password.dart
-import 'package:bukara/app/ui/auth/login_page.dart';
-=======
 import 'package:bukara/app/ui/Screens/auth/login_page.dart';
->>>>>>> dd3edcc9c0748d611de78bcb1335a7b46e65fa9d:lib/app/ui/Screens/auth/new_password.dart
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:velocity_x/velocity_x.dart';
