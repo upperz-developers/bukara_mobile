@@ -2,7 +2,8 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:bukara/app/services/http/dio_helper.dart';
 
-httpGet({String? endPoint, Map<String, dynamic>? parameters}) async {
+Future<Response> httpGet(
+    {String? endPoint, Map<String, dynamic>? parameters}) async {
   String lang =
       Platform.localeName.substring(0, Platform.localeName.indexOf('_'));
 
@@ -18,7 +19,8 @@ httpGet({String? endPoint, Map<String, dynamic>? parameters}) async {
   );
 }
 
-httpGetWithToken({String? endPoint, Map<String, dynamic>? parameters}) async {
+Future<Response> httpGetWithToken(
+    {String? endPoint, Map<String, dynamic>? parameters}) async {
   String lang =
       Platform.localeName.substring(0, Platform.localeName.indexOf('_'));
   return await DioApi().dio.get(
@@ -37,7 +39,8 @@ httpGetWithToken({String? endPoint, Map<String, dynamic>? parameters}) async {
 /// ----------------------------------------------------------
 /// Http "POST" request
 /// ----------------------------------------------------------
-httpPost({String? endPoint, Map<String, dynamic>? data}) async {
+Future<Response> httpPost(
+    {String? endPoint, Map<String, dynamic>? data}) async {
   String lang =
       Platform.localeName.substring(0, Platform.localeName.indexOf('_'));
 
@@ -54,7 +57,7 @@ httpPost({String? endPoint, Map<String, dynamic>? data}) async {
       );
 }
 
-httpPostWithToken({String? endPoint, var data}) async {
+Future<Response> httpPostWithToken({String? endPoint, var data}) async {
   String lang = Platform.localeName.substring(
     0,
     Platform.localeName.indexOf('_'),
@@ -73,7 +76,7 @@ httpPostWithToken({String? endPoint, var data}) async {
       );
 }
 
-httpPutWithToken({String? endPoint, var data}) async {
+Future<Response> httpPutWithToken({String? endPoint, var data}) async {
   String lang =
       Platform.localeName.substring(0, Platform.localeName.indexOf('_'));
   return await DioApi().dio.put(
