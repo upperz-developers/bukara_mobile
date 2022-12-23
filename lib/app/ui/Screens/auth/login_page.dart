@@ -1,11 +1,11 @@
-import 'package:bukara/app/ui/auth/check_mail.dart';
-import 'package:bukara/app/ui/auth/singup_page.dart';
+import 'package:bukara/app/ui/Screens/auth/check_mail.dart';
+import 'package:bukara/app/ui/Screens/auth/singup_page.dart';
 import 'package:flutter/material.dart';
-import 'package:bukara/app/ui/Screens/app_page.dart';
+import 'package:bukara/app/ui/Screens/home/app_page.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../shared/utils/utility.dart';
-import '../shared/style.dart';
+import '../../shared/style.dart';
+import '../../shared/utils/utility.dart';
 
 class AuthController {
   AuthController._internal();

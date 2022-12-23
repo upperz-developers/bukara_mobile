@@ -84,7 +84,9 @@ class _Profile extends State<Profile> {
         const Expanded(
           child: Text(
             "Change password",
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         IconButton(
@@ -102,7 +104,9 @@ class _Profile extends State<Profile> {
         const Expanded(
           child: Text(
             "About App",
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         IconButton(

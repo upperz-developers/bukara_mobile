@@ -1,6 +1,6 @@
 // import 'package:community/views/auth/login.dart';
+import 'package:bukara/app/ui/Screens/auth/login_page.dart';
 import 'package:flutter/material.dart';
-import 'package:bukara/app/ui/auth/login_page.dart';
 
 import '../shared/utils/utility.dart';
 

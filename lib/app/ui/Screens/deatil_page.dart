@@ -23,14 +23,6 @@ class _Details extends State<Details> {
     });
   }
 
-  void _informationProfile() {
-    setState(() {
-      setState(() {
-        Navigator.pushNamed(context, InfoProfile.routeName);
-      });
-    });
-  }
-
   void _returnHome() {
     setState(() {
       Navigator.pop(context);
@@ -332,7 +324,7 @@ class _Details extends State<Details> {
           ),
           25.heightBox,
           InkWell(
-            onTap: _informationProfile,
+            onTap: () => Navigator.pushNamed(context, InfoProfile.routeName),
             child: Row(
               children: [
                 Container(

@@ -1,4 +1,3 @@
-import 'package:bukara/app/ui/Screens/deatil_page.dart';
 import 'package:flutter/material.dart';
 import 'package:bukara/app/ui/Screens/historique_page.dart';
 import 'package:bukara/app/ui/shared/style.dart';
@@ -16,28 +15,6 @@ class InfoProfile extends StatefulWidget {
 }
 
 class _InfoProfile extends State<InfoProfile> {
-  void _returnDetail() {
-    setState(() {
-      Navigator.pushNamed(context, Details.routeName);
-    });
-  }
-
-  // void _returnprofile() {
-  //   setState(() {
-  //     setState(() {
-  //       //Navigator.pushNamed(context, InfoProfile.routeName);
-  //     });
-  //   });
-  // }
-
-  void _historique() {
-    setState(() {
-      setState(() {
-        Navigator.pushNamed(context, Historique.routeName);
-      });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -46,7 +23,7 @@ class _InfoProfile extends State<InfoProfile> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             IconButton(
-              onPressed: _returnDetail,
+              onPressed: (() => Navigator.pop(context)),
               icon: const Icon(
                 Iconsax.arrow_left_2,
               ),
@@ -103,7 +80,8 @@ class _InfoProfile extends State<InfoProfile> {
                       ],
                     ),
                     InkWell(
-                      onTap: _historique,
+                      onTap: (() =>
+                          Navigator.pushNamed(context, Historique.routeName)),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 15),
                         child: Row(

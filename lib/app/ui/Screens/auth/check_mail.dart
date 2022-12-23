@@ -1,10 +1,10 @@
-import 'package:bukara/app/ui/auth/otp_page.dart';
+import 'package:bukara/app/ui/Screens/auth/otp_page.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../shared/utils/utility.dart';
-import '../shared/style.dart';
+import '../../shared/style.dart';
+import '../../shared/utils/utility.dart';
 
 class AuthController {
   AuthController._internal();
