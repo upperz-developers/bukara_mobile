@@ -73,11 +73,20 @@ class _Home extends State<Home> with SingleTickerProviderStateMixin {
                           ),
                         );
                       } else if (state is LOADING) {
-                        return const SizedBox(
-                          height: 15,
-                          width: 15,
-                          child: CircularProgressIndicator(
-                            color: AppColors.WHITE_COLOR,
+                        return Container(
+                          height: 35,
+                          width: 60,
+                          decoration: BoxDecoration(
+                              color: AppColors.DISABLE_COLOR,
+                              borderRadius: BorderRadius.circular(20)),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: const [
+                              Text("Chargement..."),
+                              CircularProgressIndicator(
+                                color: AppColors.BLACK_COLOR,
+                              ),
+                            ],
                           ),
                         );
                       } else {
