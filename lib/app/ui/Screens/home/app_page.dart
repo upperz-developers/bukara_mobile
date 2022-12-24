@@ -56,16 +56,12 @@ class _AppPage extends State<AppPage> with SingleTickerProviderStateMixin {
                 physics: const NeverScrollableScrollPhysics(),
                 children: const [
                   Home(),
-
-                  // Details(),
                   Center(
                     child: Text(
                       "notifications",
                       style: TextStyle(color: Colors.black),
                     ),
                   ),
-
-                  // Profile()
                   Profile()
                 ],
               ),
