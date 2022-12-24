@@ -1,5 +1,7 @@
 // import 'package:community/views/auth/login.dart';
+import 'package:bukara/app/services/prefs/app_prefs.dart';
 import 'package:bukara/app/ui/Screens/auth/login_page.dart';
+import 'package:bukara/app/ui/Screens/home/app_page.dart';
 import 'package:flutter/material.dart';
 
 import '../shared/utils/widget.dart';
@@ -12,8 +14,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  bool hasStarted = false;
-
   @override
   void initState() {
     init();
@@ -21,8 +21,13 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   init() {
-    Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, LoginPage.routeName);
+    Future.delayed(const Duration(seconds: 5), () {
+      UserPref userpref = getUserInfo();
+      if (userpref.token!.token!.isEmpty) {
+        Navigator.pushReplacementNamed(context, LoginPage.routeName);
+        return;
+      }
+      Navigator.pushReplacementNamed(context, AppPage.routeName);
     });
   }
 

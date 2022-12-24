@@ -46,7 +46,6 @@ class AppBloc extends Bloc<AppEvent, AppState> {
 
           emit(const SUCCESS());
         } on Exception catch (e) {
-          print(e.toString());
           emit(ERROR(dueTo: e.toString()));
         }
       }),
