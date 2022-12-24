@@ -68,7 +68,6 @@ class _LoginPage extends State<LoginPage> {
           child: BlocBuilder<AppBloc, AppState>(
               bloc: bloc,
               builder: (context, state) {
-                print(state);
                 return IgnorePointer(
                   ignoring: state is LOADING,
                   child: Column(
