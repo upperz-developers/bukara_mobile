@@ -1,19 +1,15 @@
+import 'package:bukara/app/providers/shared/common_modele.dart';
+import 'package:bukara/app/providers/suite/modele.dart';
 import 'package:bukara/app/ui/Screens/deatil_page.dart';
 import 'package:bukara/app/ui/shared/style.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-List<String> images = [
-  "assets/images/appart1.jpg",
-  "assets/images/appart2.jpg",
-  "assets/images/appart3.jpg",
-  "assets/images/appart3.jpg",
-  "assets/images/appart3.jpg",
-];
-
 class Suite extends StatelessWidget {
-  const Suite({Key? key}) : super(key: key);
+  final SuiteModel? suite;
+  const Suite({Key? key, this.suite}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +23,63 @@ class Suite extends StatelessWidget {
         child: Column(
           children: [
             SuiteImage(
-              images: images,
+              images: suite!.images!,
             ),
             10.heightBox,
-            card()
+            Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Suite name",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.BLACK_COLOR,
+                        ),
+                      ),
+                      const Text(
+                        "Manager name",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: AppColors.SECOND_TEXT_COLOR,
+                        ),
+                      ),
+                      const Text(
+                        "10 dec - 3 mars",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: AppColors.SECOND_TEXT_COLOR,
+                        ),
+                      ),
+                      10.heightBox,
+                      const Text(
+                        "150 \$ par Mois",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.BLACK_COLOR),
+                      ),
+                    ],
+                  ),
+                ),
+                15.widthBox,
+                Container(
+                  height: 35,
+                  width: 60,
+                  decoration: BoxDecoration(
+                      color: AppColors.DISABLE_COLOR,
+                      borderRadius: BorderRadius.circular(20)),
+                  child: const Center(child: Text("Yes")),
+                )
+              ],
+            ),
           ],
         ),
       ),
@@ -38,85 +87,8 @@ class Suite extends StatelessWidget {
   }
 }
 
-Widget card() {
-  return Column(
-    children: [
-      Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                titlehome("Suite name"),
-                subtitlehome("Manager name"),
-                subtitlehome("10 dec - 3 mars"),
-                const SizedBox(
-                  height: 10,
-                ),
-                subtitle2home("150 \$ par Mois"),
-              ],
-            ),
-          ),
-          15.widthBox,
-          Container(
-            height: 35,
-            width: 60,
-            decoration: BoxDecoration(
-                color: AppColors.DISABLE_COLOR,
-                borderRadius: BorderRadius.circular(20)),
-            child: const Center(child: Text("Yes")),
-          )
-        ],
-      ),
-    ],
-  );
-}
-
-Widget titlehome(String message) {
-  return SizedBox(
-    // width: 50,
-    child: Text(
-      message,
-      textAlign: TextAlign.left,
-      style: const TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.bold,
-        color: AppColors.BLACK_COLOR,
-      ),
-    ),
-  );
-}
-
-Widget subtitlehome(String subtitle) {
-  return SizedBox(
-    // width: 50,
-    child: Text(
-      subtitle,
-      textAlign: TextAlign.left,
-      style: const TextStyle(
-        fontSize: 15,
-        color: Color.fromARGB(169, 168, 167, 167),
-      ),
-    ),
-  );
-}
-
-Widget subtitle2home(String subtitle) {
-  return SizedBox(
-    // width: 50,
-    child: Text(
-      subtitle,
-      textAlign: TextAlign.left,
-      style: const TextStyle(
-          fontSize: 17,
-          fontWeight: FontWeight.bold,
-          color: AppColors.BLACK_COLOR),
-    ),
-  );
-}
-
 class SuiteImage extends StatefulWidget {
-  final List<String> images;
+  final List<ImageModel> images;
   const SuiteImage({Key? key, required this.images}) : super(key: key);
 
   @override
@@ -139,8 +111,8 @@ class _SuiteImageState extends State<SuiteImage> {
                   borderRadius: BorderRadius.circular(10),
                   color: AppColors.DISABLE_COLOR,
                   image: DecorationImage(
-                    image: AssetImage(
-                      images[index],
+                    image: CachedNetworkImageProvider(
+                      widget.images[index].url!,
                     ),
                     fit: BoxFit.cover,
                   ),
@@ -174,7 +146,7 @@ class _SuiteImageState extends State<SuiteImage> {
               spacing: 5,
               alignment: WrapAlignment.center,
               children: List.generate(
-                images.length,
+                widget.images.length,
                 (index) => ValueListenableBuilder(
                     valueListenable: pageIndex,
                     builder: (context, int page, child) {

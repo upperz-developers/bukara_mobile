@@ -1,10 +1,14 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'package:bukara/app/controller/app_bloc.dart';
+import 'package:bukara/app/controller/app_event.dart';
+import 'package:bukara/app/controller/app_state.dart';
+import 'package:bukara/app/providers/suite/modele.dart';
 import 'package:bukara/app/ui/Screens/home/view_model/suite.dart';
+import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter/material.dart';
-import 'package:velocity_x/velocity_x.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
-import '../shared/style.dart';
 
 class Home extends StatefulWidget {
   static String routeName = "/home";
@@ -18,9 +22,15 @@ class _Home extends State<Home> with SingleTickerProviderStateMixin {
   ScrollController? _scrollController;
   bool hasScrolled = false;
   int indexPage = 0;
+  AppBloc? bloc;
 
   @override
   void initState() {
+    bloc = AppBloc()
+      ..add(
+        GETSUITE(),
+      );
+
     _scrollController = ScrollController()
       ..addListener(() {
         setState(() {
@@ -49,98 +59,35 @@ class _Home extends State<Home> with SingleTickerProviderStateMixin {
                 controller: _scrollController,
                 padding:
                     const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                child: Column(
-                  children: List.generate(
-                    3,
-                    (index) => const Suite(),
-                  ),
-                ),
+                child: BlocBuilder<AppBloc, AppState>(
+                    bloc: bloc,
+                    builder: (context, state) {
+                      if (state is SUCCESS) {
+                        List<SuiteModel> listeSuite = state.value;
+                        return Column(
+                          children: List.generate(
+                            listeSuite.length,
+                            (index) => Suite(
+                              suite: listeSuite[index],
+                            ),
+                          ),
+                        );
+                      } else if (state is LOADING) {
+                        return const SizedBox(
+                          height: 15,
+                          width: 15,
+                          child: CircularProgressIndicator(
+                            color: AppColors.WHITE_COLOR,
+                          ),
+                        );
+                      } else {
+                        return const Text("");
+                      }
+                    }),
               ),
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget card() {
-    return Column(
-      children: [
-        Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 40, right: 40),
-              child: Row(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      titlehome("Suite name"),
-                      subtitlehome("Manager name"),
-                      subtitlehome("10 dec - 3 mars"),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      subtitle2home("150 USD' par Mois"),
-                    ],
-                  ),
-                  10.widthBox,
-                  Container(
-                    height: 35,
-                    width: 60,
-                    decoration: BoxDecoration(
-                        color: const Color.fromARGB(169, 206, 205, 205),
-                        borderRadius: BorderRadius.circular(20)),
-                    child: const Center(child: Text("Yes")),
-                  )
-                ],
-              ),
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-
-  Widget titlehome(String message) {
-    return SizedBox(
-      // width: 50,
-      child: Text(
-        message,
-        textAlign: TextAlign.left,
-        style: const TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
-          color: AppColors.BLACK_COLOR,
-        ),
-      ),
-    );
-  }
-
-  Widget subtitlehome(String subtitle) {
-    return SizedBox(
-      // width: 50,
-      child: Text(
-        subtitle,
-        textAlign: TextAlign.left,
-        style: const TextStyle(
-          fontSize: 15,
-          color: Color.fromARGB(169, 168, 167, 167),
-        ),
-      ),
-    );
-  }
-
-  Widget subtitle2home(String subtitle) {
-    return SizedBox(
-      // width: 50,
-      child: Text(
-        subtitle,
-        textAlign: TextAlign.left,
-        style: const TextStyle(
-            fontSize: 17,
-            fontWeight: FontWeight.bold,
-            color: AppColors.BLACK_COLOR),
       ),
     );
   }

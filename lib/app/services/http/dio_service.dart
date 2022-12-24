@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'package:bukara/app/providers/user/model.dart';
+import 'package:bukara/app/services/prefs/app_prefs.dart';
 import 'package:dio/dio.dart';
 import 'package:bukara/app/services/http/dio_helper.dart';
 
@@ -21,16 +23,14 @@ Future<Response> httpGet(
 
 Future<Response> httpGetWithToken(
     {String? endPoint, Map<String, dynamic>? parameters}) async {
-  String lang =
-      Platform.localeName.substring(0, Platform.localeName.indexOf('_'));
+  Token token = getUserInfo().token!;
   return await DioApi().dio.get(
         endPoint!,
         queryParameters: parameters,
         options: Options(
           headers: {
-            HttpHeaders.authorizationHeader: 'Bearer ',
+            HttpHeaders.authorizationHeader: 'Bearer ${token.token}',
             'X-Requested-With': 'XMLHttpRequest',
-            'lang': lang,
           },
         ),
       );

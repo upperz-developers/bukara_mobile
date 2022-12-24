@@ -1,5 +1,7 @@
 import 'package:bukara/app/controller/app_event.dart';
 import 'package:bukara/app/controller/app_state.dart';
+import 'package:bukara/app/providers/suite/modele.dart';
+import 'package:bukara/app/providers/suite/repository.dart';
 import 'package:bukara/app/providers/user/model.dart';
 import 'package:bukara/app/providers/user/repository.dart';
 import 'package:bukara/app/services/prefs/app_prefs.dart';
@@ -50,5 +52,20 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         }
       }),
     );
+
+    on<GETSUITE>((event, emit) async {
+      emit(const LOADING());
+      try {
+        var response = await getSuite();
+        ResultSuite resultSuite = ResultSuite.fromJson(response.data);
+        emit(SUCCESS(
+          value: resultSuite.data!.suites!,
+        ));
+      } on Exception catch (e) {
+        emit(ERROR(
+          dueTo: e.toString(),
+        ));
+      }
+    });
   }
 }

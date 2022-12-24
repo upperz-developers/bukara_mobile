@@ -21,3 +21,5 @@ class SINGUP implements AppEvent {
     this.confirmepassword,
   });
 }
+
+class GETSUITE implements AppEvent {}

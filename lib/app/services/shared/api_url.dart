@@ -7,4 +7,5 @@ class APIURL {
   static const String LOGIN = "$BASEURL/users/signin";
   // adding about signUp
   static const String SINGUP = "$BASEURL/users/";
+  static const String GETAPARTURL = "$BASEURL/appartements/";
 }
