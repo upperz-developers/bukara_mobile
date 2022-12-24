@@ -10,12 +10,6 @@ import 'package:velocity_x/velocity_x.dart';
 import '../../shared/style.dart';
 import '../../shared/utils/widget.dart';
 
-class AuthController {
-  AuthController._internal();
-  static final singleton = AuthController._internal();
-  factory AuthController() => singleton;
-}
-
 class SingUpPage extends StatefulWidget {
   static String routeName = "/singUpPage";
   const SingUpPage({Key? key}) : super(key: key);
@@ -26,8 +20,12 @@ class SingUpPage extends StatefulWidget {
 
 class _SingUpPage extends State<SingUpPage> {
   TapGestureRecognizer? _login;
+  AppBloc? bloc;
   @override
   void initState() {
+    bloc = AppBloc();
+
+    AuthViewController().password = TextEditingController();
     _login = TapGestureRecognizer()
       ..onTap = () {
         Navigator.pop(context);
@@ -41,15 +39,20 @@ class _SingUpPage extends State<SingUpPage> {
       singupSubmitted = true;
     });
     if (singupController.singupValidate()) {
-      context.read<AppBloc>().add(
-            SINGUP(
-              email: singupController.mail.text.trim(),
-              password: singupController.password.text.trim(),
-              confirmepassword: singupController.confirmpasssword.text.trim(),
-              code: singupController.codeapp.text.trim(),
-            ),
-          );
+      bloc!.add(
+        SINGUP(
+          email: singupController.email.value.text.trim(),
+          password: singupController.password.text.trim(),
+          confirmepassword: singupController.confirmpasssword.text.trim(),
+        ),
+      );
     }
+  }
+
+  @override
+  void dispose() {
+    singupController.password = TextEditingController();
+    super.dispose();
   }
 
   AuthViewController singupController = AuthViewController();
@@ -57,102 +60,115 @@ class _SingUpPage extends State<SingUpPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: const Icon(
-                  Iconsax.arrow_left,
-                ),
-                color: const Color.fromARGB(169, 32, 32, 32),
-              ),
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    const Text(
-                      "Creation du compte",
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
+        body: BlocListener<AppBloc, AppState>(
+          bloc: bloc,
+          listener: (context, state) {
+            if (state is SUCCESS) {
+              Navigator.pop(context);
+            }
+          },
+          child: BlocBuilder<AppBloc, AppState>(
+              bloc: bloc,
+              builder: (context, state) {
+                return IgnorePointer(
+                  ignoring: state is LOADING,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: const Icon(
+                            Iconsax.arrow_left,
+                          ),
+                          color: const Color.fromARGB(169, 32, 32, 32),
+                        ),
                       ),
-                    ),
-                    34.heightBox,
-                    subtitle("Adresse Mail"),
-                    10.heightBox,
-                    FormText(
-                      controller: singupController.mail,
-                      hint: "nom@gmail.com",
-                      submitted: singupSubmitted,
-                    ),
-                    20.heightBox,
-                    subtitle("Password"),
-                    10.heightBox,
-                    FormPassWordText(
-                      controller: singupController.password,
-                      hint: "Entrez votre mot de passe",
-                      submitted: singupSubmitted,
-                    ),
-                    20.heightBox,
-                    subtitle("Confirme your Password"),
-                    10.heightBox,
-                    FormPassWordText(
-                      controller: singupController.confirmpasssword,
-                      hint: "Confirmez votre mot de passe",
-                      submitted: singupSubmitted,
-                    ),
-                    20.heightBox,
-                    subtitle("Code application"),
-                    10.heightBox,
-                    FormText(
-                      controller: singupController.codeapp,
-                      hint: "Entrez votre code",
-                      submitted: singupSubmitted,
-                    ),
-                    30.heightBox,
-                    BlocBuilder<AppBloc, AppState>(
-                      builder: (context, state) {
-                        return custormButton(
-                          context,
-                          color: AppColors.BLACK_COLOR,
-                          title: "Creation",
-                          colorText: Colors.white,
-                          state: state,
-                          onTap: _submit,
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Align(
-              alignment: Alignment.center,
-              child: Padding(
-                padding: const EdgeInsets.all(30),
-                child: Text.rich(
-                  TextSpan(text: "Vous avez deja un compte? ", children: [
-                    TextSpan(
-                        text: " se connecte",
-                        recognizer: _login,
-                        style: const TextStyle(
-                          decoration: TextDecoration.underline,
-                          fontWeight: FontWeight.bold,
-                        )),
-                  ]),
-                ),
-              ),
-            ),
-          ],
+                      Expanded(
+                        child: SingleChildScrollView(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 30, vertical: 10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              const Text(
+                                "Creation du compte",
+                                style: TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              34.heightBox,
+                              subtitle("Adresse Mail"),
+                              10.heightBox,
+                              FormText(
+                                controller: singupController.email.value,
+                                hint: "nom@gmail.com",
+                                submitted: singupSubmitted,
+                              ),
+                              20.heightBox,
+                              subtitle("Password"),
+                              10.heightBox,
+                              FormPassWordText(
+                                controller: singupController.password,
+                                hint: "Entrez votre mot de passe",
+                                submitted: singupSubmitted,
+                              ),
+                              20.heightBox,
+                              subtitle("Confirme your Password"),
+                              10.heightBox,
+                              FormPassWordText(
+                                controller: singupController.confirmpasssword,
+                                hint: "Confirmez votre mot de passe",
+                                submitted: singupSubmitted,
+                              ),
+                              20.heightBox,
+                              subtitle("Code application"),
+                              10.heightBox,
+                              FormText(
+                                controller: singupController.codeapp,
+                                hint: "Entrez votre code",
+                                submitted: singupSubmitted,
+                              ),
+                              30.heightBox,
+                              custormButton(
+                                context,
+                                color: AppColors.BLACK_COLOR,
+                                title: "Creation",
+                                colorText: Colors.white,
+                                state: state,
+                                onTap: _submit,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Padding(
+                          padding: const EdgeInsets.all(30),
+                          child: Text.rich(
+                            TextSpan(
+                                text: "Vous avez deja un compte? ",
+                                children: [
+                                  TextSpan(
+                                      text: " se connecte",
+                                      recognizer: _login,
+                                      style: const TextStyle(
+                                        decoration: TextDecoration.underline,
+                                        fontWeight: FontWeight.bold,
+                                      )),
+                                ]),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }),
         ),
       ),
     );

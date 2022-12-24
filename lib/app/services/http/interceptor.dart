@@ -8,6 +8,7 @@ class ApiInterceptor extends Interceptor {
 
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) {
+    print(err.response!.data);
     switch (err.type) {
       case DioErrorType.sendTimeout:
       case DioErrorType.connectTimeout:
@@ -25,13 +26,25 @@ class ApiInterceptor extends Interceptor {
             throw ConflictException(err.requestOptions);
           case 500:
             throw InternalServerErrorException(err.requestOptions);
+          default:
+            throw ValidationInternalServerErrorException(err.requestOptions);
         }
-        break;
+
       case DioErrorType.cancel:
         break;
       case DioErrorType.other:
         throw NoInternetConnectionException(requestOptions: err.requestOptions);
     }
+  }
+}
+
+class ValidationInternalServerErrorException extends DioError {
+  ValidationInternalServerErrorException(RequestOptions r)
+      : super(requestOptions: r);
+
+  @override
+  String toString() {
+    return "Valiadteur";
   }
 }
 

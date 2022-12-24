@@ -1,14 +1,16 @@
 import 'package:flutter/widgets.dart';
 
 class AuthViewController {
-  TextEditingController mail = TextEditingController();
+  ValueNotifier<TextEditingController> email =
+      ValueNotifier(TextEditingController());
   TextEditingController password = TextEditingController();
   TextEditingController confirmpasssword = TextEditingController();
   TextEditingController codeapp = TextEditingController();
 
-  bool loginValidate() => mail.text.isNotEmpty && password.text.isNotEmpty;
+  bool loginValidate() =>
+      email.value.text.isNotEmpty && password.text.isNotEmpty;
   bool singupValidate() =>
-      mail.text.isNotEmpty &&
+      email.value.text.isNotEmpty &&
       password.text.isNotEmpty &&
       confirmpasssword.text.isNotEmpty &&
       codeapp.text.isNotEmpty;

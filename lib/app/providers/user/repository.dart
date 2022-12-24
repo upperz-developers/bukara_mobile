@@ -10,16 +10,15 @@ Future<Response> loging({
       "email": email,
       "password": password,
     });
-// test about singup
+// // test about singup
+
 Future<Response> singup({
   String? email,
   String? password,
   String? confirmpassword,
-  String? code,
 }) async =>
     await httpPost(endPoint: APIURL.SINGUP, data: {
       "email": email,
       "password": password,
-      "confirmpassword": confirmpassword,
-      "code": code,
+      "password_confirmation": confirmpassword,
     });

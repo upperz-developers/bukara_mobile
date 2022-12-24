@@ -22,21 +22,16 @@ class Token {
     type = json['type'];
     token = json['token'];
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {};
-    data['type'] = type;
-    data['token'] = token;
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+        "type": type,
+        "token": token,
+      };
 }
 
 class Data {
   User? user;
   Config? config;
-
   Data({this.user, this.config});
-
   Data.fromJson(Map<String, dynamic> json) {
     user = json['user'] != null ? User.fromJson(json['user']) : null;
     config = json['config'] != null ? Config.fromJson(json['config']) : null;
@@ -79,27 +74,15 @@ class User {
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {};
-    data['id'] = id;
-    data['name'] = name;
-    data['lastname'] = lastname;
-    data['country_code'] = countryCode;
-    data['phone_number'] = phoneNumber;
-    data['email'] = email;
-    data['profile'] = profile;
-    data['status'] = status;
-    data['created_at'] = createdAt;
-    data['updated_at'] = updatedAt;
-    return data;
-  }
 }
 
 class Config {
   List<TypeBiens>? typeBiens;
+  List<TypeAppart>? typeAppart;
 
-  Config({this.typeBiens});
+  Config()
+      : typeAppart = [],
+        typeBiens = [];
 
   Config.fromJson(Map<String, dynamic> json) {
     if (json['typeBiens'] != null) {
@@ -108,6 +91,23 @@ class Config {
         typeBiens!.add(TypeBiens.fromJson(v));
       });
     }
+    if (json['typeAppart'] != null) {
+      typeAppart = <TypeAppart>[];
+      json['typeAppart'].forEach((v) {
+        typeAppart!.add(TypeAppart.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = {};
+    if (typeBiens != null) {
+      data['typeBiens'] = typeBiens!.map((v) => v.toJson()).toList();
+    }
+    if (typeAppart != null) {
+      data['typeAppart'] = typeAppart!.map((v) => v.toJson()).toList();
+    }
+    return data;
   }
 }
 
@@ -122,5 +122,34 @@ class TypeBiens {
     id = json['id'];
     designation = json['designation'];
     description = json['description'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = {};
+    data['id'] = id;
+    data['designation'] = designation;
+    data['description'] = description;
+    return data;
+  }
+}
+
+class TypeAppart {
+  String? id;
+  String? designation;
+  String? description;
+
+  TypeAppart({this.id, this.designation, this.description});
+
+  TypeAppart.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    designation = json['designation'];
+    description = json['description'];
+  }
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = {};
+    data['id'] = id;
+    data['designation'] = designation;
+    data['description'] = description;
+    return data;
   }
 }

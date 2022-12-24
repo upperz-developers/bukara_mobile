@@ -41,16 +41,12 @@ Future<Response> httpGetWithToken(
 /// ----------------------------------------------------------
 Future<Response> httpPost(
     {String? endPoint, Map<String, dynamic>? data}) async {
-  String lang =
-      Platform.localeName.substring(0, Platform.localeName.indexOf('_'));
-
   return await DioApi().dio.post(
         endPoint!,
         options: Options(
           headers: {
             "X-Requested-With": "XMLHttpRequest",
             'Content-Type': 'application/json',
-            'lang': lang,
           },
         ),
         data: data,
