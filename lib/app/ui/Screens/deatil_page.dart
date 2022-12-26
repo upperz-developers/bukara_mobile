@@ -1,3 +1,5 @@
+import 'package:bukara/app/providers/suite/modele.dart';
+import 'package:bukara/app/ui/Screens/home/view_model/suite.dart';
 import 'package:bukara/app/ui/Screens/profile_information_page.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +7,6 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:iconsax/iconsax.dart';
 import '../shared/utils/widget.dart';
-import 'home/view_model/suite_detail.dart';
 
 class Details extends StatefulWidget {
   static String routeName = "/details";
@@ -25,6 +26,8 @@ class _Details extends State<Details> {
 
   @override
   Widget build(BuildContext context) {
+    SuiteModel suiteDetail =
+        ModalRoute.of(context)!.settings.arguments as SuiteModel;
     return Scaffold(
       body: Stack(children: [
         SingleChildScrollView(
@@ -35,146 +38,32 @@ class _Details extends State<Details> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SuiteDetail(),
-              card1(),
-              line(),
-              modele(Iconsax.document, "Appartemenent no 23"),
-              modele(Iconsax.map,
-                  "5,avenu du lac, quartier katindo1, commune de Goma,ville de Goma"),
-              modele(Iconsax.home_hashtag, "4 chambres"),
-              modele(Iconsax.home, "2 salons"),
-              modele(Iconsax.d_cube_scan, "1 toilette interne"),
-              modele2(Iconsax.activity, "0 toilette interne"),
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 30,
-                  right: 30,
-                  top: 15,
-                ),
-                child: Row(
-                  children: [
-                    const Icon(Iconsax.shapes4),
-                    10.widthBox,
-                    const Expanded(
-                      child: Text(
-                        "Has tenant",
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.normal,
-                            color: Colors.black),
-                      ),
-                    ),
-                    10.widthBox,
-                    Container(
-                      height: 35,
-                      width: 60,
-                      decoration: BoxDecoration(
-                          color: AppColors.DISABLE_COLOR,
-                          borderRadius: BorderRadius.circular(20)),
-                      child: const Center(child: Text("Yes")),
-                    ),
-                  ],
-                ),
+              SuiteImage(
+                images: suiteDetail.images!,
+                height: 400,
               ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 30,
-                  right: 30,
-                ),
-                child: line(),
-              ),
-              Container(
-                padding: const EdgeInsets.only(left: 35),
-                height: 20,
-                width: 200,
-                child: const Text(
-                  "Autre information",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 0, 0, 0)),
-                ),
-              ),
-              25.heightBox,
-              modele(Iconsax.wifi, "Connexion"),
-              modele(Iconsax.flash, "Cash power"),
-              modele(Iconsax.home_trend_up, "Snel"),
-              modele(Icons.water, "Regideso"),
-              modele(Iconsax.d_cube_scan, "toilette interne"),
-              modele2(Iconsax.activity, "toilette externe"),
-              modele2(Iconsax.activity, "pisine"),
-              modele2(Iconsax.activity, "Parking"),
+              card1(suiteDetail),
               line(),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      "Booking date",
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
+                    caracteristic(suiteDetail),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 5, bottom: 20),
+                      child: Divider(),
                     ),
-                    10.heightBox,
-                    const Text(
-                      "10 days left until end",
-                      style: TextStyle(
-                          fontSize: 24,
+                    const Text("Autres informations",
+                        style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 0, 0, 0)),
-                      textAlign: TextAlign.start,
-                    ),
-                    5.heightBox,
-                    Text(
-                      // ignore: prefer_interpolation_to_compose_strings
-                      "" +
-                          today.toString().split(" ")[0] +
-                          " - " +
-                          today.toString().split(" ")[0],
-                      //"10 dec - 10 mar",
-                      style: const TextStyle(
-                          fontWeight: FontWeight.normal,
-                          color: Color.fromARGB(255, 117, 117, 117)),
-                      textAlign: TextAlign.start,
-                    ),
-                    15.heightBox,
-                    TableCalendar(
-                      rowHeight: 53,
-                      headerStyle: const HeaderStyle(
-                        formatButtonVisible: false,
-                        headerPadding: EdgeInsets.only(
-                          bottom: 10,
-                        ),
-                        titleCentered: true,
-                        leftChevronIcon: Icon(
-                          Iconsax.arrow_left_2,
-                          color: Colors.black,
-                        ),
-                        rightChevronIcon: Icon(
-                          Iconsax.arrow_right_3,
-                          color: Colors.black,
-                        ),
-                        titleTextStyle: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
-                      ),
-                      calendarStyle: const CalendarStyle(
-                        selectedDecoration: BoxDecoration(
-                            color: Color.fromARGB(255, 0, 0, 0),
-                            shape: BoxShape.circle),
-                        todayDecoration: BoxDecoration(
-                            color: Color.fromARGB(255, 0, 0, 0),
-                            shape: BoxShape.circle),
-                      ),
-                      availableGestures: AvailableGestures.all,
-                      selectedDayPredicate: (day) => isSameDay(day, today),
-                      focusedDay: today,
-                      firstDay: DateTime.utc(2010, 10, 16),
-                      lastDay: DateTime.utc(2050, 3, 14),
-                      onDaySelected: _onDaySelected,
-                    ),
+                        )),
+                    30.heightBox,
+                    otherInfo(suiteDetail.features!.other!),
                   ],
                 ),
               ),
+              if (suiteDetail.status!) bookingInfo(),
             ],
           ),
         ),
@@ -208,57 +97,181 @@ class _Details extends State<Details> {
     );
   }
 
-  Widget modele(
-    IconData? icon,
-    String? message,
-  ) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        left: 30,
-        right: 30,
-        bottom: 15,
-      ),
-      child: Row(
-        children: [
-          Icon(icon),
-          10.widthBox,
-          Expanded(
-            child: Text(
-              "$message",
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.normal,
-                color: Colors.black,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget modele2(
-    IconData? icon,
-    String? message,
-  ) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        left: 30,
-        right: 30,
-        top: 15,
-      ),
-      child: Row(
-        children: [
-          Icon(icon),
-          10.widthBox,
-          Expanded(
-            child: Text(
-              "$message",
-              style: const TextStyle(
+  Widget bookingInfo() {
+    return Column(
+      children: [
+        line(),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                "Booking date",
+                style: TextStyle(
                   fontSize: 16,
-                  fontWeight: FontWeight.normal,
-                  color: Colors.black,
-                  decoration: TextDecoration.lineThrough),
+                ),
+              ),
+              10.heightBox,
+              const Text(
+                "10 days left until end",
+                style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 0, 0, 0)),
+                textAlign: TextAlign.start,
+              ),
+              5.heightBox,
+              Text(
+                // ignore: prefer_interpolation_to_compose_strings
+                "" +
+                    today.toString().split(" ")[0] +
+                    " - " +
+                    today.toString().split(" ")[0],
+                //"10 dec - 10 mar",
+                style: const TextStyle(
+                    fontWeight: FontWeight.normal,
+                    color: Color.fromARGB(255, 117, 117, 117)),
+                textAlign: TextAlign.start,
+              ),
+              15.heightBox,
+              TableCalendar(
+                rowHeight: 53,
+                headerStyle: const HeaderStyle(
+                  formatButtonVisible: false,
+                  headerPadding: EdgeInsets.only(
+                    bottom: 10,
+                  ),
+                  titleCentered: true,
+                  leftChevronIcon: Icon(
+                    Iconsax.arrow_left_2,
+                    color: Colors.black,
+                  ),
+                  rightChevronIcon: Icon(
+                    Iconsax.arrow_right_3,
+                    color: Colors.black,
+                  ),
+                  titleTextStyle:
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+                calendarStyle: const CalendarStyle(
+                  selectedDecoration: BoxDecoration(
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      shape: BoxShape.circle),
+                  todayDecoration: BoxDecoration(
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      shape: BoxShape.circle),
+                ),
+                availableGestures: AvailableGestures.all,
+                selectedDayPredicate: (day) => isSameDay(day, today),
+                focusedDay: today,
+                firstDay: DateTime.utc(2010, 10, 16),
+                lastDay: DateTime.utc(2050, 3, 14),
+                onDaySelected: _onDaySelected,
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget caracteristic(SuiteModel suite) {
+    return Column(
+      children: [
+        caracteristicModel(
+          title: "#numero ${suite.number}",
+          icon: Iconsax.box,
+        ),
+        caracteristicModel(
+          title:
+              "${suite.address!.number}, ${suite.address!.street}, ${suite.address!.quarter}, commune, ${suite.address!.town}, province, ${suite.address!.country}",
+          icon: Iconsax.map_1,
+        ),
+        caracteristicModel(
+          title: "${suite.features!.bedroom} chambres",
+          icon: Iconsax.box,
+        ),
+        caracteristicModel(
+          title: "${suite.features!.livingroom} salons",
+          icon: Iconsax.home,
+        ),
+        caracteristicModel(
+          title: "${suite.features!.interntoilet} toillette interne",
+          icon: Iconsax.safe_home,
+        ),
+        caracteristicModel(
+          title: "${suite.features!.externtoilet} toillette externe",
+          icon: Iconsax.activity,
+        ),
+      ],
+    );
+  }
+
+  Widget otherInfo(List<String> otherCarteristic) {
+    return Column(
+      children: [
+        otherCaracteristicModel(
+            title: "Connxion internet",
+            icon: Iconsax.wifi,
+            otherCarteristic: otherCarteristic),
+        otherCaracteristicModel(
+          title: "Cash power",
+          icon: Iconsax.flash,
+          otherCarteristic: otherCarteristic,
+        ),
+        otherCaracteristicModel(
+          title: "Snel",
+          icon: Iconsax.flash,
+          otherCarteristic: otherCarteristic,
+        ),
+        otherCaracteristicModel(
+          title: "Eau",
+          icon: Iconsax.omega_circle,
+          otherCarteristic: otherCarteristic,
+        ),
+        otherCaracteristicModel(
+          title: "Cuisine",
+          icon: Iconsax.omega_circle,
+          otherCarteristic: otherCarteristic,
+        ),
+        otherCaracteristicModel(
+          title: "Toilette interne",
+          icon: Iconsax.safe_home,
+          otherCarteristic: otherCarteristic,
+        ),
+        otherCaracteristicModel(
+          title: "Toillette externe",
+          icon: Iconsax.activity,
+          otherCarteristic: otherCarteristic,
+        ),
+        otherCaracteristicModel(
+          title: "Piscine",
+          icon: Iconsax.activity,
+          otherCarteristic: otherCarteristic,
+        ),
+        otherCaracteristicModel(
+          title: "Parking",
+          icon: Iconsax.activity,
+          otherCarteristic: otherCarteristic,
+        ),
+      ],
+    );
+  }
+
+  Widget caracteristicModel({
+    IconData? icon,
+    String? title,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 25),
+      child: Row(
+        children: [
+          Icon(icon),
+          15.widthBox,
+          Expanded(
+            child: Text(
+              title!,
             ),
           ),
         ],
@@ -266,7 +279,43 @@ class _Details extends State<Details> {
     );
   }
 
-  Widget card1() {
+  Widget otherCaracteristicModel(
+      {IconData? icon, String? title, List<String>? otherCarteristic}) {
+    ValueNotifier<bool> isExist = ValueNotifier(false);
+    if (otherCarteristic != null) {
+      for (int i = 0; i < otherCarteristic.length; i++) {
+        if (otherCarteristic[i] == title) {
+          isExist.value = true;
+          break;
+        }
+      }
+    }
+    return ValueListenableBuilder(
+        valueListenable: isExist,
+        builder: (context, bool exist, child) {
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 25),
+            child: Row(
+              children: [
+                Icon(icon),
+                15.widthBox,
+                Expanded(
+                  child: Text(
+                    title!,
+                    style: TextStyle(
+                      height: 1.5,
+                      decoration:
+                          exist == false ? TextDecoration.lineThrough : null,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
+  }
+
+  Widget card1(SuiteModel suite) {
     return Padding(
       padding: const EdgeInsets.only(
         left: 30,
@@ -282,86 +331,94 @@ class _Details extends State<Details> {
                 fontSize: 23, fontWeight: FontWeight.bold, color: Colors.black),
           ),
           10.heightBox,
-          const Text(
-            "150\$ per months",
-            style: TextStyle(
+          Text(
+            "${suite.price}\$ par mois",
+            style: const TextStyle(
               fontSize: 16,
-              color: Color.fromARGB(255, 90, 90, 90),
             ),
           ),
           15.heightBox,
           Wrap(
-            children: const [
+            children: [
               Text(
-                "Nous aimerions témoigner notre gratitude aux professeurs et enseignants de la section Informatique de l'ISIG-GOMA  qui ont assuré notre formation supérieure pour les conseils prodigués depuis la première année académique, sans lesquels ce travail n'aurait pas abouti à sa fin.",
+                suite.description!,
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(fontSize: 13, color: Colors.black54),
-              ),
-              Text(
-                "Voir plus",
-                maxLines: 3,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontSize: 13,
-                  color: Colors.black54,
-                  decoration: TextDecoration.underline,
+                style: const TextStyle(
+                  color: AppColors.SECOND_TEXT_COLOR,
                 ),
               ),
+              if (suite.description!.length > 100)
+                const Text(
+                  "Voir plus",
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: Colors.black54,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
             ],
           ),
-          line(),
-          const Text(
-            "Suite manager",
-            style: TextStyle(
-                fontWeight: FontWeight.normal,
-                color: Color.fromARGB(255, 0, 0, 0)),
-            textAlign: TextAlign.start,
-          ),
-          25.heightBox,
-          InkWell(
-            onTap: () => Navigator.pushNamed(context, InfoProfile.routeName),
-            child: Row(
+          if (suite.status!)
+            Column(
               children: [
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: const BoxDecoration(
-                    color: AppColors.DISABLE_COLOR,
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Icon(
-                    Iconsax.user,
-                    size: 20,
-                  ),
+                line(),
+                const Text(
+                  "Suite manager",
+                  style: TextStyle(
+                      fontWeight: FontWeight.normal,
+                      color: Color.fromARGB(255, 0, 0, 0)),
+                  textAlign: TextAlign.start,
                 ),
-                10.widthBox,
-                Expanded(
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
-                          "John doe",
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.black,
-                          ),
-                          textAlign: TextAlign.center,
+                25.heightBox,
+                InkWell(
+                  onTap: () =>
+                      Navigator.pushNamed(context, InfoProfile.routeName),
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        decoration: const BoxDecoration(
+                          color: AppColors.DISABLE_COLOR,
+                          shape: BoxShape.circle,
                         ),
-                        Text(
-                          "entreprise",
-                          style: TextStyle(
-                              fontSize: 14,
-                              color: Color.fromARGB(255, 161, 161, 161)),
+                        child: const Icon(
+                          Iconsax.user,
+                          size: 20,
                         ),
-                      ]),
-                ),
-                15.widthBox,
-                const Icon(
-                  Iconsax.arrow_right_3,
+                      ),
+                      10.widthBox,
+                      Expanded(
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              Text(
+                                "John doe",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                              Text(
+                                "entreprise",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color.fromARGB(255, 161, 161, 161)),
+                              ),
+                            ]),
+                      ),
+                      15.widthBox,
+                      const Icon(
+                        Iconsax.arrow_right_3,
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
-          ),
         ],
       ),
     );

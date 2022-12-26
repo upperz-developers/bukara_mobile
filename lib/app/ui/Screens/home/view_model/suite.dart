@@ -2,7 +2,6 @@ import 'package:bukara/app/providers/shared/common_modele.dart';
 import 'package:bukara/app/providers/suite/modele.dart';
 import 'package:bukara/app/ui/Screens/deatil_page.dart';
 import 'package:bukara/app/ui/shared/style.dart';
-import 'package:bukara/app/ui/shared/utils/widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +22,7 @@ class Suite extends StatelessWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(10),
         onTap: () {
-          Navigator.pushNamed(context, Details.routeName);
+          Navigator.pushNamed(context, Details.routeName, arguments: suite);
         },
         child: Column(
           children: [
@@ -32,6 +31,7 @@ class Suite extends StatelessWidget {
                 children: [
                   SuiteImage(
                     images: suite!.images!,
+                    height: 280,
                   ),
                   15.heightBox,
                 ],
@@ -108,8 +108,10 @@ class Suite extends StatelessWidget {
 }
 
 class SuiteImage extends StatefulWidget {
+  final double height;
   final List<ImageModel> images;
-  const SuiteImage({Key? key, required this.images}) : super(key: key);
+  const SuiteImage({Key? key, required this.images, required this.height})
+      : super(key: key);
 
   @override
   State<SuiteImage> createState() => _SuiteImageState();
@@ -141,7 +143,7 @@ class _SuiteImageState extends State<SuiteImage> {
             ),
             options: CarouselOptions(
               scrollPhysics: const BouncingScrollPhysics(),
-              height: 280,
+              height: widget.height,
               aspectRatio: 16 / 9,
               viewportFraction: 1,
               initialPage: 0,

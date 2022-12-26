@@ -1,3 +1,4 @@
+import 'package:bukara/app/services/prefs/app_prefs.dart';
 import 'package:bukara/app/ui/Screens/change_password.dart';
 import 'package:bukara/app/ui/Screens/home/about_page.dart';
 import 'package:flutter/material.dart';
@@ -19,53 +20,67 @@ class _Profile extends State<Profile> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 24,
-              vertical: 15,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                50.heightBox,
-                const Text(
-                  "@john doe",
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: AppColors.BLACK_COLOR,
-                  ),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 24,
+            vertical: 15,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                "Profile",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
                 ),
-                10.heightBox,
-                line(),
-                cardPassWord(),
-                10.heightBox,
-                cardAbout(),
-                400.heightBox,
-                Center(
+              ),
+              30.heightBox,
+              Expanded(
+                child: SingleChildScrollView(
                   child: Column(
-                    children: const [
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
                       Text(
-                        "BUKARA v1.0.0",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
+                        "@${getUserInfo().userName!}",
+                        style: const TextStyle(
+                          fontSize: 16,
+                          color: AppColors.BLACK_COLOR,
                         ),
-                        textAlign: TextAlign.center,
                       ),
-                      Text(
-                        "Builid by Devinna in partenship with\n Upperz",
-                        style: TextStyle(
-                          color: AppColors.SECOND_TEXT_COLOR,
-                          fontSize: 10,
-                          fontWeight: FontWeight.normal,
+                      10.heightBox,
+                      line(),
+                      cardPassWord(),
+                      10.heightBox,
+                      cardAbout(),
+                      400.heightBox,
+                      Center(
+                        child: Column(
+                          children: const [
+                            Text(
+                              "BUKARA v1.0.0",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            Text(
+                              "Builid by Devinna in partenship with\n Upperz",
+                              style: TextStyle(
+                                color: AppColors.SECOND_TEXT_COLOR,
+                                fontSize: 10,
+                                fontWeight: FontWeight.normal,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
                         ),
-                        textAlign: TextAlign.center,
-                      ),
+                      )
                     ],
                   ),
-                )
-              ],
-            ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

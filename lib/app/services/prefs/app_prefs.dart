@@ -39,7 +39,7 @@ class UserPref {
 
   UserPref.fromJson(Map<String, dynamic> json)
       : token = Token.fromJson(json['token']),
-        userName = json['useraname'];
+        userName = json['username'];
 
   toJson() => {
         "token": token,

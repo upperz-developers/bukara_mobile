@@ -25,17 +25,26 @@ class _AboutPage extends State<AboutPage> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: const Icon(
-                  Iconsax.arrow_left,
+            Row(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: const Icon(
+                    Iconsax.arrow_left,
+                  ),
+                  color: const Color.fromARGB(169, 32, 32, 32),
                 ),
-                color: const Color.fromARGB(169, 32, 32, 32),
-              ),
+                const Expanded(
+                  child: Text(
+                    "Apropos de l'application",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                52.widthBox,
+              ],
             ),
             Expanded(
                 child: Center(

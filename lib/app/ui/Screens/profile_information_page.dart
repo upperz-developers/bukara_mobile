@@ -8,7 +8,10 @@ import '../shared/utils/widget.dart';
 
 class InfoProfile extends StatefulWidget {
   static String routeName = "/profile";
-  const InfoProfile({Key? key}) : super(key: key);
+
+  const InfoProfile({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<InfoProfile> createState() => _InfoProfile();

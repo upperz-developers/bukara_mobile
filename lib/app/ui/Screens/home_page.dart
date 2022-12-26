@@ -5,7 +5,6 @@ import 'package:bukara/app/controller/app_event.dart';
 import 'package:bukara/app/controller/app_state.dart';
 import 'package:bukara/app/providers/suite/modele.dart';
 import 'package:bukara/app/ui/Screens/home/view_model/suite.dart';
-import 'package:bukara/app/ui/shared/style.dart';
 import 'package:bukara/app/ui/shared/utils/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -88,16 +87,16 @@ class _Home extends State<Home> with SingleTickerProviderStateMixin {
                           ),
                         );
                       } else if (state is LOADING) {
-                        return Expanded(
-                          child: Center(
-                            child: Column(
-                              children: const [
-                                CircularProgressIndicator(
-                                  color: Color.fromARGB(255, 0, 0, 0),
-                                ),
-                                Text("data"),
-                              ],
-                            ),
+                        return Center(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              CircularProgressIndicator(
+                                color: Color.fromARGB(255, 0, 0, 0),
+                              ),
+                              Text("data"),
+                            ],
                           ),
                         );
                       } else {
