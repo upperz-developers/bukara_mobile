@@ -1,7 +1,6 @@
 import 'package:bukara/app/controller/app_event.dart';
 import 'package:bukara/app/controller/app_state.dart';
 import 'package:bukara/app/ui/shared/style.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
@@ -34,7 +33,7 @@ class _ChangePassword extends State<ChangePassword> {
     setState(() {
       changepasswordSubmitted = true;
     });
-    if (changepasswordController.chnagepasswordValidation()) {
+    if (changepasswordController.changepasswordValidation()) {
       bloc!.add(
         CHANGEPASSWORD(
           email: changepasswordController.email.value.text.trim(),

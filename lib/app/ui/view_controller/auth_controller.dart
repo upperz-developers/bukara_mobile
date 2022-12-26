@@ -15,7 +15,7 @@ class AuthViewController {
     oldpassword = TextEditingController();
   }
 
-  bool chnagepasswordValidation() =>
+  bool changepasswordValidation() =>
       oldpassword.value.text.isNotEmpty &&
       password.text.isNotEmpty &&
       confirmpasssword.text.isNotEmpty;
