@@ -25,7 +25,7 @@ class _SingUpPage extends State<SingUpPage> {
   void initState() {
     bloc = AppBloc();
 
-    AuthViewController().password = TextEditingController();
+    singupController.init();
     _login = TapGestureRecognizer()
       ..onTap = () {
         Navigator.pop(context);

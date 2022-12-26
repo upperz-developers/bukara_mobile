@@ -53,6 +53,24 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       }),
     );
 
+    on<CHANGEPASSWORD>(
+      ((event, emit) async {
+        emit(const LOADING());
+
+        try {
+          await changepassord(
+            email: event.email,
+            password: event.password,
+            confirmpassword: event.confirmepassword,
+          );
+
+          emit(const SUCCESS());
+        } on Exception catch (e) {
+          emit(ERROR(dueTo: e.toString()));
+        }
+      }),
+    );
+
     on<GETSUITE>((event, emit) async {
       emit(const LOADING());
       try {

@@ -22,4 +22,16 @@ class SINGUP implements AppEvent {
   });
 }
 
+class CHANGEPASSWORD implements AppEvent {
+  final String? email;
+  final String? password;
+  final String? confirmepassword;
+
+  const CHANGEPASSWORD({
+    this.email,
+    this.password,
+    this.confirmepassword,
+  });
+}
+
 class GETSUITE implements AppEvent {}

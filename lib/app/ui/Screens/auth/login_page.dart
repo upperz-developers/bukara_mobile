@@ -3,7 +3,7 @@ import 'package:bukara/app/controller/app_event.dart';
 import 'package:bukara/app/controller/app_state.dart';
 import 'package:bukara/app/ui/Screens/auth/check_mail.dart';
 import 'package:bukara/app/ui/Screens/auth/singup_page.dart';
-import 'package:bukara/app/ui/Screens/home/app_page.dart';
+import 'package:bukara/app/ui/screens/app_page.dart';
 import 'package:bukara/app/ui/view_controller/auth_controller.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';

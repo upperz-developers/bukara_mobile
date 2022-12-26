@@ -1,10 +1,8 @@
-// ignore_for_file: non_constant_identifier_names
-
 import 'package:bukara/app/controller/app_bloc.dart';
 import 'package:bukara/app/controller/app_event.dart';
 import 'package:bukara/app/controller/app_state.dart';
 import 'package:bukara/app/providers/suite/modele.dart';
-import 'package:bukara/app/ui/Screens/home/view_model/suite.dart';
+import 'package:bukara/app/ui/screens/home/suite/suite_model.dart';
 import 'package:bukara/app/ui/shared/utils/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

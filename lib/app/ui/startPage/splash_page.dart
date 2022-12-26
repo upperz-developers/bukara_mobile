@@ -1,9 +1,9 @@
 // import 'package:community/views/auth/login.dart';
 import 'package:bukara/app/services/prefs/app_prefs.dart';
 import 'package:bukara/app/ui/Screens/auth/login_page.dart';
-import 'package:bukara/app/ui/Screens/home/app_page.dart';
 import 'package:flutter/material.dart';
 
+import '../screens/app_page.dart';
 import '../shared/utils/widget.dart';
 
 class SplashScreen extends StatefulWidget {

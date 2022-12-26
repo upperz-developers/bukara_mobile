@@ -1,9 +1,11 @@
 import 'package:bukara/app/ui/Screens/profile/profile.dart';
+import 'package:bukara/app/ui/screens/home/home_page.dart';
 import 'package:flutter/material.dart';
-import 'package:bukara/app/ui/Screens/home_page.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter/services.dart';
 import 'package:iconsax/iconsax.dart';
+
+import 'notification/app_notification.dart';
 
 List<IconData> selectedicons = [
   Iconsax.home_15,
@@ -54,16 +56,7 @@ class _AppPage extends State<AppPage> with SingleTickerProviderStateMixin {
               TabBarView(
                 controller: _tabController,
                 physics: const NeverScrollableScrollPhysics(),
-                children: const [
-                  Home(),
-                  Center(
-                    child: Text(
-                      "notifications",
-                      style: TextStyle(color: Colors.black),
-                    ),
-                  ),
-                  Profile()
-                ],
+                children: const [Home(), NotificationApp(), Profile()],
               ),
               Align(
                   alignment: Alignment.bottomCenter, child: bottomNavigation()),

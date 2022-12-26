@@ -6,6 +6,19 @@ class AuthViewController {
   TextEditingController password = TextEditingController();
   TextEditingController confirmpasssword = TextEditingController();
   TextEditingController codeapp = TextEditingController();
+  TextEditingController oldpassword = TextEditingController();
+
+  init() {
+    password = TextEditingController();
+    confirmpasssword = TextEditingController();
+    codeapp = TextEditingController();
+    oldpassword = TextEditingController();
+  }
+
+  bool chnagepasswordValidation() =>
+      oldpassword.value.text.isNotEmpty &&
+      password.text.isNotEmpty &&
+      confirmpasssword.text.isNotEmpty;
 
   bool loginValidate() =>
       email.value.text.isNotEmpty && password.text.isNotEmpty;

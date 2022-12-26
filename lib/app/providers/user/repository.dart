@@ -22,3 +22,14 @@ Future<Response> singup({
       "password": password,
       "password_confirmation": confirmpassword,
     });
+
+Future<Response> changepassord({
+  String? email,
+  String? password,
+  String? confirmpassword,
+}) async =>
+    await httpPost(endPoint: APIURL.CHANGEPASSWORD, data: {
+      "email": email,
+      "password": password,
+      "password_confirmation": confirmpassword,
+    });

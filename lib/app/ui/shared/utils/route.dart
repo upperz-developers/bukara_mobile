@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:bukara/app/ui/Screens/home/app_page.dart';
-import 'package:bukara/app/ui/Screens/deatil_page.dart';
-import 'package:bukara/app/ui/Screens/historique_page.dart';
-import 'package:bukara/app/ui/Screens/home_page.dart';
-
 import '../../Screens/auth/check_mail.dart';
 import '../../Screens/auth/login_page.dart';
 import '../../Screens/auth/new_password.dart';
 import '../../Screens/auth/otp_page.dart';
 import '../../Screens/auth/singup_page.dart';
+import '../../Screens/home/suite/historique_page.dart';
 import '../../Screens/profile/about_page.dart';
 import '../../Screens/profile/change_password.dart';
 import '../../Screens/profile/profile.dart';
 import '../../Screens/profile/tenant_information.dart';
+import '../../screens/app_page.dart';
+import '../../screens/home/home_page.dart';
+import '../../screens/home/suite/deatil_page.dart';
 
 Map<String, Widget Function(BuildContext)> routes = {
   LoginPage.routeName: (context) => const LoginPage(),

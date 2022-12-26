@@ -1,6 +1,6 @@
 import 'package:bukara/app/providers/shared/common_modele.dart';
 import 'package:bukara/app/providers/suite/modele.dart';
-import 'package:bukara/app/ui/Screens/deatil_page.dart';
+import 'package:bukara/app/ui/screens/home/suite/deatil_page.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
