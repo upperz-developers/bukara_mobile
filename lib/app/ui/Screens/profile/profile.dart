@@ -1,6 +1,7 @@
 import 'package:bukara/app/services/prefs/app_prefs.dart';
 import 'package:bukara/app/ui/Screens/profile/about_page.dart';
 import 'package:bukara/app/ui/Screens/profile/change_password.dart';
+import 'package:bukara/app/ui/screens/profile/logout.dart';
 import 'package:bukara/app/ui/shared/utils/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:bukara/app/ui/shared/style.dart';
@@ -52,33 +53,36 @@ class _Profile extends State<Profile> {
                       cardPassWord(),
                       10.heightBox,
                       cardAbout(),
-                      400.heightBox,
-                      Center(
-                        child: Column(
-                          children: const [
-                            Text(
-                              "BUKARA v1.0.0",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                            Text(
-                              "Builid by Devinna in partenship with\n Upperz",
-                              style: TextStyle(
-                                color: AppColors.SECOND_TEXT_COLOR,
-                                fontSize: 10,
-                                fontWeight: FontWeight.normal,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ],
-                        ),
-                      )
+                      10.heightBox,
+                      deconnexion(),
                     ],
                   ),
                 ),
               ),
+              Align(
+                alignment: Alignment.center,
+                child: Column(
+                  children: const [
+                    Text(
+                      "BUKARA v1.0.0",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    Text(
+                      "Builid by Devinna in partenship with\n Upperz",
+                      style: TextStyle(
+                        color: AppColors.SECOND_TEXT_COLOR,
+                        fontSize: 10,
+                        fontWeight: FontWeight.normal,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              ),
+              65.heightBox,
             ],
           ),
         ),
@@ -127,6 +131,36 @@ class _Profile extends State<Profile> {
             ),
             Icon(
               Icons.arrow_forward_ios,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget deconnexion() {
+    return InkWell(
+      onTap: () {
+        showDialog(
+          context: context,
+          builder: (context) => const Logout(),
+          barrierDismissible: false,
+        );
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 15),
+        child: Row(
+          children: const [
+            Expanded(
+              child: Text(
+                "Deconnexion",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Icon(
+              Icons.logout,
             ),
           ],
         ),
