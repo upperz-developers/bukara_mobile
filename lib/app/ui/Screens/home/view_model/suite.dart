@@ -2,6 +2,7 @@ import 'package:bukara/app/providers/shared/common_modele.dart';
 import 'package:bukara/app/providers/suite/modele.dart';
 import 'package:bukara/app/ui/Screens/deatil_page.dart';
 import 'package:bukara/app/ui/shared/style.dart';
+import 'package:bukara/app/ui/shared/utils/widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -9,12 +10,16 @@ import 'package:velocity_x/velocity_x.dart';
 
 class Suite extends StatelessWidget {
   final SuiteModel? suite;
-  const Suite({Key? key, this.suite}) : super(key: key);
+
+  const Suite({
+    Key? key,
+    this.suite,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 30),
+      padding: const EdgeInsets.only(bottom: 0),
       child: InkWell(
         borderRadius: BorderRadius.circular(10),
         onTap: () {
@@ -22,47 +27,58 @@ class Suite extends StatelessWidget {
         },
         child: Column(
           children: [
-            SuiteImage(
-              images: suite!.images!,
-            ),
-            10.heightBox,
+            if (suite!.images!.isNotEmpty)
+              Column(
+                children: [
+                  SuiteImage(
+                    images: suite!.images!,
+                  ),
+                  15.heightBox,
+                ],
+              ),
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        "Suite name",
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.BLACK_COLOR,
+                      Text.rich(
+                        TextSpan(
+                          text: "Suite name",
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.BLACK_COLOR,
+                          ),
+                          children: [
+                            TextSpan(
+                              text: " - #num ${suite!.number!}",
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      const Text(
-                        "Manager name",
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: AppColors.SECOND_TEXT_COLOR,
-                        ),
+                      Text(
+                        "(${suite!.features!.bedroom} chambres - ${suite!.features!.livingroom} salon)",
                       ),
-                      const Text(
-                        "10 dec - 3 mars",
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: AppColors.SECOND_TEXT_COLOR,
+                      // 8.heightBox,
+                      if (suite!.status!)
+                        const Text(
+                          "Manager name - 10 dec - 3 mars",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            color: AppColors.SECOND_TEXT_COLOR,
+                          ),
                         ),
-                      ),
-                      10.heightBox,
-                      const Text(
-                        "150 \$ par Mois",
+                      15.heightBox,
+                      Text(
+                        "${suite!.price} \$ par mois",
                         textAlign: TextAlign.left,
-                        style: TextStyle(
-                            fontSize: 17,
+                        style: const TextStyle(
+                            fontSize: 20,
                             fontWeight: FontWeight.bold,
                             color: AppColors.BLACK_COLOR),
                       ),
@@ -71,12 +87,16 @@ class Suite extends StatelessWidget {
                 ),
                 15.widthBox,
                 Container(
-                  height: 35,
-                  width: 60,
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 5,
+                    horizontal: 10,
+                  ),
                   decoration: BoxDecoration(
                       color: AppColors.DISABLE_COLOR,
                       borderRadius: BorderRadius.circular(20)),
-                  child: const Center(child: Text("Yes")),
+                  child: Text(
+                    suite!.status! ? "Occupé" : "inoccupé",
+                  ),
                 )
               ],
             ),

@@ -6,6 +6,7 @@ import 'package:bukara/app/controller/app_state.dart';
 import 'package:bukara/app/providers/suite/modele.dart';
 import 'package:bukara/app/ui/Screens/home/view_model/suite.dart';
 import 'package:bukara/app/ui/shared/style.dart';
+import 'package:bukara/app/ui/shared/utils/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
@@ -57,8 +58,12 @@ class _Home extends State<Home> with SingleTickerProviderStateMixin {
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
                 controller: _scrollController,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                padding: const EdgeInsets.only(
+                  left: 30,
+                  right: 30,
+                  top: 10,
+                  bottom: 100,
+                ),
                 child: BlocBuilder<AppBloc, AppState>(
                     bloc: bloc,
                     builder: (context, state) {
@@ -67,8 +72,18 @@ class _Home extends State<Home> with SingleTickerProviderStateMixin {
                         return Column(
                           children: List.generate(
                             listeSuite.length,
-                            (index) => Suite(
-                              suite: listeSuite[index],
+                            (index) => Column(
+                              children: [
+                                Suite(
+                                  suite: listeSuite[index],
+                                ),
+                                if (index != listeSuite.length - 1)
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 15),
+                                    child: line(),
+                                  ),
+                              ],
                             ),
                           ),
                         );
