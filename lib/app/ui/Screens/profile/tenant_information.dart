@@ -1,10 +1,9 @@
+import 'package:bukara/app/ui/shared/utils/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:bukara/app/ui/Screens/historique_page.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:iconsax/iconsax.dart';
-
-import '../shared/utils/widget.dart';
 
 class InfoProfile extends StatefulWidget {
   static String routeName = "/profile";

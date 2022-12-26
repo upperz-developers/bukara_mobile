@@ -1,6 +1,6 @@
 import 'package:bukara/app/providers/suite/modele.dart';
 import 'package:bukara/app/ui/Screens/home/view_model/suite.dart';
-import 'package:bukara/app/ui/Screens/profile_information_page.dart';
+import 'package:bukara/app/ui/Screens/profile/tenant_information.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';

@@ -1,5 +1,3 @@
-import 'package:bukara/app/ui/Screens/home/about_page.dart';
-import 'package:bukara/app/ui/Screens/profile_information_page.dart';
 import 'package:flutter/material.dart';
 import 'package:bukara/app/ui/Screens/home/app_page.dart';
 import 'package:bukara/app/ui/Screens/deatil_page.dart';
@@ -11,8 +9,10 @@ import '../../Screens/auth/login_page.dart';
 import '../../Screens/auth/new_password.dart';
 import '../../Screens/auth/otp_page.dart';
 import '../../Screens/auth/singup_page.dart';
-import '../../Screens/change_password.dart';
-import '../../Screens/profile.dart';
+import '../../Screens/profile/about_page.dart';
+import '../../Screens/profile/change_password.dart';
+import '../../Screens/profile/profile.dart';
+import '../../Screens/profile/tenant_information.dart';
 
 Map<String, Widget Function(BuildContext)> routes = {
   LoginPage.routeName: (context) => const LoginPage(),

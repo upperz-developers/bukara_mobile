@@ -1,9 +1,8 @@
+import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:velocity_x/velocity_x.dart';
-
-import '../shared/style.dart';
-import '../shared/utils/widget.dart';
+import '../../shared/utils/widget.dart';
 
 class AuthController {
   AuthController._internal();

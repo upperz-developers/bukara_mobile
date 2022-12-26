@@ -1,11 +1,10 @@
 import 'package:bukara/app/services/prefs/app_prefs.dart';
-import 'package:bukara/app/ui/Screens/change_password.dart';
-import 'package:bukara/app/ui/Screens/home/about_page.dart';
+import 'package:bukara/app/ui/Screens/profile/about_page.dart';
+import 'package:bukara/app/ui/Screens/profile/change_password.dart';
+import 'package:bukara/app/ui/shared/utils/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:velocity_x/velocity_x.dart';
-
-import '../shared/utils/widget.dart';
 
 class Profile extends StatefulWidget {
   static String routeName = "/infoprofile";
