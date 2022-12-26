@@ -59,8 +59,8 @@ class AppBloc extends Bloc<AppEvent, AppState> {
 
         try {
           await changepassord(
-            email: event.email,
-            password: event.password,
+            oldpassword: event.oldpassword,
+            newpassword: event.newpassword,
             confirmpassword: event.confirmepassword,
           );
 

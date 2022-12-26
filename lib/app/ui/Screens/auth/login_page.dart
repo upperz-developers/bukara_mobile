@@ -29,9 +29,11 @@ class _LoginPage extends State<LoginPage> {
   @override
   void initState() {
     bloc = AppBloc();
+    loginController.init();
     _signup = TapGestureRecognizer()
       ..onTap = () {
         Navigator.pushNamed(context, SingUpPage.routeName);
+        loginController.init();
       };
     super.initState();
   }

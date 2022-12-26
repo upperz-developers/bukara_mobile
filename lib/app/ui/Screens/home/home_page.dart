@@ -3,6 +3,7 @@ import 'package:bukara/app/controller/app_event.dart';
 import 'package:bukara/app/controller/app_state.dart';
 import 'package:bukara/app/providers/suite/modele.dart';
 import 'package:bukara/app/ui/screens/home/suite/suite_model.dart';
+import 'package:bukara/app/ui/shared/squelleton/suite.dart';
 import 'package:bukara/app/ui/shared/utils/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -64,42 +65,32 @@ class _Home extends State<Home> with SingleTickerProviderStateMixin {
                 child: BlocBuilder<AppBloc, AppState>(
                     bloc: bloc,
                     builder: (context, state) {
-                      if (state is SUCCESS) {
-                        List<SuiteModel> listeSuite = state.value;
-                        return Column(
-                          children: List.generate(
-                            listeSuite.length,
-                            (index) => Column(
-                              children: [
-                                Suite(
-                                  suite: listeSuite[index],
-                                ),
-                                if (index != listeSuite.length - 1)
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 15),
-                                    child: line(),
-                                  ),
-                              ],
-                            ),
-                          ),
-                        );
-                      } else if (state is LOADING) {
-                        return Center(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              CircularProgressIndicator(
-                                color: Color.fromARGB(255, 0, 0, 0),
-                              ),
-                              Text("data"),
-                            ],
-                          ),
-                        );
-                      } else {
-                        return const Text("");
-                      }
+                      List<SuiteModel> listeSuite =
+                          state is SUCCESS ? state.value : [];
+                      return state is SUCCESS
+                          ? Column(
+                              children: List.generate(
+                                  listeSuite.length,
+                                  (index) => Column(
+                                        children: [
+                                          Suite(
+                                            suite: listeSuite[index],
+                                          ),
+                                          if (index != listeSuite.length - 1)
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 15),
+                                              child: line(),
+                                            ),
+                                        ],
+                                      )),
+                            )
+                          : Column(
+                              children: List.generate(
+                              3,
+                              (index) => const SuiteSqueletton(),
+                            ));
                     }),
               ),
             ),

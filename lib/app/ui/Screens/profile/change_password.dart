@@ -1,5 +1,6 @@
 import 'package:bukara/app/controller/app_event.dart';
 import 'package:bukara/app/controller/app_state.dart';
+import 'package:bukara/app/ui/Screens/auth/login_page.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,7 +19,6 @@ class ChangePassword extends StatefulWidget {
 }
 
 class _ChangePassword extends State<ChangePassword> {
-  AuthViewController changepasswordController = AuthViewController();
   AppBloc? bloc;
   @override
   void initState() {
@@ -36,8 +36,8 @@ class _ChangePassword extends State<ChangePassword> {
     if (changepasswordController.changepasswordValidation()) {
       bloc!.add(
         CHANGEPASSWORD(
-          email: changepasswordController.email.value.text.trim(),
-          password: changepasswordController.password.text.trim(),
+          oldpassword: changepasswordController.oldpassword.value.text.trim(),
+          newpassword: changepasswordController.password.text.trim(),
           confirmepassword:
               changepasswordController.confirmpasssword.text.trim(),
         ),
@@ -45,6 +45,7 @@ class _ChangePassword extends State<ChangePassword> {
     }
   }
 
+  AuthViewController changepasswordController = AuthViewController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -53,7 +54,8 @@ class _ChangePassword extends State<ChangePassword> {
           bloc: bloc,
           listener: (context, state) {
             if (state is SUCCESS) {
-              Navigator.pop(context);
+              Navigator.pushNamedAndRemoveUntil(
+                  context, LoginPage.routeName, (route) => false);
             }
           },
           child: BlocBuilder<AppBloc, AppState>(
@@ -123,11 +125,14 @@ class _ChangePassword extends State<ChangePassword> {
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 30, vertical: 25),
-                        child: custormButton(context,
-                            color: AppColors.BLACK_COLOR,
-                            title: "Creation",
-                            colorText: Colors.white,
-                            onTap: _submit),
+                        child: custormButton(
+                          context,
+                          color: AppColors.BLACK_COLOR,
+                          title: "Creation",
+                          colorText: Colors.white,
+                          state: state,
+                          onTap: _submit,
+                        ),
                       ),
                     ],
                   ),

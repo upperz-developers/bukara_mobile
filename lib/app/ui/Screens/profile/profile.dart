@@ -41,7 +41,7 @@ class _Profile extends State<Profile> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "@${getUserInfo().userName!}",
+                        "#${getUserInfo().userName!}",
                         style: const TextStyle(
                           fontSize: 16,
                           color: AppColors.BLACK_COLOR,
