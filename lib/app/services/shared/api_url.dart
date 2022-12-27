@@ -10,4 +10,5 @@ class APIURL {
   static const String CHANGEPASSWORD = "$BASEURL/users/change/psswd";
 
   static const String GETAPARTURL = "$BASEURL/appartements/";
+  static const String LOGOUT = "$BASEURL/users/logout";
 }

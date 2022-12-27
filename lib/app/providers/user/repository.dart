@@ -33,3 +33,10 @@ Future<Response> changepassord({
       "password": newpassword,
       "password_confirmation": confirmpassword,
     });
+
+Future<Response> logout({
+  String? token,
+}) async =>
+    await httpPost(endPoint: APIURL.LOGOUT, data: {
+      "token": token,
+    });

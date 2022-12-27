@@ -34,4 +34,12 @@ class CHANGEPASSWORD implements AppEvent {
   });
 }
 
+class LOGOUT implements AppEvent {
+  final String? token;
+
+  const LOGOUT({
+    this.token,
+  });
+}
+
 class GETSUITE implements AppEvent {}

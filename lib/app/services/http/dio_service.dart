@@ -41,12 +41,14 @@ Future<Response> httpGetWithToken(
 /// ----------------------------------------------------------
 Future<Response> httpPost(
     {String? endPoint, Map<String, dynamic>? data}) async {
+  print(data);
+  Token token = getUserInfo().token!;
   return await DioApi().dio.post(
         endPoint!,
         options: Options(
           headers: {
-            "X-Requested-With": "XMLHttpRequest",
-            'Content-Type': 'application/json',
+            HttpHeaders.authorizationHeader: 'Bearer ${token.token}',
+            'X-Requested-With': 'XMLHttpRequest',
           },
         ),
         data: data,

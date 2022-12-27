@@ -70,7 +70,21 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         }
       }),
     );
+    on<LOGOUT>(
+      ((event, emit) async {
+        emit(const LOADING());
 
+        try {
+          await logout(
+            token: event.token,
+          );
+
+          emit(const SUCCESS());
+        } on Exception catch (e) {
+          emit(ERROR(dueTo: e.toString()));
+        }
+      }),
+    );
     on<GETSUITE>((event, emit) async {
       emit(const LOADING());
       try {
