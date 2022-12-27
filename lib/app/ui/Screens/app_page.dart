@@ -1,7 +1,6 @@
 import 'package:bukara/app/ui/Screens/profile/profile.dart';
 import 'package:bukara/app/ui/screens/home/home_page.dart';
 import 'package:bukara/app/ui/screens/profile/liste_locataire.dart';
-import 'package:bukara/app/ui/shared/squelleton/suite_squelleton.dart';
 import 'package:flutter/material.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter/services.dart';

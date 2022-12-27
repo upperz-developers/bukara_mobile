@@ -1,4 +1,8 @@
+import 'package:bukara/app/controller/app_bloc.dart';
+import 'package:bukara/app/controller/app_state.dart';
+import 'package:bukara/app/ui/shared/squelleton/notification_squelleton.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../../shared/style.dart';
 
@@ -10,14 +14,23 @@ class NotificationApp extends StatefulWidget {
 }
 
 class _NotificationAppState extends State<NotificationApp> {
+  AppBloc? bloc;
+  @override
+  void initState() {
+    bloc = AppBloc();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 24,
-            vertical: 15,
+          padding: const EdgeInsets.only(
+            left: 30,
+            right: 30,
+            top: 10,
+            bottom: 50,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,13 +42,25 @@ class _NotificationAppState extends State<NotificationApp> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              20.heightBox,
-              SingleChildScrollView(
-                child: Column(
-                    children: List.generate(
-                  5,
-                  (index) => notification(),
-                )),
+              30.heightBox,
+              Expanded(
+                child: SingleChildScrollView(
+                  child: BlocBuilder<AppBloc, AppState>(
+                      bloc: bloc,
+                      builder: (context, state) {
+                        return state is SUCCESS
+                            ? Column(
+                                children: List.generate(
+                                10,
+                                (index) => notification(),
+                              ))
+                            : Column(
+                                children: List.generate(
+                                5,
+                                (index) => const NotificationSquelleton(),
+                              ));
+                      }),
+                ),
               ),
             ],
           ),
