@@ -1,5 +1,7 @@
 import 'package:bukara/app/ui/Screens/profile/profile.dart';
 import 'package:bukara/app/ui/screens/home/home_page.dart';
+import 'package:bukara/app/ui/screens/profile/liste_locataire.dart';
+import 'package:bukara/app/ui/shared/squelleton/suite_squelleton.dart';
 import 'package:flutter/material.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter/services.dart';
@@ -10,12 +12,14 @@ import 'notification/app_notification.dart';
 List<IconData> selectedicons = [
   Iconsax.home_15,
   Iconsax.notification5,
+  Iconsax.task_square5,
   Iconsax.profile_circle5,
 ];
 
 List<IconData> unselectedicons = [
   Iconsax.home,
   Iconsax.notification,
+  Iconsax.task_square,
   Iconsax.profile_circle,
 ];
 
@@ -35,7 +39,7 @@ class _AppPage extends State<AppPage> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
 
-    _tabController = TabController(initialIndex: 0, length: 3, vsync: this);
+    _tabController = TabController(initialIndex: 0, length: 4, vsync: this);
   }
 
   int? selectedIndex = 0;
@@ -56,7 +60,12 @@ class _AppPage extends State<AppPage> with SingleTickerProviderStateMixin {
               TabBarView(
                 controller: _tabController,
                 physics: const NeverScrollableScrollPhysics(),
-                children: const [Home(), NotificationApp(), Profile()],
+                children: const [
+                  Home(),
+                  NotificationApp(),
+                  LIsteLocataire(),
+                  Profile(),
+                ],
               ),
               Align(
                   alignment: Alignment.bottomCenter, child: bottomNavigation()),
