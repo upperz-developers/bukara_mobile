@@ -117,8 +117,6 @@ class _SingUpPage extends State<SingUpPage> {
                                 hint: "Entrez votre mot de passe",
                                 submitted: singupSubmitted,
                               ),
-                              20.heightBox,
-                              subtitle("Confirme your Password"),
                               10.heightBox,
                               FormPassWordText(
                                 controller: singupController.confirmpasssword,

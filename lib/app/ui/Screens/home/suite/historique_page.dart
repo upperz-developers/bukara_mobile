@@ -1,7 +1,12 @@
+import 'package:bukara/app/controller/app_state.dart';
+import 'package:bukara/app/ui/shared/squelleton/historique_squelleton.dart';
 import 'package:flutter/material.dart';
 import 'package:bukara/app/ui/shared/style.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:velocity_x/velocity_x.dart';
+
+import '../../../../controller/app_bloc.dart';
 
 class Historique extends StatefulWidget {
   static String routeName = "/historique";
@@ -12,6 +17,13 @@ class Historique extends StatefulWidget {
 }
 
 class _Historique extends State<Historique> {
+  AppBloc? bloc;
+  @override
+  void initState() {
+    bloc = AppBloc();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -33,30 +45,41 @@ class _Historique extends State<Historique> {
                     horizontal: 24,
                     vertical: 15,
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        "Historique Paiement",
-                        style: TextStyle(
-                          fontSize: 23,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      card1(
-                        "Name of suite",
-                        "Goma, C de Goma, Q les volcan,av des avenues, num 10",
-                      ),
-                      card1(
-                        "Name of suite",
-                        "Goma, C de Goma, Q les volcan,av des avenues, num 10",
-                      ),
-                      card1(
-                        "Name of suite",
-                        "Goma, C de Goma, Q les volcan,av des avenues, num 10",
-                      ),
-                    ],
-                  ),
+                  child: BlocBuilder<AppBloc, AppState>(
+                      bloc: bloc,
+                      builder: (context, state) {
+                        return state is SUCCESS
+                            ? Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    "Historique Paiement",
+                                    style: TextStyle(
+                                      fontSize: 23,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  card1(
+                                    "Name of suite",
+                                    "Goma, C de Goma, Q les volcan,av des avenues, num 10",
+                                  ),
+                                  card1(
+                                    "Name of suite",
+                                    "Goma, C de Goma, Q les volcan,av des avenues, num 10",
+                                  ),
+                                  card1(
+                                    "Name of suite",
+                                    "Goma, C de Goma, Q les volcan,av des avenues, num 10",
+                                  ),
+                                ],
+                              )
+                            : Column(
+                                children: List.generate(
+                                  4,
+                                  (index) => const HistoriqueSquelleton(),
+                                ),
+                              );
+                      }),
                 ),
               ),
             ),
