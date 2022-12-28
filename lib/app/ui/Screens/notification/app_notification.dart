@@ -1,8 +1,10 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:bukara/app/controller/app_bloc.dart';
 import 'package:bukara/app/controller/app_state.dart';
 import 'package:bukara/app/ui/shared/squelleton/notification_squelleton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../../shared/style.dart';
 
@@ -45,10 +47,11 @@ class _NotificationAppState extends State<NotificationApp> {
               30.heightBox,
               Expanded(
                 child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
                   child: BlocBuilder<AppBloc, AppState>(
                       bloc: bloc,
                       builder: (context, state) {
-                        return state is SUCCESS
+                        return state is LOADING
                             ? Column(
                                 children: List.generate(
                                 10,
@@ -56,7 +59,7 @@ class _NotificationAppState extends State<NotificationApp> {
                               ))
                             : Column(
                                 children: List.generate(
-                                5,
+                                6,
                                 (index) => const NotificationSquelleton(),
                               ));
                       }),
@@ -70,53 +73,83 @@ class _NotificationAppState extends State<NotificationApp> {
   }
 
   Widget notification() {
-    return Stack(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(bottom: 15),
-          child: Container(
-            height: 100,
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 15),
+      child: Stack(
+        children: [
+          Container(
+            padding: const EdgeInsets.only(
+              left: 15,
+              right: 10,
+              top: 10,
+              bottom: 10,
+            ),
+            width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
               color: AppColors.DISABLE_COLOR,
               borderRadius: BorderRadius.circular(10),
             ),
-            child: Padding(
-              padding: const EdgeInsets.only(
-                left: 25,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text(
-                    "Notification",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    const Expanded(
+                      child: Text(
+                        "Nom Appartment",
+                      ),
                     ),
+                    50.widthBox,
+                    const Text(
+                      "28/12/2022 à 15h30",
+                      style: TextStyle(
+                        fontSize: 10,
+                      ),
+                    )
+                  ],
+                ),
+                10.heightBox,
+                Row(children: [
+                  const Icon(
+                    Iconsax.profile_circle,
+                    size: 20,
                   ),
-                  Expanded(
-                    child: Text(
-                      "une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum",
-                    ),
-                  )
-                ],
-              ),
+                  5.widthBox,
+                  const Text(
+                    "John Doe",
+                  ),
+                ]),
+                10.heightBox,
+                const Text(
+                  "3 mois et 5 jours restants ",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+                10.heightBox,
+                const Text(
+                  "Date",
+                )
+              ],
             ),
           ),
-        ),
-        Positioned(
-          child: Container(
-            height: 100,
-            width: 15,
-            decoration: const BoxDecoration(
-              color: AppColors.BLACK_COLOR,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10),
-                bottomLeft: Radius.circular(10),
+          Positioned(
+            top: 0,
+            bottom: 0,
+            child: Container(
+              width: 5,
+              decoration: const BoxDecoration(
+                color: AppColors.BLACK_COLOR,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  bottomLeft: Radius.circular(10),
+                ),
               ),
             ),
-          ),
-        )
-      ],
+          )
+        ],
+      ),
     );
   }
 }

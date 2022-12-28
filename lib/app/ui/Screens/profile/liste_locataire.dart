@@ -48,7 +48,7 @@ class _LIsteLocataireState extends State<LIsteLocataire> {
                   child: BlocBuilder<AppBloc, AppState>(
                       bloc: bloc,
                       builder: (context, state) {
-                        return state is SUCCESS
+                        return state is LOADING
                             ? Column(
                                 children: List.generate(
                                 10,
