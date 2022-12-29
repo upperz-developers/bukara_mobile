@@ -1,4 +1,3 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:bukara/app/controller/app_bloc.dart';
 import 'package:bukara/app/controller/app_state.dart';
 import 'package:bukara/app/ui/shared/squelleton/notification_squelleton.dart';
@@ -49,20 +48,21 @@ class _NotificationAppState extends State<NotificationApp> {
                 child: SingleChildScrollView(
                   physics: const BouncingScrollPhysics(),
                   child: BlocBuilder<AppBloc, AppState>(
-                      bloc: bloc,
-                      builder: (context, state) {
-                        return state is LOADING
-                            ? Column(
-                                children: List.generate(
-                                10,
-                                (index) => notification(),
-                              ))
-                            : Column(
-                                children: List.generate(
-                                6,
-                                (index) => const NotificationSquelleton(),
-                              ));
-                      }),
+                    bloc: bloc,
+                    builder: (context, state) {
+                      return state is LOADING
+                          ? Column(
+                              children: List.generate(
+                              10,
+                              (index) => notification(),
+                            ))
+                          : Column(
+                              children: List.generate(
+                              6,
+                              (index) => const NotificationSquelleton(),
+                            ));
+                    },
+                  ),
                 ),
               ),
             ],
@@ -86,7 +86,7 @@ class _NotificationAppState extends State<NotificationApp> {
             ),
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
-              color: AppColors.DISABLE_COLOR,
+              color: AppColors.WHITE_COLOR,
               borderRadius: BorderRadius.circular(10),
             ),
             child: Column(
@@ -140,7 +140,7 @@ class _NotificationAppState extends State<NotificationApp> {
             child: Container(
               width: 5,
               decoration: const BoxDecoration(
-                color: AppColors.BLACK_COLOR,
+                color: Color.fromARGB(115, 185, 185, 185),
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(10),
                   bottomLeft: Radius.circular(10),

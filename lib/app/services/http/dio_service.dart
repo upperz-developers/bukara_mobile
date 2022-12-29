@@ -41,7 +41,6 @@ Future<Response> httpGetWithToken(
 /// ----------------------------------------------------------
 Future<Response> httpPost(
     {String? endPoint, Map<String, dynamic>? data}) async {
-  print(data);
   Token token = getUserInfo().token!;
   return await DioApi().dio.post(
         endPoint!,

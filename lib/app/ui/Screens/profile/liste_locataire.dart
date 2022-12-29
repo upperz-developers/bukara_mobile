@@ -1,12 +1,10 @@
 import 'package:bukara/app/ui/shared/squelleton/liste_locataire_squelleton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../../../controller/app_bloc.dart';
 import '../../../controller/app_state.dart';
 import '../../shared/style.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 class LIsteLocataire extends StatefulWidget {
   const LIsteLocataire({super.key});
@@ -59,7 +57,7 @@ class _LIsteLocataireState extends State<LIsteLocataire> {
                             ))
                           : Column(
                               children: List.generate(
-                              5,
+                              6,
                               (index) => const ListeLocataireSquelleton(),
                             ));
                     },

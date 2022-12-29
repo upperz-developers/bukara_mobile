@@ -17,14 +17,17 @@ class SuiteSqueletton extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 30),
       child: Column(
         children: [
-          Shimmer(
-            color: Colors.grey.withAlpha(10),
-            child: Container(
-              height: 280,
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: AppColors.DISABLE_COLOR,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Shimmer(
+              color: Colors.grey.withAlpha(10),
+              child: Container(
+                height: 280,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: AppColors.DISABLE_COLOR,
+                ),
               ),
             ),
           ),
@@ -36,25 +39,28 @@ class SuiteSqueletton extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Shimmer(
-                      color: Colors.grey.withAlpha(10),
-                      child: Container(
-                        height: 30,
-                        width: 130,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: AppColors.DISABLE_COLOR,
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(4),
+                      child: Shimmer(
+                        color: Colors.grey.withAlpha(10),
+                        child: Container(
+                          height: 30,
+                          width: 130,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4),
+                            color: AppColors.DISABLE_COLOR,
+                          ),
                         ),
                       ),
                     ),
                     15.heightBox,
                     Shimmer(
-                      color: Colors.grey.withAlpha(10),
+                      color: Colors.grey.withAlpha(4),
                       child: Container(
                         height: 10,
                         width: 80,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(4),
                           color: AppColors.DISABLE_COLOR,
                         ),
                       ),
@@ -63,16 +69,20 @@ class SuiteSqueletton extends StatelessWidget {
                 ),
               ),
               15.widthBox,
-              Shimmer(
-                color: Colors.grey.withAlpha(10),
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 5,
-                    horizontal: 10,
-                  ),
-                  decoration: BoxDecoration(
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Shimmer(
+                  color: Colors.grey.withAlpha(10),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 5,
+                      horizontal: 10,
+                    ),
+                    decoration: BoxDecoration(
                       color: AppColors.DISABLE_COLOR,
-                      borderRadius: BorderRadius.circular(20)),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
                 ),
               )
             ],
