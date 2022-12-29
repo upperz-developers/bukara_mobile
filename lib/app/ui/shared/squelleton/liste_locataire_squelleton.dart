@@ -11,104 +11,87 @@ class ListeLocataireSquelleton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 30),
-      child: Column(
+      padding: const EdgeInsets.only(
+        bottom: 15,
+      ),
+      child: Stack(
         children: [
-          Shimmer(
-            color: Colors.grey.withAlpha(10),
-            child: Container(
-              padding: const EdgeInsets.only(
-                top: 10,
-                left: 10,
-              ),
-              height: 250,
-              decoration: BoxDecoration(
-                color: AppColors.DISABLE_COLOR,
+          Column(
+            children: [
+              ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Shimmer(
-                    color: Colors.grey.withAlpha(10),
-                    child: Container(
-                      height: 30,
-                      width: 150,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: const Color.fromARGB(190, 236, 236, 236),
-                      ),
+                child: Shimmer(
+                  color: Colors.grey.withAlpha(10),
+                  child: Container(
+                    padding: const EdgeInsets.only(
+                      top: 10,
+                      left: 10,
+                    ),
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                      color: AppColors.DISABLE_COLOR,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Shimmer(
+                            color: Colors.grey.withAlpha(10),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 20,
+                              ),
+                              width: MediaQuery.of(context).size.width / 2.5,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: const Color.fromARGB(255, 227, 227, 227),
+                              ),
+                            ),
+                          ),
+                        ),
+                        15.heightBox,
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Shimmer(
+                            color: Colors.grey.withAlpha(10),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 10,
+                              ),
+                              width: MediaQuery.of(context).size.width / 1.5,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: const Color.fromARGB(255, 227, 227, 227),
+                              ),
+                            ),
+                          ),
+                        ),
+                        15.heightBox,
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Shimmer(
+                            color: Colors.grey.withAlpha(10),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 10,
+                              ),
+                              width: MediaQuery.of(context).size.width / 5,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: const Color.fromARGB(255, 227, 227, 227),
+                              ),
+                            ),
+                          ),
+                        ),
+                        10.heightBox,
+                      ],
                     ),
                   ),
-                  15.heightBox,
-                  Expanded(
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "Numero Telephone",
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.normal,
-                                color: Colors.black),
-                            textAlign: TextAlign.center,
-                          ),
-                          Shimmer(
-                            color: Colors.grey.withAlpha(10),
-                            child: Container(
-                              height: 30,
-                              width: 150,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: const Color.fromARGB(190, 236, 236, 236),
-                              ),
-                            ),
-                          ),
-                          10.heightBox,
-                          const Text(
-                            "Etat-Civil",
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.normal,
-                                color: Colors.black),
-                            textAlign: TextAlign.center,
-                          ),
-                          Shimmer(
-                            color: Colors.grey.withAlpha(10),
-                            child: Container(
-                              height: 30,
-                              width: 150,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: const Color.fromARGB(190, 236, 236, 236),
-                              ),
-                            ),
-                          ),
-                          10.heightBox,
-                          const Text(
-                            "Addresse",
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.normal,
-                                color: Colors.black),
-                            textAlign: TextAlign.center,
-                          ),
-                          Shimmer(
-                            color: Colors.grey.withAlpha(10),
-                            child: Container(
-                              height: 30,
-                              //width: 150,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: const Color.fromARGB(190, 236, 236, 236),
-                              ),
-                            ),
-                          ),
-                        ]),
-                  ),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
         ],
       ),

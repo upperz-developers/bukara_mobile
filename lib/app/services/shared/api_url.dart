@@ -11,4 +11,5 @@ class APIURL {
 
   static const String GETAPARTURL = "$BASEURL/appartements/";
   static const String LOGOUT = "$BASEURL/users/logout";
+  static const String LISTELOCATAIRE = "$BASEURL/";
 }

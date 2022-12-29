@@ -34,7 +34,7 @@ class NotificationSquelleton extends StatelessWidget {
                 color: Colors.grey.withAlpha(10),
                 child: Container(
                   padding: const EdgeInsets.symmetric(
-                    vertical: 10,
+                    vertical: 5,
                     horizontal: 5,
                   ),
                   decoration: BoxDecoration(
@@ -51,12 +51,12 @@ class NotificationSquelleton extends StatelessWidget {
                       // height: 25,
                       // width: 25,
                       padding: const EdgeInsets.symmetric(
-                        vertical: 15,
-                        horizontal: 15,
+                        vertical: 10,
+                        horizontal: 10,
                       ),
                       decoration: BoxDecoration(
                           color: const Color.fromARGB(255, 227, 227, 227),
-                          borderRadius: BorderRadius.circular(15)),
+                          borderRadius: BorderRadius.circular(2)),
                     ),
                   ),
                   5.widthBox,
@@ -65,7 +65,7 @@ class NotificationSquelleton extends StatelessWidget {
                     child: Container(
                       width: 150,
                       padding: const EdgeInsets.symmetric(
-                        vertical: 10,
+                        vertical: 7,
                         horizontal: 5,
                       ),
                       decoration: BoxDecoration(
@@ -79,9 +79,9 @@ class NotificationSquelleton extends StatelessWidget {
               Shimmer(
                 color: Colors.grey.withAlpha(10),
                 child: Container(
-                  width: 185,
+                  width: 175,
                   padding: const EdgeInsets.symmetric(
-                    vertical: 10,
+                    vertical: 5,
                   ),
                   decoration: BoxDecoration(
                       color: const Color.fromARGB(255, 227, 227, 227),

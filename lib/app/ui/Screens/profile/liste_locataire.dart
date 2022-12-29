@@ -1,10 +1,12 @@
 import 'package:bukara/app/ui/shared/squelleton/liste_locataire_squelleton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../../../controller/app_bloc.dart';
 import '../../../controller/app_state.dart';
 import '../../shared/style.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class LIsteLocataire extends StatefulWidget {
   const LIsteLocataire({super.key});
@@ -36,7 +38,7 @@ class _LIsteLocataireState extends State<LIsteLocataire> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                "Liste locateiares",
+                "Liste locataires",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -45,21 +47,23 @@ class _LIsteLocataireState extends State<LIsteLocataire> {
               30.heightBox,
               Expanded(
                 child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
                   child: BlocBuilder<AppBloc, AppState>(
-                      bloc: bloc,
-                      builder: (context, state) {
-                        return state is LOADING
-                            ? Column(
-                                children: List.generate(
-                                10,
-                                (index) => modele(),
-                              ))
-                            : Column(
-                                children: List.generate(
-                                5,
-                                (index) => const ListeLocataireSquelleton(),
-                              ));
-                      }),
+                    bloc: bloc,
+                    builder: (context, state) {
+                      return state is LOADING
+                          ? Column(
+                              children: List.generate(
+                              10,
+                              (index) => modele(),
+                            ))
+                          : Column(
+                              children: List.generate(
+                              5,
+                              (index) => const ListeLocataireSquelleton(),
+                            ));
+                    },
+                  ),
                 ),
               ),
             ],
@@ -72,85 +76,59 @@ class _LIsteLocataireState extends State<LIsteLocataire> {
   Widget modele() {
     return Padding(
       padding: const EdgeInsets.only(bottom: 15),
-      child: Container(
-        padding: const EdgeInsets.only(
-          top: 10,
-          left: 10,
-        ),
-        height: 250,
-        decoration: BoxDecoration(
-          color: AppColors.DISABLE_COLOR,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              "John doe",
-              style: TextStyle(
-                  fontSize: 23,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black),
+      child: Stack(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(
+              15,
             ),
-            const Text(
-              "physical person",
-              style: TextStyle(
-                color: AppColors.BLACK_COLOR,
-              ),
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              color: AppColors.WHITE_COLOR,
+              borderRadius: BorderRadius.circular(10),
             ),
-            15.heightBox,
-            Expanded(
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "Numero Telephone",
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.normal,
-                          color: Colors.black),
-                      textAlign: TextAlign.center,
-                    ),
-                    const Text(
-                      "+243 976 829 270",
-                      style: TextStyle(
-                        color: AppColors.SECOND_TEXT_COLOR,
-                      ),
-                    ),
-                    10.heightBox,
-                    const Text(
-                      "Etat-Civil",
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.normal,
-                          color: Colors.black),
-                      textAlign: TextAlign.center,
-                    ),
-                    const Text(
-                      "Celibataire",
-                      style: TextStyle(
-                        color: AppColors.SECOND_TEXT_COLOR,
-                      ),
-                    ),
-                    10.heightBox,
-                    const Text(
-                      "Addresse",
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.normal,
-                          color: Colors.black),
-                      textAlign: TextAlign.center,
-                    ),
-                    const Text(
-                      "Goma, C de Goma, Q les volcan,av des avenues, num 10",
-                      style: TextStyle(
-                        color: AppColors.SECOND_TEXT_COLOR,
-                      ),
-                    ),
-                  ]),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "John doe",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                //5.heightBox,
+                const Text(
+                  "+243 976 829 270",
+                  style: TextStyle(
+                    fontSize: 12,
+                  ),
+                ),
+                15.heightBox,
+                const Text(
+                  "appartement",
+                  style: TextStyle(),
+                ),
+                5.heightBox,
+                const Text(
+                  "Goma, C de Goma, Q les volcan,av des avenues, num 10",
+                  style: TextStyle(
+                    color: AppColors.SECOND_TEXT_COLOR,
+                    fontSize: 12,
+                  ),
+                ),
+                15.heightBox,
+                const Text(
+                  " souscrit le 12/01/2022",
+                  style: TextStyle(
+                    color: AppColors.SECOND_TEXT_COLOR,
+                    fontSize: 12,
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
