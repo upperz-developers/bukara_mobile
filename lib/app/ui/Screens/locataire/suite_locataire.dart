@@ -52,12 +52,12 @@ class SuiteLocataire extends StatelessWidget {
 
                 15.heightBox,
                 Text(
-                  " ${suiteNotification!.email!}",
+                  " ${suiteNotification!.landlordtype!}",
                 ),
                 5.heightBox,
-                const Text(
-                  "adresse",
-                  style: TextStyle(
+                Text(
+                  suiteNotification!.lastadress!,
+                  style: const TextStyle(
                     color: AppColors.SECOND_TEXT_COLOR,
                     fontSize: 12,
                   ),
