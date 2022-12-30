@@ -6,16 +6,12 @@ import 'package:bukara/app/services/http/dio_helper.dart';
 
 Future<Response> httpGet(
     {String? endPoint, Map<String, dynamic>? parameters}) async {
-  String lang =
-      Platform.localeName.substring(0, Platform.localeName.indexOf('_'));
-
   return await Dio().get(
     "$endPoint",
     queryParameters: parameters,
     options: Options(
       headers: {
         "X-Requested-With": "XMLHttpRequest",
-        "lang": lang,
       },
     ),
   );

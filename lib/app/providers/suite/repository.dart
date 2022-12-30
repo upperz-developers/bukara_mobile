@@ -5,3 +5,6 @@ import 'package:dio/dio.dart';
 Future<Response> getSuite() async => httpGetWithToken(
       endPoint: APIURL.GETAPARTURL,
     );
+Future<Response> getTenant() async => await httpGetWithToken(
+      endPoint: APIURL.GETTENANT,
+    );

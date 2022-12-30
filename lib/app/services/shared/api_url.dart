@@ -8,8 +8,8 @@ class APIURL {
   // adding about signUp
   static const String SINGUP = "$BASEURL/users/";
   static const String CHANGEPASSWORD = "$BASEURL/users/change/psswd";
-
   static const String GETAPARTURL = "$BASEURL/appartements/";
   static const String LOGOUT = "$BASEURL/users/logout";
-  static const String LISTELOCATAIRE = "$BASEURL/";
+
+  static const String GETTENANT = "$BASEURL/landlords";
 }

@@ -7,6 +7,8 @@ import 'package:bukara/app/providers/user/repository.dart';
 import 'package:bukara/app/services/prefs/app_prefs.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../providers/tennant/modele.dart';
+
 //upperz
 
 class AppBloc extends Bloc<AppEvent, AppState> {
@@ -92,6 +94,21 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         ResultSuite resultSuite = ResultSuite.fromJson(response.data);
         emit(SUCCESS(
           value: resultSuite.data!.suites!,
+        ));
+      } on Exception catch (e) {
+        emit(ERROR(
+          dueTo: e.toString(),
+        ));
+      }
+    });
+
+    on<GETTENANT>((event, emit) async {
+      emit(const LOADING());
+      try {
+        var response = await getTenant();
+        TenantResult resultnotification = TenantResult.fromJson(response.data);
+        emit(SUCCESS(
+          value: resultnotification.data!.data!,
         ));
       } on Exception catch (e) {
         emit(ERROR(
