@@ -1,7 +1,7 @@
+//import 'package:bukara/app/providers/shared/common_modele.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
-import '../../../providers/shared/common_modele.dart';
 import '../../../providers/tennant/modele.dart';
 
 class SuiteLocataire extends StatelessWidget {
@@ -38,20 +38,26 @@ class SuiteLocataire extends StatelessWidget {
                   ),
                 ),
                 //5.heightBox,
-                Text(
-                  " ${suiteNotification!.phones!}(0)",
-                  style: const TextStyle(
-                    fontSize: 12,
+
+                Column(
+                    children: List.generate(
+                  suiteNotification!.phones!.length,
+                  (index) => Text(
+                    "(0) ${suiteNotification!.phones![index].number}",
+                    style: const TextStyle(
+                      fontSize: 12,
+                    ),
                   ),
-                ),
+                )),
+
                 15.heightBox,
                 Text(
-                  " ${suiteNotification!.cardType!}",
+                  " ${suiteNotification!.email!}",
                 ),
                 5.heightBox,
-                Text(
-                  " ${suiteNotification!.createdAt!}",
-                  style: const TextStyle(
+                const Text(
+                  "adresse",
+                  style: TextStyle(
                     color: AppColors.SECOND_TEXT_COLOR,
                     fontSize: 12,
                   ),

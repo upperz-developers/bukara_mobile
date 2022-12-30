@@ -1,4 +1,5 @@
 import 'package:bukara/app/controller/app_event.dart';
+import 'package:bukara/app/providers/shared/common_modele.dart';
 import 'package:bukara/app/ui/screens/locataire/suite_locataire.dart';
 import 'package:bukara/app/ui/shared/squelleton/liste_locataire_squelleton.dart';
 import 'package:flutter/material.dart';
@@ -56,13 +57,14 @@ class _LIsteLocataireState extends State<LIsteLocataire> {
                     builder: (context, state) {
                       List<TenantModel> listeNotification =
                           state is SUCCESS ? state.value : [];
+
                       return state is SUCCESS
                           ? Column(
                               children: List.generate(
                                 listeNotification.length,
                                 (index) => SuiteLocataire(
-                                    suiteNotification:
-                                        listeNotification[index]),
+                                  suiteNotification: listeNotification[index],
+                                ),
                               ),
                             )
                           : Column(
