@@ -1,6 +1,7 @@
 import 'package:bukara/app/services/prefs/app_prefs.dart';
 import 'package:bukara/app/ui/Screens/profile/about_page.dart';
 import 'package:bukara/app/ui/Screens/profile/change_password.dart';
+import 'package:bukara/app/ui/screens/profile/editer_profile.dart';
 import 'package:bukara/app/ui/screens/profile/logout.dart';
 import 'package:bukara/app/ui/shared/utils/widget.dart';
 import 'package:flutter/material.dart';
@@ -50,11 +51,102 @@ class _Profile extends State<Profile> {
                       ),
                       10.heightBox,
                       line(),
-                      cardPassWord(),
+                      InkWell(
+                        onTap: () =>
+                            Navigator.pushNamed(context, EditerUser.routeName),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 15),
+                          child: Row(
+                            children: const [
+                              Expanded(
+                                child: Text(
+                                  "Editer Profile",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              Icon(
+                                Icons.arrow_forward_ios,
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
                       10.heightBox,
-                      cardAbout(),
+                      InkWell(
+                        onTap: () => Navigator.pushNamed(
+                            context, ChangePassword.routeName),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 15),
+                          child: Row(
+                            children: const [
+                              Expanded(
+                                child: Text(
+                                  "Change password",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              Icon(
+                                Icons.arrow_forward_ios,
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
                       10.heightBox,
-                      deconnexion(),
+                      InkWell(
+                        onTap: () =>
+                            Navigator.pushNamed(context, AboutPage.routeName),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 15),
+                          child: Row(
+                            children: const [
+                              Expanded(
+                                child: Text(
+                                  "About Application",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              Icon(
+                                Icons.arrow_forward_ios,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      10.heightBox,
+                      InkWell(
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) => const Logout(),
+                            barrierDismissible: false,
+                          );
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 15),
+                          child: Row(
+                            children: const [
+                              Expanded(
+                                child: Text(
+                                  "Deconnexion",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              Icon(
+                                Icons.logout,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -85,84 +177,6 @@ class _Profile extends State<Profile> {
               45.heightBox,
             ],
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget cardPassWord() {
-    return InkWell(
-      onTap: () => Navigator.pushNamed(context, ChangePassword.routeName),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 15),
-        child: Row(
-          children: const [
-            Expanded(
-              child: Text(
-                "Change password",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Icon(
-              Icons.arrow_forward_ios,
-            )
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget cardAbout() {
-    return InkWell(
-      onTap: () => Navigator.pushNamed(context, AboutPage.routeName),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 15),
-        child: Row(
-          children: const [
-            Expanded(
-              child: Text(
-                "About App",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Icon(
-              Icons.arrow_forward_ios,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget deconnexion() {
-    return InkWell(
-      onTap: () {
-        showDialog(
-          context: context,
-          builder: (context) => const Logout(),
-          barrierDismissible: false,
-        );
-      },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 15),
-        child: Row(
-          children: const [
-            Expanded(
-              child: Text(
-                "Deconnexion",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Icon(
-              Icons.logout,
-            ),
-          ],
         ),
       ),
     );

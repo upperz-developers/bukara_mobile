@@ -1,5 +1,4 @@
 import 'package:bukara/app/providers/suite/modele.dart';
-import 'package:bukara/app/ui/Screens/profile/tenant_information.dart';
 import 'package:bukara/app/ui/screens/home/suite/suite_model.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter/material.dart';
@@ -368,8 +367,9 @@ class _Details extends State<Details> {
               children: [
                 20.heightBox,
                 InkWell(
-                  onTap: () =>
-                      Navigator.pushNamed(context, InfoProfile.routeName),
+                  onTap: () {
+                    //Navigator.pushNamed(context, InfoProfile.routeName),
+                  },
                   child: Row(
                     children: [
                       Container(

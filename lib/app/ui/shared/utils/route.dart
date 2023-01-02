@@ -13,6 +13,7 @@ import '../../screens/app_page.dart';
 import '../../screens/home/home_page.dart';
 import '../../screens/home/suite/deatil_page.dart';
 import '../../screens/locataire/detail_information_locataire.dart';
+import '../../screens/profile/editer_profile.dart';
 
 Map<String, Widget Function(BuildContext)> routes = {
   LoginPage.routeName: (context) => const LoginPage(),
@@ -29,4 +30,5 @@ Map<String, Widget Function(BuildContext)> routes = {
   ChangePassword.routeName: (context) => const ChangePassword(),
   AboutPage.routeName: (context) => const AboutPage(),
   InfoRecouvrement.routeName: (context) => const InfoRecouvrement(),
+  EditerUser.routeName: (context) => const EditerUser(),
 };

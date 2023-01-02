@@ -1,51 +1,57 @@
+import 'package:bukara/app/controller/app_bloc.dart';
 import 'package:bukara/app/controller/app_event.dart';
 import 'package:bukara/app/controller/app_state.dart';
-import 'package:bukara/app/ui/Screens/auth/login_page.dart';
-import 'package:bukara/app/ui/shared/style.dart';
+import 'package:bukara/app/ui/view_controller/auth_controller.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:velocity_x/velocity_x.dart';
-import '../../../controller/app_bloc.dart';
+import '../../shared/style.dart';
 import '../../shared/utils/widget.dart';
-import '../../view_controller/auth_controller.dart';
 
-class ChangePassword extends StatefulWidget {
-  static String routeName = "/ChangePassword";
-  const ChangePassword({Key? key}) : super(key: key);
+class EditerUser extends StatefulWidget {
+  static String routeName = "/editerUser";
+  const EditerUser({Key? key}) : super(key: key);
 
   @override
-  State<ChangePassword> createState() => _ChangePassword();
+  State<EditerUser> createState() => _EditerUser();
 }
 
-class _ChangePassword extends State<ChangePassword> {
+class _EditerUser extends State<EditerUser> {
   AppBloc? bloc;
   @override
   void initState() {
     bloc = AppBloc();
-    changepasswordController.init();
+
+    singupController.init();
+
     super.initState();
   }
 
-  bool changepasswordSubmitted = false;
+  // bool singupSubmitted = false;
+  // void _submit() {
+  //   setState(() {
+  //     singupSubmitted = true;
+  //   });
+  //   if (singupController.singupValidate()) {
+  //     bloc!.add(
+  //       SINGUP(
+  //         email: singupController.email.value.text.trim(),
+  //         password: singupController.password.text.trim(),
+  //         confirmepassword: singupController.confirmpasssword.text.trim(),
+  //       ),
+  //     );
+  //   }
+  // }
 
-  void _submit() {
-    setState(() {
-      changepasswordSubmitted = true;
-    });
-    if (changepasswordController.changepasswordValidation()) {
-      bloc!.add(
-        CHANGEPASSWORD(
-          oldpassword: changepasswordController.oldpassword.value.text.trim(),
-          newpassword: changepasswordController.password.text.trim(),
-          confirmepassword:
-              changepasswordController.confirmpasssword.text.trim(),
-        ),
-      );
-    }
+  @override
+  void dispose() {
+    singupController.password = TextEditingController();
+    super.dispose();
   }
 
-  AuthViewController changepasswordController = AuthViewController();
+  AuthViewController singupController = AuthViewController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -54,8 +60,7 @@ class _ChangePassword extends State<ChangePassword> {
           bloc: bloc,
           listener: (context, state) {
             if (state is SUCCESS) {
-              Navigator.pushNamedAndRemoveUntil(
-                  context, LoginPage.routeName, (route) => false);
+              Navigator.pop(context);
             }
           },
           child: BlocBuilder<AppBloc, AppState>(
@@ -79,7 +84,7 @@ class _ChangePassword extends State<ChangePassword> {
                           ),
                           const Expanded(
                             child: Text(
-                              "Change your Password",
+                              "Editer Profile",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
@@ -91,32 +96,30 @@ class _ChangePassword extends State<ChangePassword> {
                       Expanded(
                         child: SingleChildScrollView(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 30, vertical: 25),
+                              horizontal: 30, vertical: 10),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              subtitle("your old password"),
+                              subtitle("Adresse Mail"),
                               10.heightBox,
-                              FormPassWordText(
-                                controller:
-                                    changepasswordController.oldpassword,
-                                hint: "Entrez votre ancient mot de passe",
-                                submitted: changepasswordSubmitted,
+                              FormText(
+                                controller: singupController.email.value,
+                                hint: "nom@gmail.com",
+                                //submitted: singupSubmitted,
                               ),
                               20.heightBox,
-                              subtitle("Configurez un nouveau mot de passe"),
+                              subtitle("Nom complet"),
                               10.heightBox,
-                              FormPassWordText(
-                                controller: changepasswordController.password,
-                                hint: "Entrez mot de passe",
-                                submitted: changepasswordSubmitted,
+                              FormText(
+                                controller: singupController.password,
+                                hint: "Entrez votre Nom",
+                                //submitted: singupSubmitted,
                               ),
                               10.heightBox,
-                              FormPassWordText(
-                                controller:
-                                    changepasswordController.confirmpasssword,
-                                hint: "Confirmez votre nouveau mot de passe",
-                                submitted: changepasswordSubmitted,
+                              FormText(
+                                controller: singupController.confirmpasssword,
+                                hint: "Entrez votre Prenom",
+                                //submitted: singupSubmitted,
                               ),
                             ],
                           ),
@@ -128,10 +131,10 @@ class _ChangePassword extends State<ChangePassword> {
                         child: custormButton(
                           context,
                           color: AppColors.BLACK_COLOR,
-                          title: "Changer mots de passe",
+                          title: "Editer",
                           colorText: Colors.white,
                           state: state,
-                          onTap: _submit,
+                          //onTap: _submit,
                         ),
                       ),
                     ],
