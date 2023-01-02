@@ -1,5 +1,5 @@
 //import 'package:bukara/app/providers/shared/common_modele.dart';
-import 'package:bukara/app/ui/screens/profile/detail_information_locataire.dart';
+import 'package:bukara/app/ui/screens/locataire/detail_information_locataire.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
