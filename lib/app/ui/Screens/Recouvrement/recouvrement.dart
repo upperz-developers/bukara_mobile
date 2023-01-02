@@ -1,10 +1,13 @@
 import 'package:bukara/app/controller/app_bloc.dart';
 import 'package:bukara/app/controller/app_state.dart';
+import 'package:bukara/app/ui/screens/Recouvrement/suite_recouvrement.dart';
 import 'package:bukara/app/ui/shared/squelleton/recouvrement_squelleton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:velocity_x/velocity_x.dart';
+import '../../../controller/app_event.dart';
+import '../../../providers/recouvrenement/modele.dart';
 import '../../shared/style.dart';
 
 class Recouvrement extends StatefulWidget {
@@ -18,7 +21,10 @@ class _Recouvrement extends State<Recouvrement> {
   AppBloc? bloc;
   @override
   void initState() {
-    bloc = AppBloc();
+    bloc = AppBloc()
+      ..add(
+        GETRECOVERYINFO(),
+      );
     super.initState();
   }
 
@@ -47,127 +53,33 @@ class _Recouvrement extends State<Recouvrement> {
               Expanded(
                 child: SingleChildScrollView(
                   physics: const BouncingScrollPhysics(),
-                  child: Column(
-                    children: List.generate(
-                      10,
-                      (index) => recouvrement(),
-                    ),
+                  child: BlocBuilder<AppBloc, AppState>(
+                    bloc: bloc,
+                    builder: (context, state) {
+                      List<ContratData> listeRecouvrement =
+                          state is SUCCESS ? state.value : [];
+                      return state is SUCCESS
+                          ? Column(
+                              children: List.generate(
+                                listeRecouvrement.length,
+                                (index) => SuiteRecouvrement(
+                                  suiteRecouvrement: listeRecouvrement[index],
+                                ),
+                              ),
+                            )
+                          : Column(
+                              children: List.generate(
+                                6,
+                                (index) => const RecouvrementSquelleton(),
+                              ),
+                            );
+                    },
                   ),
                 ),
               ),
             ],
           ),
         ),
-      ),
-    );
-  }
-
-//  BlocBuilder<AppBloc, AppState>(
-//                     bloc: bloc,
-//                     builder: (context, state) {
-//                       return state is LOADING
-//                           ? Column(
-//                               children: List.generate(
-//                                 10,
-//                                 (index) => recouvrement(),
-//                               ),
-//                             )
-//                           : Column(
-//                               children: List.generate(
-//                                 6,
-//                                 (index) => const RecouvrementSquelleton(),
-//                               ),
-//                             );
-//                     },
-//                   ),
-  Widget recouvrement() {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 15),
-      child: Stack(
-        children: [
-          Container(
-            padding: const EdgeInsets.only(
-              left: 15,
-              right: 10,
-              top: 5,
-              bottom: 10,
-            ),
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              color: AppColors.WHITE_COLOR,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  "paiement loyer du mois de fevier",
-                ),
-                20.heightBox,
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(10),
-                      decoration: const BoxDecoration(
-                        color: AppColors.DISABLE_COLOR,
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Icon(
-                        Iconsax.user,
-                        size: 20,
-                      ),
-                    ),
-                    10.widthBox,
-                    Expanded(
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              "John doe",
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.black,
-                              ),
-                            ),
-                            3.heightBox,
-                            const Text(
-                              "+243 (0) 976829270",
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Color.fromARGB(255, 161, 161, 161),
-                              ),
-                            ),
-                          ]),
-                    ),
-                  ],
-                ),
-                15.heightBox,
-                const Text(
-                  "5 jours restants ",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Positioned(
-            top: 0,
-            bottom: 0,
-            child: Container(
-              width: 5,
-              decoration: const BoxDecoration(
-                color: Color.fromARGB(115, 185, 185, 185),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10),
-                  bottomLeft: Radius.circular(10),
-                ),
-              ),
-            ),
-          )
-        ],
       ),
     );
   }
