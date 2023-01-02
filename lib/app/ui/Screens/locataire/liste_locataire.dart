@@ -1,5 +1,4 @@
 import 'package:bukara/app/controller/app_event.dart';
-import 'package:bukara/app/providers/shared/common_modele.dart';
 import 'package:bukara/app/ui/screens/locataire/suite_locataire.dart';
 import 'package:bukara/app/ui/shared/squelleton/liste_locataire_squelleton.dart';
 import 'package:flutter/material.dart';

@@ -1,5 +1,4 @@
 import 'package:bukara/app/ui/Screens/profile/profile.dart';
-import 'package:bukara/app/ui/Screens/profile/tenant_information.dart';
 import 'package:bukara/app/ui/screens/home/home_page.dart';
 import 'package:bukara/app/ui/screens/locataire/liste_locataire.dart';
 import 'package:flutter/material.dart';
