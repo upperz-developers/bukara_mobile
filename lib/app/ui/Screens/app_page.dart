@@ -6,7 +6,7 @@ import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter/services.dart';
 import 'package:iconsax/iconsax.dart';
 
-import 'notification/app_notification.dart';
+import 'Recouvrement/recouvrement.dart';
 
 List<IconData> selectedicons = [
   Iconsax.home_15,
@@ -61,7 +61,7 @@ class _AppPage extends State<AppPage> with SingleTickerProviderStateMixin {
                 physics: const NeverScrollableScrollPhysics(),
                 children: const [
                   Home(),
-                  NotificationApp(),
+                  Recouvrement(),
                   LIsteLocataire(),
                   Profile(),
                 ],

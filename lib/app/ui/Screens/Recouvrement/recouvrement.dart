@@ -7,14 +7,14 @@ import 'package:iconsax/iconsax.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../../shared/style.dart';
 
-class NotificationApp extends StatefulWidget {
-  const NotificationApp({super.key});
+class Recouvrement extends StatefulWidget {
+  const Recouvrement({super.key});
 
   @override
-  State<NotificationApp> createState() => _NotificationAppState();
+  State<Recouvrement> createState() => _Recouvrement();
 }
 
-class _NotificationAppState extends State<NotificationApp> {
+class _Recouvrement extends State<Recouvrement> {
   AppBloc? bloc;
   @override
   void initState() {
@@ -37,7 +37,7 @@ class _NotificationAppState extends State<NotificationApp> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                "Notification",
+                "Recouvrement",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -54,7 +54,7 @@ class _NotificationAppState extends State<NotificationApp> {
                           ? Column(
                               children: List.generate(
                               10,
-                              (index) => notification(),
+                              (index) => recouvrement(),
                             ))
                           : Column(
                               children: List.generate(
@@ -72,7 +72,7 @@ class _NotificationAppState extends State<NotificationApp> {
     );
   }
 
-  Widget notification() {
+  Widget recouvrement() {
     return Padding(
       padding: const EdgeInsets.only(bottom: 15),
       child: Stack(

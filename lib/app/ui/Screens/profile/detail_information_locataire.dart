@@ -3,6 +3,7 @@ import 'package:bukara/app/ui/shared/style.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../providers/tennant/modele.dart';
+import '../../shared/utils/widget.dart';
 
 class InfoLocataire extends StatefulWidget {
   static String routeName = "/locataire";
@@ -44,18 +45,26 @@ class _InfoLocataire extends State<InfoLocataire> {
                     Text(
                       "${suiteDetailLocataire.name!} ${suiteDetailLocataire.lastname!}",
                       style: const TextStyle(
-                          fontSize: 23,
+                          fontSize: 24,
                           fontWeight: FontWeight.bold,
                           color: Colors.black),
                     ),
+                    8.heightBox,
                     Text(
                       "${suiteDetailLocataire.landlordType}",
                       style: const TextStyle(
                         color: AppColors.BLACK_COLOR,
                       ),
                     ),
-                    30.heightBox,
-                    module(Iconsax.document, "4 persons"),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 15,
+                      ),
+                      child: line(),
+                    ),
+                    module(Iconsax.mobile,
+                        "${suiteDetailLocataire.phones![0].countryCode} (0) ${suiteDetailLocataire.phones![0].number}"),
+                    module(Iconsax.message, "${suiteDetailLocataire.email}"),
                     module(
                         Iconsax.home, "${suiteDetailLocataire.maritalStatus}"),
                     module2(Iconsax.tag, "Last Addres",
@@ -64,7 +73,8 @@ class _InfoLocataire extends State<InfoLocataire> {
                         "${suiteDetailLocataire.nationality}"),
                     if (suiteDetailLocataire.landlordType !=
                         'personne physique')
-                      moduleIsEntreprise(Iconsax.shapes4, "Is entriprise"),
+                      moduleIsEntreprise(
+                          Iconsax.shapes4, "c'est une entreprise"),
                     module2(Iconsax.tag, "${suiteDetailLocataire.cardTypeId}",
                         "Passport"),
                   ],
