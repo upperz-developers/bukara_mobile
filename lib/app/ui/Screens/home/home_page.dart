@@ -100,27 +100,6 @@ class _Home extends State<Home> with SingleTickerProviderStateMixin {
     );
   }
 
-  model1() {
-    return Padding(
-      padding: const EdgeInsets.only(left: 40),
-      child: Column(
-        children: [
-          Container(
-            width: 350,
-            height: 250,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              image: const DecorationImage(
-                image: AssetImage("assets/images/appart1.jpg"),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   searchBar() {
     return Container(
       width: MediaQuery.of(context).size.width,

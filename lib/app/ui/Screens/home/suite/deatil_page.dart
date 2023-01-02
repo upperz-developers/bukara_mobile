@@ -213,7 +213,7 @@ class _Details extends State<Details> {
     return Column(
       children: [
         otherCaracteristicModel(
-            title: "Connxion internet",
+            title: "Connexion internet",
             icon: Iconsax.wifi,
             otherCarteristic: otherCarteristic),
         otherCaracteristicModel(
