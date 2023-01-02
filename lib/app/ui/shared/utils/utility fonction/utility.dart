@@ -3,5 +3,5 @@ String dayLeft({required String start, required String end}) {
   DateTime endAt = DateTime.parse(end);
 
   int dayLeft = endAt.difference(startAt).inDays;
-  return "$dayLeft jour.s";
+  return "$dayLeft jours";
 }

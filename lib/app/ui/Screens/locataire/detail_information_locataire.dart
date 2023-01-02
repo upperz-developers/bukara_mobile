@@ -1,3 +1,4 @@
+import 'package:bukara/app/ui/screens/home/suite/historique_page.dart';
 import 'package:flutter/material.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -56,13 +57,43 @@ class _InfoLocataire extends State<InfoLocataire> {
                         color: AppColors.BLACK_COLOR,
                       ),
                     ),
+                    15.heightBox,
+                    InkWell(
+                      onTap: (() =>
+                          Navigator.pushNamed(context, Historique.routeName)),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 15),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Iconsax.activity,
+                            ),
+                            15.widthBox,
+                            const Expanded(
+                              child: Text(
+                                "Historic of paiement",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.black),
+                              ),
+                            ),
+                            15.widthBox,
+                            const Icon(
+                              Iconsax.arrow_right_3,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 15,
+                      padding: const EdgeInsets.only(
+                        bottom: 15,
                       ),
                       child: line(),
                     ),
-                    module(Iconsax.mobile,
+                    module(Iconsax.call,
                         "${suiteDetailLocataire.phones![0].countryCode} (0) ${suiteDetailLocataire.phones![0].number}"),
                     module(Iconsax.message, "${suiteDetailLocataire.email}"),
                     module(
@@ -135,9 +166,10 @@ class _InfoLocataire extends State<InfoLocataire> {
             child: Text(
               "$message",
               style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.normal,
-                  color: Colors.black),
+                fontSize: 16,
+                fontWeight: FontWeight.normal,
+                color: Colors.black,
+              ),
             ),
           ),
         ],

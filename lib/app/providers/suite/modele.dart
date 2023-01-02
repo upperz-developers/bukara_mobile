@@ -30,6 +30,7 @@ class Data {
 
 class SuiteModel {
   String? id;
+  String? designation;
   TypeBiens? typeBien;
   TypeAppart? typeAppartement;
   int? number;
@@ -54,6 +55,7 @@ class SuiteModel {
       this.createdAt,
       this.updatedAt,
       this.address,
+      this.designation,
       this.images});
 
   SuiteModel.fromJson(Map<String, dynamic> json) {
@@ -63,6 +65,7 @@ class SuiteModel {
     typeAppartement = json['typeAppartement'] != null
         ? TypeAppart.fromJson(json['typeAppartement'])
         : null;
+    designation = json['designation'];
     number = json['number'];
     description = json['description'];
     if (json['features'] != null) {

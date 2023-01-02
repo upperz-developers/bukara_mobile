@@ -4,11 +4,9 @@ import 'package:bukara/app/ui/screens/Recouvrement/suite_recouvrement.dart';
 import 'package:bukara/app/ui/shared/squelleton/recouvrement_squelleton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../../../controller/app_event.dart';
 import '../../../providers/recouvrenement/modele.dart';
-import '../../shared/style.dart';
 
 class Recouvrement extends StatefulWidget {
   const Recouvrement({super.key});
@@ -36,7 +34,7 @@ class _Recouvrement extends State<Recouvrement> {
           padding: const EdgeInsets.only(
             left: 30,
             right: 30,
-            top: 10,
+            top: 20,
             bottom: 50,
           ),
           child: Column(
@@ -69,7 +67,7 @@ class _Recouvrement extends State<Recouvrement> {
                             )
                           : Column(
                               children: List.generate(
-                                6,
+                                3,
                                 (index) => const RecouvrementSquelleton(),
                               ),
                             );

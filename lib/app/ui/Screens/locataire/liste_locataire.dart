@@ -31,15 +31,11 @@ class _LIsteLocataireState extends State<LIsteLocataire> {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.only(
-            left: 30,
-            right: 30,
-            top: 10,
-            bottom: 50,
-          ),
+          padding: const EdgeInsets.all(30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // 10.heightBox,
               const Text(
                 "Liste locataires",
                 style: TextStyle(
@@ -58,19 +54,21 @@ class _LIsteLocataireState extends State<LIsteLocataire> {
                           state is SUCCESS ? state.value : [];
 
                       return state is SUCCESS
-                          ? Column(
-                              children: List.generate(
+                          ? Column(children: [
+                              ...List.generate(
                                 listeNotification.length,
                                 (index) => SuiteLocataire(
                                   suiteNotification: listeNotification[index],
                                 ),
                               ),
-                            )
+                              30.heightBox,
+                            ])
                           : Column(
                               children: List.generate(
-                              6,
-                              (index) => const ListeLocataireSquelleton(),
-                            ));
+                                3,
+                                (index) => const ListeLocataireSquelleton(),
+                              ),
+                            );
                     },
                   ),
                 ),

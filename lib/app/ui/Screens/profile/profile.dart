@@ -23,7 +23,7 @@ class _Profile extends State<Profile> {
         body: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 24,
-            vertical: 15,
+            vertical: 30,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,7 +82,7 @@ class _Profile extends State<Profile> {
                   ],
                 ),
               ),
-              65.heightBox,
+              45.heightBox,
             ],
           ),
         ),

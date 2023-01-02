@@ -23,59 +23,49 @@ class SuiteLocataire extends StatelessWidget {
           Navigator.pushNamed(context, InfoLocataire.routeName,
               arguments: suiteNotification);
         },
-        child: Stack(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(
-                15,
-              ),
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                color: AppColors.WHITE_COLOR,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  15.widthBox,
-                  Expanded(
-                    child: Column(
+        child: Container(
+          padding: const EdgeInsets.all(
+            15,
+          ),
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            color: AppColors.WHITE_COLOR,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text.rich(
-                          TextSpan(
-                            text:
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
                                 "${suiteNotification!.name!} ${suiteNotification!.lastname!}",
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
+                              ),
+                              5.heightBox,
+                              Text(
+                                "${suiteNotification!.phones![0].countryCode} (0) ${suiteNotification!.phones![0].number}",
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                  color: AppColors.SECOND_TEXT_COLOR,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        5.heightBox,
-                        Text(
-                          "${suiteNotification!.phones![0].countryCode} (0) ${suiteNotification!.phones![0].number}",
-                          style: const TextStyle(
-                            fontSize: 10,
-                            color: AppColors.SECOND_TEXT_COLOR,
-                          ),
-                        ),
-                        5.heightBox,
-                        Text(
-                          "${suiteNotification!.landlordType}",
-                          style: const TextStyle(
-                            color: AppColors.SECOND_TEXT_COLOR,
-                            fontSize: 12,
-                          ),
-                        ),
-                        10.heightBox,
-                        Text(
-                          "${suiteNotification!.lastAdress}",
-                          style: const TextStyle(
-                            color: AppColors.SECOND_TEXT_COLOR,
-                            fontSize: 12,
-                          ),
-                        ),
-                        10.heightBox,
+                        15.widthBox,
                         Container(
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 10),
@@ -93,11 +83,15 @@ class SuiteLocataire extends StatelessWidget {
                         ),
                       ],
                     ),
-                  ),
-                ],
+                    15.heightBox,
+                    Text(
+                      "${suiteNotification!.lastAdress}",
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

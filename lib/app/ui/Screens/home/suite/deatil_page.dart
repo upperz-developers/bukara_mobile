@@ -326,9 +326,9 @@ class _Details extends State<Details> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            "Name of appartement",
-            style: TextStyle(
+          Text(
+            "${suite.designation}",
+            style: const TextStyle(
                 fontSize: 23, fontWeight: FontWeight.bold, color: Colors.black),
           ),
           10.heightBox,
@@ -338,7 +338,7 @@ class _Details extends State<Details> {
               fontSize: 16,
             ),
           ),
-          15.heightBox,
+          20.heightBox,
           Wrap(
             children: [
               Text(
@@ -364,16 +364,9 @@ class _Details extends State<Details> {
           ),
           if (suite.status!)
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                line(),
-                const Text(
-                  "Suite manager",
-                  style: TextStyle(
-                      fontWeight: FontWeight.normal,
-                      color: Color.fromARGB(255, 0, 0, 0)),
-                  textAlign: TextAlign.start,
-                ),
-                25.heightBox,
+                20.heightBox,
                 InkWell(
                   onTap: () =>
                       Navigator.pushNamed(context, InfoProfile.routeName),

@@ -48,37 +48,30 @@ class _Historique extends State<Historique> {
                   child: BlocBuilder<AppBloc, AppState>(
                       bloc: bloc,
                       builder: (context, state) {
-                        return state is SUCCESS
-                            ? Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const Text(
-                                    "Historique Paiement",
-                                    style: TextStyle(
-                                      fontSize: 23,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  card1(
-                                    "Name of suite",
-                                    "Goma, C de Goma, Q les volcan,av des avenues, num 10",
-                                  ),
-                                  card1(
-                                    "Name of suite",
-                                    "Goma, C de Goma, Q les volcan,av des avenues, num 10",
-                                  ),
-                                  card1(
-                                    "Name of suite",
-                                    "Goma, C de Goma, Q les volcan,av des avenues, num 10",
-                                  ),
-                                ],
-                              )
-                            : Column(
-                                children: List.generate(
-                                  4,
-                                  (index) => const HistoriqueSquelleton(),
-                                ),
-                              );
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "Historique Paiement",
+                              style: TextStyle(
+                                fontSize: 23,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            card1(
+                              "Name of suite",
+                              "Goma, C de Goma, Q les volcan,av des avenues, num 10",
+                            ),
+                            card1(
+                              "Name of suite",
+                              "Goma, C de Goma, Q les volcan,av des avenues, num 10",
+                            ),
+                            card1(
+                              "Name of suite",
+                              "Goma, C de Goma, Q les volcan,av des avenues, num 10",
+                            ),
+                          ],
+                        );
                       }),
                 ),
               ),
