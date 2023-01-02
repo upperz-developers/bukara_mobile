@@ -100,11 +100,11 @@ class _EditerUser extends State<EditerUser> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              subtitle("Adresse Mail"),
+                              subtitle("Numero Telephone"),
                               10.heightBox,
                               FormText(
                                 controller: singupController.email.value,
-                                hint: "nom@gmail.com",
+                                hint: "+243 (0) 974638360",
                                 //submitted: singupSubmitted,
                               ),
                               20.heightBox,
