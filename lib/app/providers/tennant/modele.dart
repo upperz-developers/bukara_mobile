@@ -72,8 +72,10 @@ class TenantModel {
   String? profile;
   String? cardType;
   String? cardTypeId;
-  String? landlordtype;
-  String? lastadress;
+  String? maritalStatus;
+  String? landlordType;
+  String? nationality;
+  String? lastAdress;
   bool? status;
   String? createdAt;
   String? updatedAt;
@@ -87,9 +89,11 @@ class TenantModel {
       this.profile,
       this.cardType,
       this.cardTypeId,
+      this.maritalStatus,
+      this.landlordType,
+      this.nationality,
+      this.lastAdress,
       this.status,
-      this.landlordtype,
-      this.lastadress,
       this.createdAt,
       this.updatedAt,
       this.phones});
@@ -102,9 +106,11 @@ class TenantModel {
     profile = json['profile'];
     cardType = json['card_type'];
     cardTypeId = json['card_type_id'];
+    maritalStatus = json['marital_status'];
+    landlordType = json['landlord_type'];
+    nationality = json['nationality'];
+    lastAdress = json['last_adress'];
     status = json['status'];
-    landlordtype = json['landlord_type'];
-    lastadress = json['last_adress'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     if (json['phones'] != null) {

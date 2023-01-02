@@ -133,7 +133,7 @@ class Phones {
   Phones.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     personneId = json['personne_id'];
-    countryCode = json['country_code'];
+    countryCode = json['countryCode'];
     number = json['number'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
