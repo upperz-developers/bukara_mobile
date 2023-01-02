@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class NotificationSquelleton extends StatelessWidget {
-  const NotificationSquelleton({
+class RecouvrementSquelleton extends StatelessWidget {
+  const RecouvrementSquelleton({
     Key? key,
   }) : super(key: key);
 

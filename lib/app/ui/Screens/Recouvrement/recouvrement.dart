@@ -87,7 +87,7 @@ class _Recouvrement extends State<Recouvrement> {
             padding: const EdgeInsets.only(
               left: 15,
               right: 10,
-              top: 10,
+              top: 5,
               bottom: 10,
             ),
             width: MediaQuery.of(context).size.width,
@@ -98,6 +98,10 @@ class _Recouvrement extends State<Recouvrement> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const Text(
+                  "paiement loyer du mois de fevier",
+                ),
+                20.heightBox,
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -124,17 +128,11 @@ class _Recouvrement extends State<Recouvrement> {
                                 color: Colors.black,
                               ),
                             ),
-                            5.heightBox,
-                            const Text(
-                              "jonhdoe@gmail.com",
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 161, 161, 161),
-                              ),
-                            ),
-                            5.heightBox,
+                            3.heightBox,
                             const Text(
                               "+243 (0) 976829270",
                               style: TextStyle(
+                                fontSize: 12,
                                 color: Color.fromARGB(255, 161, 161, 161),
                               ),
                             ),
@@ -142,7 +140,7 @@ class _Recouvrement extends State<Recouvrement> {
                     ),
                   ],
                 ),
-                10.heightBox,
+                15.heightBox,
                 const Text(
                   "5 jours restants ",
                   style: TextStyle(
@@ -150,10 +148,6 @@ class _Recouvrement extends State<Recouvrement> {
                     fontSize: 16,
                   ),
                 ),
-                10.heightBox,
-                const Text(
-                  "paiement loyer du mois de fevier",
-                )
               ],
             ),
           ),
