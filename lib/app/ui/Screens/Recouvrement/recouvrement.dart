@@ -46,24 +46,13 @@ class _Recouvrement extends State<Recouvrement> {
               30.heightBox,
               Expanded(
                 child: SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  child: BlocBuilder<AppBloc, AppState>(
-                    bloc: bloc,
-                    builder: (context, state) {
-                      return state is LOADING
-                          ? Column(
-                              children: List.generate(
-                              10,
-                              (index) => recouvrement(),
-                            ))
-                          : Column(
-                              children: List.generate(
-                              6,
-                              (index) => const NotificationSquelleton(),
-                            ));
-                    },
-                  ),
-                ),
+                    physics: const BouncingScrollPhysics(),
+                    child: Column(
+                      children: List.generate(
+                        10,
+                        (index) => recouvrement(),
+                      ),
+                    )),
               ),
             ],
           ),
@@ -71,6 +60,23 @@ class _Recouvrement extends State<Recouvrement> {
       ),
     );
   }
+
+  // BlocBuilder<AppBloc, AppState>(
+  //                   bloc: bloc,
+  //                   builder: (context, state) {
+  //                     return state is LOADING
+  //                         ? Column(
+  //                             children: List.generate(
+  //                             10,
+  //                             (index) => recouvrement(),
+  //                           ),)
+  //                         : Column(
+  //                             children: List.generate(
+  //                             6,
+  //                             (index) => const RecouvrementSquelleton(),
+  //                           ),);
+  //                   },
+  //                 ),
 
   Widget recouvrement() {
     return Padding(
@@ -93,35 +99,52 @@ class _Recouvrement extends State<Recouvrement> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Expanded(
-                      child: Text(
-                        "Nom Appartment",
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: const BoxDecoration(
+                        color: AppColors.DISABLE_COLOR,
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(
+                        Iconsax.user,
+                        size: 20,
                       ),
                     ),
-                    50.widthBox,
-                    const Text(
-                      "28/12/2022 à 15h30",
-                      style: TextStyle(
-                        fontSize: 10,
-                      ),
-                    )
+                    10.widthBox,
+                    Expanded(
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "John doe",
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.black,
+                              ),
+                            ),
+                            5.heightBox,
+                            const Text(
+                              "jonhdoe@gmail.com",
+                              style: TextStyle(
+                                color: Color.fromARGB(255, 161, 161, 161),
+                              ),
+                            ),
+                            5.heightBox,
+                            const Text(
+                              "+243 (0) 976829270",
+                              style: TextStyle(
+                                color: Color.fromARGB(255, 161, 161, 161),
+                              ),
+                            ),
+                          ]),
+                    ),
                   ],
                 ),
                 10.heightBox,
-                Row(children: [
-                  const Icon(
-                    Iconsax.profile_circle,
-                    size: 20,
-                  ),
-                  5.widthBox,
-                  const Text(
-                    "John Doe",
-                  ),
-                ]),
-                10.heightBox,
                 const Text(
-                  "3 mois et 5 jours restants ",
+                  "5 jours restants ",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
@@ -129,7 +152,7 @@ class _Recouvrement extends State<Recouvrement> {
                 ),
                 10.heightBox,
                 const Text(
-                  "Date",
+                  "paiement loyer du mois de fevier",
                 )
               ],
             ),
