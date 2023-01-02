@@ -83,7 +83,7 @@ class _Profile extends State<Profile> {
                             children: const [
                               Expanded(
                                 child: Text(
-                                  "Change password",
+                                  "Changer mot de passe",
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -106,7 +106,7 @@ class _Profile extends State<Profile> {
                             children: const [
                               Expanded(
                                 child: Text(
-                                  "About Application",
+                                  "Appropos de l'Application",
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                   ),
