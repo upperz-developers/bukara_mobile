@@ -12,4 +12,5 @@ class APIURL {
   static const String LOGOUT = "$BASEURL/users/logout";
 
   static const String GETTENANT = "$BASEURL/landlords";
+  static const String GETRECOVERYINFO = "$BASEURL/recoveries";
 }

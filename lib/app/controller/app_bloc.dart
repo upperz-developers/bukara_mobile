@@ -7,6 +7,8 @@ import 'package:bukara/app/providers/user/repository.dart';
 import 'package:bukara/app/services/prefs/app_prefs.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../providers/recouvrenement/modele.dart';
+import '../providers/recouvrenement/repository.dart';
 import '../providers/tennant/modele.dart';
 
 //upperz
@@ -110,6 +112,20 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         emit(SUCCESS(
           value: resultnotification.data!.data!,
         ));
+      } on Exception catch (e) {
+        emit(ERROR(
+          dueTo: e.toString(),
+        ));
+      }
+    });
+
+    on<GETRECOVERYINFO>((event, emit) async {
+      emit(const LOADING());
+      try {
+        var response = await getRecoveryInfo();
+        ResultRecovery recovery = ResultRecovery.fromJson(response.data);
+        List<ContratData> contratData = recovery.data!.contratData!;
+        emit(SUCCESS(value: contratData));
       } on Exception catch (e) {
         emit(ERROR(
           dueTo: e.toString(),

@@ -1,6 +1,6 @@
 import 'package:bukara/app/controller/app_bloc.dart';
 import 'package:bukara/app/controller/app_state.dart';
-import 'package:bukara/app/ui/shared/squelleton/notification_squelleton.dart';
+import 'package:bukara/app/ui/shared/squelleton/recouvrement_squelleton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
@@ -46,13 +46,14 @@ class _Recouvrement extends State<Recouvrement> {
               30.heightBox,
               Expanded(
                 child: SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    child: Column(
-                      children: List.generate(
-                        10,
-                        (index) => recouvrement(),
-                      ),
-                    )),
+                  physics: const BouncingScrollPhysics(),
+                  child: Column(
+                    children: List.generate(
+                      10,
+                      (index) => recouvrement(),
+                    ),
+                  ),
+                ),
               ),
             ],
           ),
@@ -61,23 +62,24 @@ class _Recouvrement extends State<Recouvrement> {
     );
   }
 
-  // BlocBuilder<AppBloc, AppState>(
-  //                   bloc: bloc,
-  //                   builder: (context, state) {
-  //                     return state is LOADING
-  //                         ? Column(
-  //                             children: List.generate(
-  //                             10,
-  //                             (index) => recouvrement(),
-  //                           ),)
-  //                         : Column(
-  //                             children: List.generate(
-  //                             6,
-  //                             (index) => const RecouvrementSquelleton(),
-  //                           ),);
-  //                   },
-  //                 ),
-
+//  BlocBuilder<AppBloc, AppState>(
+//                     bloc: bloc,
+//                     builder: (context, state) {
+//                       return state is LOADING
+//                           ? Column(
+//                               children: List.generate(
+//                                 10,
+//                                 (index) => recouvrement(),
+//                               ),
+//                             )
+//                           : Column(
+//                               children: List.generate(
+//                                 6,
+//                                 (index) => const RecouvrementSquelleton(),
+//                               ),
+//                             );
+//                     },
+//                   ),
   Widget recouvrement() {
     return Padding(
       padding: const EdgeInsets.only(bottom: 15),

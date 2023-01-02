@@ -33,9 +33,9 @@ class RecouvrementSquelleton extends StatelessWidget {
                 color: Colors.grey.withAlpha(10),
                 child: Container(
                   padding: const EdgeInsets.all(
-                    10,
+                    17,
                   ),
-                  width: 100,
+                  width: 250,
                   decoration: BoxDecoration(
                     color: const Color.fromARGB(255, 227, 227, 227),
                     borderRadius: BorderRadius.circular(4),
@@ -52,7 +52,7 @@ class RecouvrementSquelleton extends StatelessWidget {
                     color: Colors.grey.withAlpha(10),
                     child: Container(
                       padding: const EdgeInsets.all(
-                        10,
+                        15,
                       ),
                       decoration: const BoxDecoration(
                         color: Color.fromARGB(255, 227, 227, 227),
