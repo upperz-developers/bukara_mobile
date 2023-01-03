@@ -1,5 +1,6 @@
 import 'package:bukara/app/controller/app_bloc.dart';
 import 'package:bukara/app/controller/app_event.dart';
+import 'package:bukara/app/services/prefs/app_prefs.dart';
 import 'package:flutter/widgets.dart';
 
 class AuthViewController {
@@ -39,6 +40,7 @@ class AuthViewController {
       "lastname": lastname.text.trim(),
       "country_code": codeCountry,
       "phone_number": phonenumber.text.trim(),
+      "email": getUserInfo().userPerfsInfo!.email
     };
 
     bloc.add(

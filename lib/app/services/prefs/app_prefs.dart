@@ -1,10 +1,15 @@
 import 'dart:convert';
 
 import 'package:bukara/app/providers/user/model.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppPref {
   static SharedPreferences? prefs;
+
+  static ValueNotifier<UserPerfsInfo> showUserPerf =
+      ValueNotifier(UserPerfsInfo());
+
   static const String mobileUserInfo = "userInfo";
 }
 
@@ -37,15 +42,16 @@ class UserPref {
 
   UserPref({this.token, this.userPerfsInfo});
 
-  UserPref.fromJson(Map<String, dynamic> json)
-      : token = Token.fromJson(json['token']),
-        userPerfsInfo = json['userPerfsInfo'] != null
-            ? UserPerfsInfo.fromJson(json['userPerfsInfo'])
-            : null;
+  UserPref.fromJson(Map<String, dynamic> json) {
+    token = Token.fromJson(json['token']);
+    userPerfsInfo = json['userPerfsInfo'] != null
+        ? UserPerfsInfo.fromJson(json['userPerfsInfo'])
+        : null;
+  }
 
   toJson() => {
         "token": token,
-        "username": userPerfsInfo!.toJson(),
+        "userPerfsInfo": userPerfsInfo!.toJson(),
       };
 }
 

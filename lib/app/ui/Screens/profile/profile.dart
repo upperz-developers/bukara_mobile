@@ -21,163 +21,190 @@ class _Profile extends State<Profile> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 24,
-            vertical: 30,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                "Profile",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+        body: ValueListenableBuilder(
+            valueListenable: AppPref.showUserPerf,
+            builder: (context, UserPerfsInfo user, child) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 30,
                 ),
-              ),
-              30.heightBox,
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "#${getUserInfo().userPerfsInfo!.email}",
-                        style: const TextStyle(
-                          fontSize: 16,
-                          color: AppColors.BLACK_COLOR,
-                        ),
-                      ),
-                      10.heightBox,
-                      line(),
-                      InkWell(
-                        onTap: () =>
-                            Navigator.pushNamed(context, EditerUser.routeName),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 15),
-                          child: Row(
-                            children: const [
-                              Expanded(
-                                child: Text(
-                                  "Editer Profile",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                              Icon(
-                                Icons.arrow_forward_ios,
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                      10.heightBox,
-                      InkWell(
-                        onTap: () => Navigator.pushNamed(
-                            context, ChangePassword.routeName),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 15),
-                          child: Row(
-                            children: const [
-                              Expanded(
-                                child: Text(
-                                  "Changer mot de passe",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                              Icon(
-                                Icons.arrow_forward_ios,
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                      10.heightBox,
-                      InkWell(
-                        onTap: () =>
-                            Navigator.pushNamed(context, AboutPage.routeName),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 15),
-                          child: Row(
-                            children: const [
-                              Expanded(
-                                child: Text(
-                                  "Appropos de l'Application",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                              Icon(
-                                Icons.arrow_forward_ios,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      10.heightBox,
-                      InkWell(
-                        onTap: () {
-                          showDialog(
-                            context: context,
-                            builder: (context) => const Logout(),
-                            barrierDismissible: false,
-                          );
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 15),
-                          child: Row(
-                            children: const [
-                              Expanded(
-                                child: Text(
-                                  "Deconnexion",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                              Icon(
-                                Icons.logout,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Align(
-                alignment: Alignment.center,
                 child: Column(
-                  children: const [
-                    Text(
-                      "BUKARA v1.0.0",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    if (user.name != null)
+                      Text(
+                        "${user.name} ${user.lastname}",
+                        style: const TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                    else
+                      const Text(
+                        "Profile",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                      textAlign: TextAlign.center,
-                    ),
-                    Text(
-                      "Builid by Devinna in partenship with\n Upperz",
-                      style: TextStyle(
-                        color: AppColors.SECOND_TEXT_COLOR,
-                        fontSize: 10,
-                        fontWeight: FontWeight.normal,
+                    if (user.phoneNumber != null)
+                      Text(
+                        "${user.countryCode} (0) ${user.phoneNumber}",
+                        style: const TextStyle(
+                          // fontSize: 16,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      )
+                    else
+                      30.heightBox,
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            10.heightBox,
+                            Text(
+                              "#${user.email}",
+                              style: const TextStyle(
+                                fontSize: 16,
+                                color: AppColors.BLACK_COLOR,
+                              ),
+                            ),
+                            10.heightBox,
+                            line(),
+                            InkWell(
+                              onTap: () => Navigator.pushNamed(
+                                  context, EditerUser.routeName),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 15),
+                                child: Row(
+                                  children: const [
+                                    Expanded(
+                                      child: Text(
+                                        "Editer Profile",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                    Icon(
+                                      Icons.arrow_forward_ios,
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                            10.heightBox,
+                            InkWell(
+                              onTap: () => Navigator.pushNamed(
+                                  context, ChangePassword.routeName),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 15),
+                                child: Row(
+                                  children: const [
+                                    Expanded(
+                                      child: Text(
+                                        "Changer mot de passe",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                    Icon(
+                                      Icons.arrow_forward_ios,
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                            10.heightBox,
+                            InkWell(
+                              onTap: () => Navigator.pushNamed(
+                                  context, AboutPage.routeName),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 15),
+                                child: Row(
+                                  children: const [
+                                    Expanded(
+                                      child: Text(
+                                        "Appropos de l'Application",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                    Icon(
+                                      Icons.arrow_forward_ios,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            10.heightBox,
+                            InkWell(
+                              onTap: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) => const Logout(),
+                                  barrierDismissible: false,
+                                );
+                              },
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 15),
+                                child: Row(
+                                  children: const [
+                                    Expanded(
+                                      child: Text(
+                                        "Deconnexion",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                    Icon(
+                                      Icons.logout,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                      textAlign: TextAlign.center,
                     ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Column(
+                        children: const [
+                          Text(
+                            "BUKARA v1.0.0",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          Text(
+                            "Builid by Devinna in partenship with\n Upperz",
+                            style: TextStyle(
+                              color: AppColors.SECOND_TEXT_COLOR,
+                              fontSize: 10,
+                              fontWeight: FontWeight.normal,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ),
+                    45.heightBox,
                   ],
                 ),
-              ),
-              45.heightBox,
-            ],
-          ),
-        ),
+              );
+            }),
       ),
     );
   }
