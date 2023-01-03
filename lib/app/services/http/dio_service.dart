@@ -65,7 +65,6 @@ Future<Response> httpPostWithToken({String? endPoint, var data}) async {
 
 Future<Response> httpPutWithToken({String? endPoint, var data}) async {
   Token token = getUserInfo().token!;
-
   return await DioApi().dio.put(
         endPoint!,
         data: data,

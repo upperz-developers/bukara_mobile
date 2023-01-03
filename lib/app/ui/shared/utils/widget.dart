@@ -225,7 +225,9 @@ class FormText extends StatelessWidget {
       ),
       child: TextField(
         style: const TextStyle(
-          fontSize: 12,
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
+          fontSize: 14,
         ),
         controller: controller,
         decoration: InputDecoration(
@@ -233,7 +235,8 @@ class FormText extends StatelessWidget {
           isDense: true,
           hintText: hint,
           hintStyle: const TextStyle(
-            fontSize: 12,
+            fontSize: 13,
+            fontWeight: FontWeight.normal,
           ),
         ),
       ),

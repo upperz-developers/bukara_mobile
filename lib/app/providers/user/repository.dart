@@ -34,6 +34,11 @@ Future<Response> changepassord({
       "password_confirmation": confirmpassword,
     });
 
+Future<Response> editeruser({
+  Map<String, dynamic>? data,
+}) async =>
+    await httpPutWithToken(endPoint: APIURL.EDITERUSER, data: data);
+
 Future<Response> logout({
   String? token,
 }) async =>

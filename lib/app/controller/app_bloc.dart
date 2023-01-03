@@ -24,9 +24,16 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         );
 
         ResultAuth resultAuth = ResultAuth.fromJson(response.data);
+
         UserPref userPref = UserPref(
           token: resultAuth.token,
-          userName: resultAuth.data!.user!.email,
+          userPerfsInfo: UserPerfsInfo(
+            email: resultAuth.data!.user!.email,
+            name: resultAuth.data!.user!.name,
+            lastname: resultAuth.data!.user!.lastname,
+            countryCode: resultAuth.data!.user!.countryCode,
+            phoneNumber: resultAuth.data!.user!.phoneNumber,
+          ),
         );
 
         setUserInfo(userPref);
@@ -67,6 +74,20 @@ class AppBloc extends Bloc<AppEvent, AppState> {
             newpassword: event.newpassword,
             confirmpassword: event.confirmepassword,
           );
+
+          emit(const SUCCESS());
+        } on Exception catch (e) {
+          emit(ERROR(dueTo: e.toString()));
+        }
+      }),
+    );
+
+    on<EDITERUSER>(
+      ((event, emit) async {
+        emit(const LOADING());
+
+        try {
+          await editeruser(data: event.data);
 
           emit(const SUCCESS());
         } on Exception catch (e) {

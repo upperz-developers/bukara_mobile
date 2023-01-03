@@ -34,6 +34,12 @@ class CHANGEPASSWORD implements AppEvent {
   });
 }
 
+class EDITERUSER implements AppEvent {
+  final Map<String, dynamic> data;
+
+  const EDITERUSER({required this.data});
+}
+
 class LOGOUT implements AppEvent {
   final String? token;
 

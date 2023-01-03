@@ -33,16 +33,51 @@ void setUserInfo(UserPref userInfo) {
 
 class UserPref {
   Token? token;
-  String? userName;
+  UserPerfsInfo? userPerfsInfo;
 
-  UserPref({this.token, this.userName});
+  UserPref({this.token, this.userPerfsInfo});
 
   UserPref.fromJson(Map<String, dynamic> json)
       : token = Token.fromJson(json['token']),
-        userName = json['username'];
+        userPerfsInfo = json['userPerfsInfo'] != null
+            ? UserPerfsInfo.fromJson(json['userPerfsInfo'])
+            : null;
 
   toJson() => {
         "token": token,
-        "username": userName,
+        "username": userPerfsInfo!.toJson(),
       };
+}
+
+class UserPerfsInfo {
+  String? name;
+  String? lastname;
+  String? countryCode;
+  String? phoneNumber;
+  String? email;
+
+  UserPerfsInfo(
+      {this.name,
+      this.lastname,
+      this.countryCode,
+      this.phoneNumber,
+      this.email});
+
+  UserPerfsInfo.fromJson(Map<String, dynamic> json) {
+    name = json['name'];
+    lastname = json['lastname'];
+    countryCode = json['country_code'];
+    phoneNumber = json['phone_number'];
+    email = json['email'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = {};
+    data['name'] = name;
+    data['lastname'] = lastname;
+    data['country_code'] = countryCode;
+    data['phone_number'] = phoneNumber;
+    data['email'] = email;
+    return data;
+  }
 }

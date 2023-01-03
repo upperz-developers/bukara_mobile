@@ -1,6 +1,7 @@
 import 'package:bukara/app/controller/app_bloc.dart';
 import 'package:bukara/app/controller/app_state.dart';
 import 'package:bukara/app/ui/view_controller/auth_controller.dart';
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
@@ -22,34 +23,17 @@ class _EditerUser extends State<EditerUser> {
   void initState() {
     bloc = AppBloc();
 
-    singupController.init();
+    editerUserController.init();
 
     super.initState();
   }
 
-  // bool singupSubmitted = false;
-  // void _submit() {
-  //   setState(() {
-  //     singupSubmitted = true;
-  //   });
-  //   if (singupController.singupValidate()) {
-  //     bloc!.add(
-  //       SINGUP(
-  //         email: singupController.email.value.text.trim(),
-  //         password: singupController.password.text.trim(),
-  //         confirmepassword: singupController.confirmpasssword.text.trim(),
-  //       ),
-  //     );
-  //   }
-  // }
-
-  @override
-  void dispose() {
-    singupController.password = TextEditingController();
-    super.dispose();
+  bool editerSubmitted = false;
+  void _submit() {
+    editerUserController.editerProfileSumbit(bloc!);
   }
 
-  AuthViewController singupController = AuthViewController();
+  AuthViewController editerUserController = AuthViewController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -94,28 +78,98 @@ class _EditerUser extends State<EditerUser> {
                       Expanded(
                         child: SingleChildScrollView(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 30, vertical: 10),
+                              horizontal: 30, vertical: 30),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               subtitle("Numero Telephone"),
                               10.heightBox,
-                              FormText(
-                                controller: singupController.email.value,
-                                hint: "+243 (0) 974638360",
-                                //submitted: singupSubmitted,
+                              Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(4),
+                                  border: Border.all(
+                                    color: AppColors.BORDER_COLOR,
+                                  ),
+                                ),
+                                child: TextFormField(
+                                  controller: editerUserController.phonenumber,
+                                  keyboardType: TextInputType.phone,
+                                  textInputAction: TextInputAction.next,
+                                  decoration: InputDecoration(
+                                    isDense: true,
+                                    border: InputBorder.none,
+                                    contentPadding: const EdgeInsets.all(16.0),
+                                    hintText: 'Télephone',
+                                    hintStyle: const TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 14.0,
+                                    ),
+                                    prefixIcon: CountryCodePicker(
+                                      onChanged: (contryCode) {
+                                        editerUserController.codeCountry =
+                                            contryCode.code!;
+                                      },
+                                      boxDecoration: BoxDecoration(
+                                        color: AppColors.WHITE_COLOR,
+                                        borderRadius:
+                                            BorderRadius.circular(5.0),
+                                      ),
+                                      initialSelection: 'CD',
+                                      favorite: const ["+243", 'CD'],
+                                      showCountryOnly: true,
+                                      showOnlyCountryWhenClosed: false,
+                                      alignLeft: false,
+                                      flagWidth: 20.0,
+                                      showFlagDialog: true,
+                                      showFlag: true,
+                                      searchStyle: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,
+                                      ),
+                                      dialogTextStyle: const TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.black,
+                                      ),
+                                      textStyle: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,
+                                      ),
+                                      searchDecoration: const InputDecoration(
+                                        border: InputBorder.none,
+                                        contentPadding: EdgeInsets.all(16.0),
+                                        hintText: 'Rechercher Pays',
+                                        hintStyle: TextStyle(
+                                          color: AppColors.GREY_COLOR,
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 14.0,
+                                        ),
+                                      ),
+                                    ),
+                                    errorStyle: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14.0,
+                                    ),
+                                  ),
+                                  style: const TextStyle(
+                                    color: AppColors.BLACK_COLOR,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14.0,
+                                  ),
+                                ),
                               ),
                               20.heightBox,
-                              subtitle("Nom complet"),
+                              subtitle("Nom"),
                               10.heightBox,
                               FormText(
-                                controller: singupController.password,
+                                controller: editerUserController.name,
                                 hint: "Entrez votre Nom",
                                 //submitted: singupSubmitted,
                               ),
+                              20.heightBox,
+                              subtitle("Post nom"),
                               10.heightBox,
                               FormText(
-                                controller: singupController.confirmpasssword,
+                                controller: editerUserController.lastname,
                                 hint: "Entrez votre Prenom",
                                 //submitted: singupSubmitted,
                               ),
@@ -132,7 +186,7 @@ class _EditerUser extends State<EditerUser> {
                           title: "Editer",
                           colorText: Colors.white,
                           state: state,
-                          //onTap: _submit,
+                          onTap: _submit,
                         ),
                       ),
                     ],
