@@ -1,5 +1,4 @@
 import 'package:bukara/app/controller/app_state.dart';
-import 'package:bukara/app/ui/shared/squelleton/historique_squelleton.dart';
 import 'package:flutter/material.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
