@@ -44,8 +44,10 @@ class SuiteRecouvrement extends StatelessWidget {
                 children: [
                   Text.rich(
                     TextSpan(
-                      text:
-                          "${dayLeft(start: suiteRecouvrement!.rentalContrat!.startDate!, end: suiteRecouvrement!.dateRecovery!)} restants",
+                      text: "${dayLeft(
+                        start: DateTime.now().toString(),
+                        end: suiteRecouvrement!.dateRecovery!,
+                      )} restants",
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,

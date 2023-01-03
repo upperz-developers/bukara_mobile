@@ -194,7 +194,7 @@ class _InfoRecouvrement extends State<InfoRecouvrement> {
                     Text.rich(
                       TextSpan(
                         text: dayLeft(
-                            start: contratData.rentalContrat!.startDate!,
+                            start: DateTime.now().toString(),
                             end: contratData.dateRecovery!),
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
