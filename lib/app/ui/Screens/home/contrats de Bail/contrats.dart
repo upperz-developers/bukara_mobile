@@ -1,3 +1,4 @@
+import 'package:bukara/app/ui/screens/home/contrats%20de%20Bail/suite_contrats.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
@@ -44,7 +45,7 @@ class _Contrat extends State<Contrat> {
                 ),
                 const Expanded(
                   child: Text(
-                    "Contrat de Bail",
+                    "Contrat de bail",
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
@@ -54,12 +55,23 @@ class _Contrat extends State<Contrat> {
             ),
             Expanded(
               child: SingleChildScrollView(
+                padding: const EdgeInsets.only(
+                  left: 20,
+                  right: 20,
+                  top: 10,
+                  bottom: 50,
+                ),
                 physics: const BouncingScrollPhysics(),
                 child: BlocBuilder<AppBloc, AppState>(
                   bloc: bloc,
                   builder: (context, state) {
-                    return const Center(
-                      child: Text("contrat de bail"),
+                    return Column(
+                      children: [
+                        ...List.generate(
+                          7,
+                          (index) => const SuiteContrats(),
+                        ),
+                      ],
                     );
                   },
                 ),
