@@ -278,7 +278,9 @@ class _FormPassWordTextState extends State<FormPassWordText> {
                 Expanded(
                   child: TextField(
                     style: const TextStyle(
-                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      fontSize: 14,
                     ),
                     controller: widget.controller,
                     obscureText: isObscureText,
@@ -287,7 +289,8 @@ class _FormPassWordTextState extends State<FormPassWordText> {
                       isDense: true,
                       hintText: widget.hint,
                       hintStyle: const TextStyle(
-                        fontSize: 12,
+                        fontSize: 13,
+                        fontWeight: FontWeight.normal,
                       ),
                     ),
                   ),

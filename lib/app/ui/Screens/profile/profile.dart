@@ -48,29 +48,28 @@ class _Profile extends State<Profile> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                    if (user.phoneNumber != null)
-                      Text(
-                        "${user.countryCode} (0) ${user.phoneNumber}",
-                        style: const TextStyle(
-                          // fontSize: 16,
-                          fontWeight: FontWeight.normal,
-                        ),
-                      )
-                    else
-                      30.heightBox,
+                    if (user.phoneNumber != null && user.email != null)
+                      15.heightBox,
+                    Text(
+                      "${user.countryCode} (0) ${user.phoneNumber}",
+                      style: const TextStyle(
+                        // fontSize: 16,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    Text(
+                      "#${user.email}",
+                      style: const TextStyle(
+                        fontSize: 16,
+                        color: AppColors.BLACK_COLOR,
+                      ),
+                    ),
+                    10.heightBox,
                     Expanded(
                       child: SingleChildScrollView(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            10.heightBox,
-                            Text(
-                              "#${user.email}",
-                              style: const TextStyle(
-                                fontSize: 16,
-                                color: AppColors.BLACK_COLOR,
-                              ),
-                            ),
                             10.heightBox,
                             line(),
                             InkWell(

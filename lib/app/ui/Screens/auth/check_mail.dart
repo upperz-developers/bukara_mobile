@@ -88,18 +88,20 @@ class _Checkmail extends State<Checkmail> {
                         keyboardType: TextInputType.emailAddress,
                       ),
                     ),
-                    30.heightBox,
-                    custormButton(
-                      context,
-                      color: AppColors.BLACK_COLOR,
-                      title: "next",
-                      colorText: Colors.white,
-                      onTap: () {
-                        Navigator.pushNamed(context, Otp.routeName);
-                      },
-                    ),
                   ],
                 ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
+              child: custormButton(
+                context,
+                color: AppColors.BLACK_COLOR,
+                title: "next",
+                colorText: Colors.white,
+                onTap: () {
+                  Navigator.pushNamed(context, Otp.routeName);
+                },
               ),
             ),
           ],
