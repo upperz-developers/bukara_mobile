@@ -3,7 +3,6 @@ import 'package:bukara/app/ui/screens/Recouvrement/detail_information_recouvreme
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:bukara/app/ui/shared/utils/utility%20fonction/utility.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../../../providers/recouvrenement/modele.dart';
