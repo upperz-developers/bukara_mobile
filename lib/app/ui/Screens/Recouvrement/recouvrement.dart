@@ -59,12 +59,13 @@ class _Recouvrement extends State<Recouvrement> {
                                 ),
                               ],
                             )
-                          : Column(
-                              children: List.generate(
+                          : Column(children: [
+                              20.heightBox,
+                              ...List.generate(
                                 3,
                                 (index) => const RecouvrementSquelleton(),
                               ),
-                            );
+                            ]);
                     },
                   ),
                 ),

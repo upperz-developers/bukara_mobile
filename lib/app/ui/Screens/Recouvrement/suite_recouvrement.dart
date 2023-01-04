@@ -31,8 +31,8 @@ class SuiteRecouvrement extends StatelessWidget {
               padding: const EdgeInsets.only(
                 left: 15,
                 right: 10,
-                top: 10,
-                bottom: 10,
+                top: 15,
+                bottom: 15,
               ),
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
