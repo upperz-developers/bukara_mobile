@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import '../../../shared/utils/widget.dart';
+
 class SuiteContrats extends StatelessWidget {
   const SuiteContrats({
     super.key,
@@ -27,44 +29,14 @@ class SuiteContrats extends StatelessWidget {
           ),
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
-            color: AppColors.WHITE_COLOR,
+            color: AppColors.DISABLE_COLOR,
             borderRadius: BorderRadius.circular(10),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: const BoxDecoration(
-                      color: AppColors.DISABLE_COLOR,
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(
-                      Iconsax.user,
-                      size: 16,
-                    ),
-                  ),
-                  5.widthBox,
-                  const Text(
-                    "John Doe",
-                    style: TextStyle(
-                      fontSize: 15,
-                    ),
-                  ),
-                ],
-              ),
-              10.heightBox,
               const Text(
                 "Appartement de Lux",
-              ),
-              10.heightBox,
-              const Text(
-                "6 mois de Garantie",
-                style: TextStyle(
-                  fontSize: 16,
-                ),
               ),
               10.heightBox,
               const Text.rich(
@@ -84,7 +56,32 @@ class SuiteContrats extends StatelessWidget {
                     ),
                   ],
                 ),
-              )
+              ),
+              10.heightBox,
+              const Text(
+                "Garantie de 6 mois",
+                style: TextStyle(
+                  fontSize: 16,
+                ),
+              ),
+              15.heightBox,
+              Row(
+                children: [
+                  const Expanded(
+                    child: Text(
+                      "John Doe",
+                    ),
+                  ),
+                  20.widthBox,
+                  const Text(
+                    "Locataire",
+                    style: TextStyle(
+                      color: AppColors.SECOND_TEXT_COLOR,
+                      fontSize: 12,
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
