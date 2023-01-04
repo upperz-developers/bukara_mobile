@@ -40,14 +40,6 @@ class _Recouvrement extends State<Recouvrement> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                "Recouvrement",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              30.heightBox,
               Expanded(
                 child: SingleChildScrollView(
                   physics: const BouncingScrollPhysics(),

@@ -12,7 +12,6 @@ import '../../shared/utils/widget.dart';
 class EditerUser extends StatefulWidget {
   static String routeName = "/editerUser";
   const EditerUser({Key? key}) : super(key: key);
-
   @override
   State<EditerUser> createState() => _EditerUser();
 }
@@ -22,9 +21,7 @@ class _EditerUser extends State<EditerUser> {
   @override
   void initState() {
     bloc = AppBloc();
-
     editerUserController.init();
-
     super.initState();
   }
 
