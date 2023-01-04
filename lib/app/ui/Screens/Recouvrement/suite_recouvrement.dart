@@ -65,32 +65,10 @@ class SuiteRecouvrement extends StatelessWidget {
                     ),
                   ),
                   15.heightBox,
-                  Row(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(7),
-                        decoration: const BoxDecoration(
-                          color: AppColors.DISABLE_COLOR,
-                          shape: BoxShape.circle,
-                        ),
-                        child: const Icon(
-                          Iconsax.user,
-                          size: 16,
-                        ),
-                      ),
-                      10.widthBox,
-                      Expanded(
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "${suiteRecouvrement!.rentalContrat!.landlord!.name} ${suiteRecouvrement!.rentalContrat!.landlord!.lastname}",
-                              ),
-                            ]),
-                      ),
-                    ],
+                  Text(
+                    "${suiteRecouvrement!.rentalContrat!.landlord!.name} ${suiteRecouvrement!.rentalContrat!.landlord!.lastname}",
                   ),
-                  10.heightBox,
+                  15.heightBox,
                   Text(
                     "${suiteRecouvrement!.rentalContrat!.appartement!.designation} - (${suiteRecouvrement!.rentalContrat!.appartement!.features!.bedroom} chambres & ${suiteRecouvrement!.rentalContrat!.appartement!.features!.livingroom} salon)",
                   ),

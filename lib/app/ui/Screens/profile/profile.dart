@@ -36,7 +36,7 @@ class _Profile extends State<Profile> {
                       Text(
                         "${user.name} ${user.lastname}",
                         style: const TextStyle(
-                          fontSize: 30,
+                          fontSize: 24,
                           fontWeight: FontWeight.bold,
                         ),
                       )
@@ -48,103 +48,46 @@ class _Profile extends State<Profile> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                    if (user.phoneNumber != null && user.email != null)
-                      15.heightBox,
-                    Text(
-                      "${user.countryCode} (0) ${user.phoneNumber}",
-                      style: const TextStyle(
-                        // fontSize: 16,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                    Text(
-                      "#${user.email}",
-                      style: const TextStyle(
-                        fontSize: 16,
-                        color: AppColors.BLACK_COLOR,
-                      ),
-                    ),
-                    10.heightBox,
                     Expanded(
                       child: SingleChildScrollView(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            10.heightBox,
-                            line(),
-                            InkWell(
+                            if (user.phoneNumber != null && user.email != null)
+                              5.heightBox,
+                            Text(
+                              "${user.countryCode} (0) ${user.phoneNumber}",
+                              style: const TextStyle(
+                                // fontSize: 16,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                            5.heightBox,
+                            Text(
+                              "${user.email}",
+                              style: const TextStyle(
+                                fontSize: 16,
+                                color: AppColors.BLACK_COLOR,
+                              ),
+                            ),
+                            20.heightBox,
+                            profileActions(
+                              title: (user.email == null ||
+                                      user.lastname == null ||
+                                      user.phoneNumber == null ||
+                                      user.name == null)
+                                  ? "Completer le profile"
+                                  : "Editer Profile",
                               onTap: () => Navigator.pushNamed(
                                   context, EditerUser.routeName),
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 15),
-                                child: Row(
-                                  children: const [
-                                    Expanded(
-                                      child: Text(
-                                        "Editer Profile",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                    Icon(
-                                      Icons.arrow_forward_ios,
-                                    )
-                                  ],
-                                ),
-                              ),
                             ),
-                            10.heightBox,
-                            InkWell(
+                            profileActions(
+                              title: "Changer mot de passe",
                               onTap: () => Navigator.pushNamed(
                                   context, ChangePassword.routeName),
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 15),
-                                child: Row(
-                                  children: const [
-                                    Expanded(
-                                      child: Text(
-                                        "Changer mot de passe",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                    Icon(
-                                      Icons.arrow_forward_ios,
-                                    )
-                                  ],
-                                ),
-                              ),
                             ),
-                            10.heightBox,
-                            InkWell(
-                              onTap: () => Navigator.pushNamed(
-                                  context, AboutPage.routeName),
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 15),
-                                child: Row(
-                                  children: const [
-                                    Expanded(
-                                      child: Text(
-                                        "Appropos de l'Application",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                    Icon(
-                                      Icons.arrow_forward_ios,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            10.heightBox,
-                            InkWell(
+                            profileActions(
+                              title: "Deconnexion",
                               onTap: () {
                                 showDialog(
                                   context: context,
@@ -152,58 +95,43 @@ class _Profile extends State<Profile> {
                                   barrierDismissible: false,
                                 );
                               },
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 15),
-                                child: Row(
-                                  children: const [
-                                    Expanded(
-                                      child: Text(
-                                        "Deconnexion",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                    Icon(
-                                      Icons.logout,
-                                    ),
-                                  ],
-                                ),
-                              ),
+                            ),
+                            line(),
+                            profileActions(
+                              title: "contrat de bail",
+                              onTap: () {},
+                            ),
+                            profileActions(
+                              title: "Appropos de l'application",
+                              onTap: () => Navigator.pushNamed(
+                                  context, AboutPage.routeName),
                             ),
                           ],
                         ),
                       ),
                     ),
-                    Align(
-                      alignment: Alignment.center,
-                      child: Column(
-                        children: const [
-                          Text(
-                            "BUKARA v1.0.0",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                          Text(
-                            "Builid by Devinna in partenship with\n Upperz",
-                            style: TextStyle(
-                              color: AppColors.SECOND_TEXT_COLOR,
-                              fontSize: 10,
-                              fontWeight: FontWeight.normal,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
-                      ),
-                    ),
-                    45.heightBox,
                   ],
                 ),
               );
             }),
+      ),
+    );
+  }
+
+  Widget profileActions({String? title, Function()? onTap}) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        padding: const EdgeInsets.symmetric(vertical: 15),
+        child: Expanded(
+          child: Text(
+            title!,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
       ),
     );
   }

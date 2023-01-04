@@ -72,7 +72,7 @@ class _InfoLocataire extends State<InfoLocataire> {
                             15.widthBox,
                             const Expanded(
                               child: Text(
-                                "Historic of paiement",
+                                "Historic of paiement locataion",
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.normal,

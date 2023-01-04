@@ -49,148 +49,11 @@ class _InfoRecouvrement extends State<InfoRecouvrement> {
                 physics: const BouncingScrollPhysics(),
                 padding: const EdgeInsets.symmetric(
                   horizontal: 24,
-                  vertical: 30,
+                  vertical: 15,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(10),
-                          decoration: const BoxDecoration(
-                            color: AppColors.DISABLE_COLOR,
-                            shape: BoxShape.circle,
-                          ),
-                          child: const Icon(
-                            Iconsax.user,
-                            size: 20,
-                          ),
-                        ),
-                        10.widthBox,
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "${contratData.rentalContrat!.landlord!.name} ${contratData.rentalContrat!.landlord!.lastname}",
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                "${contratData.rentalContrat!.landlord!.email}",
-                                style: const TextStyle(
-                                  color: AppColors.SECOND_TEXT_COLOR,
-                                  fontSize: 12,
-                                  height: 1.5,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        20.widthBox,
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 5,
-                            horizontal: 10,
-                          ),
-                          decoration: BoxDecoration(
-                            color: AppColors.DISABLE_COLOR,
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          child: const Text(
-                            "Locataire",
-                            style: TextStyle(
-                              color: AppColors.SECOND_TEXT_COLOR,
-                              fontSize: 12,
-                            ),
-                          ),
-                        ),
-                        15.widthBox,
-                      ],
-                    ),
-                    20.heightBox,
-                    Text(
-                      "${contratData.rentalContrat!.appartement!.designation} - (${contratData.rentalContrat!.appartement!.features!.bedroom} chambres & ${contratData.rentalContrat!.appartement!.features!.livingroom} salon)",
-                    ),
-                    Text(
-                      "${contratData.rentalContrat!.appartement!.typeAppartement!.designation} - ${contratData.rentalContrat!.appartement!.typeBien!.designation}",
-                      style: const TextStyle(
-                        color: AppColors.SECOND_TEXT_COLOR,
-                      ),
-                    ),
-                    20.heightBox,
-                    Text.rich(
-                      TextSpan(
-                        text: "${contratData.rentalContrat!.amount}",
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
-                        children: const [
-                          TextSpan(
-                            text: " USD par mois",
-                            style: TextStyle(
-                              fontSize: 14,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 20),
-                      child: Divider(),
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "${contratData.rentalContrat!.user!.email}",
-                              ),
-                              Text(
-                                contratData.rentalContrat!.user!.name == null
-                                    ? "Pas definit"
-                                    : "${contratData.rentalContrat!.user!.email}",
-                                style: const TextStyle(
-                                  color: AppColors.SECOND_TEXT_COLOR,
-                                  height: 1.5,
-                                  fontSize: 12,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        15.widthBox,
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 5,
-                            horizontal: 10,
-                          ),
-                          decoration: BoxDecoration(
-                            color: AppColors.DISABLE_COLOR,
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          child: const Text(
-                            "Signateur",
-                            style: TextStyle(
-                              color: AppColors.SECOND_TEXT_COLOR,
-                              fontSize: 12,
-                            ),
-                          ),
-                        ),
-                        15.widthBox,
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 15,
-                      ),
-                      child: line(),
-                    ),
                     Text.rich(
                       TextSpan(
                         text: dayLeft(
@@ -213,6 +76,97 @@ class _InfoRecouvrement extends State<InfoRecouvrement> {
                       ),
                     ),
                     15.heightBox,
+                    Text.rich(
+                      TextSpan(
+                        text: "${contratData.rentalContrat!.amount}",
+                        style: const TextStyle(
+                          fontWeight: FontWeight.normal,
+                        ),
+                        children: const [
+                          TextSpan(
+                            text: " USD par mois",
+                            style: TextStyle(
+                              fontSize: 14,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    10.heightBox,
+                    Text(
+                      "${contratData.rentalContrat!.appartement!.designation} - (${contratData.rentalContrat!.appartement!.features!.bedroom} chambres & ${contratData.rentalContrat!.appartement!.features!.livingroom} salon)",
+                    ),
+                    Text(
+                      "${contratData.rentalContrat!.appartement!.typeAppartement!.designation} - ${contratData.rentalContrat!.appartement!.typeBien!.designation}",
+                      style: const TextStyle(
+                        color: AppColors.SECOND_TEXT_COLOR,
+                      ),
+                    ),
+                    30.heightBox,
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            "${contratData.rentalContrat!.landlord!.name} ${contratData.rentalContrat!.landlord!.lastname}",
+                          ),
+                        ),
+                        20.widthBox,
+                        const Text(
+                          "Locataire",
+                          style: TextStyle(
+                            color: AppColors.SECOND_TEXT_COLOR,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
+                    ),
+                    20.heightBox,
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            "${contratData.rentalContrat!.user!.email}",
+                          ),
+                        ),
+                        15.widthBox,
+                        const Text(
+                          "Signateur",
+                          style: TextStyle(
+                            color: AppColors.SECOND_TEXT_COLOR,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
+                    ),
+                    30.heightBox,
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          Iconsax.activity,
+                        ),
+                        15.widthBox,
+                        const Expanded(
+                          child: Text(
+                            "Historic of paiement pour ce recouvrement",
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.normal,
+                                color: Colors.black),
+                          ),
+                        ),
+                        15.widthBox,
+                        const Icon(
+                          Iconsax.arrow_right_3,
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 15,
+                      ),
+                      child: line(),
+                    ),
                     TableCalendar(
                       rowHeight: 53,
                       headerStyle: const HeaderStyle(

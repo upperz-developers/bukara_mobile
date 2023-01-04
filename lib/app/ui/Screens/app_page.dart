@@ -178,57 +178,59 @@ class _TopTabBarState extends State<TopTabBar>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                color: AppColors.SCAFFOLD_BACKGROUND_LIGHT,
-                child: TabBar(
-                    controller: _tabControllertop,
-                    unselectedLabelColor: AppColors.SECOND_TEXT_COLOR,
-                    indicator: const UnderlineTabIndicator(
-                        borderSide: BorderSide(width: 0.0)),
-                    //indicatorColor: Colors.white,
-                    indicatorWeight: 5.0,
-                    labelColor: AppColors.BLACK_COLOR,
-                    tabs: const [
-                      Tab(
-                        child: Text(
-                          "Recouvrement",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      Tab(
-                        child: Text(
-                          "Historique de paie",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ]),
+      body: Column(
+        children: [
+          TabBar(
+              isScrollable: true,
+              padding: const EdgeInsets.only(
+                bottom: 0,
+                top: 15,
               ),
-            ],
+              controller: _tabControllertop,
+              unselectedLabelColor: AppColors.SECOND_TEXT_COLOR,
+              indicator: const UnderlineTabIndicator(
+                  borderSide: BorderSide(width: 0.0)),
+              //indicatorColor: Colors.white,
+              indicatorWeight: 5.0,
+              labelColor: AppColors.BLACK_COLOR,
+              tabs: const [
+                Tab(
+                  child: Text(
+                    "Recouvrement",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                Tab(
+                  child: Text(
+                    "Paiement",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ]),
+          Expanded(
+            child: TabBarView(
+                physics: const BouncingScrollPhysics(),
+                controller: _tabControllertop,
+                children: const [
+                  Recouvrement(),
+                  Center(
+                    child: Text(
+                      "historique de paiement",
+                      style: TextStyle(
+                        color: AppColors.BLACK_COLOR,
+                      ),
+                    ),
+                  ),
+                ]),
           ),
-        ),
+        ],
       ),
-      body: TabBarView(controller: _tabControllertop, children: const [
-        Recouvrement(),
-        Center(
-          child: Text(
-            "historique de paiment",
-            style: TextStyle(
-              color: AppColors.BLACK_COLOR,
-            ),
-          ),
-        ),
-      ]),
     );
   }
 }

@@ -1,6 +1,7 @@
 //import 'package:bukara/app/providers/shared/common_modele.dart';
 import 'package:bukara/app/ui/screens/locataire/detail_information_locataire.dart';
 import 'package:bukara/app/ui/shared/style.dart';
+import 'package:bukara/app/ui/shared/utils/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../../../providers/tennant/modele.dart';
@@ -15,132 +16,66 @@ class SuiteLocataire extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 15),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(10),
-        onTap: () {
-          Navigator.pushNamed(context, InfoLocataire.routeName,
-              arguments: suiteNotification);
-        },
-        child: Container(
-          padding: const EdgeInsets.all(
-            15,
-          ),
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            color: AppColors.WHITE_COLOR,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Row(
+    return InkWell(
+      borderRadius: BorderRadius.circular(10),
+      onTap: () {
+        Navigator.pushNamed(context, InfoLocataire.routeName,
+            arguments: suiteNotification);
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "${suiteNotification!.name!} ${suiteNotification!.lastname!}",
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15,
-                                ),
-                              ),
-                              5.heightBox,
-                              Text(
-                                "${suiteNotification!.phones![0].countryCode} (0) ${suiteNotification!.phones![0].number}",
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                  color: AppColors.SECOND_TEXT_COLOR,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        15.widthBox,
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 10),
-                          decoration: BoxDecoration(
-                            color: AppColors.DISABLE_COLOR,
-                            borderRadius: BorderRadius.circular(100),
-                          ),
-                          child: Text(
-                            "${suiteNotification!.maritalStatus}",
-                            style: const TextStyle(
-                              color: AppColors.SECOND_TEXT_COLOR,
-                              fontSize: 12,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    15.heightBox,
                     Text(
-                      "${suiteNotification!.lastAdress}",
+                      "${suiteNotification!.name!} ${suiteNotification!.lastname!}",
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                      ),
+                    ),
+                    5.heightBox,
+                    Text(
+                      "${suiteNotification!.phones![0].countryCode} (0) ${suiteNotification!.phones![0].number}",
+                      style: const TextStyle(
+                        fontSize: 12,
+                        color: AppColors.SECOND_TEXT_COLOR,
+                        fontWeight: FontWeight.normal,
+                      ),
                     ),
                   ],
                 ),
               ),
+              15.widthBox,
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                decoration: BoxDecoration(
+                  color: AppColors.DISABLE_COLOR,
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                child: Text(
+                  "${suiteNotification!.maritalStatus}",
+                  style: const TextStyle(
+                    color: AppColors.SECOND_TEXT_COLOR,
+                    fontSize: 12,
+                  ),
+                ),
+              ),
             ],
           ),
-        ),
+          15.heightBox,
+          Text(
+            "${suiteNotification!.lastAdress}",
+          ),
+          line(),
+        ],
       ),
     );
   }
 }
-
-
-// Column(
-//               crossAxisAlignment: CrossAxisAlignment.start,
-//               children: [
-//                 Text(
-//                   " ${suiteNotification!.name!}",
-//                   style: const TextStyle(
-//                     fontSize: 16,
-//                     fontWeight: FontWeight.bold,
-//                   ),
-//                 ),
-//                 //5.heightBox,
-
-//                 Column(
-//                     children: List.generate(
-//                   suiteNotification!.phones!.length,
-//                   (index) => Text(
-//                     "${suiteNotification!.phones![0].countryCode} (0) ${suiteNotification!.phones![index].number}",
-//                     style: const TextStyle(
-//                       fontSize: 12,
-//                     ),
-//                   ),
-//                 )),
-
-//                 15.heightBox,
-//                 Text(
-//                   " ${suiteNotification!.landlordtype!}",
-//                 ),
-//                 5.heightBox,
-//                 Text(
-//                   suiteNotification!.lastadress!,
-//                   style: const TextStyle(
-//                     color: AppColors.SECOND_TEXT_COLOR,
-//                     fontSize: 12,
-//                   ),
-//                 ),
-//                 15.heightBox,
-//                 Text(
-//                   "souscrit le ${suiteNotification!.createdAt!}",
-//                   style: const TextStyle(
-//                     color: AppColors.SECOND_TEXT_COLOR,
-//                     fontSize: 12,
-//                   ),
-//                 ),
-//               ],
-//             ),

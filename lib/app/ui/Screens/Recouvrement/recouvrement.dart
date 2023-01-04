@@ -32,9 +32,8 @@ class _Recouvrement extends State<Recouvrement> {
       child: Scaffold(
         body: Padding(
           padding: const EdgeInsets.only(
-            left: 30,
-            right: 30,
-            top: 20,
+            left: 20,
+            right: 20,
             bottom: 50,
           ),
           child: Column(
@@ -50,12 +49,15 @@ class _Recouvrement extends State<Recouvrement> {
                           state is SUCCESS ? state.value : [];
                       return state is SUCCESS
                           ? Column(
-                              children: List.generate(
-                                listeRecouvrement.length,
-                                (index) => SuiteRecouvrement(
-                                  suiteRecouvrement: listeRecouvrement[index],
+                              children: [
+                                20.heightBox,
+                                ...List.generate(
+                                  listeRecouvrement.length,
+                                  (index) => SuiteRecouvrement(
+                                    suiteRecouvrement: listeRecouvrement[index],
+                                  ),
                                 ),
-                              ),
+                              ],
                             )
                           : Column(
                               children: List.generate(

@@ -48,7 +48,7 @@ class _Home extends State<Home> with SingleTickerProviderStateMixin {
             Padding(
               padding: const EdgeInsets.symmetric(
                 vertical: 20,
-                horizontal: 30,
+                horizontal: 20,
               ),
               child: searchBar(),
             ),
@@ -57,8 +57,8 @@ class _Home extends State<Home> with SingleTickerProviderStateMixin {
                 physics: const BouncingScrollPhysics(),
                 controller: _scrollController,
                 padding: const EdgeInsets.only(
-                  left: 30,
-                  right: 30,
+                  left: 20,
+                  right: 20,
                   top: 10,
                   bottom: 100,
                 ),
