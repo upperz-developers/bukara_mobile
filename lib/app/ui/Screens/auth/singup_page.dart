@@ -131,23 +131,31 @@ class _SingUpPage extends State<SingUpPage> {
                                 hint: "Entrez votre code",
                                 submitted: singupSubmitted,
                               ),
-                              30.heightBox,
-                              custormButton(
-                                context,
-                                color: AppColors.BLACK_COLOR,
-                                title: "Creation",
-                                colorText: Colors.white,
-                                state: state,
-                                onTap: _submit,
-                              ),
                             ],
                           ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 30, vertical: 25),
+                        child: custormButton(
+                          context,
+                          color: AppColors.BLACK_COLOR,
+                          title: "Creation",
+                          colorText: Colors.white,
+                          state: state,
+                          onTap: _submit,
                         ),
                       ),
                       Align(
                         alignment: Alignment.center,
                         child: Padding(
-                          padding: const EdgeInsets.all(30),
+                          padding: const EdgeInsets.only(
+                            top: 15,
+                            right: 30,
+                            left: 30,
+                            bottom: 30,
+                          ),
                           child: Text.rich(
                             TextSpan(
                                 text: "Vous avez deja un compte? ",
