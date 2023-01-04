@@ -2,6 +2,7 @@ import 'package:bukara/app/services/prefs/app_prefs.dart';
 import 'package:bukara/app/ui/Screens/profile/about_page.dart';
 import 'package:bukara/app/ui/Screens/profile/change_password.dart';
 import 'package:bukara/app/ui/screens/profile/editer_profile.dart';
+import 'package:bukara/app/ui/screens/home/contrats%20de%20Bail/contrats.dart';
 import 'package:bukara/app/ui/screens/profile/logout.dart';
 import 'package:bukara/app/ui/shared/utils/widget.dart';
 import 'package:flutter/material.dart';
@@ -99,7 +100,8 @@ class _Profile extends State<Profile> {
                             line(),
                             profileActions(
                               title: "contrat de bail",
-                              onTap: () {},
+                              onTap: () => Navigator.pushNamed(
+                                  context, Contrat.routeName),
                             ),
                             profileActions(
                               title: "Appropos de l'application",
