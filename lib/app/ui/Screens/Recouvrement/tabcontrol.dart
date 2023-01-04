@@ -1,3 +1,4 @@
+import 'package:bukara/app/ui/screens/Recouvrement/paiement.dart';
 import 'package:bukara/app/ui/screens/Recouvrement/recouvrement.dart';
 import 'package:flutter/material.dart';
 
@@ -69,14 +70,7 @@ class _TopTabBarState extends State<TopTabBar>
                 controller: _tabControllertop,
                 children: const [
                   Recouvrement(),
-                  Center(
-                    child: Text(
-                      "historique de paiement",
-                      style: TextStyle(
-                        color: AppColors.BLACK_COLOR,
-                      ),
-                    ),
-                  ),
+                  Paiement(),
                 ]),
           ),
         ],

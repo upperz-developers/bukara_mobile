@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:velocity_x/velocity_x.dart';
 import '../../../controller/app_bloc.dart';
 import '../../../controller/app_state.dart';
 
-class Paiement extends StatefulWidget {
-  const Paiement({super.key});
+class Garantie extends StatefulWidget {
+  const Garantie({super.key});
 
   @override
-  State<Paiement> createState() => _Paiement();
+  State<Garantie> createState() => _Garantie();
 }
 
-class _Paiement extends State<Paiement> {
+class _Garantie extends State<Garantie> {
   AppBloc? bloc;
   @override
   void initState() {
@@ -33,6 +34,15 @@ class _Paiement extends State<Paiement> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // 10.heightBox,
+              const Text(
+                "Garantie",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              30.heightBox,
               Expanded(
                 child: SingleChildScrollView(
                   physics: const BouncingScrollPhysics(),
@@ -40,7 +50,7 @@ class _Paiement extends State<Paiement> {
                     bloc: bloc,
                     builder: (context, state) {
                       return const Center(
-                        child: Text("paiement"),
+                        child: Text("garantie"),
                       );
                     },
                   ),

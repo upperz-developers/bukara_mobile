@@ -7,8 +7,6 @@ import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter/services.dart';
 import 'package:iconsax/iconsax.dart';
 
-import 'Recouvrement/recouvrement.dart';
-
 List<IconData> selectedicons = [
   Iconsax.home_15,
   Iconsax.notification5,
