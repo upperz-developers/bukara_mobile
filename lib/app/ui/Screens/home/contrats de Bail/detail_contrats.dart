@@ -24,8 +24,6 @@ class _DetailContrat extends State<DetailContrat> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /// A widget that is used to display an icon.
-
             IconButton(
               onPressed: (() => Navigator.pop(context)),
               icon: const Icon(
@@ -45,14 +43,14 @@ class _DetailContrat extends State<DetailContrat> {
                   children: [
                     const Text.rich(
                       TextSpan(
-                        text: "",
+                        text: "hey am Upperz",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 30,
                         ),
                         children: [
                           TextSpan(
-                            text: "",
+                            text: "test Upperz",
                             style: TextStyle(
                               color: AppColors.SECOND_TEXT_COLOR,
                               fontSize: 14,
@@ -65,7 +63,7 @@ class _DetailContrat extends State<DetailContrat> {
                     15.heightBox,
                     const Text.rich(
                       TextSpan(
-                        text: "",
+                        text: "450",
                         style: TextStyle(
                           fontWeight: FontWeight.normal,
                         ),
@@ -116,28 +114,6 @@ class _DetailContrat extends State<DetailContrat> {
                       ],
                     ),
                     30.heightBox,
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          Iconsax.activity,
-                        ),
-                        15.widthBox,
-                        const Expanded(
-                          child: Text(
-                            "Historic of paiement pour ce recouvrement",
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.normal,
-                                color: Colors.black),
-                          ),
-                        ),
-                        15.widthBox,
-                        const Icon(
-                          Iconsax.arrow_right_3,
-                        ),
-                      ],
-                    ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
                         vertical: 15,
