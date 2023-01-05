@@ -3,6 +3,7 @@ import 'package:bukara/app/ui/screens/Recouvrement/recouvrement.dart';
 import 'package:flutter/material.dart';
 
 import '../../shared/style.dart';
+import '../home/contrats de Bail/detail_contrats.dart';
 
 class TopTabBar extends StatefulWidget {
   const TopTabBar({Key? key}) : super(key: key);
@@ -17,7 +18,7 @@ class _TopTabBarState extends State<TopTabBar>
   @override
   void initState() {
     super.initState();
-    _tabControllertop = TabController(length: 2, vsync: this);
+    _tabControllertop = TabController(length: 3, vsync: this);
   }
 
   @override
@@ -56,6 +57,15 @@ class _TopTabBarState extends State<TopTabBar>
                 ),
                 Tab(
                   child: Text(
+                    "detail",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                Tab(
+                  child: Text(
                     "Paiement",
                     style: TextStyle(
                       fontSize: 14,
@@ -70,6 +80,7 @@ class _TopTabBarState extends State<TopTabBar>
                 controller: _tabControllertop,
                 children: const [
                   Recouvrement(),
+                  DetailContrat(),
                   Paiement(),
                 ]),
           ),

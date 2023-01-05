@@ -41,16 +41,32 @@ class _DetailContrat extends State<DetailContrat> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    const Text(
+                      "29 jours restants",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30,
+                      ),
+                    ),
+                    const Text(
+                      "Du janvier",
+                      style: TextStyle(
+                        color: AppColors.SECOND_TEXT_COLOR,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 14,
+                      ),
+                    ),
+                    15.heightBox,
                     const Text.rich(
                       TextSpan(
-                        text: "hey am Upperz",
+                        text: "450",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 30,
                         ),
                         children: [
                           TextSpan(
-                            text: "test Upperz",
+                            text: " USD par mois",
                             style: TextStyle(
                               color: AppColors.SECOND_TEXT_COLOR,
                               fontSize: 14,
@@ -60,24 +76,21 @@ class _DetailContrat extends State<DetailContrat> {
                         ],
                       ),
                     ),
-                    15.heightBox,
-                    const Text.rich(
-                      TextSpan(
-                        text: "450",
-                        style: TextStyle(
-                          fontWeight: FontWeight.normal,
-                        ),
-                        children: [
-                          TextSpan(
-                            text: " USD par mois",
-                            style: TextStyle(
-                              fontSize: 14,
-                            ),
-                          ),
-                        ],
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 15,
+                      ),
+                      child: line(),
+                    ),
+                    const Text(
+                      "Appartement de Lux - (4 chambres & 2 salons)",
+                      style: TextStyle(
+                        color: AppColors.SECOND_TEXT_COLOR,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 14,
                       ),
                     ),
-                    30.heightBox,
+                    20.heightBox,
                     Row(
                       children: [
                         const Expanded(
@@ -112,13 +125,6 @@ class _DetailContrat extends State<DetailContrat> {
                           ),
                         ),
                       ],
-                    ),
-                    30.heightBox,
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 15,
-                      ),
-                      child: line(),
                     ),
                   ],
                 ),
