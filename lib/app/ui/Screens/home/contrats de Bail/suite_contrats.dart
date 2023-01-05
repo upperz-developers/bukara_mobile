@@ -32,22 +32,25 @@ class SuiteContrats extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                "Appartement de Lux",
-              ),
-              10.heightBox,
               const Text.rich(
                 TextSpan(
                   text: "370",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 20,
+                    fontSize: 16,
                   ),
                   children: [
                     TextSpan(
-                      text: "\$ par mois",
+                      text: "\$/mois",
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    TextSpan(
+                      text: " - 6 mois",
+                      style: TextStyle(
+                        fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -56,28 +59,15 @@ class SuiteContrats extends StatelessWidget {
               ),
               10.heightBox,
               const Text(
-                "Garantie de 6 mois",
-                style: TextStyle(
-                  fontSize: 16,
-                ),
+                "Appartement de Lux",
               ),
               15.heightBox,
-              Row(
-                children: [
-                  const Expanded(
-                    child: Text(
-                      "John Doe",
-                    ),
-                  ),
-                  20.widthBox,
-                  const Text(
-                    "Locataire",
-                    style: TextStyle(
-                      color: AppColors.SECOND_TEXT_COLOR,
-                      fontSize: 12,
-                    ),
-                  ),
-                ],
+              const Text(
+                "John Doe",
+                style: TextStyle(
+                  color: AppColors.SECOND_TEXT_COLOR,
+                  fontSize: 14,
+                ),
               ),
             ],
           ),
