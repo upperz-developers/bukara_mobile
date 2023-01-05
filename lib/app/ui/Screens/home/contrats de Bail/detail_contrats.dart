@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:bukara/app/ui/shared/style.dart';
-import 'package:table_calendar/table_calendar.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../shared/utils/widget.dart';
 
-class InfoRecouvrement extends StatefulWidget {
-  static String routeName = "/inforecouvrement";
+class DetailContrat extends StatefulWidget {
+  static String routeName = "/detailContrat";
 
-  const InfoRecouvrement({
+  const DetailContrat({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<InfoRecouvrement> createState() => _InfoRecouvrement();
+  State<DetailContrat> createState() => _DetailContrat();
 }
 
-class _InfoRecouvrement extends State<InfoRecouvrement> {
+class _DetailContrat extends State<DetailContrat> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
