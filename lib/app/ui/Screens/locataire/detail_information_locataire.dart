@@ -107,7 +107,7 @@ class _InfoLocataire extends State<InfoLocataire> {
                       moduleIsEntreprise(
                           Iconsax.shapes4, "c'est une entreprise"),
                     module2(Iconsax.tag, "${suiteDetailLocataire.cardTypeId}",
-                        "Passport"),
+                        "${suiteDetailLocataire.cardType}"),
                   ],
                 ),
               ),

@@ -82,8 +82,8 @@ class ContratData {
 
   ContratData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    rentalContrat = json['rentalContrat'] != null
-        ? RentalContrat.fromJson(json['rentalContrat'])
+    rentalContrat = json['rental_contrat'] != null
+        ? RentalContrat.fromJson(json['rental_contrat'])
         : null;
     labelMonth = json['label_month'];
     labelStr = json['label_str'];
