@@ -80,7 +80,8 @@ class _TopTabBarState extends State<TopTabBar>
                 controller: _tabControllertop,
                 children: const [
                   Recouvrement(),
-                  DetailContrat(),
+                  Center(child: Text("deatil")),
+                  //DetailContrat(),
                   Paiement(),
                 ]),
           ),
