@@ -1,5 +1,4 @@
 import 'package:bukara/app/providers/recouvrenement/modele.dart';
-import 'package:bukara/app/ui/screens/home/contrats%20de%20Bail/detail_contrats.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -18,8 +17,8 @@ class SuiteContrats extends StatelessWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(10),
         onTap: () {
-          Navigator.pushNamed(context, DetailContrat.routeName,
-              arguments: suiteContrats);
+          // Navigator.pushNamed(context, DetailContrat.routeName,
+          //     arguments: suiteContrats);
         },
         child: Container(
           padding: const EdgeInsets.only(

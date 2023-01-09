@@ -1,12 +1,12 @@
 import 'package:bukara/app/controller/app_event.dart';
 import 'package:bukara/app/providers/recouvrenement/modele.dart';
-import 'package:bukara/app/ui/screens/home/contrats%20de%20Bail/suite_contrats.dart';
+import 'package:bukara/app/ui/screens/contrats%20de%20Bail/suite_contrats.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:velocity_x/velocity_x.dart';
-import '../../../../controller/app_bloc.dart';
-import '../../../../controller/app_state.dart';
+import '../../../controller/app_bloc.dart';
+import '../../../controller/app_state.dart';
 
 class Contrat extends StatefulWidget {
   static String routeName = "/contrat";
