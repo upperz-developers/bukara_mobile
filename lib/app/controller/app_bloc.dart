@@ -7,8 +7,8 @@ import 'package:bukara/app/providers/user/repository.dart';
 import 'package:bukara/app/services/prefs/app_prefs.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../providers/paiement/modele.dart';
-import '../providers/paiement/repository.dart';
+import '../providers/paiement_modele/modele.dart';
+import '../providers/paiement_modele/repository.dart';
 import '../providers/recouvrenement/modele.dart';
 import '../providers/recouvrenement/repository.dart';
 
