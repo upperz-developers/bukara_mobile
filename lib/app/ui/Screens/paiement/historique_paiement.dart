@@ -29,9 +29,10 @@ class _Paiement extends State<Paiement> {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 20,
-            horizontal: 30,
+          padding: const EdgeInsets.only(
+            left: 20,
+            right: 20,
+            bottom: 50,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
