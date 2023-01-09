@@ -1,5 +1,3 @@
-import 'package:bukara/app/ui/screens/home/contrats%20de%20Bail/contrats.dart';
-import 'package:bukara/app/ui/screens/home/contrats%20de%20Bail/detail_contrats.dart';
 import 'package:flutter/material.dart';
 import '../../Screens/auth/check_mail.dart';
 import '../../Screens/auth/login_page.dart';
@@ -12,6 +10,8 @@ import '../../Screens/profile/change_password.dart';
 import '../../Screens/profile/profile.dart';
 import '../../screens/Recouvrement/detail_information_recouvrement.dart';
 import '../../screens/app_page.dart';
+import '../../screens/contrats de Bail/contrats.dart';
+import '../../screens/contrats de Bail/detail_contrats.dart';
 import '../../screens/home/home_page.dart';
 import '../../screens/home/suite/deatil_page.dart';
 import '../../screens/locataire/detail_information_locataire.dart';
