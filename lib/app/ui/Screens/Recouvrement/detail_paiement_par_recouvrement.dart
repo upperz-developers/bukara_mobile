@@ -5,10 +5,10 @@ import 'package:velocity_x/velocity_x.dart';
 import '../../../providers/paiement_modele/modele.dart';
 import '../../shared/utils/widget.dart';
 
-class SuitePaiement extends StatelessWidget {
+class SuiteDetailPaiement extends StatelessWidget {
   final PayementHistoric? suitePaiement;
 
-  const SuitePaiement({
+  const SuiteDetailPaiement({
     Key? key,
     this.suitePaiement,
   }) : super(key: key);
@@ -26,7 +26,10 @@ class SuitePaiement extends StatelessWidget {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(
             "${suitePaiement!.contratData!.labelStr} ",
-            style: const TextStyle(),
+            style: const TextStyle(
+              fontSize: 18,
+            ),
+            textAlign: TextAlign.center,
           ),
           Text(
             "${suitePaiement!.contratData!.rentalContrat!.landlord!.name} ${suitePaiement!.contratData!.rentalContrat!.landlord!.lastname!}",
@@ -36,6 +39,7 @@ class SuitePaiement extends StatelessWidget {
           Text(
             "${suitePaiement!.amount} ${suitePaiement!.currenty}",
             style: const TextStyle(
+              fontSize: 18,
               fontWeight: FontWeight.bold,
               color: AppColors.BLACK_COLOR,
             ),
