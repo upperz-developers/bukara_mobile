@@ -35,8 +35,6 @@ class _InfoRecouvrement extends State<InfoRecouvrement> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /// A widget that is used to display an icon.
-
             IconButton(
               onPressed: (() => Navigator.pop(context)),
               icon: const Icon(
