@@ -84,7 +84,7 @@ class _LoginPage extends State<LoginPage> {
                             children: <Widget>[
                               Align(alignment: Alignment.center, child: icon()),
                               20.heightBox,
-                              subtitle("Username"),
+                              subtitle("Adresse mail"),
                               10.heightBox,
                               ValueListenableBuilder(
                                   valueListenable: loginController.email,
@@ -98,7 +98,7 @@ class _LoginPage extends State<LoginPage> {
                                   }),
                               // go check
                               20.heightBox,
-                              subtitle("Password"),
+                              subtitle("Mot de passe"),
                               10.heightBox,
                               FormPassWordText(
                                 controller: loginController.password,
@@ -115,7 +115,7 @@ class _LoginPage extends State<LoginPage> {
                                   }),
                                   child: const Text.rich(
                                     TextSpan(
-                                        text: "Forgot password?",
+                                        text: "Mot de passe oublié ?",
                                         style: TextStyle(
                                             decoration:
                                                 TextDecoration.underline)),
@@ -126,7 +126,7 @@ class _LoginPage extends State<LoginPage> {
                               custormButton(
                                 context,
                                 color: AppColors.BLACK_COLOR,
-                                title: "Login",
+                                title: "Connexion",
                                 colorText: Colors.white,
                                 state: state,
                                 onTap: _submit,
