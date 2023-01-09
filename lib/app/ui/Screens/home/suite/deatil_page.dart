@@ -1,3 +1,4 @@
+import 'package:bukara/app/providers/recouvrenement/modele.dart';
 import 'package:bukara/app/providers/suite/modele.dart';
 import 'package:bukara/app/ui/screens/home/suite/suite_model.dart';
 import 'package:bukara/app/ui/shared/style.dart';
@@ -6,6 +7,7 @@ import 'package:velocity_x/velocity_x.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../shared/utils/widget.dart';
+import '../../Recouvrement/detail_information_recouvrement.dart';
 
 class Details extends StatefulWidget {
   static String routeName = "/details";
@@ -20,6 +22,7 @@ class _Details extends State<Details> {
   Widget build(BuildContext context) {
     SuiteModel suiteDetail =
         ModalRoute.of(context)!.settings.arguments as SuiteModel;
+
     return Scaffold(
       body: Stack(children: [
         SingleChildScrollView(
@@ -228,6 +231,7 @@ class _Details extends State<Details> {
   }
 
   Widget card1(SuiteModel suite) {
+    ContratData? suiteRecouvrement;
     return Padding(
       padding: const EdgeInsets.only(
         left: 30,
@@ -280,7 +284,8 @@ class _Details extends State<Details> {
                 20.heightBox,
                 InkWell(
                   onTap: () {
-                    //Navigator.pushNamed(context, InfoProfile.routeName),
+                    Navigator.pushNamed(context, InfoRecouvrement.routeName,
+                        arguments: suiteRecouvrement);
                   },
                   child: Row(
                     children: [
@@ -301,18 +306,12 @@ class _Details extends State<Details> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: const [
                               Text(
-                                "John doe",
+                                "Recouvrement",
                                 style: TextStyle(
                                   fontSize: 16,
                                   color: Colors.black,
                                 ),
                                 textAlign: TextAlign.center,
-                              ),
-                              Text(
-                                "entreprise",
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    color: Color.fromARGB(255, 161, 161, 161)),
                               ),
                             ]),
                       ),
