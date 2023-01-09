@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../../../providers/paiement_modele/modele.dart';
+import '../../shared/utils/utility fonction/customer_date.dart';
 import '../../shared/utils/widget.dart';
 
 class SuitePaiement extends StatelessWidget {
@@ -42,10 +43,10 @@ class SuitePaiement extends StatelessWidget {
             ),
           ),
           10.heightBox,
-          Text(
-            //dayLeft(start: start, end: end)
-            "${suitePaiement!.createdAt}",
-          ),
+          // Text(
+          //   CustomDate(
+          //     date: suitePaiement!.createdAt
+          // ),
           line(),
         ]),
       ),

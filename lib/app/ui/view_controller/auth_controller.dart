@@ -40,7 +40,7 @@ class AuthViewController {
       "lastname": lastname.text.trim(),
       "country_code": codeCountry,
       "phone_number": phonenumber.text.trim(),
-      "email": getUserInfo().userPerfsInfo!.email
+      "email": getUserInfo().userPerfsInfo!.email,
     };
 
     bloc.add(
