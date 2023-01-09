@@ -55,3 +55,5 @@ class GETTENANT implements AppEvent {}
 class GETRECOVERYINFO implements AppEvent {}
 
 class GETCONTRATINFO implements AppEvent {}
+
+class GETPAYEMENT implements AppEvent {}

@@ -7,6 +7,8 @@ import 'package:bukara/app/providers/user/repository.dart';
 import 'package:bukara/app/services/prefs/app_prefs.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../providers/paiement/modele.dart';
+import '../providers/paiement/repository.dart';
 import '../providers/recouvrenement/modele.dart';
 import '../providers/recouvrenement/repository.dart';
 
@@ -177,6 +179,21 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         emit(ERROR(
           dueTo: e.toString(),
         ));
+      }
+    });
+
+    on<GETPAYEMENT>((event, emit) async {
+      emit(const LOADING());
+
+      try {
+        // AppBloc().add(GETENTERPRISE());
+        var response = await getPayement();
+        ResultHistoricPaiements resultPayement =
+            ResultHistoricPaiements.fromJson(response.data);
+        List<PayementHistoric> payements = resultPayement.data!.payments!;
+        emit(SUCCESS(value: payements));
+      } on Exception catch (e) {
+        emit(ERROR(dueTo: e.toString()));
       }
     });
   }
