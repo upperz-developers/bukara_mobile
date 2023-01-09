@@ -191,6 +191,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         ResultHistoricPaiements resultPayement =
             ResultHistoricPaiements.fromJson(response.data);
         List<PayementHistoric> payements = resultPayement.data!.payments!;
+        print(resultPayement.status);
         emit(SUCCESS(value: payements));
       } on Exception catch (e) {
         emit(ERROR(dueTo: e.toString()));

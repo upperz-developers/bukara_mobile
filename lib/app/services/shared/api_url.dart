@@ -15,6 +15,5 @@ class APIURL {
   static const String GETRECOVERYINFO = "$BASEURL/recoveries";
   static const String EDITERUSER = "$BASEURL/users";
   static const String GETCONTRATINFO = "$BASEURL/rental-contrats";
-
-  static const String GETPAYEMENT = "$BASEURL/payements";
+  static const String GETPAYEMENT = "$BASEURL/payments";
 }

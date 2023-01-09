@@ -55,7 +55,7 @@ class _Paiement extends State<Paiement> {
                             ])
                           : Column(
                               children: List.generate(
-                                3,
+                                1,
                                 (index) => const Center(
                                   child: Text("paiement loading"),
                                 ),
