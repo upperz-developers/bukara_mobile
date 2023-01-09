@@ -5,3 +5,6 @@ import 'package:dio/dio.dart';
 Future<Response> getRecoveryInfo() async => await httpGetWithToken(
       endPoint: APIURL.GETRECOVERYINFO,
     );
+Future<Response> getContratInfo() async => await httpGetWithToken(
+      endPoint: APIURL.GETCONTRATINFO,
+    );

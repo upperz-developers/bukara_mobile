@@ -166,5 +166,18 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         ));
       }
     });
+    on<GETCONTRATINFO>((event, emit) async {
+      emit(const LOADING());
+      try {
+        var response = await getContratInfo();
+        ResultRecovery contrats = ResultRecovery.fromJson(response.data);
+        List<ContratData> contratData = contrats.data!.contratData!;
+        emit(SUCCESS(value: contratData));
+      } on Exception catch (e) {
+        emit(ERROR(
+          dueTo: e.toString(),
+        ));
+      }
+    });
   }
 }
