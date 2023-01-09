@@ -1,10 +1,14 @@
+import 'package:bukara/app/providers/recouvrenement/modele.dart';
+import 'package:bukara/app/ui/screens/home/contrats%20de%20Bail/detail_contrats.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class SuiteContrats extends StatelessWidget {
+  final RentalContrat? suiteContrats;
   const SuiteContrats({
     super.key,
+    this.suiteContrats,
   });
 
   @override
@@ -14,8 +18,8 @@ class SuiteContrats extends StatelessWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(10),
         onTap: () {
-          //Navigator.pushNamed(context, InfoRecouvrement.routeName,
-          //arguments: suiteRecouvrement);
+          Navigator.pushNamed(context, DetailContrat.routeName,
+              arguments: suiteContrats);
         },
         child: Container(
           padding: const EdgeInsets.only(
@@ -32,14 +36,14 @@ class SuiteContrats extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text.rich(
+              Text.rich(
                 TextSpan(
-                  text: "370",
-                  style: TextStyle(
+                  text: "${suiteContrats!.amount}",
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
                   ),
-                  children: [
+                  children: const [
                     TextSpan(
                       text: "\$/mois",
                       style: TextStyle(
@@ -58,13 +62,13 @@ class SuiteContrats extends StatelessWidget {
                 ),
               ),
               10.heightBox,
-              const Text(
-                "Appartement de Lux",
+              Text(
+                "${suiteContrats!.appartement}",
               ),
               15.heightBox,
-              const Text(
-                "John Doe",
-                style: TextStyle(
+              Text(
+                "${suiteContrats!.landlord!.name} ${suiteContrats!.landlord!.lastname}",
+                style: const TextStyle(
                   color: AppColors.SECOND_TEXT_COLOR,
                   fontSize: 14,
                 ),
