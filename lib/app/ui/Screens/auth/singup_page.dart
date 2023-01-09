@@ -110,7 +110,7 @@ class _SingUpPage extends State<SingUpPage> {
                                 submitted: singupSubmitted,
                               ),
                               20.heightBox,
-                              subtitle("Password"),
+                              subtitle("Mots de passe"),
                               10.heightBox,
                               FormPassWordText(
                                 controller: singupController.password,
