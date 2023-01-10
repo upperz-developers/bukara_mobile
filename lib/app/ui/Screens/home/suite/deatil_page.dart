@@ -284,8 +284,8 @@ class _Details extends State<Details> {
                 20.heightBox,
                 InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, InfoRecouvrement.routeName,
-                        arguments: suiteRecouvrement);
+                    // Navigator.pushNamed(context, InfoRecouvrement.routeName,
+                    //     arguments: suiteRecouvrement);
                   },
                   child: Row(
                     children: [
