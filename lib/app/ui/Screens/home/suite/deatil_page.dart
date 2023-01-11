@@ -1,4 +1,3 @@
-import 'package:bukara/app/providers/recouvrenement/modele.dart';
 import 'package:bukara/app/providers/suite/modele.dart';
 import 'package:bukara/app/ui/screens/home/suite/suite_model.dart';
 import 'package:bukara/app/ui/shared/style.dart';
@@ -7,7 +6,6 @@ import 'package:velocity_x/velocity_x.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../shared/utils/widget.dart';
-import '../../Recouvrement/detail_information_recouvrement.dart';
 
 class Details extends StatefulWidget {
   static String routeName = "/details";
@@ -231,7 +229,6 @@ class _Details extends State<Details> {
   }
 
   Widget card1(SuiteModel suite) {
-    ContratData? suiteRecouvrement;
     return Padding(
       padding: const EdgeInsets.only(
         left: 30,

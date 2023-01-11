@@ -8,8 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../contrats de Bail/contrats.dart';
-
 class Profile extends StatefulWidget {
   static String routeName = "/infoprofile";
   const Profile({Key? key}) : super(key: key);
@@ -101,8 +99,8 @@ class _Profile extends State<Profile> {
                             line(),
                             profileActions(
                               title: "contrat de bail",
-                              onTap: () => Navigator.pushNamed(
-                                  context, Contrat.routeName),
+                              // onTap: () => Navigator.pushNamed(
+                              //     context, Contrat.routeName),
                             ),
                             profileActions(
                               title: "Appropos de l'application",
@@ -127,12 +125,10 @@ class _Profile extends State<Profile> {
       child: Container(
         width: MediaQuery.of(context).size.width,
         padding: const EdgeInsets.symmetric(vertical: 15),
-        child: Expanded(
-          child: Text(
-            title!,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
+        child: Text(
+          title!,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),

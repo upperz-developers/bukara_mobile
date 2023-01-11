@@ -14,14 +14,15 @@ class SuitePaiement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: BorderRadius.circular(10),
-      onTap: () {
-        /// Navigating to a new page.
-        // Navigator.pushNamed(context, InfoLocataire.routeName,
-        //     arguments: suiteNotification);
-      },
-      child: Expanded(
+    return Padding(
+      padding: const EdgeInsets.only(top: 15),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(10),
+        onTap: () {
+          /// Navigating to a new page.
+          // Navigator.pushNamed(context, InfoLocataire.routeName,
+          //     arguments: suiteNotification);
+        },
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(
             "${suitePaiement!.contratData!.labelStr} ",

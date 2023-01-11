@@ -1,6 +1,8 @@
 import 'package:bukara/app/ui/screens/paiement/suite_paiement.dart';
+import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:velocity_x/velocity_x.dart';
 import '../../../controller/app_bloc.dart';
 import '../../../controller/app_event.dart';
 import '../../../controller/app_state.dart';
@@ -57,8 +59,23 @@ class _Paiement extends State<Paiement> {
                           : Column(
                               children: List.generate(
                                 1,
-                                (index) => const Center(
-                                  child: Text("paiement loading"),
+                                (index) => Padding(
+                                  padding: const EdgeInsets.all(50),
+                                  child: Center(
+                                    child: Row(
+                                      children: [
+                                        const SizedBox(
+                                          height: 10,
+                                          width: 10,
+                                          child: CircularProgressIndicator(
+                                            color: AppColors.BLACK_COLOR,
+                                          ),
+                                        ),
+                                        10.widthBox,
+                                        const Text("chargement..."),
+                                      ],
+                                    ),
+                                  ),
                                 ),
                               ),
                             );

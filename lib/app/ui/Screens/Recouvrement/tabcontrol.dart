@@ -30,6 +30,7 @@ class _TopTabBarState extends State<TopTabBar>
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           TabBar(
               isScrollable: true,

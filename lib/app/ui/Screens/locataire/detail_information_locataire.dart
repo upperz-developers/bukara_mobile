@@ -1,4 +1,3 @@
-import 'package:bukara/app/ui/screens/home/suite/historique_page.dart';
 import 'package:flutter/material.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -59,8 +58,8 @@ class _InfoLocataire extends State<InfoLocataire> {
                     ),
                     15.heightBox,
                     InkWell(
-                      onTap: (() =>
-                          Navigator.pushNamed(context, Historique.routeName)),
+                      // onTap: (() =>
+                      //     Navigator.pushNamed(context, Historique.routeName)),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 15),
                         child: Row(
@@ -72,7 +71,7 @@ class _InfoLocataire extends State<InfoLocataire> {
                             15.widthBox,
                             const Expanded(
                               child: Text(
-                                "Historic of paiement locataion",
+                                "Historique de paiement",
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.normal,
