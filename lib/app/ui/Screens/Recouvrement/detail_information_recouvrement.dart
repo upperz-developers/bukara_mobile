@@ -1,3 +1,4 @@
+import 'package:bukara/app/ui/screens/Recouvrement/detail_paiement_par_recouvrement.dart';
 import 'package:flutter/material.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -149,27 +150,34 @@ class _InfoRecouvrement extends State<InfoRecouvrement> {
                       ],
                     ),
                     30.heightBox,
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          Iconsax.activity,
-                        ),
-                        15.widthBox,
-                        const Expanded(
-                          child: Text(
-                            "Historic of paiement pour ce recouvrement",
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.normal,
-                                color: Colors.black),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(
+                            context, RecouvrementDetailPaiement.routeName,
+                            arguments: contratData);
+                      },
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Icon(
+                            Iconsax.activity,
                           ),
-                        ),
-                        15.widthBox,
-                        const Icon(
-                          Iconsax.arrow_right_3,
-                        ),
-                      ],
+                          15.widthBox,
+                          const Expanded(
+                            child: Text(
+                              "Historic of paiement pour ce recouvrement",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.normal,
+                                  color: Colors.black),
+                            ),
+                          ),
+                          15.widthBox,
+                          const Icon(
+                            Iconsax.arrow_right_3,
+                          ),
+                        ],
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(

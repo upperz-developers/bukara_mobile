@@ -4,7 +4,6 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../providers/paiement_modele/modele.dart';
-import '../../shared/utils/utility fonction/utility.dart';
 import '../../shared/utils/widget.dart';
 
 class DetailPaiement extends StatefulWidget {
