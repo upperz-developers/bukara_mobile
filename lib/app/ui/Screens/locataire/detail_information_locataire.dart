@@ -70,8 +70,11 @@ class _InfoLocataire extends State<InfoLocataire> {
                     ),
                     15.heightBox,
                     InkWell(
-                      // onTap: (() =>
-                      //     Navigator.pushNamed(context, Historique.routeName)),
+                      onTap: () {
+                        // Navigator.pushNamed(
+                        //     context, DetailPaiementLocataire.routeName,
+                        //     arguments: suiteDetailLocataire);
+                      },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 15),
                         child: Row(
@@ -83,7 +86,7 @@ class _InfoLocataire extends State<InfoLocataire> {
                             15.widthBox,
                             const Expanded(
                               child: Text(
-                                "Historique de paiement",
+                                "Historique de paiement locataire",
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.normal,

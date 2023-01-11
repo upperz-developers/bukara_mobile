@@ -1,4 +1,5 @@
 import 'package:bukara/app/ui/screens/Recouvrement/detail_paiement_par_recouvrement.dart';
+import 'package:bukara/app/ui/screens/locataire/detail_paiement_par_locataire.dart';
 import 'package:bukara/app/ui/screens/paiement/detail_paiement.dart';
 import 'package:flutter/material.dart';
 import '../../Screens/auth/check_mail.dart';
@@ -40,4 +41,6 @@ Map<String, Widget Function(BuildContext)> routes = {
   DetailPaiement.routeName: (context) => const DetailPaiement(),
   RecouvrementDetailPaiement.routeName: (context) =>
       const RecouvrementDetailPaiement(),
+  DetailPaiementLocataire.routeName: (context) =>
+      const DetailPaiementLocataire()
 };
