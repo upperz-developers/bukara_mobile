@@ -27,8 +27,10 @@ class _SplashScreenState extends State<SplashScreen> {
         Navigator.pushReplacementNamed(context, LoginPage.routeName);
         return;
       }
+      if (getUserInfo().userPerfsInfo != null) {
+        AppPref.showUserPerf.value = getUserInfo().userPerfsInfo!;
+      }
 
-      AppPref.showUserPerf.value = getUserInfo().userPerfsInfo!;
       Navigator.pushReplacementNamed(context, AppPage.routeName);
     });
   }

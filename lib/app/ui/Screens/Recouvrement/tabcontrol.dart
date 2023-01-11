@@ -3,7 +3,6 @@ import 'package:bukara/app/ui/screens/Recouvrement/recouvrement.dart';
 import 'package:flutter/material.dart';
 
 import '../../shared/style.dart';
-import '../home/contrats de Bail/detail_contrats.dart';
 
 class TopTabBar extends StatefulWidget {
   const TopTabBar({Key? key}) : super(key: key);

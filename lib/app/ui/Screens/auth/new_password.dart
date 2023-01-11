@@ -151,20 +151,18 @@ class _Newpassword extends State<Newpassword> {
                         keyboardType: TextInputType.text,
                       ),
                     ),
+                    30.heightBox,
+                    custormButton(
+                      context,
+                      color: AppColors.BLACK_COLOR,
+                      title: "Creation",
+                      colorText: Colors.white,
+                      onTap: () {
+                        Navigator.pushNamed(context, LoginPage.routeName);
+                      },
+                    ),
                   ],
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
-              child: custormButton(
-                context,
-                color: AppColors.BLACK_COLOR,
-                title: "Creation",
-                colorText: Colors.white,
-                onTap: () {
-                  Navigator.pushNamed(context, LoginPage.routeName);
-                },
               ),
             ),
           ],
