@@ -76,7 +76,7 @@ class _Newpassword extends State<Newpassword> {
                           TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                     ),
                     20.heightBox,
-                    subtitle("Password"),
+                    subtitle("Mot de passe "),
                     10.heightBox,
                     Container(
                       padding: const EdgeInsets.only(left: 10),
@@ -114,7 +114,7 @@ class _Newpassword extends State<Newpassword> {
                       ),
                     ),
                     20.heightBox,
-                    subtitle("Confirme your Password"),
+                    subtitle("Confirmez votre mot de passe"),
                     10.heightBox,
                     Container(
                       padding: const EdgeInsets.only(left: 10),

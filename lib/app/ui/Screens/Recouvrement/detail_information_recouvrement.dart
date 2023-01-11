@@ -1,10 +1,11 @@
+import 'package:bukara/app/ui/screens/Recouvrement/detail_paiement_par_recouvrement.dart';
+import 'package:bukara/app/ui/shared/utils/utility_fonction/utility.dart';
 import 'package:flutter/material.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../providers/recouvrenement/modele.dart';
-import '../../shared/utils/utility fonction/utility.dart';
 import '../../shared/utils/widget.dart';
 
 class InfoRecouvrement extends StatefulWidget {
@@ -35,14 +36,24 @@ class _InfoRecouvrement extends State<InfoRecouvrement> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /// A widget that is used to display an icon.
-
-            IconButton(
-              onPressed: (() => Navigator.pop(context)),
-              icon: const Icon(
-                Iconsax.arrow_left,
-              ),
-              color: const Color.fromARGB(169, 32, 32, 32),
+            Row(
+              children: [
+                IconButton(
+                  onPressed: (() => Navigator.pop(context)),
+                  icon: const Icon(
+                    Iconsax.arrow_left,
+                  ),
+                  color: const Color.fromARGB(169, 32, 32, 32),
+                ),
+                const Expanded(
+                  child: Text(
+                    "Detail recouvrement",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                52.widthBox,
+              ],
             ),
             Expanded(
               child: SingleChildScrollView(
@@ -139,27 +150,35 @@ class _InfoRecouvrement extends State<InfoRecouvrement> {
                       ],
                     ),
                     30.heightBox,
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          Iconsax.activity,
-                        ),
-                        15.widthBox,
-                        const Expanded(
-                          child: Text(
-                            "Historic of paiement pour ce recouvrement",
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.normal,
-                                color: Colors.black),
+                    InkWell(
+                      onTap: () {
+                        selectedRecoveryId = contratData.id;
+                        Navigator.pushNamed(
+                            context, RecouvrementDetailPaiement.routeName,
+                            arguments: contratData);
+                      },
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Icon(
+                            Iconsax.activity,
                           ),
-                        ),
-                        15.widthBox,
-                        const Icon(
-                          Iconsax.arrow_right_3,
-                        ),
-                      ],
+                          15.widthBox,
+                          const Expanded(
+                            child: Text(
+                              "Historic de paiement",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.normal,
+                                  color: Colors.black),
+                            ),
+                          ),
+                          15.widthBox,
+                          const Icon(
+                            Iconsax.arrow_right_3,
+                          ),
+                        ],
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(

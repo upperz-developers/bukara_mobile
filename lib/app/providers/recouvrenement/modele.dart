@@ -1,5 +1,7 @@
 import '../suite/modele.dart';
 
+String? selectedRecoveryId;
+
 class ResultRecovery {
   bool? status;
   Data? data;
@@ -176,5 +178,43 @@ class Landlord {
     lastname = json['lastname'];
     email = json['email'];
     profile = json['profile'];
+  }
+}
+
+class Payment {
+  String? id;
+  String? recovery;
+  String? createdBy;
+  String? type;
+  String? transactionId;
+  double? amount;
+  String? currenty;
+  bool? status;
+  String? createdAt;
+  String? updatedAt;
+
+  Payment(
+      {this.id,
+      this.recovery,
+      this.createdBy,
+      this.type,
+      this.transactionId,
+      this.amount,
+      this.currenty,
+      this.status,
+      this.createdAt,
+      this.updatedAt});
+
+  Payment.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    recovery = json['recovery'];
+    createdBy = json['created_by'];
+    type = json['type'];
+    transactionId = json['transaction_id'];
+    amount = double.tryParse(json['amount'].toString());
+    currenty = json['currenty'];
+    status = json['status'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
   }
 }

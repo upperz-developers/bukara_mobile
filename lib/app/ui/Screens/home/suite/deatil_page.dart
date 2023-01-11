@@ -2,10 +2,9 @@ import 'package:bukara/app/providers/suite/modele.dart';
 import 'package:bukara/app/ui/screens/home/suite/suite_model.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter/material.dart';
-import 'package:table_calendar/table_calendar.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:iconsax/iconsax.dart';
-
+import '../../../screens/Recouvrement/detail_information_recouvrement.dart';
 import '../../../shared/utils/widget.dart';
 
 class Details extends StatefulWidget {
@@ -17,17 +16,11 @@ class Details extends StatefulWidget {
 }
 
 class _Details extends State<Details> {
-  DateTime today = DateTime.now();
-  void _onDaySelected(DateTime day, DateTime focusedDat) {
-    setState(() {
-      today = day;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     SuiteModel suiteDetail =
         ModalRoute.of(context)!.settings.arguments as SuiteModel;
+
     return Scaffold(
       body: Stack(children: [
         SingleChildScrollView(
@@ -63,7 +56,6 @@ class _Details extends State<Details> {
                   ],
                 ),
               ),
-              if (suiteDetail.status!) bookingInfo(),
             ],
           ),
         ),
@@ -94,85 +86,6 @@ class _Details extends State<Details> {
           ),
         ),
       ]),
-    );
-  }
-
-  Widget bookingInfo() {
-    return Column(
-      children: [
-        line(),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                "Booking date",
-                style: TextStyle(
-                  fontSize: 16,
-                ),
-              ),
-              10.heightBox,
-              const Text(
-                "10 days left until end",
-                style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 0, 0, 0)),
-                textAlign: TextAlign.start,
-              ),
-              5.heightBox,
-              Text(
-                // ignore: prefer_interpolation_to_compose_strings
-                "" +
-                    today.toString().split(" ")[0] +
-                    " - " +
-                    today.toString().split(" ")[0],
-                //"10 dec - 10 mar",
-                style: const TextStyle(
-                    fontWeight: FontWeight.normal,
-                    color: Color.fromARGB(255, 117, 117, 117)),
-                textAlign: TextAlign.start,
-              ),
-              15.heightBox,
-              TableCalendar(
-                rowHeight: 53,
-                headerStyle: const HeaderStyle(
-                  formatButtonVisible: false,
-                  headerPadding: EdgeInsets.only(
-                    bottom: 10,
-                  ),
-                  titleCentered: true,
-                  leftChevronIcon: Icon(
-                    Iconsax.arrow_left_2,
-                    color: Colors.black,
-                  ),
-                  rightChevronIcon: Icon(
-                    Iconsax.arrow_right_3,
-                    color: Colors.black,
-                  ),
-                  titleTextStyle:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                ),
-                calendarStyle: const CalendarStyle(
-                  selectedDecoration: BoxDecoration(
-                      color: Color.fromARGB(255, 0, 0, 0),
-                      shape: BoxShape.circle),
-                  todayDecoration: BoxDecoration(
-                      color: Color.fromARGB(255, 0, 0, 0),
-                      shape: BoxShape.circle),
-                ),
-                availableGestures: AvailableGestures.all,
-                selectedDayPredicate: (day) => isSameDay(day, today),
-                focusedDay: today,
-                firstDay: DateTime.utc(2010, 10, 16),
-                lastDay: DateTime.utc(2050, 3, 14),
-                onDaySelected: _onDaySelected,
-              ),
-            ],
-          ),
-        ),
-      ],
     );
   }
 
@@ -368,39 +281,22 @@ class _Details extends State<Details> {
                 20.heightBox,
                 InkWell(
                   onTap: () {
-                    //Navigator.pushNamed(context, InfoProfile.routeName),
+                    Navigator.pushNamed(context, InfoRecouvrement.routeName,
+                        arguments: suite);
                   },
                   child: Row(
                     children: [
-                      Container(
-                        padding: const EdgeInsets.all(10),
-                        decoration: const BoxDecoration(
-                          color: AppColors.DISABLE_COLOR,
-                          shape: BoxShape.circle,
-                        ),
-                        child: const Icon(
-                          Iconsax.user,
-                          size: 20,
-                        ),
-                      ),
-                      10.widthBox,
                       Expanded(
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: const [
                               Text(
-                                "John doe",
+                                "Recouvrement",
                                 style: TextStyle(
                                   fontSize: 16,
                                   color: Colors.black,
                                 ),
                                 textAlign: TextAlign.center,
-                              ),
-                              Text(
-                                "entreprise",
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    color: Color.fromARGB(255, 161, 161, 161)),
                               ),
                             ]),
                       ),

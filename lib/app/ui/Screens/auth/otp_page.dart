@@ -53,7 +53,7 @@ class _Otp extends State<Otp> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     const Text(
-                      "Checking your email",
+                      "Vérification de votre e-mail",
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -61,7 +61,7 @@ class _Otp extends State<Otp> {
                     ),
                     10.heightBox,
                     const Text(
-                      "We will send you a code in your mailbox please enter it in the field",
+                      "Nous vous enverrons un code dans votre boite mail merci de le saisir dans le champ",
                     ),
                     25.heightBox,
                     subtitle("Enter your code"),

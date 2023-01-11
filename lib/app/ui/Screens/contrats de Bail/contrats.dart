@@ -1,10 +1,12 @@
-import 'package:bukara/app/ui/screens/home/contrats%20de%20Bail/suite_contrats.dart';
+import 'package:bukara/app/controller/app_event.dart';
+import 'package:bukara/app/providers/recouvrenement/modele.dart';
+import 'package:bukara/app/ui/screens/contrats%20de%20Bail/suite_contrats.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:velocity_x/velocity_x.dart';
-import '../../../../controller/app_bloc.dart';
-import '../../../../controller/app_state.dart';
+import '../../../controller/app_bloc.dart';
+import '../../../controller/app_state.dart';
 
 class Contrat extends StatefulWidget {
   static String routeName = "/contrat";
@@ -18,10 +20,10 @@ class _Contrat extends State<Contrat> {
   AppBloc? bloc;
   @override
   void initState() {
-    bloc = AppBloc();
-    // ..add(
-    //   GETTENANT(),
-    // );
+    bloc = AppBloc()
+      ..add(
+        GETCONTRAT(),
+      );
     super.initState();
   }
 
@@ -45,7 +47,7 @@ class _Contrat extends State<Contrat> {
                 ),
                 const Expanded(
                   child: Text(
-                    "Contrat de bail",
+                    "Contrats",
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
@@ -65,14 +67,22 @@ class _Contrat extends State<Contrat> {
                 child: BlocBuilder<AppBloc, AppState>(
                   bloc: bloc,
                   builder: (context, state) {
-                    return Column(
-                      children: [
-                        ...List.generate(
-                          7,
-                          (index) => const SuiteContrats(),
-                        ),
-                      ],
-                    );
+                    List<RentalContrat> listecontrats =
+                        state is SUCCESS ? state.value : [];
+                    return state is SUCCESS
+                        ? Column(
+                            children: [
+                              ...List.generate(
+                                listecontrats.length,
+                                (index) => SuiteContrats(
+                                  suiteContrats: listecontrats[index],
+                                ),
+                              ),
+                            ],
+                          )
+                        : const Center(
+                            child: Text("loading contrat"),
+                          );
                   },
                 ),
               ),

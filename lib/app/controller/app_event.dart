@@ -53,3 +53,9 @@ class GETSUITE implements AppEvent {}
 class GETTENANT implements AppEvent {}
 
 class GETRECOVERYINFO implements AppEvent {}
+
+class GETCONTRAT implements AppEvent {}
+
+class GETPAYEMENT implements AppEvent {}
+
+class GETPEYEMENTPERRECOVERY implements AppEvent {}

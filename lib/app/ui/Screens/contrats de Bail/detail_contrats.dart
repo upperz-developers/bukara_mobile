@@ -3,7 +3,7 @@ import 'package:bukara/app/ui/shared/style.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../shared/utils/widget.dart';
+import '../../shared/utils/widget.dart';
 
 class DetailContrat extends StatefulWidget {
   static String routeName = "/detailContrat";

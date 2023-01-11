@@ -31,6 +31,16 @@ dependencies:
   shimmer_animation: ^2.1.0+1
   country_code_picker: 2.0.2
   mask_text_input_formatter: 2.3.0
+  flutter_launcher_icons: ^0.11.0
+
+
+flutter_icons:
+
+  android: "launcher_icon"
+
+  ios: true
+
+  image_path: "assets/icons/icon.png"
 
 dev_dependencies:
   flutter_test:

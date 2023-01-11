@@ -1,7 +1,7 @@
 //import 'package:bukara/app/providers/shared/common_modele.dart';
 import 'package:bukara/app/ui/screens/Recouvrement/detail_information_recouvrement.dart';
 import 'package:bukara/app/ui/shared/style.dart';
-import 'package:bukara/app/ui/shared/utils/utility%20fonction/utility.dart';
+import 'package:bukara/app/ui/shared/utils/utility_fonction/utility.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 

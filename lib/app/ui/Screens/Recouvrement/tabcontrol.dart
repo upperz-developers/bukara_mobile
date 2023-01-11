@@ -1,8 +1,8 @@
-import 'package:bukara/app/ui/screens/Recouvrement/paiement.dart';
 import 'package:bukara/app/ui/screens/Recouvrement/recouvrement.dart';
 import 'package:flutter/material.dart';
 
 import '../../shared/style.dart';
+import '../paiement/historique_paiement.dart';
 
 class TopTabBar extends StatefulWidget {
   const TopTabBar({Key? key}) : super(key: key);
@@ -17,7 +17,7 @@ class _TopTabBarState extends State<TopTabBar>
   @override
   void initState() {
     super.initState();
-    _tabControllertop = TabController(length: 3, vsync: this);
+    _tabControllertop = TabController(length: 2, vsync: this);
   }
 
   @override
@@ -30,6 +30,7 @@ class _TopTabBarState extends State<TopTabBar>
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           TabBar(
               isScrollable: true,
@@ -40,7 +41,8 @@ class _TopTabBarState extends State<TopTabBar>
               controller: _tabControllertop,
               unselectedLabelColor: AppColors.SECOND_TEXT_COLOR,
               indicator: const UnderlineTabIndicator(
-                  borderSide: BorderSide(width: 0.0)),
+                borderSide: BorderSide(width: 0.0),
+              ),
               //indicatorColor: Colors.white,
               indicatorWeight: 5.0,
               labelColor: AppColors.BLACK_COLOR,
@@ -48,15 +50,6 @@ class _TopTabBarState extends State<TopTabBar>
                 Tab(
                   child: Text(
                     "Recouvrement",
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                Tab(
-                  child: Text(
-                    "detail",
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
@@ -79,8 +72,6 @@ class _TopTabBarState extends State<TopTabBar>
                 controller: _tabControllertop,
                 children: const [
                   Recouvrement(),
-                  Center(child: Text("deatil")),
-                  //DetailContrat(),
                   Paiement(),
                 ]),
           ),

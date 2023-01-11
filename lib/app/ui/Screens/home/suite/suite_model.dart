@@ -45,7 +45,7 @@ class Suite extends StatelessWidget {
                     children: [
                       Text.rich(
                         TextSpan(
-                          text: "Suite name",
+                          text: "${suite!.designation}",
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: AppColors.BLACK_COLOR,
@@ -64,12 +64,12 @@ class Suite extends StatelessWidget {
                       Text(
                         "(${suite!.features!.bedroom} chambres - ${suite!.features!.livingroom} salon)",
                       ),
-                      // 8.heightBox,
+                      8.heightBox,
                       if (suite!.status!)
-                        const Text(
-                          "Manager name - 10 dec - 3 mars",
+                        Text(
+                          "${suite!.description}",
                           textAlign: TextAlign.left,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: AppColors.SECOND_TEXT_COLOR,
                           ),
                         ),

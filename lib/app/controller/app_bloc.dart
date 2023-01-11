@@ -1,5 +1,7 @@
 import 'package:bukara/app/controller/app_event.dart';
 import 'package:bukara/app/controller/app_state.dart';
+import 'package:bukara/app/providers/contrat/model.dart';
+import 'package:bukara/app/providers/contrat/provider.dart';
 import 'package:bukara/app/providers/suite/modele.dart';
 import 'package:bukara/app/providers/suite/repository.dart';
 import 'package:bukara/app/providers/user/model.dart' as u;
@@ -7,6 +9,8 @@ import 'package:bukara/app/providers/user/repository.dart';
 import 'package:bukara/app/services/prefs/app_prefs.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../providers/paiement_modele/modele.dart';
+import '../providers/paiement_modele/repository.dart';
 import '../providers/recouvrenement/modele.dart';
 import '../providers/recouvrenement/repository.dart';
 
@@ -164,6 +168,48 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         emit(ERROR(
           dueTo: e.toString(),
         ));
+      }
+    });
+    on<GETCONTRAT>((event, emit) async {
+      emit(const LOADING());
+      try {
+        var response = await getContrat();
+        ContratRent contrats = ContratRent.fromJson(response.data);
+        List<Contrat> contratData = contrats.data!.contrats!;
+        emit(SUCCESS(value: contratData));
+      } on Exception catch (e) {
+        emit(ERROR(
+          dueTo: e.toString(),
+        ));
+      }
+    });
+
+    on<GETPAYEMENT>((event, emit) async {
+      emit(const LOADING());
+
+      try {
+        var response = await getPayement();
+        ResultHistoricPaiements resultPayement =
+            ResultHistoricPaiements.fromJson(response.data);
+        List<PayementHistoric> payements = resultPayement.data!.payments!;
+        emit(SUCCESS(value: payements));
+      } on Exception catch (e) {
+        emit(ERROR(dueTo: e.toString()));
+      }
+    });
+    on<GETPEYEMENTPERRECOVERY>((event, emit) async {
+      emit(const LOADING());
+
+      try {
+        var response =
+            await getPayementPerRecovery(recoverId: selectedRecoveryId);
+
+        ResultHistoricPaiements resultPayement =
+            ResultHistoricPaiements.fromJson(response.data);
+        List<PayementHistoric> payements = resultPayement.data!.payments!;
+        emit(SUCCESS(value: payements));
+      } on Exception catch (e) {
+        emit(ERROR(dueTo: e.toString()));
       }
     });
   }

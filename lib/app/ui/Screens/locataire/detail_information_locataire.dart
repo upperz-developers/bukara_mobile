@@ -1,4 +1,3 @@
-import 'package:bukara/app/ui/screens/home/suite/historique_page.dart';
 import 'package:flutter/material.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -27,12 +26,24 @@ class _InfoLocataire extends State<InfoLocataire> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            IconButton(
-              onPressed: (() => Navigator.pop(context)),
-              icon: const Icon(
-                Iconsax.arrow_left,
-              ),
-              color: const Color.fromARGB(169, 32, 32, 32),
+            Row(
+              children: [
+                IconButton(
+                  onPressed: (() => Navigator.pop(context)),
+                  icon: const Icon(
+                    Iconsax.arrow_left,
+                  ),
+                  color: const Color.fromARGB(169, 32, 32, 32),
+                ),
+                const Expanded(
+                  child: Text(
+                    "Detail locataire",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                52.widthBox,
+              ],
             ),
             Expanded(
               child: SingleChildScrollView(
@@ -59,8 +70,11 @@ class _InfoLocataire extends State<InfoLocataire> {
                     ),
                     15.heightBox,
                     InkWell(
-                      onTap: (() =>
-                          Navigator.pushNamed(context, Historique.routeName)),
+                      onTap: () {
+                        // Navigator.pushNamed(
+                        //     context, DetailPaiementLocataire.routeName,
+                        //     arguments: suiteDetailLocataire);
+                      },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 15),
                         child: Row(
@@ -72,7 +86,7 @@ class _InfoLocataire extends State<InfoLocataire> {
                             15.widthBox,
                             const Expanded(
                               child: Text(
-                                "Historic of paiement locataion",
+                                "Historique de paiement locataire",
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.normal,

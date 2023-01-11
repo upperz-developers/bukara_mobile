@@ -52,7 +52,7 @@ class _Checkmail extends State<Checkmail> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     const Text(
-                      "Account Recovery",
+                      "Récupération du compte",
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -60,7 +60,7 @@ class _Checkmail extends State<Checkmail> {
                     ),
                     10.heightBox,
                     const Text(
-                      "To retrieve your data, please enter your email address.",
+                      "Pour récupérer vos données, veuillez saisir votre adresse e-mail.",
                     ),
                     25.heightBox,
                     subtitle("Adresse Mail"),
