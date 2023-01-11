@@ -286,18 +286,6 @@ class _Details extends State<Details> {
                   },
                   child: Row(
                     children: [
-                      Container(
-                        padding: const EdgeInsets.all(10),
-                        decoration: const BoxDecoration(
-                          color: AppColors.DISABLE_COLOR,
-                          shape: BoxShape.circle,
-                        ),
-                        child: const Icon(
-                          Iconsax.user,
-                          size: 20,
-                        ),
-                      ),
-                      10.widthBox,
                       Expanded(
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
