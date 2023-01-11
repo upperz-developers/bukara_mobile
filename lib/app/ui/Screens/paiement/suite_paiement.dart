@@ -1,3 +1,4 @@
+import 'package:bukara/app/ui/screens/paiement/detail_paiement.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -20,8 +21,8 @@ class SuitePaiement extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         onTap: () {
           /// Navigating to a new page.
-          // Navigator.pushNamed(context, InfoLocataire.routeName,
-          //     arguments: suiteNotification);
+          Navigator.pushNamed(context, DetailPaiement.routeName,
+              arguments: suitePaiement);
         },
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(

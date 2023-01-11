@@ -1,3 +1,4 @@
+import 'package:bukara/app/ui/screens/paiement/detail_paiement.dart';
 import 'package:flutter/material.dart';
 import '../../Screens/auth/check_mail.dart';
 import '../../Screens/auth/login_page.dart';
@@ -35,4 +36,5 @@ Map<String, Widget Function(BuildContext)> routes = {
   EditerUser.routeName: (context) => const EditerUser(),
   Contrat.routeName: (context) => const Contrat(),
   DetailContrat.routeName: (context) => const DetailContrat(),
+  DetailPaiement.routeName: (context) => const DetailPaiement(),
 };
