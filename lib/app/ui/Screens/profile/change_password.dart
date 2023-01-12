@@ -1,5 +1,6 @@
 import 'package:bukara/app/controller/app_event.dart';
 import 'package:bukara/app/controller/app_state.dart';
+import 'package:bukara/app/services/prefs/app_prefs.dart';
 import 'package:bukara/app/ui/Screens/auth/login_page.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter/material.dart';
@@ -54,6 +55,7 @@ class _ChangePassword extends State<ChangePassword> {
           bloc: bloc,
           listener: (context, state) {
             if (state is SUCCESS) {
+              AppPref.prefs!.clear();
               Navigator.pushNamedAndRemoveUntil(
                   context, LoginPage.routeName, (route) => false);
             }
