@@ -55,15 +55,20 @@ class _Profile extends State<Profile> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             if (user.phoneNumber != null && user.email != null)
-                              5.heightBox,
-                            Text(
-                              "${user.countryCode} (0) ${user.phoneNumber}",
-                              style: const TextStyle(
-                                // fontSize: 16,
-                                fontWeight: FontWeight.normal,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  10.heightBox,
+                                  Text(
+                                    "${user.countryCode} (0) ${user.phoneNumber}",
+                                    style: const TextStyle(
+                                      // fontSize: 16,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                            5.heightBox,
+                            10.heightBox,
                             Text(
                               "${user.email}",
                               style: const TextStyle(
@@ -71,7 +76,7 @@ class _Profile extends State<Profile> {
                                 color: AppColors.BLACK_COLOR,
                               ),
                             ),
-                            20.heightBox,
+                            line(),
                             profileActions(
                               title: (user.email == null ||
                                       user.lastname == null ||

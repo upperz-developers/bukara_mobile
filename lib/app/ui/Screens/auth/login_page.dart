@@ -66,7 +66,7 @@ class _LoginPage extends State<LoginPage> {
             if (state is SUCCESS) {
               Navigator.pushReplacementNamed(context, AppPage.routeName);
             } else if (state is ERROR) {
-              const Erreur();
+              errorModel(context, dueTo: state.dueTo!);
             }
           }),
           child: BlocBuilder<AppBloc, AppState>(

@@ -1,10 +1,12 @@
 import 'package:bukara/app/controller/app_bloc.dart';
 import 'package:bukara/app/controller/app_state.dart';
+import 'package:bukara/app/ui/screens/pop_up/pop_up_erreur.dart';
 import 'package:bukara/app/ui/view_controller/auth_controller.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../../shared/style.dart';
 import '../../shared/utils/widget.dart';
@@ -40,6 +42,8 @@ class _EditerUser extends State<EditerUser> {
           listener: (context, state) {
             if (state is SUCCESS) {
               Navigator.pop(context);
+            } else if (state is ERROR) {
+              errorModel(context, dueTo: state.dueTo!);
             }
           },
           child: BlocBuilder<AppBloc, AppState>(
@@ -89,6 +93,14 @@ class _EditerUser extends State<EditerUser> {
                                   ),
                                 ),
                                 child: TextFormField(
+                                  inputFormatters: [
+                                    MaskTextInputFormatter(
+                                      mask: '### ### ###',
+                                      filter: {
+                                        "#": RegExp(r'\d'),
+                                      },
+                                    )
+                                  ],
                                   controller: editerUserController.phonenumber,
                                   keyboardType: TextInputType.phone,
                                   textInputAction: TextInputAction.next,
