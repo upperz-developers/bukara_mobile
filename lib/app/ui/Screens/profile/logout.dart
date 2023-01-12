@@ -38,9 +38,7 @@ class _LogoutState extends State<Logout> {
       bloc: bloc,
       listener: (context, state) {
         if (state is SUCCESS) {
-          if (getUserInfo().token!.token!.isNotEmpty) {
-            AppPref.prefs!.clear();
-          }
+          AppPref.prefs!.clear();
 
           Navigator.pushNamedAndRemoveUntil(
               context, LoginPage.routeName, (route) => false);

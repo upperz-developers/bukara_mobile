@@ -4,8 +4,6 @@ import 'package:bukara/app/controller/app_state.dart';
 import 'package:bukara/app/ui/Screens/auth/check_mail.dart';
 import 'package:bukara/app/ui/Screens/auth/singup_page.dart';
 import 'package:bukara/app/ui/screens/app_page.dart';
-import 'package:bukara/app/ui/screens/pop_up/pop_up_erreur.dart';
-import 'package:bukara/app/ui/view_controller/auth_controller.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,33 +25,38 @@ class _LoginPage extends State<LoginPage> {
 
   AppBloc? bloc;
 
+  ValueNotifier<TextEditingController> email =
+      ValueNotifier(TextEditingController());
+  TextEditingController password = TextEditingController();
   @override
   void initState() {
     bloc = AppBloc();
-    loginController.init();
+
     _signup = TapGestureRecognizer()
       ..onTap = () {
         Navigator.pushNamed(context, SingUpPage.routeName);
-        loginController.init();
       };
     super.initState();
   }
 
   bool loginSubmitted = false;
 
-  AuthViewController loginController = AuthViewController();
+  bool get loginValidate =>
+      email.value.text.isNotEmpty && password.text.isNotEmpty;
+
   void _submit() {
+    if (loginValidate) {
+      bloc!.add(
+        LOGIN(
+          email: email.value.text.trim(),
+          password: password.text.trim(),
+        ),
+      );
+      return;
+    }
     setState(() {
       loginSubmitted = true;
     });
-    if (loginController.loginValidate()) {
-      bloc!.add(
-        LOGIN(
-          email: loginController.email.value.text.trim(),
-          password: loginController.password.text.trim(),
-        ),
-      );
-    }
   }
 
   @override
@@ -66,7 +69,7 @@ class _LoginPage extends State<LoginPage> {
             if (state is SUCCESS) {
               Navigator.pushReplacementNamed(context, AppPage.routeName);
             } else if (state is ERROR) {
-              errorModel(context, dueTo: state.dueTo!);
+              // errorModel(context, dueTo: state.dueTo!);
             }
           }),
           child: BlocBuilder<AppBloc, AppState>(
@@ -90,7 +93,7 @@ class _LoginPage extends State<LoginPage> {
                               subtitle("Adresse mail"),
                               10.heightBox,
                               ValueListenableBuilder(
-                                  valueListenable: loginController.email,
+                                  valueListenable: email,
                                   builder: (context,
                                       TextEditingController email, child) {
                                     return FormText(
@@ -104,7 +107,7 @@ class _LoginPage extends State<LoginPage> {
                               subtitle("Mot de passe"),
                               10.heightBox,
                               FormPassWordText(
-                                controller: loginController.password,
+                                controller: password,
                                 hint: "Entrez votre mot de passe",
                                 submitted: loginSubmitted,
                               ),

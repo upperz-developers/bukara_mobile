@@ -7,6 +7,7 @@ class AuthViewController {
   ValueNotifier<TextEditingController> email =
       ValueNotifier(TextEditingController());
   TextEditingController password = TextEditingController();
+  TextEditingController passwordLogin = TextEditingController();
   TextEditingController confirmpasssword = TextEditingController();
   TextEditingController codeapp = TextEditingController();
   TextEditingController oldpassword = TextEditingController();
@@ -29,7 +30,7 @@ class AuthViewController {
     phonenumber = TextEditingController();
   }
 
-  bool changepasswordValidation() =>
+  bool get changepasswordValidation =>
       oldpassword.value.text.isNotEmpty &&
       password.text.isNotEmpty &&
       confirmpasssword.text.isNotEmpty;
@@ -50,16 +51,9 @@ class AuthViewController {
     );
   }
 
-  bool loginValidate() =>
-      email.value.text.isNotEmpty && password.text.isNotEmpty;
-  bool singupValidate() =>
+  bool get singupValidate =>
       email.value.text.isNotEmpty &&
       password.text.isNotEmpty &&
       confirmpasssword.text.isNotEmpty &&
       codeapp.text.isNotEmpty;
-
-  AuthViewController._internal();
-  factory AuthViewController() => singletton;
-
-  static final AuthViewController singletton = AuthViewController._internal();
 }

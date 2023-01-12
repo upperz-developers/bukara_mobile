@@ -33,7 +33,7 @@ class _ChangePassword extends State<ChangePassword> {
     setState(() {
       changepasswordSubmitted = true;
     });
-    if (changepasswordController.changepasswordValidation()) {
+    if (changepasswordController.changepasswordValidation) {
       bloc!.add(
         CHANGEPASSWORD(
           oldpassword: changepasswordController.oldpassword.value.text.trim(),

@@ -38,7 +38,7 @@ class _SingUpPage extends State<SingUpPage> {
     setState(() {
       singupSubmitted = true;
     });
-    if (singupController.singupValidate()) {
+    if (singupController.singupValidate) {
       bloc!.add(
         SINGUP(
           email: singupController.email.value.text.trim(),

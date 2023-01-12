@@ -1,6 +1,5 @@
 import 'package:bukara/app/controller/app_bloc.dart';
 import 'package:bukara/app/controller/app_state.dart';
-import 'package:bukara/app/ui/screens/pop_up/pop_up_erreur.dart';
 import 'package:bukara/app/ui/view_controller/auth_controller.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +42,7 @@ class _EditerUser extends State<EditerUser> {
             if (state is SUCCESS) {
               Navigator.pop(context);
             } else if (state is ERROR) {
-              errorModel(context, dueTo: state.dueTo!);
+              // errorModel(context, dueTo: state.dueTo!);
             }
           },
           child: BlocBuilder<AppBloc, AppState>(
@@ -175,19 +174,11 @@ class _EditerUser extends State<EditerUser> {
                                 //submitted: singupSubmitted,
                               ),
                               20.heightBox,
-                              subtitle("Post nom"),
+                              subtitle("Post-nom"),
                               10.heightBox,
                               FormText(
                                 controller: editerUserController.lastname,
                                 hint: "Entrez votre Prenom",
-                                //submitted: singupSubmitted,
-                              ),
-                              20.heightBox,
-                              subtitle("Email"),
-                              10.heightBox,
-                              FormText(
-                                controller: editerUserController.email.value,
-                                hint: "Entrez votre mail",
                                 //submitted: singupSubmitted,
                               ),
                             ],
