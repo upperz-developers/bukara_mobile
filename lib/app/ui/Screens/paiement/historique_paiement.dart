@@ -1,4 +1,5 @@
 import 'package:bukara/app/ui/screens/paiement/suite_paiement.dart';
+import 'package:bukara/app/ui/screens/pop_up/bad_resquet.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -42,44 +43,57 @@ class _Paiement extends State<Paiement> {
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
               child: BlocBuilder<AppBloc, AppState>(
-                bloc: bloc,
-                builder: (context, state) {
-                  List<PayementHistoric> listepaiement =
-                      state is SUCCESS ? state.value : [];
-                  return state is SUCCESS
-                      ? Column(children: [
-                          ...List.generate(
-                            listepaiement.length,
-                            (index) => SuitePaiement(
-                              suitePaiement: listepaiement[index],
-                            ),
-                          ),
-                        ])
-                      : Column(
-                          children: List.generate(
-                            1,
-                            (index) => Padding(
-                              padding: const EdgeInsets.all(50),
-                              child: Center(
-                                child: Row(
-                                  children: [
-                                    const SizedBox(
-                                      height: 10,
-                                      width: 10,
-                                      child: CircularProgressIndicator(
-                                        color: AppColors.BLACK_COLOR,
-                                      ),
+                  bloc: bloc,
+                  builder: (context, state) {
+                    if (state is LOADING) {
+                      return Column(
+                        children: List.generate(
+                          1,
+                          (index) => Padding(
+                            padding: const EdgeInsets.all(50),
+                            child: Center(
+                              child: Row(
+                                children: [
+                                  const SizedBox(
+                                    height: 10,
+                                    width: 10,
+                                    child: CircularProgressIndicator(
+                                      color: AppColors.BLACK_COLOR,
                                     ),
-                                    10.widthBox,
-                                    const Text("chargement..."),
-                                  ],
-                                ),
+                                  ),
+                                  10.widthBox,
+                                  const Text("chargement..."),
+                                ],
                               ),
                             ),
                           ),
-                        );
-                },
-              ),
+                        ),
+                      );
+                    } else if (state is SUCCESS) {
+                      List<PayementHistoric> listepaiement =
+                          // ignore: unnecessary_type_check
+                          state is SUCCESS ? state.value : [];
+                      return Column(children: [
+                        ...List.generate(
+                          listepaiement.length,
+                          (index) => SuitePaiement(
+                            suitePaiement: listepaiement[index],
+                          ),
+                        ),
+                      ]);
+                    } else if (state is ERROR) {
+                      return NoData(
+                        message: "Aucune connexion internet",
+                        onTap: (() {
+                          bloc!.add(
+                            GETSUITE(),
+                          );
+                        }),
+                      );
+                    } else {
+                      return const SizedBox.shrink();
+                    }
+                  }),
             ),
           ),
         ],

@@ -3,7 +3,7 @@ import 'package:bukara/app/controller/app_event.dart';
 import 'package:bukara/app/controller/app_state.dart';
 import 'package:bukara/app/providers/suite/modele.dart';
 import 'package:bukara/app/ui/screens/home/suite/suite_model.dart';
-import 'package:bukara/app/ui/screens/pop_up/pop_up_bad_resquet.dart';
+import 'package:bukara/app/ui/screens/pop_up/bad_resquet.dart';
 import 'package:bukara/app/ui/shared/squelleton/suite_squelleton.dart';
 import 'package:bukara/app/ui/shared/utils/widget.dart';
 import 'package:flutter/material.dart';
@@ -95,7 +95,7 @@ class _Home extends State<Home> with SingleTickerProviderStateMixin {
                         );
                       } else if (state is ERROR) {
                         return NoData(
-                          message: state.dueTo.toString(),
+                          message: "Aucune connexion internet",
                           onTap: (() {
                             bloc.add(
                               GETSUITE(),

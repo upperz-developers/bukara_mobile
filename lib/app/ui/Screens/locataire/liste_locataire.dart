@@ -1,5 +1,6 @@
 import 'package:bukara/app/controller/app_event.dart';
 import 'package:bukara/app/ui/screens/locataire/suite_locataire.dart';
+import 'package:bukara/app/ui/screens/pop_up/bad_resquet.dart';
 import 'package:bukara/app/ui/shared/squelleton/liste_locataire_squelleton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,13 +17,12 @@ class LIsteLocataire extends StatefulWidget {
 }
 
 class _LIsteLocataireState extends State<LIsteLocataire> {
-  AppBloc? bloc;
+  AppBloc bloc = AppBloc();
   @override
   void initState() {
-    bloc = AppBloc()
-      ..add(
-        GETTENANT(),
-      );
+    bloc.add(
+      GETTENANT(),
+    );
     super.initState();
   }
 
@@ -51,31 +51,42 @@ class _LIsteLocataireState extends State<LIsteLocataire> {
                 child: SingleChildScrollView(
                   physics: const BouncingScrollPhysics(),
                   child: BlocBuilder<AppBloc, AppState>(
-                    bloc: bloc,
-                    builder: (context, state) {
-                      List<TenantModel> listeNotification =
-                          state is SUCCESS ? state.value : [];
-
-                      return state is SUCCESS
-                          ? Column(children: [
-                              ...List.generate(
-                                listeNotification.length,
-                                (index) => SuiteLocataire(
-                                  suiteNotification: listeNotification[index],
-                                ),
-                              ),
-                              30.heightBox,
-                            ])
-                          : Column(
+                      bloc: bloc,
+                      builder: (context, state) {
+                        if (state is LOADING) {
+                          return Column(
                               children: List.generate(
-                                3,
-                                (index) => const ListeLocataireSquelleton(),
+                            3,
+                            (index) => const ListeLocataireSquelleton(),
+                          ));
+                        } else if (state is SUCCESS) {
+                          List<TenantModel> listeNotification =
+                              // ignore: unnecessary_type_check
+                              state is SUCCESS ? state.value : [];
+                          return Column(children: [
+                            ...List.generate(
+                              listeNotification.length,
+                              (index) => SuiteLocataire(
+                                suiteNotification: listeNotification[index],
                               ),
-                            );
-                    },
-                  ),
+                            ),
+                            30.heightBox,
+                          ]);
+                        } else if (state is ERROR) {
+                          return NoData(
+                            message: "Aucune connexion internet",
+                            onTap: (() {
+                              bloc.add(
+                                GETTENANT(),
+                              );
+                            }),
+                          );
+                        } else {
+                          return const SizedBox.shrink();
+                        }
+                      }),
                 ),
-              ),
+              )
             ],
           ),
         ),
