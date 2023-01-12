@@ -79,7 +79,7 @@ class _ChangePassword extends State<ChangePassword> {
                           ),
                           const Expanded(
                             child: Text(
-                              "Change your Password",
+                              "Changer mots de Passe",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
@@ -95,7 +95,7 @@ class _ChangePassword extends State<ChangePassword> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              subtitle("your old password"),
+                              subtitle("Entrez l'ancien mot de passe"),
                               10.heightBox,
                               FormPassWordText(
                                 controller:
