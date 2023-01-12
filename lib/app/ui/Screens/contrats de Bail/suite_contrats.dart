@@ -1,10 +1,12 @@
-import 'package:bukara/app/providers/recouvrenement/modele.dart';
+import 'package:bukara/app/ui/screens/contrats%20de%20Bail/detail_contrats.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import '../../../providers/contrat/model.dart';
+
 class SuiteContrats extends StatelessWidget {
-  final RentalContrat? suiteContrats;
+  final Contrat? suiteContrats;
   const SuiteContrats({
     super.key,
     this.suiteContrats,
@@ -17,8 +19,8 @@ class SuiteContrats extends StatelessWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(10),
         onTap: () {
-          // Navigator.pushNamed(context, DetailContrat.routeName,
-          //     arguments: suiteContrats);
+          Navigator.pushNamed(context, DetailContrat.routeName,
+              arguments: suiteContrats);
         },
         child: Container(
           padding: const EdgeInsets.only(
@@ -42,17 +44,10 @@ class SuiteContrats extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
                   ),
-                  children: const [
+                  children: [
                     TextSpan(
-                      text: "\$/mois",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    TextSpan(
-                      text: " - 6 mois",
-                      style: TextStyle(
+                      text: " ${suiteContrats!.currency} ${"/mois"}",
+                      style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
@@ -62,7 +57,7 @@ class SuiteContrats extends StatelessWidget {
               ),
               10.heightBox,
               Text(
-                "${suiteContrats!.appartement}",
+                "${suiteContrats!.appartement!.designation} - ${suiteContrats!.appartement!.features!.bedroom} chambres & ${suiteContrats!.appartement!.features!.livingroom} salon)",
               ),
               15.heightBox,
               Text(

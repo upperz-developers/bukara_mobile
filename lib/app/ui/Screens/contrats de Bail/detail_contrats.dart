@@ -3,6 +3,8 @@ import 'package:bukara/app/ui/shared/style.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../providers/contrat/model.dart';
+import '../../shared/utils/utility_fonction/utility.dart';
 import '../../shared/utils/widget.dart';
 
 class DetailContrat extends StatefulWidget {
@@ -19,6 +21,7 @@ class DetailContrat extends StatefulWidget {
 class _DetailContrat extends State<DetailContrat> {
   @override
   Widget build(BuildContext context) {
+    Contrat contratData = ModalRoute.of(context)!.settings.arguments as Contrat;
     return SafeArea(
       child: Scaffold(
         body: Column(
@@ -41,61 +44,39 @@ class _DetailContrat extends State<DetailContrat> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      "29 jours restants",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
-                      ),
-                    ),
-                    const Text(
-                      "Du janvier",
-                      style: TextStyle(
-                        color: AppColors.SECOND_TEXT_COLOR,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 14,
-                      ),
-                    ),
-                    15.heightBox,
-                    const Text.rich(
+                    Text.rich(
                       TextSpan(
-                        text: "450",
-                        style: TextStyle(
+                        text: "${contratData.amount}",
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 30,
                         ),
                         children: [
                           TextSpan(
-                            text: " USD par mois",
-                            style: TextStyle(
-                              color: AppColors.SECOND_TEXT_COLOR,
+                            text: " ${contratData.currency} ${"par mois"}",
+                            style: const TextStyle(
                               fontSize: 14,
-                              fontWeight: FontWeight.normal,
                             ),
                           ),
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 15,
-                      ),
-                      child: line(),
+                    10.heightBox,
+                    Text(
+                      "${contratData.appartement!.designation} - (${contratData.appartement!.features!.bedroom} chambres & ${contratData.appartement!.features!.livingroom} salon)",
                     ),
-                    const Text(
-                      "Appartement de Lux - (4 chambres & 2 salons)",
-                      style: TextStyle(
+                    Text(
+                      "${contratData.appartement!.typeAppartement!.designation} - ${contratData.appartement!.typeBien!.designation}",
+                      style: const TextStyle(
                         color: AppColors.SECOND_TEXT_COLOR,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 14,
                       ),
                     ),
-                    20.heightBox,
+                    30.heightBox,
                     Row(
                       children: [
-                        const Expanded(
+                        Expanded(
                           child: Text(
-                            "John Doe",
+                            "${contratData.landlord!.name} ${contratData.landlord!.lastname}",
                           ),
                         ),
                         20.widthBox,
@@ -111,9 +92,9 @@ class _DetailContrat extends State<DetailContrat> {
                     20.heightBox,
                     Row(
                       children: [
-                        const Expanded(
+                        Expanded(
                           child: Text(
-                            "Upperz",
+                            "${contratData.user!.email}",
                           ),
                         ),
                         15.widthBox,
@@ -125,6 +106,12 @@ class _DetailContrat extends State<DetailContrat> {
                           ),
                         ),
                       ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 15,
+                      ),
+                      child: line(),
                     ),
                   ],
                 ),

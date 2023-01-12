@@ -7,16 +7,18 @@ import 'package:iconsax/iconsax.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../../../controller/app_bloc.dart';
 import '../../../controller/app_state.dart';
+import '../../../providers/contrat/model.dart';
+import '../../shared/style.dart';
 
-class Contrat extends StatefulWidget {
+class ContratPage extends StatefulWidget {
   static String routeName = "/contrat";
-  const Contrat({super.key});
+  const ContratPage({super.key});
 
   @override
-  State<Contrat> createState() => _Contrat();
+  State<ContratPage> createState() => _ContratPage();
 }
 
-class _Contrat extends State<Contrat> {
+class _ContratPage extends State<ContratPage> {
   AppBloc? bloc;
   @override
   void initState() {
@@ -67,7 +69,7 @@ class _Contrat extends State<Contrat> {
                 child: BlocBuilder<AppBloc, AppState>(
                   bloc: bloc,
                   builder: (context, state) {
-                    List<RentalContrat> listecontrats =
+                    List<Contrat> listecontrats =
                         state is SUCCESS ? state.value : [];
                     return state is SUCCESS
                         ? Column(
@@ -80,8 +82,28 @@ class _Contrat extends State<Contrat> {
                               ),
                             ],
                           )
-                        : const Center(
-                            child: Text("loading contrat"),
+                        : Column(
+                            children: List.generate(
+                              1,
+                              (index) => Padding(
+                                padding: const EdgeInsets.all(50),
+                                child: Center(
+                                  child: Row(
+                                    children: [
+                                      const SizedBox(
+                                        height: 10,
+                                        width: 10,
+                                        child: CircularProgressIndicator(
+                                          color: AppColors.BLACK_COLOR,
+                                        ),
+                                      ),
+                                      10.widthBox,
+                                      const Text("chargement..."),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
                           );
                   },
                 ),

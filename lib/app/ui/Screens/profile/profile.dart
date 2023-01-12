@@ -102,7 +102,7 @@ class _Profile extends State<Profile> {
                             profileActions(
                               title: "contrat de bail",
                               onTap: () => Navigator.pushNamed(
-                                  context, Contrat.routeName),
+                                  context, ContratPage.routeName),
                             ),
                             profileActions(
                               title: "Appropos de l'application",

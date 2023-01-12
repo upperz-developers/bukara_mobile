@@ -87,16 +87,20 @@ class _InfoRecouvrement extends State<InfoRecouvrement> {
                       ),
                     ),
                     15.heightBox,
+
+                    /// A widget that allows you to display text with different styles in the same Text
+                    /// widget.
                     Text.rich(
                       TextSpan(
                         text: "${contratData.rentalContrat!.amount}",
                         style: const TextStyle(
                           fontWeight: FontWeight.normal,
                         ),
-                        children: const [
+                        children: [
                           TextSpan(
-                            text: " USD par mois",
-                            style: TextStyle(
+                            text:
+                                " ${contratData.rentalContrat!.currency} ${"mois"}",
+                            style: const TextStyle(
                               fontSize: 14,
                             ),
                           ),
