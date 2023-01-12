@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:bukara/app/ui/shared/style.dart';
-import 'package:table_calendar/table_calendar.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../providers/paiement_modele/modele.dart';
@@ -58,38 +57,44 @@ class _DetailPaiement extends State<DetailPaiement> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "${paiementData.contratData!.labelStr}",
+                      "${paiementData.amount}\$",
                       style: const TextStyle(
+                        fontSize: 30,
                         fontWeight: FontWeight.bold,
-                        fontSize: 20,
                       ),
                     ),
                     10.heightBox,
                     Text(
-                      "${paiementData.amount} \$ par mois",
+                      "${paiementData.contratData!.labelStr}",
                       style: const TextStyle(
                         fontSize: 16,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                     line(),
                     Text(
                       "${paiementData.contratData!.rentalContrat!.landlord!.name} ${paiementData.contratData!.rentalContrat!.landlord!.lastname}",
-                    ),
-                    10.heightBox,
-                    const Text(
-                      "detail appartement",
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
+                        fontSize: 18,
                       ),
                     ),
                     10.heightBox,
                     Text(
-                      "${paiementData.contratData!.rentalContrat!.appartement!.typeAppartement!.designation} - ${paiementData.contratData!.rentalContrat!.appartement!.typeBien!.designation}",
+                      "${paiementData.contratData!.rentalContrat!.appartement!.designation}",
+                      style: const TextStyle(
+                        color: AppColors.SECOND_TEXT_COLOR,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    15.heightBox,
+                    Text(
+                      "${paiementData.contratData!.rentalContrat!.appartement!.description}",
                       style: const TextStyle(
                         color: AppColors.SECOND_TEXT_COLOR,
                       ),
                     ),
-                    10.heightBox,
+                    20.heightBox,
                     caracteristic(paiementData),
                   ],
                 ),
@@ -104,26 +109,34 @@ class _DetailPaiement extends State<DetailPaiement> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   line(),
+                  const Text(
+                    "Paiement effectué par:",
+                  ),
+                  20.heightBox,
+                  if (paiementData.contratData!.rentalContrat!.user!.name !=
+                      null)
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "${paiementData.contratData!.rentalContrat!.user!.name} ${paiementData.contratData!.rentalContrat!.user!.lastname}",
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
                   Text(
-                    "Date : ${CustomDate(date: DateTime.parse(paiementData.createdAt!)).getFullDate}",
+                    "${paiementData.contratData!.rentalContrat!.user!.email}",
+                  ),
+                  20.heightBox,
+                  Text(
+                    "Payé : ${CustomDate(date: DateTime.parse(paiementData.createdAt!)).getFullDate}",
                     style: const TextStyle(
                       color: AppColors.SECOND_TEXT_COLOR,
                       fontWeight: FontWeight.bold,
                     ),
-                  ),
-                  10.heightBox,
-                  if (paiementData.contratData!.rentalContrat!.user!.name !=
-                      null)
-                    Text(
-                      "${paiementData.contratData!.rentalContrat!.user!.name} ${paiementData.contratData!.rentalContrat!.user!.lastname}",
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  5.heightBox,
-                  Text(
-                    "${paiementData.contratData!.rentalContrat!.user!.email}",
                   ),
                 ],
               ),

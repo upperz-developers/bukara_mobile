@@ -16,11 +16,15 @@ class SuitePaiement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        left: 20,
-        right: 20,
-        bottom: 20,
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        vertical: 00,
+        horizontal: 0,
+      ),
+      width: MediaQuery.of(context).size.width,
+      decoration: BoxDecoration(
+        color: AppColors.TRANSPARENT,
+        borderRadius: BorderRadius.circular(10),
       ),
       child: InkWell(
         borderRadius: BorderRadius.circular(10),
@@ -29,62 +33,50 @@ class SuitePaiement extends StatelessWidget {
           Navigator.pushNamed(context, DetailPaiement.routeName,
               arguments: suitePaiement);
         },
-        child: Container(
-          padding: const EdgeInsets.symmetric(
-            vertical: 10,
-            horizontal: 0,
-          ),
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            color: AppColors.TRANSPARENT,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "${suitePaiement!.contratData!.labelStr} ",
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "${suitePaiement!.contratData!.rentalContrat!.landlord!.name} ${suitePaiement!.contratData!.rentalContrat!.landlord!.lastname!}",
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
                         ),
-                        10.heightBox,
-                        Text(
-                          "${suitePaiement!.contratData!.rentalContrat!.landlord!.name} ${suitePaiement!.contratData!.rentalContrat!.landlord!.lastname!}",
-                          style: const TextStyle(),
+                      ),
+                      10.heightBox,
+                      Text(
+                        "${suitePaiement!.contratData!.labelStr}",
+                      ),
+                      10.heightBox,
+                      Text(
+                        "Du ${CustomDate(date: DateTime.parse(suitePaiement!.createdAt!)).getFullDate}",
+                        style: const TextStyle(
+                          color: AppColors.SECOND_TEXT_COLOR,
+                          fontWeight: FontWeight.bold,
                         ),
-                        10.heightBox,
-                        Text(
-                          "Du ${CustomDate(date: DateTime.parse(suitePaiement!.createdAt!)).getFullDate}",
-                          style: const TextStyle(
-                            color: AppColors.SECOND_TEXT_COLOR,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  15.widthBox,
-                  Text(
-                    "${suitePaiement!.amount}\$",
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: AppColors.BLACK_COLOR,
-                    ),
+                ),
+                15.widthBox,
+                Text(
+                  "${suitePaiement!.amount}\$",
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                    color: AppColors.BLACK_COLOR,
                   ),
-                ],
-              ),
-              line(),
-            ],
-          ),
+                ),
+              ],
+            ),
+            line(),
+          ],
         ),
       ),
     );

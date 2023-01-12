@@ -6,7 +6,6 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../providers/recouvrenement/modele.dart';
-import '../../shared/utils/widget.dart';
 
 class InfoRecouvrement extends StatefulWidget {
   static String routeName = "/inforecouvrement";
@@ -74,122 +73,119 @@ class _InfoRecouvrement extends State<InfoRecouvrement> {
                           fontWeight: FontWeight.bold,
                           fontSize: 30,
                         ),
-                        children: [
+                        children: const [
                           TextSpan(
-                            text: " - ${contratData.labelMonth}",
-                            style: const TextStyle(
-                              color: AppColors.SECOND_TEXT_COLOR,
-                              fontSize: 14,
-                              fontWeight: FontWeight.normal,
-                            ),
+                            text: " restant",
                           ),
                         ],
                       ),
                     ),
-                    15.heightBox,
-
-                    /// A widget that allows you to display text with different styles in the same Text
-                    /// widget.
+                    20.heightBox,
                     Text.rich(
                       TextSpan(
-                        text: "${contratData.rentalContrat!.amount}",
+                        text:
+                            "Montant à payé ${contratData.rentalContrat!.amount}",
                         style: const TextStyle(
                           fontWeight: FontWeight.normal,
                         ),
-                        children: [
+                        children: const [
                           TextSpan(
-                            text:
-                                " ${contratData.rentalContrat!.currency} ${"mois"}",
-                            style: const TextStyle(
+                            text: " \$ mois",
+                            style: TextStyle(
                               fontSize: 14,
                             ),
                           ),
                         ],
                       ),
                     ),
-                    10.heightBox,
+                    20.heightBox,
                     Text(
                       "${contratData.rentalContrat!.appartement!.designation} - (${contratData.rentalContrat!.appartement!.features!.bedroom} chambres & ${contratData.rentalContrat!.appartement!.features!.livingroom} salon)",
-                    ),
-                    Text(
-                      "${contratData.rentalContrat!.appartement!.typeAppartement!.designation} - ${contratData.rentalContrat!.appartement!.typeBien!.designation}",
-                      style: const TextStyle(
-                        color: AppColors.SECOND_TEXT_COLOR,
-                      ),
-                    ),
-                    30.heightBox,
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            "${contratData.rentalContrat!.landlord!.name} ${contratData.rentalContrat!.landlord!.lastname}",
-                          ),
-                        ),
-                        20.widthBox,
-                        const Text(
-                          "Locataire",
-                          style: TextStyle(
-                            color: AppColors.SECOND_TEXT_COLOR,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
                     ),
                     20.heightBox,
                     Row(
                       children: [
-                        Expanded(
-                          child: Text(
-                            "${contratData.rentalContrat!.user!.email}",
+                        Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: const BoxDecoration(
+                              color: AppColors.DISABLE_COLOR,
+                              shape: BoxShape.circle),
+                          child: const Icon(
+                            Iconsax.user,
+                            size: 18,
                           ),
                         ),
                         15.widthBox,
-                        const Text(
-                          "Signateur",
-                          style: TextStyle(
-                            color: AppColors.SECOND_TEXT_COLOR,
-                            fontSize: 12,
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "${contratData.rentalContrat!.landlord!.name} ${contratData.rentalContrat!.landlord!.lastname}",
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                              const Text("locataire"),
+                            ],
                           ),
                         ),
                       ],
                     ),
-                    30.heightBox,
-                    InkWell(
-                      onTap: () {
-                        selectedRecoveryId = contratData.id;
-                        Navigator.pushNamed(
-                            context, RecouvrementDetailPaiement.routeName,
-                            arguments: contratData);
-                      },
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Icon(
-                            Iconsax.activity,
-                          ),
-                          15.widthBox,
-                          const Expanded(
-                            child: Text(
-                              "Historic de paiement",
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.black),
-                            ),
-                          ),
-                          15.widthBox,
-                          const Icon(
-                            Iconsax.arrow_right_3,
-                          ),
-                        ],
-                      ),
-                    ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                        vertical: 15,
+                        vertical: 20,
                       ),
-                      child: line(),
+                      child: InkWell(
+                        onTap: () {
+                          selectedRecoveryId = contratData.id;
+                          Navigator.pushNamed(
+                              context, RecouvrementDetailPaiement.routeName,
+                              arguments: contratData);
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 20,
+                          ),
+                          decoration: const BoxDecoration(
+                            border: Border(
+                              top: BorderSide(
+                                color: Color.fromARGB(255, 215, 214, 214),
+                              ),
+                              bottom: BorderSide(
+                                color: Color.fromARGB(255, 215, 214, 214),
+                              ),
+                            ),
+                          ),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const Icon(
+                                Iconsax.activity,
+                              ),
+                              15.widthBox,
+                              const Expanded(
+                                child: Text(
+                                  "Historic de paiement",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.normal,
+                                      color: Colors.black),
+                                ),
+                              ),
+                              15.widthBox,
+                              const Icon(
+                                Iconsax.arrow_right_3,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
+                    const Text(
+                      "Calendrier",
+                    ),
+                    20.heightBox,
                     TableCalendar(
                       rowHeight: 53,
                       headerStyle: const HeaderStyle(

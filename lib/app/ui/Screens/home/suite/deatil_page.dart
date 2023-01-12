@@ -1,4 +1,5 @@
 import 'package:bukara/app/providers/suite/modele.dart';
+import 'package:bukara/app/ui/Screens/contrats%20de%20Bail/detail_contrats.dart';
 import 'package:bukara/app/ui/screens/home/suite/suite_model.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter/material.dart';
@@ -233,8 +234,11 @@ class _Details extends State<Details> {
                 20.heightBox,
                 InkWell(
                   onTap: () {
-                    // Navigator.pushNamed(context, InfoRecouvrement.routeName,
-                    //     arguments: suite);
+                    Navigator.pushNamed(
+                      context,
+                      DetailContrat.routeName,
+                      arguments: suite.contrats!.first,
+                    );
                   },
                   child: Row(
                     children: [
@@ -243,7 +247,7 @@ class _Details extends State<Details> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: const [
                               Text(
-                                "Recouvrement",
+                                "Contrat de bail",
                                 style: TextStyle(
                                   fontSize: 16,
                                   color: Colors.black,
