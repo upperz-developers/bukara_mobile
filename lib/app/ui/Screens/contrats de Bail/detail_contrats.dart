@@ -73,58 +73,68 @@ class _DetailContrat extends State<DetailContrat> {
                     20.heightBox,
                     const Text(
                       "Detail appartement",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     15.heightBox,
                     caracteristic(contrat.appartement!),
-                    line(),
-                    const Text(
-                      "Contrat enregistre par",
-                    ),
-                    15.heightBox,
-                    if (contrat.user!.name != null)
-                      Column(
-                        children: [
-                          Text(
-                            "${contrat.user!.name} ${contrat.user!.lastname}",
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          5.heightBox,
-                        ],
-                      ),
-                    Text(
-                      "${contrat.landlord!.email}",
-                    ),
-                    30.heightBox,
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  line(),
+                  const Text(
+                    "Contrat enregistre par",
+                  ),
+                  15.heightBox,
+                  if (contrat.user!.name != null)
                     Column(
                       children: [
                         Text(
-                          "Signe ${CustomDate(date: DateTime.parse(contrat.startDate!)).getFullDate}",
+                          "${contrat.user!.name} ${contrat.user!.lastname}",
                           style: const TextStyle(
+                            fontSize: 20,
                             fontWeight: FontWeight.bold,
-                            color: AppColors.SECOND_TEXT_COLOR,
                           ),
                         ),
-                        if (contrat.endDate != null)
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              5.heightBox,
-                              Text(
-                                "Resilie ${CustomDate(date: DateTime.parse(contrat.endDate!)).getFullDate}",
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColors.SECOND_TEXT_COLOR,
-                                ),
-                              ),
-                            ],
-                          ),
                       ],
                     ),
-                  ],
-                ),
+                  Text(
+                    "${contrat.landlord!.email}",
+                  ),
+                  20.heightBox,
+                  Column(
+                    children: [
+                      Text(
+                        "Signe ${CustomDate(date: DateTime.parse(contrat.startDate!)).getFullDate}",
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.SECOND_TEXT_COLOR,
+                        ),
+                      ),
+                      if (contrat.endDate != null)
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            5.heightBox,
+                            Text(
+                              "Resilie ${CustomDate(date: DateTime.parse(contrat.endDate!)).getFullDate}",
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.SECOND_TEXT_COLOR,
+                              ),
+                            ),
+                          ],
+                        ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ],
