@@ -86,9 +86,9 @@ class SuiteRecouvrement extends StatelessWidget {
             bottom: 0,
             child: Container(
               width: 5,
-              decoration: const BoxDecoration(
-                color: Color.fromARGB(115, 185, 185, 185),
-                borderRadius: BorderRadius.only(
+              decoration: BoxDecoration(
+                color: HexColor.fromHex(suiteRecouvrement!.color!),
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(10),
                   bottomLeft: Radius.circular(10),
                 ),

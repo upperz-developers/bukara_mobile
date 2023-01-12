@@ -1,4 +1,5 @@
 import 'package:bukara/app/services/prefs/app_prefs.dart';
+import 'package:bukara/app/ui/Screens/contrats%20de%20Bail/contrats.dart';
 import 'package:bukara/app/ui/Screens/profile/about_page.dart';
 import 'package:bukara/app/ui/Screens/profile/change_password.dart';
 import 'package:bukara/app/ui/screens/profile/editer_profile.dart';
@@ -7,8 +8,6 @@ import 'package:bukara/app/ui/shared/utils/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:velocity_x/velocity_x.dart';
-
-import '../../screens/contrats de Bail/contrats.dart';
 
 class Profile extends StatefulWidget {
   static String routeName = "/infoprofile";
@@ -102,7 +101,7 @@ class _Profile extends State<Profile> {
                             profileActions(
                               title: "contrat de bail",
                               onTap: () => Navigator.pushNamed(
-                                  context, ContratPage.routeName),
+                                  context, ContratScreen.routeName),
                             ),
                             profileActions(
                               title: "Appropos de l'application",

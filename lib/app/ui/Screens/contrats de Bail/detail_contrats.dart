@@ -1,9 +1,11 @@
-import 'package:flutter/material.dart';
+import 'package:bukara/app/providers/contrat/model.dart';
+import 'package:bukara/app/providers/suite/modele.dart';
 import 'package:bukara/app/ui/shared/style.dart';
-import 'package:velocity_x/velocity_x.dart';
+import 'package:bukara/app/ui/shared/utils/utility_fonction/customer_date.dart';
+import 'package:bukara/app/ui/shared/utils/widget.dart';
+import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import '../../../providers/contrat/model.dart';
-import '../../shared/utils/widget.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class DetailContrat extends StatefulWidget {
   static String routeName = "/detailContrat";
@@ -19,90 +21,106 @@ class DetailContrat extends StatefulWidget {
 class _DetailContrat extends State<DetailContrat> {
   @override
   Widget build(BuildContext context) {
-    Contrat contratData = ModalRoute.of(context)!.settings.arguments as Contrat;
+    Contrat contrat = ModalRoute.of(context)!.settings.arguments as Contrat;
+
     return SafeArea(
       child: Scaffold(
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             IconButton(
-              onPressed: (() => Navigator.pop(context)),
+              onPressed: () {
+                Navigator.pop(context);
+              },
               icon: const Icon(
-                Iconsax.arrow_left,
+                Icons.arrow_back,
               ),
-              color: const Color.fromARGB(169, 32, 32, 32),
             ),
             Expanded(
               child: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 15,
-                ),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 24, horizontal: 24),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text.rich(
-                      TextSpan(
-                        text: "${contratData.amount}",
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30,
-                        ),
-                        children: [
-                          TextSpan(
-                            text: " ${contratData.currency} ${"par mois"}",
-                            style: const TextStyle(
-                              fontSize: 14,
-                            ),
-                          ),
-                        ],
+                    Text(
+                      "${contrat.landlord!.name} ${contrat.landlord!.lastname}",
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                     10.heightBox,
                     Text(
-                      "${contratData.appartement!.designation} - (${contratData.appartement!.features!.bedroom} chambres & ${contratData.appartement!.features!.livingroom} salon)",
+                      "${contrat.landlord!.email}",
                     ),
+                    line(),
                     Text(
-                      "${contratData.appartement!.typeAppartement!.designation} - ${contratData.appartement!.typeBien!.designation}",
+                      "${contrat.appartement!.description}",
                       style: const TextStyle(
-                        color: AppColors.SECOND_TEXT_COLOR,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
-                    30.heightBox,
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            "${contratData.landlord!.name} ${contratData.landlord!.lastname}",
-                          ),
-                        ),
-                        20.widthBox,
-                        const Text(
-                          "Locataire",
-                          style: TextStyle(
-                            color: AppColors.SECOND_TEXT_COLOR,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
+                    20.heightBox,
+                    Text(
+                      "${contrat.amount}\$ le mois",
                     ),
                     20.heightBox,
-                    Row(
+                    const Text(
+                      "3 mois de garantie",
+                    ),
+                    20.heightBox,
+                    const Text(
+                      "Detail appartement",
+                    ),
+                    15.heightBox,
+                    caracteristic(contrat.appartement!),
+                    line(),
+                    const Text(
+                      "Contrat enregistre par",
+                    ),
+                    15.heightBox,
+                    if (contrat.user!.name != null)
+                      Column(
+                        children: [
+                          Text(
+                            "${contrat.user!.name} ${contrat.user!.lastname}",
+                            style: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          5.heightBox,
+                        ],
+                      ),
+                    Text(
+                      "${contrat.landlord!.email}",
+                    ),
+                    30.heightBox,
+                    Column(
                       children: [
-                        Expanded(
-                          child: Text(
-                            "${contratData.user!.email}",
-                          ),
-                        ),
-                        15.widthBox,
-                        const Text(
-                          "Signateur",
-                          style: TextStyle(
+                        Text(
+                          "Signe ${CustomDate(date: DateTime.parse(contrat.startDate!)).getFullDate}",
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
                             color: AppColors.SECOND_TEXT_COLOR,
-                            fontSize: 12,
                           ),
                         ),
+                        if (contrat.endDate != null)
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              5.heightBox,
+                              Text(
+                                "Resilie ${CustomDate(date: DateTime.parse(contrat.endDate!)).getFullDate}",
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColors.SECOND_TEXT_COLOR,
+                                ),
+                              ),
+                            ],
+                          ),
                       ],
                     ),
                     Padding(
@@ -118,6 +136,29 @@ class _DetailContrat extends State<DetailContrat> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget caracteristic(SuiteModel suite) {
+    return Column(
+      children: [
+        caracteristicModel(
+          title: "${suite.features!.bedroom} chambres",
+          icon: Iconsax.box,
+        ),
+        caracteristicModel(
+          title: "${suite.features!.livingroom} salons",
+          icon: Iconsax.home,
+        ),
+        caracteristicModel(
+          title: "${suite.features!.interntoilet} toillette interne",
+          icon: Iconsax.safe_home,
+        ),
+        caracteristicModel(
+          title: "${suite.features!.externtoilet} toillette externe",
+          icon: Iconsax.activity,
+        ),
+      ],
     );
   }
 }

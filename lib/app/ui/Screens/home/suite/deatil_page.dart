@@ -180,62 +180,6 @@ class _Details extends State<Details> {
     );
   }
 
-  Widget caracteristicModel({
-    IconData? icon,
-    String? title,
-  }) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 25),
-      child: Row(
-        children: [
-          Icon(icon),
-          15.widthBox,
-          Expanded(
-            child: Text(
-              title!,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget otherCaracteristicModel(
-      {IconData? icon, String? title, List<String>? otherCarteristic}) {
-    ValueNotifier<bool> isExist = ValueNotifier(false);
-    if (otherCarteristic != null) {
-      for (int i = 0; i < otherCarteristic.length; i++) {
-        if (otherCarteristic[i] == title) {
-          isExist.value = true;
-          break;
-        }
-      }
-    }
-    return ValueListenableBuilder(
-        valueListenable: isExist,
-        builder: (context, bool exist, child) {
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 25),
-            child: Row(
-              children: [
-                Icon(icon),
-                15.widthBox,
-                Expanded(
-                  child: Text(
-                    title!,
-                    style: TextStyle(
-                      height: 1.5,
-                      decoration:
-                          exist == false ? TextDecoration.lineThrough : null,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          );
-        });
-  }
-
   Widget card1(SuiteModel suite) {
     return Padding(
       padding: const EdgeInsets.only(

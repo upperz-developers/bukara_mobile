@@ -68,45 +68,14 @@ class _InfoLocataire extends State<InfoLocataire> {
                         color: AppColors.BLACK_COLOR,
                       ),
                     ),
-                    15.heightBox,
-                    InkWell(
-                      onTap: () {
-                        // Navigator.pushNamed(
-                        //     context, DetailPaiementLocataire.routeName,
-                        //     arguments: suiteDetailLocataire);
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 15),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const Icon(
-                              Iconsax.activity,
-                            ),
-                            15.widthBox,
-                            const Expanded(
-                              child: Text(
-                                "Historique de paiement locataire",
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.normal,
-                                    color: Colors.black),
-                              ),
-                            ),
-                            15.widthBox,
-                            const Icon(
-                              Iconsax.arrow_right_3,
-                            ),
-                          ],
-                        ),
+                    line(),
+                    const Text(
+                      "Appropos du locataire",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        bottom: 15,
-                      ),
-                      child: line(),
-                    ),
+                    30.heightBox,
                     module(Iconsax.call,
                         "${suiteDetailLocataire.phones![0].countryCode} (0) ${suiteDetailLocataire.phones![0].number}"),
                     module(Iconsax.message, "${suiteDetailLocataire.email}"),

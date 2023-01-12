@@ -70,6 +70,7 @@ class ContratData {
   bool? status;
   String? createdAt;
   String? updatedAt;
+  String? color;
 
   ContratData({
     this.id,
@@ -91,6 +92,7 @@ class ContratData {
     labelStr = json['label_str'];
     dateRecovery = json['date_recovery'];
     status = json['status'];
+    color = json['color'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }

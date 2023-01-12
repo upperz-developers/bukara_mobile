@@ -30,10 +30,9 @@ class SuitePaiement extends StatelessWidget {
               arguments: suitePaiement);
         },
         child: Container(
-          padding: const EdgeInsets.only(
-            left: 15,
-            right: 10,
-            top: 15,
+          padding: const EdgeInsets.symmetric(
+            vertical: 10,
+            horizontal: 0,
           ),
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
@@ -43,34 +42,46 @@ class SuitePaiement extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "${suitePaiement!.contratData!.labelStr} ",
-                style: const TextStyle(),
-              ),
-              10.heightBox,
               Row(
                 children: [
                   Expanded(
-                    child: Text(
-                      "${suitePaiement!.contratData!.rentalContrat!.landlord!.name} ${suitePaiement!.contratData!.rentalContrat!.landlord!.lastname!}",
-                      style:
-                          const TextStyle(color: AppColors.SECOND_TEXT_COLOR),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "${suitePaiement!.contratData!.labelStr} ",
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        10.heightBox,
+                        Text(
+                          "${suitePaiement!.contratData!.rentalContrat!.landlord!.name} ${suitePaiement!.contratData!.rentalContrat!.landlord!.lastname!}",
+                          style: const TextStyle(),
+                        ),
+                        10.heightBox,
+                        Text(
+                          "Du ${CustomDate(date: DateTime.parse(suitePaiement!.createdAt!)).getFullDate}",
+                          style: const TextStyle(
+                            color: AppColors.SECOND_TEXT_COLOR,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
+                  15.widthBox,
                   Text(
-                    "${suitePaiement!.amount} ${suitePaiement!.currenty}",
+                    "${suitePaiement!.amount}\$",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
+                      fontSize: 20,
                       color: AppColors.BLACK_COLOR,
                     ),
                   ),
                 ],
               ),
-              // 10.heightBox,
-              // Text(
-              //   " ${suitePaiement!.createdAt}",
-              //   style: const TextStyle(color: AppColors.SECOND_TEXT_COLOR),
-              // ),
               line(),
             ],
           ),
