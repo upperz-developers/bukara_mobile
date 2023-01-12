@@ -11,13 +11,15 @@ class RecouvrementSquelleton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 15),
+      padding: const EdgeInsets.only(
+        top: 20,
+      ),
       child: Container(
         padding: const EdgeInsets.only(
           left: 15,
           right: 10,
           top: 10,
-          bottom: 10,
+          bottom: 15,
         ),
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
