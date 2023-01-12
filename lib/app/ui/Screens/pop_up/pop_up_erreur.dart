@@ -30,32 +30,35 @@ class _Erreur extends State<Erreur> {
       child: BlocBuilder<AppBloc, AppState>(
         bloc: bloc,
         builder: (context, state) {
-          return SimpleDialog(
-            title: const Center(
-              child: Icon(Iconsax.refresh),
-            ),
-            children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
-                child: Column(
-                  children: [
-                    const Text(
-                        "Une erreur c'est produite veuillez verifié la connexion internet"),
-                    30.heightBox,
-                    custormButtonLogout(
-                      context,
-                      colorText: AppColors.WHITE_COLOR,
-                      color: AppColors.BLACK_COLOR,
-                      title: "Ok",
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ],
-                ),
+          return IgnorePointer(
+            ignoring: state is LOADING,
+            child: SimpleDialog(
+              title: const Center(
+                child: Icon(Iconsax.refresh),
               ),
-            ],
+              children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+                  child: Column(
+                    children: [
+                      const Text(
+                          "Une erreur c'est produite veuillez verifié la connexion internet"),
+                      30.heightBox,
+                      custormButtonLogout(
+                        context,
+                        colorText: AppColors.WHITE_COLOR,
+                        color: AppColors.BLACK_COLOR,
+                        title: "Quitter",
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           );
         },
       ),
