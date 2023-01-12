@@ -1,6 +1,7 @@
 import 'package:bukara/app/controller/app_bloc.dart';
 import 'package:bukara/app/controller/app_event.dart';
 import 'package:bukara/app/ui/screens/auth/login_page.dart';
+import 'package:bukara/app/ui/shared/utils/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -89,50 +90,6 @@ class _LogoutState extends State<Logout> {
               ),
             );
           }),
-    );
-  }
-
-  Widget custormButtonLogout(
-    BuildContext context, {
-    Color? color,
-    String? title,
-    Color? colorText,
-    Function()? onTap,
-    AppState? state,
-  }) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        alignment: Alignment.center,
-        padding: const EdgeInsets.symmetric(
-          vertical: 10,
-          horizontal: 20,
-        ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(4),
-          color: color,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            state is LOADING
-                ? const SizedBox(
-                    height: 15,
-                    width: 15,
-                    child: CircularProgressIndicator(
-                      color: AppColors.WHITE_COLOR,
-                    ),
-                  )
-                : Text(
-                    "$title",
-                    style: TextStyle(
-                      color: colorText,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-          ],
-        ),
-      ),
     );
   }
 }
