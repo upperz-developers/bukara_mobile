@@ -63,6 +63,7 @@ class _Home extends State<Home> with SingleTickerProviderStateMixin {
                 child: BlocBuilder<AppBloc, AppState>(
                     bloc: bloc,
                     builder: (context, state) {
+                      print(state);
                       if (state is LOADING) {
                         return Column(
                             children: List.generate(

@@ -1,6 +1,6 @@
 import 'package:bukara/app/controller/app_bloc.dart';
 import 'package:bukara/app/controller/app_state.dart';
-import 'package:bukara/app/ui/screens/pop_up/error_resquest.dart';
+import 'package:bukara/app/ui/screens/pop_up/pop_up_erreur.dart';
 import 'package:bukara/app/ui/view_controller/auth_controller.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';

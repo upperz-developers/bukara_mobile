@@ -40,6 +40,7 @@ class _Details extends State<Details> {
                 SuiteImage(
                   images: suiteDetail.images!,
                   height: 400,
+                  borderRadius: 0,
                 ),
                 card1(suiteDetail),
                 line(),
