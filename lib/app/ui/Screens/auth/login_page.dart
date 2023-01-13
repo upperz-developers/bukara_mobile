@@ -83,7 +83,23 @@ class _LoginPage extends State<LoginPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Align(alignment: Alignment.center, child: icon()),
+                            Align(
+                                alignment: Alignment.center,
+                                child: Container(
+                                  margin: const EdgeInsets.only(bottom: 25),
+                                  height: 140,
+                                  width: 140,
+                                  decoration: const BoxDecoration(
+                                    color: AppColors.DISABLE_COLOR,
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                      image: AssetImage(
+                                        'assets/icons/icon.png',
+                                      ),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                )),
                             20.heightBox,
                             const Text("Adresse mail"),
                             10.heightBox,

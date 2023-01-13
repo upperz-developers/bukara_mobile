@@ -21,23 +21,6 @@ Widget line({double? padding}) {
   );
 }
 
-Widget icon() {
-  return Container(
-    margin: const EdgeInsets.only(bottom: 25),
-    height: 140,
-    width: 140,
-    decoration: const BoxDecoration(
-      shape: BoxShape.circle,
-      image: DecorationImage(
-        image: AssetImage(
-          'assets/icons/icon.png',
-        ),
-        fit: BoxFit.cover,
-      ),
-    ),
-  );
-}
-
 Widget custormButton(
   BuildContext context, {
   Color? color,
