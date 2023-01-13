@@ -1,7 +1,7 @@
 import 'package:bukara/app/controller/app_bloc.dart';
 import 'package:bukara/app/controller/app_event.dart';
 import 'package:bukara/app/controller/app_state.dart';
-import 'package:bukara/app/ui/screens/pop_up/pop_up_erreur.dart';
+import 'package:bukara/app/ui/screens/pop_up/error_resquest.dart';
 import 'package:bukara/app/ui/view_controller/auth_controller.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -98,7 +98,7 @@ class _SingUpPage extends State<SingUpPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               const Text(
-                                "Creation du compte",
+                                "Création du compte",
                                 style: TextStyle(
                                   fontSize: 24,
                                   fontWeight: FontWeight.bold,
@@ -109,7 +109,7 @@ class _SingUpPage extends State<SingUpPage> {
                               10.heightBox,
                               FormText(
                                 controller: singupController.email.value,
-                                hint: "nom@gmail.com",
+                                hint: "example@gmail.com",
                                 submitted: singupSubmitted,
                               ),
                               20.heightBox,
@@ -131,7 +131,7 @@ class _SingUpPage extends State<SingUpPage> {
                               10.heightBox,
                               FormText(
                                 controller: singupController.codeapp,
-                                hint: "Entrez votre code",
+                                hint: "Entrez le code application",
                                 submitted: singupSubmitted,
                               ),
                             ],
@@ -144,7 +144,7 @@ class _SingUpPage extends State<SingUpPage> {
                         child: custormButton(
                           context,
                           color: AppColors.BLACK_COLOR,
-                          title: "Creation",
+                          title: "Création",
                           colorText: Colors.white,
                           state: state,
                           onTap: _submit,
@@ -161,10 +161,10 @@ class _SingUpPage extends State<SingUpPage> {
                           ),
                           child: Text.rich(
                             TextSpan(
-                                text: "Vous avez deja un compte? ",
+                                text: "Vous avez déjà un compte? ",
                                 children: [
                                   TextSpan(
-                                      text: " se connecte",
+                                      text: " se connecter",
                                       recognizer: _login,
                                       style: const TextStyle(
                                         decoration: TextDecoration.underline,

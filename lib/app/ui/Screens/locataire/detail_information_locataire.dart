@@ -37,7 +37,7 @@ class _InfoLocataire extends State<InfoLocataire> {
                 ),
                 const Expanded(
                   child: Text(
-                    "Detail locataire",
+                    "Détail locataire",
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
@@ -81,7 +81,7 @@ class _InfoLocataire extends State<InfoLocataire> {
                     module(Iconsax.message, "${suiteDetailLocataire.email}"),
                     module(
                         Iconsax.home, "${suiteDetailLocataire.maritalStatus}"),
-                    module2(Iconsax.tag, "Last Addres",
+                    module2(Iconsax.tag, "Dernière adresse",
                         "${suiteDetailLocataire.lastAdress}"),
                     module(Iconsax.wallet_check,
                         "${suiteDetailLocataire.nationality}"),

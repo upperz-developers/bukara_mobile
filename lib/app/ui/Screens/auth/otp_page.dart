@@ -109,7 +109,7 @@ class _Otp extends State<Otp> {
                     30.heightBox,
                     const Text.rich(
                       TextSpan(
-                          text: "Vous n'avez pas recu de code ? ",
+                          text: "Vous n'avez pas reçu le code ? ",
                           children: [
                             TextSpan(
                               text: "Renvoyer",

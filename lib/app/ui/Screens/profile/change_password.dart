@@ -81,7 +81,7 @@ class _ChangePassword extends State<ChangePassword> {
                           ),
                           const Expanded(
                             child: Text(
-                              "Changer mots de Passe",
+                              "Changer mot de Passe",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
@@ -130,7 +130,7 @@ class _ChangePassword extends State<ChangePassword> {
                         child: custormButton(
                           context,
                           color: AppColors.BLACK_COLOR,
-                          title: "Changer mots de passe",
+                          title: "Changer mot de passe",
                           colorText: Colors.white,
                           state: state,
                           onTap: _submit,

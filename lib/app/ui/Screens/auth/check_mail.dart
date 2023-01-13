@@ -79,7 +79,7 @@ class _Checkmail extends State<Checkmail> {
                               color: AppColors.BOXSHADOW,
                             ),
                           ),
-                          hintText: "nom@gmail.com",
+                          hintText: "example@gmail.com",
                           hintStyle: TextStyle(
                             color: AppColors.BLACK_COLOR,
                           ),
@@ -97,7 +97,7 @@ class _Checkmail extends State<Checkmail> {
               child: custormButton(
                 context,
                 color: AppColors.BLACK_COLOR,
-                title: "next",
+                title: "Suivant",
                 colorText: Colors.white,
                 onTap: () {
                   Navigator.pushNamed(context, Otp.routeName);

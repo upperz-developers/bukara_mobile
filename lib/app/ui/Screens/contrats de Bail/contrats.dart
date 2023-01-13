@@ -168,7 +168,7 @@ class _ContratScreen extends State<ContratScreen> {
                   ),
                 ),
                 const Text(
-                  "Par moi",
+                  "Par mois",
                   style: TextStyle(
                     color: AppColors.SECOND_TEXT_COLOR,
                     fontSize: 10,

@@ -4,7 +4,7 @@ import 'package:bukara/app/controller/app_state.dart';
 import 'package:bukara/app/ui/Screens/auth/check_mail.dart';
 import 'package:bukara/app/ui/Screens/auth/singup_page.dart';
 import 'package:bukara/app/ui/screens/app_page.dart';
-import 'package:bukara/app/ui/screens/pop_up/pop_up_erreur.dart';
+import 'package:bukara/app/ui/screens/pop_up/error_resquest.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -133,7 +133,7 @@ class _LoginPage extends State<LoginPage> {
                               custormButton(
                                 context,
                                 color: AppColors.BLACK_COLOR,
-                                title: "Connexion",
+                                title: "Se connecter",
                                 colorText: Colors.white,
                                 state: state,
                                 onTap: _submit,
@@ -149,7 +149,7 @@ class _LoginPage extends State<LoginPage> {
                               text: "Vous n'avez pas un compte? ",
                               children: [
                                 TextSpan(
-                                    text: "creer un compte",
+                                    text: "créér un compte",
                                     recognizer: _signup,
                                     style: const TextStyle(
                                       decoration: TextDecoration.underline,

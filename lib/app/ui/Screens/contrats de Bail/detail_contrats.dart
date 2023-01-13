@@ -90,7 +90,7 @@ class _DetailContrat extends State<DetailContrat> {
                           children: [
                             20.heightBox,
                             const Text(
-                              "Detail appartement",
+                              "Détail appartement",
                             ),
                             15.heightBox,
                             caracteristic(contrat.appartement!),
@@ -107,7 +107,7 @@ class _DetailContrat extends State<DetailContrat> {
                   children: [
                     line(),
                     const Text(
-                      "Contrat enregistre par",
+                      "Contrat enregistré par",
                     ),
                     15.heightBox,
                     if (contrat.user!.name != null)
@@ -130,7 +130,7 @@ class _DetailContrat extends State<DetailContrat> {
                     Column(
                       children: [
                         Text(
-                          "Signe ${CustomDate(date: DateTime.parse(contrat.startDate!)).getFullDate}",
+                          "Signé le ${CustomDate(date: DateTime.parse(contrat.startDate!)).getFullDate}",
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: AppColors.SECOND_TEXT_COLOR,
@@ -142,7 +142,7 @@ class _DetailContrat extends State<DetailContrat> {
                             children: [
                               5.heightBox,
                               Text(
-                                "Resilie ${CustomDate(date: DateTime.parse(contrat.endDate!)).getFullDate}",
+                                "Resilié ${CustomDate(date: DateTime.parse(contrat.endDate!)).getFullDate}",
                                 style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: AppColors.SECOND_TEXT_COLOR,

@@ -155,7 +155,7 @@ class _Newpassword extends State<Newpassword> {
                     custormButton(
                       context,
                       color: AppColors.BLACK_COLOR,
-                      title: "Creation",
+                      title: "Création",
                       colorText: Colors.white,
                       onTap: () {
                         Navigator.pushNamed(context, LoginPage.routeName);

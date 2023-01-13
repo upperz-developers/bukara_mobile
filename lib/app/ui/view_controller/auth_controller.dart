@@ -56,4 +56,6 @@ class AuthViewController {
       password.text.isNotEmpty &&
       confirmpasssword.text.isNotEmpty &&
       codeapp.text.isNotEmpty;
+
+  bool get forgotValidate => email.value.text.isNotEmpty;
 }

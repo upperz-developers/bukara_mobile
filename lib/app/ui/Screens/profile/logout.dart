@@ -50,14 +50,14 @@ class _LogoutState extends State<Logout> {
             return IgnorePointer(
               ignoring: state is LOADING,
               child: SimpleDialog(
-                title: const Text("Deconnexion"),
+                title: const Text("Déconnexion"),
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         vertical: 10, horizontal: 30),
                     child: Column(
                       children: [
-                        const Text("Voulez-vous vraiment vous deconnecter?"),
+                        const Text("Voulez-vous vraiment vous déconnecter?"),
                         30.heightBox,
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,

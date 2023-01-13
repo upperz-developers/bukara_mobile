@@ -38,7 +38,7 @@ class _DetailPaiement extends State<DetailPaiement> {
                 ),
                 const Expanded(
                   child: Text(
-                    "Detail paiement",
+                    "Détail paiement",
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),

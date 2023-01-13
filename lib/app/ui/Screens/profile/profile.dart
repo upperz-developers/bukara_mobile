@@ -83,7 +83,7 @@ class _Profile extends State<Profile> {
                                       user.phoneNumber == null ||
                                       user.name == null)
                                   ? "Completer le profile"
-                                  : "Editer Profile",
+                                  : "Modifier Profile",
                               onTap: () => Navigator.pushNamed(
                                   context, EditerUser.routeName),
                             ),
@@ -93,7 +93,7 @@ class _Profile extends State<Profile> {
                                   context, ChangePassword.routeName),
                             ),
                             profileActions(
-                              title: "Deconnexion",
+                              title: "Déconnexion",
                               onTap: () {
                                 showDialog(
                                   context: context,

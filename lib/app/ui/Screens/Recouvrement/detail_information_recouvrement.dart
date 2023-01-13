@@ -46,7 +46,7 @@ class _InfoRecouvrement extends State<InfoRecouvrement> {
                 ),
                 const Expanded(
                   child: Text(
-                    "Detail recouvrement",
+                    "Détail recouvrement",
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
@@ -166,7 +166,7 @@ class _InfoRecouvrement extends State<InfoRecouvrement> {
                               15.widthBox,
                               const Expanded(
                                 child: Text(
-                                  "Historic de paiement",
+                                  "Historique de paiement",
                                   style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.normal,

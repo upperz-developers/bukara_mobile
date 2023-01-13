@@ -1,6 +1,6 @@
 import 'package:bukara/app/controller/app_bloc.dart';
 import 'package:bukara/app/controller/app_state.dart';
-import 'package:bukara/app/ui/screens/pop_up/pop_up_erreur.dart';
+import 'package:bukara/app/ui/screens/pop_up/error_resquest.dart';
 import 'package:bukara/app/ui/view_controller/auth_controller.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
@@ -67,7 +67,7 @@ class _EditerUser extends State<EditerUser> {
                           ),
                           const Expanded(
                             child: Text(
-                              "Editer Profile",
+                              "Modifier Profile",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
@@ -83,7 +83,7 @@ class _EditerUser extends State<EditerUser> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              subtitle("Numero Telephone"),
+                              subtitle("Numéro Téléphone"),
                               10.heightBox,
                               Container(
                                 decoration: BoxDecoration(
@@ -175,11 +175,11 @@ class _EditerUser extends State<EditerUser> {
                                 //submitted: singupSubmitted,
                               ),
                               20.heightBox,
-                              subtitle("Post-nom"),
+                              subtitle("Postnom"),
                               10.heightBox,
                               FormText(
                                 controller: editerUserController.lastname,
-                                hint: "Entrez votre Prenom",
+                                hint: "Entrez votre Postnom",
                                 //submitted: singupSubmitted,
                               ),
                             ],
@@ -192,7 +192,7 @@ class _EditerUser extends State<EditerUser> {
                         child: custormButton(
                           context,
                           color: AppColors.BLACK_COLOR,
-                          title: "Editer",
+                          title: "Modifier",
                           colorText: Colors.white,
                           state: state,
                           onTap: _submit,
