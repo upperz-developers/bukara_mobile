@@ -51,23 +51,27 @@ class _AppPage extends State<AppPage> with SingleTickerProviderStateMixin {
         statusBarColor: AppColors.SCAFFOLD_BACKGROUND_LIGHT,
         statusBarIconBrightness: Brightness.dark,
       ),
-      child: SafeArea(
-        child: Scaffold(
-          body: Stack(
-            children: [
-              TabBarView(
-                controller: _tabController,
-                physics: const NeverScrollableScrollPhysics(),
-                children: const [
-                  Home(),
-                  TopTabBar(),
-                  LIsteLocataire(),
-                  Profile(),
-                ],
-              ),
-              Align(
-                  alignment: Alignment.bottomCenter, child: bottomNavigation()),
-            ],
+      child: Container(
+        color: AppColors.SCAFFOLD_BACKGROUND_LIGHT,
+        child: SafeArea(
+          child: Scaffold(
+            body: Stack(
+              children: [
+                TabBarView(
+                  controller: _tabController,
+                  physics: const NeverScrollableScrollPhysics(),
+                  children: const [
+                    Home(),
+                    TopTabBar(),
+                    LIsteLocataire(),
+                    Profile(),
+                  ],
+                ),
+                Align(
+                    alignment: Alignment.bottomCenter,
+                    child: bottomNavigation()),
+              ],
+            ),
           ),
         ),
       ),

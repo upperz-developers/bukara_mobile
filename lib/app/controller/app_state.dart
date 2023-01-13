@@ -1,3 +1,4 @@
+import 'package:bukara/app/providers/shared/common_modele.dart';
 import 'package:flutter/foundation.dart' show immutable;
 
 abstract class AppState {}
@@ -12,7 +13,7 @@ class SUCCESS implements AppState {
 
 @immutable
 class ERROR implements AppState {
-  final String? dueTo;
+  final ErrorModel? dueTo;
 
   const ERROR({this.dueTo});
 }

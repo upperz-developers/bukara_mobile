@@ -4,6 +4,7 @@ import 'package:bukara/app/controller/app_state.dart';
 import 'package:bukara/app/ui/Screens/auth/check_mail.dart';
 import 'package:bukara/app/ui/Screens/auth/singup_page.dart';
 import 'package:bukara/app/ui/screens/app_page.dart';
+import 'package:bukara/app/ui/screens/pop_up/pop_up_erreur.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -69,7 +70,7 @@ class _LoginPage extends State<LoginPage> {
             if (state is SUCCESS) {
               Navigator.pushReplacementNamed(context, AppPage.routeName);
             } else if (state is ERROR) {
-              // errorModel(context, dueTo: state.dueTo!);
+              errorModel(context, dueTo: state.dueTo!.errors!);
             }
           }),
           child: BlocBuilder<AppBloc, AppState>(

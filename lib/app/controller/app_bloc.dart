@@ -1,5 +1,6 @@
 import 'package:bukara/app/controller/app_event.dart';
 import 'package:bukara/app/controller/app_state.dart';
+import 'package:bukara/app/controller/shared.dart';
 import 'package:bukara/app/providers/contrat/model.dart';
 import 'package:bukara/app/providers/contrat/provider.dart';
 import 'package:bukara/app/providers/suite/modele.dart';
@@ -45,8 +46,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         AppPref.showUserPerf.value = getUserInfo().userPerfsInfo!;
         emit(const SUCCESS());
       } on Exception catch (e) {
-        emit(const ERROR());
-        emit(ERROR(dueTo: e.toString()));
+        hundleError(e: e, emit: emit);
       }
     });
 
@@ -65,7 +65,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
 
           emit(const SUCCESS());
         } on Exception catch (e) {
-          emit(ERROR(dueTo: e.toString()));
+          hundleError(e: e, emit: emit);
         }
       }),
     );
@@ -83,7 +83,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
 
           emit(const SUCCESS());
         } on Exception catch (e) {
-          emit(ERROR(dueTo: e.toString()));
+          hundleError(e: e, emit: emit);
         }
       }),
     );
@@ -108,7 +108,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
           AppPref.showUserPerf.value = getUserInfo().userPerfsInfo!;
           emit(const SUCCESS());
         } on Exception catch (e) {
-          emit(ERROR(dueTo: e.toString()));
+          hundleError(e: e, emit: emit);
         }
       }),
     );
@@ -123,7 +123,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
 
           emit(const SUCCESS());
         } on Exception catch (e) {
-          emit(ERROR(dueTo: e.toString()));
+          hundleError(e: e, emit: emit);
         }
       }),
     );
@@ -136,9 +136,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
           value: resultSuite.data!.suites!,
         ));
       } on Exception catch (e) {
-        emit(ERROR(
-          dueTo: e.toString(),
-        ));
+        hundleError(e: e, emit: emit);
       }
     });
 
@@ -151,9 +149,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
           value: resultnotification.data!.data!,
         ));
       } on Exception catch (e) {
-        emit(ERROR(
-          dueTo: e.toString(),
-        ));
+        hundleError(e: e, emit: emit);
       }
     });
 
@@ -165,9 +161,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         List<ContratData> contratData = recovery.data!.contratData!;
         emit(SUCCESS(value: contratData));
       } on Exception catch (e) {
-        emit(ERROR(
-          dueTo: e.toString(),
-        ));
+        hundleError(e: e, emit: emit);
       }
     });
     on<GETCONTRAT>((event, emit) async {
@@ -178,9 +172,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         List<Contrat> contratData = contrats.data!.contrats!;
         emit(SUCCESS(value: contratData));
       } on Exception catch (e) {
-        emit(ERROR(
-          dueTo: e.toString(),
-        ));
+        hundleError(e: e, emit: emit);
       }
     });
 
@@ -194,7 +186,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         List<PayementHistoric> payements = resultPayement.data!.payments!;
         emit(SUCCESS(value: payements));
       } on Exception catch (e) {
-        emit(ERROR(dueTo: e.toString()));
+        hundleError(e: e, emit: emit);
       }
     });
     on<GETPEYEMENTPERRECOVERY>((event, emit) async {
@@ -209,7 +201,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         List<PayementHistoric> payements = resultPayement.data!.payments!;
         emit(SUCCESS(value: payements));
       } on Exception catch (e) {
-        emit(ERROR(dueTo: e.toString()));
+        hundleError(e: e, emit: emit);
       }
     });
   }
