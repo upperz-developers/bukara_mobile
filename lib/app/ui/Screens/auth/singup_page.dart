@@ -1,7 +1,11 @@
 import 'package:bukara/app/controller/app_bloc.dart';
 import 'package:bukara/app/controller/app_event.dart';
 import 'package:bukara/app/controller/app_state.dart';
+<<<<<<< HEAD
 import 'package:bukara/app/ui/shared/utils/custorm_scaffold.dart';
+=======
+import 'package:bukara/app/ui/screens/pop_up/pop_up_erreur.dart';
+>>>>>>> a8c7d62fa240bfe7918c8dc3501f2ef6a94d1afb
 import 'package:bukara/app/ui/view_controller/auth_controller.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -59,6 +63,7 @@ class _SingUpPage extends State<SingUpPage> {
   AuthViewController singupController = AuthViewController();
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     return CustormScaffold(
       body: BlocListener<AppBloc, AppState>(
         bloc: bloc,
@@ -83,6 +88,37 @@ class _SingUpPage extends State<SingUpPage> {
                         },
                         icon: const Icon(
                           Iconsax.arrow_left,
+=======
+    return SafeArea(
+      child: Scaffold(
+        body: BlocListener<AppBloc, AppState>(
+          bloc: bloc,
+          listener: (context, state) {
+            if (state is SUCCESS) {
+              Navigator.pop(context);
+            } else if (state is ERROR) {
+              errorModel(context, dueTo: state.dueTo!.errors!);
+            }
+          },
+          child: BlocBuilder<AppBloc, AppState>(
+              bloc: bloc,
+              builder: (context, state) {
+                return IgnorePointer(
+                  ignoring: state is LOADING,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: const Icon(
+                            Iconsax.arrow_left,
+                          ),
+                          color: const Color.fromARGB(169, 32, 32, 32),
+>>>>>>> a8c7d62fa240bfe7918c8dc3501f2ef6a94d1afb
                         ),
                         color: const Color.fromARGB(169, 32, 32, 32),
                       ),

@@ -20,16 +20,35 @@ errorModel(BuildContext context, {required List<ErrorData> dueTo}) {
               ...List.generate(
                 dueTo.length,
                 (index) => Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      dueTo[index].rule!,
-                    ),
-                    Text(
-                      dueTo[index].field!,
-                    ),
-                    Text(
-                      dueTo[index].message!,
-                    ),
+                    if (dueTo[index].field != null)
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "Champs : ",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            dueTo[index].field!,
+                          ),
+                        ],
+                      ),
+                    5.heightBox,
+                    if (dueTo[index].message != null)
+                      Text(
+                        dueTo[index].message!,
+                      ),
+                    5.heightBox,
+                    if (dueTo[index].rule != null)
+                      Text(
+                        dueTo[index].rule!,
+                      ),
+                    line(),
                   ],
                 ),
               ),

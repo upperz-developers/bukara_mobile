@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:bukara/app/providers/shared/common_modele.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
@@ -47,8 +49,7 @@ class ValidationInternalServerErrorException extends DioError {
 
   @override
   String toString() {
-    ErrorModel errorModel = ErrorModel.fromJson(data!);
-    return errorModel.errors!.first.message!;
+    return jsonEncode(data);
   }
 }
 
@@ -60,7 +61,13 @@ class DeadLineExcededException extends DioError {
 
   @override
   String toString() {
-    return "Une erreur s'est produite en essayant de joindre le serveur";
+    ErrorModel errormodel = ErrorModel();
+    errormodel.errors!.add(
+      ErrorData(
+        message: "Une erreur s'est produite en essayant de joindre le serveur",
+      ),
+    );
+    return jsonEncode(errormodel.toJson());
   }
 }
 
@@ -69,8 +76,13 @@ class BadRequestException extends DioError {
 
   @override
   String toString() {
-    // this will be shown only in debug mode, in release we will change the sentence
-    return "Mauvaise requette | Bad request error";
+    ErrorModel errormodel = ErrorModel();
+    errormodel.errors!.add(
+      ErrorData(
+        message: "Mauvaise requette | Bad request error",
+      ),
+    );
+    return jsonEncode(errormodel.toJson());
   }
 }
 
@@ -79,7 +91,13 @@ class UnauthorizedException extends DioError {
 
   @override
   String toString() {
-    return "Erreur de l'auhentification au serveur | Unauthorized error";
+    ErrorModel errormodel = ErrorModel();
+    errormodel.errors!.add(
+      ErrorData(
+        message: "Erreur de l'auhentification au serveur | Unauthorized error",
+      ),
+    );
+    return jsonEncode(errormodel.toJson());
   }
 }
 
@@ -88,8 +106,14 @@ class NotFoundException extends DioError {
 
   @override
   String toString() {
-    // this will be shown only in debug mode, in release we will change the sentence
-    return "Une erreur s'est produite, ceci est du à l'url que vous entrez | not found error";
+    ErrorModel errormodel = ErrorModel();
+    errormodel.errors!.add(
+      ErrorData(
+        message:
+            "Une erreur s'est produite, ceci est du à l'url que vous entrez | not found error",
+      ),
+    );
+    return jsonEncode(errormodel.toJson());
   }
 }
 
@@ -98,8 +122,13 @@ class ConflictException extends DioError {
 
   @override
   String toString() {
-    // this will be shown only in debug mode, in release we will change the sentence
-    return "Une erreur s'est produite, conflit";
+    ErrorModel errormodel = ErrorModel();
+    errormodel.errors!.add(
+      ErrorData(
+        message: "Une erreur s'est produite, conflit",
+      ),
+    );
+    return jsonEncode(errormodel.toJson());
   }
 }
 
@@ -108,8 +137,13 @@ class InternalServerErrorException extends DioError {
 
   @override
   String toString() {
-    // this will be shown only in debug mode, in release we will change the sentence
-    return "Une erreur s'est produite au serveur | internal server error";
+    ErrorModel errormodel = ErrorModel();
+    errormodel.errors!.add(
+      ErrorData(
+        message: "Une erreur s'est produite au serveur | internal server error",
+      ),
+    );
+    return jsonEncode(errormodel.toJson());
   }
 }
 
@@ -118,6 +152,12 @@ class NoInternetConnectionException extends DioError {
 
   @override
   String toString() {
-    return "Aucune connexion internet";
+    ErrorModel errormodel = ErrorModel();
+    errormodel.errors!.add(
+      ErrorData(
+        message: "Aucune connexion internet",
+      ),
+    );
+    return jsonEncode(errormodel.toJson());
   }
 }

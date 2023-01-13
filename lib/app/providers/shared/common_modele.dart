@@ -143,9 +143,10 @@ class Phones {
 class ErrorModel {
   List<ErrorData>? errors;
 
-  ErrorModel({this.errors});
+  ErrorModel() : errors = [];
 
   ErrorModel.fromJson(Map<String, dynamic> json) {
+    errors = [];
     if (json['errors'] != null) {
       errors = <ErrorData>[];
       json['errors'].forEach((v) {
@@ -153,6 +154,8 @@ class ErrorModel {
       });
     }
   }
+
+  Map<String, dynamic> toJson() => {};
 }
 
 class ErrorData {
@@ -167,4 +170,10 @@ class ErrorData {
     field = json['field'];
     message = json['message'];
   }
+
+  Map<String, dynamic> toJson() => {
+        "rule": rule,
+        "field": field,
+        "message": message,
+      };
 }
