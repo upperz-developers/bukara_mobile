@@ -155,7 +155,13 @@ class ErrorModel {
     }
   }
 
-  Map<String, dynamic> toJson() => {};
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = {};
+    if (errors != null) {
+      data['errors'] = errors!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
 }
 
 class ErrorData {

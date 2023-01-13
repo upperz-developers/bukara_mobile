@@ -11,7 +11,6 @@ class ApiInterceptor extends Interceptor {
 
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) {
-    debugPrint(err.response!.data.toString());
     switch (err.type) {
       case DioErrorType.sendTimeout:
       case DioErrorType.connectTimeout:
@@ -155,7 +154,8 @@ class NoInternetConnectionException extends DioError {
     ErrorModel errormodel = ErrorModel();
     errormodel.errors!.add(
       ErrorData(
-        message: "Aucune connexion internet",
+        message:
+            "Aucune connexion internet!\nActiver votre connexion ou verifiez l'état de votre connexion",
       ),
     );
     return jsonEncode(errormodel.toJson());
