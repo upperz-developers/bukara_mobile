@@ -67,7 +67,7 @@ class _Recouvrement extends State<Recouvrement> {
                           );
                         } else if (state is ERROR) {
                           return NoData(
-                            message: "Aucune connexion internet",
+                            dueTo: state.dueTo!.errors!,
                             onTap: (() {
                               bloc.add(
                                 GETRECOVERYINFO(),

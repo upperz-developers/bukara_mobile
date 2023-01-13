@@ -73,7 +73,7 @@ class _LIsteLocataireState extends State<LIsteLocataire> {
                           ]);
                         } else if (state is ERROR) {
                           return NoData(
-                            message: "Aucune connexion internet",
+                            dueTo: state.dueTo!.errors!,
                             onTap: (() {
                               bloc.add(
                                 GETTENANT(),

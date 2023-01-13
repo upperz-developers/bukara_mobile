@@ -1,6 +1,8 @@
 import 'package:bukara/app/controller/app_bloc.dart';
 import 'package:bukara/app/controller/app_event.dart';
+import 'package:bukara/app/providers/shared/common_modele.dart';
 import 'package:bukara/app/services/prefs/app_prefs.dart';
+import 'package:bukara/app/ui/screens/pop_up/pop_up_erreur.dart';
 import 'package:flutter/widgets.dart';
 
 class AuthViewController {
@@ -49,11 +51,19 @@ class AuthViewController {
     );
   }
 
-  bool get singupValidate =>
-      email.value.text.isNotEmpty &&
-      password.text.isNotEmpty &&
-      confirmpasssword.text.isNotEmpty &&
-      codeapp.text.isNotEmpty;
+  bool singupValidate(BuildContext context) {
+    if (codeapp.text.isEmpty || codeapp.text.trim() != "UpperzApp#432") {
+      ErrorModel error = ErrorModel();
+      error.errors!.add(ErrorData(
+          field: "Code Application",
+          message: "Le code application est incorrect"));
+      errorModel(context, dueTo: error.errors!);
+      return false;
+    }
+    return email.value.text.isNotEmpty &&
+        password.text.isNotEmpty &&
+        confirmpasssword.text.isNotEmpty;
+  }
 
   bool get forgotValidate => email.value.text.isNotEmpty;
 }

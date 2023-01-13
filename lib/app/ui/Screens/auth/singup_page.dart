@@ -37,10 +37,7 @@ class _SingUpPage extends State<SingUpPage> {
 
   bool singupSubmitted = false;
   void _submit() {
-    setState(() {
-      singupSubmitted = true;
-    });
-    if (singupController.singupValidate) {
+    if (singupController.singupValidate(context)) {
       bloc!.add(
         SINGUP(
           email: singupController.email.value.text.trim(),
@@ -48,7 +45,11 @@ class _SingUpPage extends State<SingUpPage> {
           confirmepassword: singupController.confirmpasssword.text.trim(),
         ),
       );
+      return;
     }
+    setState(() {
+      singupSubmitted = true;
+    });
   }
 
   @override

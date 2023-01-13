@@ -87,7 +87,7 @@ class _ContratScreen extends State<ContratScreen> {
                     );
                   } else if (state is ERROR) {
                     return NoData(
-                      message: "Aucune connexion internet",
+                      dueTo: state.dueTo!.errors!,
                       onTap: (() {
                         bloc!.add(
                           GETCONTRAT(),

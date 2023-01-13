@@ -66,7 +66,7 @@ class _Paiement extends State<Paiement> {
                           ]);
                         } else if (state is ERROR) {
                           return NoData(
-                            message: "Aucune connexion internet",
+                            dueTo: state.dueTo!.errors!,
                             onTap: (() {
                               bloc!.add(
                                 GETSUITE(),
