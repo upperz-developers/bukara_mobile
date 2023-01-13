@@ -1,9 +1,11 @@
 import 'package:bukara/app/providers/contrat/model.dart';
 import 'package:bukara/app/providers/suite/modele.dart';
 import 'package:bukara/app/ui/shared/style.dart';
+import 'package:bukara/app/ui/shared/utils/custorm_scaffold.dart';
 import 'package:bukara/app/ui/shared/utils/utility_fonction/customer_date.dart';
 import 'package:bukara/app/ui/shared/utils/widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -23,8 +25,14 @@ class _DetailContrat extends State<DetailContrat> {
   Widget build(BuildContext context) {
     Contrat contrat = ModalRoute.of(context)!.settings.arguments as Contrat;
 
-    return SafeArea(
-      child: Scaffold(
+    return AnnotatedRegion(
+      value: const SystemUiOverlayStyle(
+        systemNavigationBarColor: AppColors.SCAFFOLD_BACKGROUND_LIGHT,
+        systemNavigationBarIconBrightness: Brightness.dark,
+        statusBarColor: AppColors.SCAFFOLD_BACKGROUND_LIGHT,
+        statusBarIconBrightness: Brightness.dark,
+      ),
+      child: CustormScaffold(
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -55,14 +63,20 @@ class _DetailContrat extends State<DetailContrat> {
                       "${contrat.landlord!.email}",
                     ),
                     line(),
-                    Text(
-                      "${contrat.appartement!.description}",
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
+                    if (contrat.appartement != null)
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "${contrat.appartement?.description}",
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          20.heightBox,
+                        ],
                       ),
-                    ),
-                    20.heightBox,
                     Text(
                       "${contrat.amount}\$ le mois",
                     ),
@@ -70,15 +84,18 @@ class _DetailContrat extends State<DetailContrat> {
                     const Text(
                       "3 mois de garantie",
                     ),
-                    20.heightBox,
-                    const Text(
-                      "Detail appartement",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                    if (contrat.appartement != null)
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          20.heightBox,
+                          const Text(
+                            "Detail appartement",
+                          ),
+                          15.heightBox,
+                          caracteristic(contrat.appartement!),
+                        ],
                       ),
-                    ),
-                    15.heightBox,
-                    caracteristic(contrat.appartement!),
                   ],
                 ),
               ),
@@ -103,12 +120,13 @@ class _DetailContrat extends State<DetailContrat> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
+                        5.heightBox,
                       ],
                     ),
                   Text(
                     "${contrat.landlord!.email}",
                   ),
-                  20.heightBox,
+                  30.heightBox,
                   Column(
                     children: [
                       Text(
@@ -134,6 +152,7 @@ class _DetailContrat extends State<DetailContrat> {
                         ),
                     ],
                   ),
+                  24.heightBox,
                 ],
               ),
             ),

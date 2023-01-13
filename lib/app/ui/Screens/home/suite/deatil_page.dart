@@ -1,10 +1,11 @@
 import 'package:bukara/app/providers/suite/modele.dart';
+import 'package:bukara/app/ui/Screens/contrats%20de%20Bail/detail_contrats.dart';
 import 'package:bukara/app/ui/screens/home/suite/suite_model.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:iconsax/iconsax.dart';
-import '../../../screens/Recouvrement/detail_information_recouvrement.dart';
 import '../../../shared/utils/widget.dart';
 
 class Details extends StatefulWidget {
@@ -21,71 +22,80 @@ class _Details extends State<Details> {
     SuiteModel suiteDetail =
         ModalRoute.of(context)!.settings.arguments as SuiteModel;
 
-    return Scaffold(
-      body: Stack(children: [
-        SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          padding: const EdgeInsets.only(
-            bottom: 10,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SuiteImage(
-                images: suiteDetail.images!,
-                height: 400,
-              ),
-              card1(suiteDetail),
-              line(),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    caracteristic(suiteDetail),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 5, bottom: 20),
-                      child: Divider(),
-                    ),
-                    const Text("Autres informations",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        )),
-                    30.heightBox,
-                    otherInfo(suiteDetail.features!.other!),
-                  ],
+    return AnnotatedRegion(
+      value: const SystemUiOverlayStyle(
+        systemNavigationBarColor: AppColors.SCAFFOLD_BACKGROUND_LIGHT,
+        systemNavigationBarIconBrightness: Brightness.dark,
+        statusBarColor: AppColors.TRANSPARENT,
+        statusBarIconBrightness: Brightness.dark,
+      ),
+      child: Scaffold(
+        body: Stack(children: [
+          SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            padding: const EdgeInsets.only(
+              bottom: 10,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SuiteImage(
+                  images: suiteDetail.images!,
+                  height: 400,
+                  borderRadius: 0,
                 ),
-              ),
-            ],
-          ),
-        ),
-        Positioned(
-          top: 40,
-          left: 20,
-          child: Container(
-            height: 35,
-            width: 35,
-            decoration: BoxDecoration(
-              color: AppColors.DISABLE_COLOR,
-              shape: BoxShape.circle,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(.3),
-                  blurRadius: 3,
+                card1(suiteDetail),
+                line(),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      caracteristic(suiteDetail),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 5, bottom: 20),
+                        child: Divider(),
+                      ),
+                      const Text("Autres informations",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          )),
+                      30.heightBox,
+                      otherInfo(suiteDetail.features!.other!),
+                    ],
+                  ),
                 ),
               ],
             ),
-            child: IconButton(
-              onPressed: () => Navigator.pop(context),
-              icon: const Icon(
-                Iconsax.arrow_left,
-                size: 18,
+          ),
+          Positioned(
+            top: 40,
+            left: 20,
+            child: Container(
+              height: 35,
+              width: 35,
+              decoration: BoxDecoration(
+                color: AppColors.DISABLE_COLOR,
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(.3),
+                    blurRadius: 3,
+                  ),
+                ],
               ),
-              color: const Color.fromARGB(169, 32, 32, 32),
+              child: IconButton(
+                onPressed: () => Navigator.pop(context),
+                icon: const Icon(
+                  Iconsax.arrow_left,
+                  size: 18,
+                ),
+                color: const Color.fromARGB(169, 32, 32, 32),
+              ),
             ),
           ),
-        ),
-      ]),
+        ]),
+      ),
     );
   }
 
@@ -225,8 +235,11 @@ class _Details extends State<Details> {
                 20.heightBox,
                 InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, InfoRecouvrement.routeName,
-                        arguments: suite);
+                    Navigator.pushNamed(
+                      context,
+                      DetailContrat.routeName,
+                      arguments: suite.contrats!.first,
+                    );
                   },
                   child: Row(
                     children: [
@@ -235,7 +248,7 @@ class _Details extends State<Details> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: const [
                               Text(
-                                "Recouvrement",
+                                "Contrat de bail",
                                 style: TextStyle(
                                   fontSize: 16,
                                   color: Colors.black,

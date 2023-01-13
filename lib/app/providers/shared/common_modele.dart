@@ -139,3 +139,32 @@ class Phones {
     updatedAt = json['updated_at'];
   }
 }
+
+class ErrorModel {
+  List<ErrorData>? errors;
+
+  ErrorModel({this.errors});
+
+  ErrorModel.fromJson(Map<String, dynamic> json) {
+    if (json['errors'] != null) {
+      errors = <ErrorData>[];
+      json['errors'].forEach((v) {
+        errors!.add(ErrorData.fromJson(v));
+      });
+    }
+  }
+}
+
+class ErrorData {
+  String? rule;
+  String? field;
+  String? message;
+
+  ErrorData({this.rule, this.field, this.message});
+
+  ErrorData.fromJson(Map<String, dynamic> json) {
+    rule = json['rule'];
+    field = json['field'];
+    message = json['message'];
+  }
+}

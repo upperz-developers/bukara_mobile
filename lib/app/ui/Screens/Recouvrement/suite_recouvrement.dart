@@ -1,6 +1,7 @@
 //import 'package:bukara/app/providers/shared/common_modele.dart';
 import 'package:bukara/app/ui/screens/Recouvrement/detail_information_recouvrement.dart';
 import 'package:bukara/app/ui/shared/style.dart';
+import 'package:bukara/app/ui/shared/utils/utility_fonction/customer_date.dart';
 import 'package:bukara/app/ui/shared/utils/utility_fonction/utility.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -51,16 +52,6 @@ class SuiteRecouvrement extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                       ),
-                      children: [
-                        TextSpan(
-                          text: " - ${suiteRecouvrement!.labelMonth}",
-                          style: const TextStyle(
-                            color: AppColors.SECOND_TEXT_COLOR,
-                            fontSize: 14,
-                            fontWeight: FontWeight.normal,
-                          ),
-                        ),
-                      ],
                     ),
                   ),
                   15.heightBox,
@@ -72,7 +63,10 @@ class SuiteRecouvrement extends StatelessWidget {
                     "${suiteRecouvrement!.rentalContrat!.appartement!.designation} - (${suiteRecouvrement!.rentalContrat!.appartement!.features!.bedroom} chambres & ${suiteRecouvrement!.rentalContrat!.appartement!.features!.livingroom} salon)",
                   ),
                   Text(
-                    "${suiteRecouvrement!.rentalContrat!.appartement!.typeAppartement!.designation} - ${suiteRecouvrement!.rentalContrat!.appartement!.typeBien!.designation}",
+                    CustomDate(
+                            date: DateTime.parse(
+                                suiteRecouvrement!.rentalContrat!.startDate!))
+                        .getFullDate,
                     style: const TextStyle(
                       color: AppColors.SECOND_TEXT_COLOR,
                     ),
@@ -86,9 +80,9 @@ class SuiteRecouvrement extends StatelessWidget {
             bottom: 0,
             child: Container(
               width: 5,
-              decoration: const BoxDecoration(
-                color: Color.fromARGB(115, 185, 185, 185),
-                borderRadius: BorderRadius.only(
+              decoration: BoxDecoration(
+                color: HexColor.fromHex(suiteRecouvrement!.color!),
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(10),
                   bottomLeft: Radius.circular(10),
                 ),

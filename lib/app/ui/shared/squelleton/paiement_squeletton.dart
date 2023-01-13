@@ -1,10 +1,9 @@
-import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class RecouvrementSquelleton extends StatelessWidget {
-  const RecouvrementSquelleton({
+class PaiementSquelleton extends StatelessWidget {
+  const PaiementSquelleton({
     Key? key,
   }) : super(key: key);
 
@@ -23,13 +22,14 @@ class RecouvrementSquelleton extends StatelessWidget {
         ),
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-          color: AppColors.DISABLE_COLOR,
+          // color: AppColors.DISABLE_COLOR,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(4),

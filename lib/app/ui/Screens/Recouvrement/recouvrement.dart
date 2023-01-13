@@ -1,6 +1,7 @@
 import 'package:bukara/app/controller/app_bloc.dart';
 import 'package:bukara/app/controller/app_state.dart';
 import 'package:bukara/app/ui/screens/Recouvrement/suite_recouvrement.dart';
+import 'package:bukara/app/ui/screens/pop_up/bad_resquet.dart';
 import 'package:bukara/app/ui/shared/squelleton/recouvrement_squelleton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,13 +17,12 @@ class Recouvrement extends StatefulWidget {
 }
 
 class _Recouvrement extends State<Recouvrement> {
-  AppBloc? bloc;
+  AppBloc bloc = AppBloc();
   @override
   void initState() {
-    bloc = AppBloc()
-      ..add(
-        GETRECOVERYINFO(),
-      );
+    bloc.add(
+      GETRECOVERYINFO(),
+    );
     super.initState();
   }
 
@@ -43,31 +43,42 @@ class _Recouvrement extends State<Recouvrement> {
                 child: SingleChildScrollView(
                   physics: const BouncingScrollPhysics(),
                   child: BlocBuilder<AppBloc, AppState>(
-                    bloc: bloc,
-                    builder: (context, state) {
-                      List<ContratData> listeRecouvrement =
-                          state is SUCCESS ? state.value : [];
-                      return state is SUCCESS
-                          ? Column(
-                              children: [
-                                20.heightBox,
-                                ...List.generate(
-                                  listeRecouvrement.length,
-                                  (index) => SuiteRecouvrement(
-                                    suiteRecouvrement: listeRecouvrement[index],
-                                  ),
-                                ),
-                              ],
-                            )
-                          : Column(children: [
+                      bloc: bloc,
+                      builder: (context, state) {
+                        if (state is LOADING) {
+                          return Column(
+                              children: List.generate(
+                            3,
+                            (index) => const RecouvrementSquelleton(),
+                          ));
+                        } else if (state is SUCCESS) {
+                          List<ContratData> listeRecouvrement =
+                              // ignore: unnecessary_type_check
+                              state is SUCCESS ? state.value : [];
+                          return Column(
+                            children: [
                               20.heightBox,
                               ...List.generate(
-                                3,
-                                (index) => const RecouvrementSquelleton(),
+                                listeRecouvrement.length,
+                                (index) => SuiteRecouvrement(
+                                  suiteRecouvrement: listeRecouvrement[index],
+                                ),
                               ),
-                            ]);
-                    },
-                  ),
+                            ],
+                          );
+                        } else if (state is ERROR) {
+                          return NoData(
+                            message: "Aucune connexion internet",
+                            onTap: (() {
+                              bloc.add(
+                                GETRECOVERYINFO(),
+                              );
+                            }),
+                          );
+                        } else {
+                          return const SizedBox.shrink();
+                        }
+                      }),
                 ),
               ),
             ],

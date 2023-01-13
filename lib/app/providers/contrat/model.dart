@@ -63,9 +63,10 @@ class Contrat {
   Contrat.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     user = json['user'] != null ? User.fromJson(json['user']) : null;
-    appartement = json['appartement'] != null
-        ? SuiteModel.fromJson(json['appartement'])
-        : null;
+    appartement =
+        json['appartement'] != null && json['appartement'].runtimeType != String
+            ? SuiteModel.fromJson(json['appartement'])
+            : null;
     landlord =
         json['landlord'] != null ? Landlord.fromJson(json['landlord']) : null;
     numberOfHabitant = json['number_of_habitant'];

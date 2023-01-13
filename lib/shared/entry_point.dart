@@ -3,6 +3,7 @@ import 'package:bukara/app/services/prefs/app_prefs.dart';
 import 'package:flutter/material.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:bukara/app/ui/shared/utils/route.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -30,6 +31,14 @@ class _App extends State<App> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        systemNavigationBarColor: AppColors.SCAFFOLD_BACKGROUND_LIGHT,
+        systemNavigationBarIconBrightness: Brightness.light,
+        statusBarColor: AppColors.SCAFFOLD_BACKGROUND_LIGHT,
+        statusBarIconBrightness: Brightness.light,
+      ),
+    );
     return BlocProvider<AppBloc>(
       create: (context) => AppBloc(),
       child: MaterialApp(

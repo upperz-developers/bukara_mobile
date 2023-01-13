@@ -1,5 +1,6 @@
 import 'package:bukara/app/ui/screens/paiement/detail_paiement.dart';
 import 'package:bukara/app/ui/shared/style.dart';
+import 'package:bukara/app/ui/shared/utils/utility_fonction/customer_date.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../../../providers/paiement_modele/modele.dart';
@@ -15,8 +16,16 @@ class SuitePaiement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 15),
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        vertical: 00,
+        horizontal: 0,
+      ),
+      width: MediaQuery.of(context).size.width,
+      decoration: BoxDecoration(
+        color: AppColors.TRANSPARENT,
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: InkWell(
         borderRadius: BorderRadius.circular(10),
         onTap: () {
@@ -24,26 +33,51 @@ class SuitePaiement extends StatelessWidget {
           Navigator.pushNamed(context, DetailPaiement.routeName,
               arguments: suitePaiement);
         },
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text(
-            "${suitePaiement!.contratData!.labelStr} ",
-            style: const TextStyle(),
-          ),
-          Text(
-            "${suitePaiement!.contratData!.rentalContrat!.landlord!.name} ${suitePaiement!.contratData!.rentalContrat!.landlord!.lastname!}",
-            style: const TextStyle(color: AppColors.SECOND_TEXT_COLOR),
-          ),
-          10.heightBox,
-          Text(
-            "${suitePaiement!.amount} ${suitePaiement!.currenty}",
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              color: AppColors.BLACK_COLOR,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "${suitePaiement!.contratData!.rentalContrat!.landlord!.name} ${suitePaiement!.contratData!.rentalContrat!.landlord!.lastname!}",
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      10.heightBox,
+                      Text(
+                        "${suitePaiement!.contratData!.labelStr}",
+                      ),
+                      10.heightBox,
+                      Text(
+                        "Du ${CustomDate(date: DateTime.parse(suitePaiement!.createdAt!)).getFullDate}",
+                        style: const TextStyle(
+                          color: AppColors.SECOND_TEXT_COLOR,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                15.widthBox,
+                Text(
+                  "${suitePaiement!.amount}\$",
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                    color: AppColors.BLACK_COLOR,
+                  ),
+                ),
+              ],
             ),
-          ),
-          10.heightBox,
-          line(),
-        ]),
+            line(),
+          ],
+        ),
       ),
     );
   }

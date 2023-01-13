@@ -41,7 +41,7 @@ class _TopTabBarState extends State<TopTabBar>
               controller: _tabControllertop,
               unselectedLabelColor: AppColors.SECOND_TEXT_COLOR,
               indicator: const UnderlineTabIndicator(
-                borderSide: BorderSide(width: 0.0),
+                borderSide: BorderSide(width: 2),
               ),
               //indicatorColor: Colors.white,
               indicatorWeight: 5.0,
@@ -51,7 +51,7 @@ class _TopTabBarState extends State<TopTabBar>
                   child: Text(
                     "Recouvrement",
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -60,7 +60,7 @@ class _TopTabBarState extends State<TopTabBar>
                   child: Text(
                     "Paiement",
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -68,7 +68,7 @@ class _TopTabBarState extends State<TopTabBar>
               ]),
           Expanded(
             child: TabBarView(
-                physics: const BouncingScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 controller: _tabControllertop,
                 children: const [
                   Recouvrement(),

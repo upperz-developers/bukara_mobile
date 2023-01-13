@@ -3,6 +3,7 @@ import 'package:bukara/app/controller/app_event.dart';
 import 'package:bukara/app/controller/app_state.dart';
 import 'package:bukara/app/providers/suite/modele.dart';
 import 'package:bukara/app/ui/screens/home/suite/suite_model.dart';
+import 'package:bukara/app/ui/screens/pop_up/bad_resquet.dart';
 import 'package:bukara/app/ui/shared/squelleton/suite_squelleton.dart';
 import 'package:bukara/app/ui/shared/utils/widget.dart';
 import 'package:flutter/material.dart';
@@ -21,14 +22,13 @@ class _Home extends State<Home> with SingleTickerProviderStateMixin {
   ScrollController? _scrollController;
   bool hasScrolled = false;
   int indexPage = 0;
-  AppBloc? bloc;
+  AppBloc bloc = AppBloc();
 
   @override
   void initState() {
-    bloc = AppBloc()
-      ..add(
-        GETSUITE(),
-      );
+    bloc.add(
+      GETSUITE(),
+    );
 
     _scrollController = ScrollController()
       ..addListener(() {
@@ -65,32 +65,46 @@ class _Home extends State<Home> with SingleTickerProviderStateMixin {
                 child: BlocBuilder<AppBloc, AppState>(
                     bloc: bloc,
                     builder: (context, state) {
-                      List<SuiteModel> listeSuite =
-                          state is SUCCESS ? state.value : [];
-                      return state is SUCCESS
-                          ? Column(
-                              children: List.generate(
-                                  listeSuite.length,
-                                  (index) => Column(
-                                        children: [
-                                          Suite(
-                                            suite: listeSuite[index],
-                                          ),
-                                          if (index != listeSuite.length - 1)
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      vertical: 15),
-                                              child: line(),
-                                            ),
-                                        ],
-                                      )),
-                            )
-                          : Column(
-                              children: List.generate(
-                              3,
-                              (index) => const SuiteSqueletton(),
-                            ));
+                      if (state is LOADING) {
+                        return Column(
+                            children: List.generate(
+                          3,
+                          (index) => const SuiteSqueletton(),
+                        ));
+                      } else if (state is SUCCESS) {
+                        List<SuiteModel> listeSuite =
+                            // ignore: unnecessary_type_check
+                            state is SUCCESS ? state.value : [];
+                        return Column(
+                          children: List.generate(
+                            listeSuite.length,
+                            (index) => Column(
+                              children: [
+                                Suite(
+                                  suite: listeSuite[index],
+                                ),
+                                if (index != listeSuite.length - 1)
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 15),
+                                    child: line(),
+                                  ),
+                              ],
+                            ),
+                          ),
+                        );
+                      } else if (state is ERROR) {
+                        return NoData(
+                          message: "Aucune connexion internet",
+                          onTap: (() {
+                            bloc.add(
+                              GETSUITE(),
+                            );
+                          }),
+                        );
+                      } else {
+                        return const SizedBox.shrink();
+                      }
                     }),
               ),
             ),

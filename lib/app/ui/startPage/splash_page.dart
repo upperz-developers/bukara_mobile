@@ -1,6 +1,7 @@
 // import 'package:community/views/auth/login.dart';
 import 'package:bukara/app/services/prefs/app_prefs.dart';
 import 'package:bukara/app/ui/Screens/auth/login_page.dart';
+import 'package:bukara/app/ui/shared/utils/custorm_scaffold.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/app_page.dart';
@@ -37,11 +38,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Center(
-          child: icon(),
-        ),
+    return CustormScaffold(
+      body: Center(
+        child: icon(),
       ),
     );
   }

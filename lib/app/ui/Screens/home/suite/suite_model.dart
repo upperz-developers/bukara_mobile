@@ -9,10 +9,11 @@ import 'package:velocity_x/velocity_x.dart';
 
 class Suite extends StatelessWidget {
   final SuiteModel? suite;
-
+  final double? borderRadius;
   const Suite({
     Key? key,
     this.suite,
+    this.borderRadius,
   }) : super(key: key);
 
   @override
@@ -32,6 +33,7 @@ class Suite extends StatelessWidget {
                   SuiteImage(
                     images: suite!.images!,
                     height: 280,
+                    borderRadius: borderRadius,
                   ),
                   15.heightBox,
                 ],
@@ -109,8 +111,10 @@ class Suite extends StatelessWidget {
 
 class SuiteImage extends StatefulWidget {
   final double height;
+  final double? borderRadius;
   final List<ImageModel> images;
-  const SuiteImage({Key? key, required this.images, required this.height})
+  const SuiteImage(
+      {Key? key, required this.images, required this.height, this.borderRadius})
       : super(key: key);
 
   @override
@@ -130,7 +134,8 @@ class _SuiteImageState extends State<SuiteImage> {
               (index) => Container(
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius:
+                      BorderRadius.circular(widget.borderRadius ?? 10),
                   color: AppColors.DISABLE_COLOR,
                   image: DecorationImage(
                     image: CachedNetworkImageProvider(

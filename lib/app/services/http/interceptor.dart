@@ -1,3 +1,4 @@
+import 'package:bukara/app/providers/shared/common_modele.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -27,7 +28,8 @@ class ApiInterceptor extends Interceptor {
           case 500:
             throw InternalServerErrorException(err.requestOptions);
           default:
-            throw ValidationInternalServerErrorException(err.requestOptions);
+            throw ValidationInternalServerErrorException(err.requestOptions,
+                data: err.response!.data);
         }
 
       case DioErrorType.cancel:
@@ -39,12 +41,14 @@ class ApiInterceptor extends Interceptor {
 }
 
 class ValidationInternalServerErrorException extends DioError {
-  ValidationInternalServerErrorException(RequestOptions r)
+  final Map<String, dynamic>? data;
+  ValidationInternalServerErrorException(RequestOptions r, {this.data})
       : super(requestOptions: r);
 
   @override
   String toString() {
-    return "Valiadteur";
+    ErrorModel errorModel = ErrorModel.fromJson(data!);
+    return errorModel.errors!.first.message!;
   }
 }
 

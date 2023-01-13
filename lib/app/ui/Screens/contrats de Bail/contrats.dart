@@ -1,8 +1,10 @@
 import 'package:bukara/app/controller/app_event.dart';
 import 'package:bukara/app/providers/contrat/model.dart';
 import 'package:bukara/app/ui/Screens/contrats%20de%20Bail/detail_contrats.dart';
+import 'package:bukara/app/ui/screens/pop_up/bad_resquet.dart';
 import 'package:bukara/app/ui/shared/squelleton/contrat_squeletton.dart';
 import 'package:bukara/app/ui/shared/style.dart';
+import 'package:bukara/app/ui/shared/utils/custorm_scaffold.dart';
 import 'package:bukara/app/ui/shared/utils/utility_fonction/customer_date.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,68 +34,75 @@ class _ContratScreen extends State<ContratScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(
-                    Iconsax.arrow_left,
-                  ),
-                  color: const Color.fromARGB(169, 32, 32, 32),
+    return CustormScaffold(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: const Icon(
+                  Iconsax.arrow_left,
                 ),
-                const Expanded(
-                  child: Text(
-                    "Contrats",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                ),
-                52.widthBox,
-              ],
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.only(
-                  left: 20,
-                  right: 20,
-                  top: 10,
-                  bottom: 50,
-                ),
-                physics: const BouncingScrollPhysics(),
-                child: BlocBuilder<AppBloc, AppState>(
-                  bloc: bloc,
-                  builder: (context, state) {
-                    if (state is SUCCESS) {
-                      List<Contrat> listecontrats = state.value;
-                      return Column(
-                        children: List.generate(
-                          listecontrats.length,
-                          (index) => contraModel(listecontrats[index]),
-                        ),
-                      );
-                    } else if (state is LOADING) {
-                      return Column(
-                        children: List.generate(
-                          3,
-                          (index) => const ContratSqueletton(),
-                        ),
-                      );
-                    } else {
-                      return Container();
-                    }
-                  },
+                color: const Color.fromARGB(169, 32, 32, 32),
+              ),
+              const Expanded(
+                child: Text(
+                  "Contrats",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
               ),
+              52.widthBox,
+            ],
+          ),
+          Expanded(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.only(
+                left: 20,
+                right: 20,
+                top: 10,
+                bottom: 50,
+              ),
+              physics: const BouncingScrollPhysics(),
+              child: BlocBuilder<AppBloc, AppState>(
+                bloc: bloc,
+                builder: (context, state) {
+                  if (state is SUCCESS) {
+                    List<Contrat> listecontrats = state.value;
+                    return Column(
+                      children: List.generate(
+                        listecontrats.length,
+                        (index) => contraModel(listecontrats[index]),
+                      ),
+                    );
+                  } else if (state is LOADING) {
+                    return Column(
+                      children: List.generate(
+                        3,
+                        (index) => const ContratSqueletton(),
+                      ),
+                    );
+                  } else if (state is ERROR) {
+                    return NoData(
+                      message: "Aucune connexion internet",
+                      onTap: (() {
+                        bloc!.add(
+                          GETCONTRAT(),
+                        );
+                      }),
+                    );
+                  } else {
+                    return const SizedBox.shrink();
+                  }
+                },
+              ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
