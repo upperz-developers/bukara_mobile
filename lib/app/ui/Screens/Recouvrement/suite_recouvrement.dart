@@ -5,7 +5,6 @@ import 'package:bukara/app/ui/shared/utils/utility_fonction/customer_date.dart';
 import 'package:bukara/app/ui/shared/utils/utility_fonction/utility.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
-
 import '../../../providers/recouvrenement/modele.dart';
 
 class SuiteRecouvrement extends StatelessWidget {
@@ -14,7 +13,6 @@ class SuiteRecouvrement extends StatelessWidget {
     super.key,
     this.suiteRecouvrement,
   });
-
   @override
   Widget build(BuildContext context) {
     return Padding(

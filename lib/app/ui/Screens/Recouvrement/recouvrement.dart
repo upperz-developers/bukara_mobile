@@ -11,7 +11,6 @@ import '../../../providers/recouvrenement/modele.dart';
 
 class Recouvrement extends StatefulWidget {
   const Recouvrement({super.key});
-
   @override
   State<Recouvrement> createState() => _Recouvrement();
 }

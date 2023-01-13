@@ -16,23 +16,19 @@ import '../../shared/utils/widget.dart';
 class LoginPage extends StatefulWidget {
   static String routeName = "/loginPage";
   const LoginPage({Key? key}) : super(key: key);
-
   @override
   State<LoginPage> createState() => _LoginPage();
 }
 
 class _LoginPage extends State<LoginPage> {
   TapGestureRecognizer? _signup;
-
   AppBloc? bloc;
-
   ValueNotifier<TextEditingController> email =
       ValueNotifier(TextEditingController());
   TextEditingController password = TextEditingController();
   @override
   void initState() {
     bloc = AppBloc();
-
     _signup = TapGestureRecognizer()
       ..onTap = () {
         Navigator.pushNamed(context, SingUpPage.routeName);
@@ -41,10 +37,8 @@ class _LoginPage extends State<LoginPage> {
   }
 
   bool loginSubmitted = false;
-
   bool get loginValidate =>
       email.value.text.isNotEmpty && password.text.isNotEmpty;
-
   void _submit() {
     if (loginValidate) {
       bloc!.add(
@@ -91,7 +85,7 @@ class _LoginPage extends State<LoginPage> {
                             children: <Widget>[
                               Align(alignment: Alignment.center, child: icon()),
                               20.heightBox,
-                              subtitle("Adresse mail"),
+                              const Text("Adresse mail"),
                               10.heightBox,
                               ValueListenableBuilder(
                                   valueListenable: email,
@@ -105,7 +99,7 @@ class _LoginPage extends State<LoginPage> {
                                   }),
                               // go check
                               20.heightBox,
-                              subtitle("Mot de passe"),
+                              const Text("Mot de passe"),
                               10.heightBox,
                               FormPassWordText(
                                 controller: password,
@@ -122,10 +116,10 @@ class _LoginPage extends State<LoginPage> {
                                   }),
                                   child: const Text.rich(
                                     TextSpan(
-                                        text: "Mot de passe oublié ?",
-                                        style: TextStyle(
-                                            decoration:
-                                                TextDecoration.underline)),
+                                      text: "Mot de passe oublié ?",
+                                      style: TextStyle(
+                                          decoration: TextDecoration.underline),
+                                    ),
                                   ),
                                 ),
                               ),

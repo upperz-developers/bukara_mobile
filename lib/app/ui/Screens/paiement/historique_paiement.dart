@@ -11,7 +11,6 @@ import '../../shared/squelleton/paiement_squeletton.dart';
 
 class Paiement extends StatefulWidget {
   const Paiement({super.key});
-
   @override
   State<Paiement> createState() => _Paiement();
 }

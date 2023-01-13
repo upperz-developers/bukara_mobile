@@ -7,11 +7,9 @@ import '../../shared/utils/widget.dart';
 
 class InfoLocataire extends StatefulWidget {
   static String routeName = "/locataire";
-
   const InfoLocataire({
     Key? key,
   }) : super(key: key);
-
   @override
   State<InfoLocataire> createState() => _InfoLocataire();
 }
@@ -121,7 +119,6 @@ class _InfoLocataire extends State<InfoLocataire> {
             ),
           ),
           120.widthBox,
-          // const Spacer(),
           Container(
             height: 35,
             width: 60,

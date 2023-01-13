@@ -11,7 +11,6 @@ import '../../../providers/tennant/modele.dart';
 
 class LIsteLocataire extends StatefulWidget {
   const LIsteLocataire({super.key});
-
   @override
   State<LIsteLocataire> createState() => _LIsteLocataireState();
 }

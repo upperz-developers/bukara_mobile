@@ -1,3 +1,4 @@
+// ignore_for_file: unnecessary_type_check
 import 'package:bukara/app/controller/app_bloc.dart';
 import 'package:bukara/app/controller/app_event.dart';
 import 'package:bukara/app/providers/paiement_modele/modele.dart';
@@ -72,7 +73,6 @@ class _RecouvrementDetailPaiement extends State<RecouvrementDetailPaiement> {
                       ));
                     } else if (state is SUCCESS) {
                       List<PayementHistoric> listepaiement =
-                          // ignore: unnecessary_type_check
                           state is SUCCESS ? state.value : [];
                       return Column(children: [
                         ...List.generate(

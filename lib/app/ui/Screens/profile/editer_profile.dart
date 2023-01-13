@@ -83,7 +83,9 @@ class _EditerUser extends State<EditerUser> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              subtitle("Numéro Téléphone"),
+                              const Text(
+                                "Numéro Téléphone",
+                              ),
                               10.heightBox,
                               Container(
                                 decoration: BoxDecoration(
@@ -167,7 +169,14 @@ class _EditerUser extends State<EditerUser> {
                                 ),
                               ),
                               20.heightBox,
-                              subtitle("Nom"),
+                              const Text(
+                                "Nom",
+                                style: TextStyle(
+                                  fontSize: 36,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xFFebebeb),
+                                ),
+                              ),
                               10.heightBox,
                               FormText(
                                 controller: editerUserController.name,
@@ -175,7 +184,9 @@ class _EditerUser extends State<EditerUser> {
                                 //submitted: singupSubmitted,
                               ),
                               20.heightBox,
-                              subtitle("Postnom"),
+                              const Text(
+                                "Postnom",
+                              ),
                               10.heightBox,
                               FormText(
                                 controller: editerUserController.lastname,

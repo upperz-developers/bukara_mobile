@@ -11,7 +11,6 @@ import '../../../shared/utils/widget.dart';
 class Details extends StatefulWidget {
   static String routeName = "/details";
   const Details({Key? key}) : super(key: key);
-
   @override
   State<Details> createState() => _Details();
 }
@@ -21,7 +20,6 @@ class _Details extends State<Details> {
   Widget build(BuildContext context) {
     SuiteModel suiteDetail =
         ModalRoute.of(context)!.settings.arguments as SuiteModel;
-
     return AnnotatedRegion(
       value: const SystemUiOverlayStyle(
         systemNavigationBarColor: AppColors.SCAFFOLD_BACKGROUND_LIGHT,

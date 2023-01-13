@@ -11,12 +11,10 @@ class AuthViewController {
   TextEditingController confirmpasssword = TextEditingController();
   TextEditingController codeapp = TextEditingController();
   TextEditingController oldpassword = TextEditingController();
-
   TextEditingController name = TextEditingController();
   TextEditingController lastname = TextEditingController();
   String codeCountry = "";
   TextEditingController phonenumber = TextEditingController();
-
   init() {
     password = TextEditingController();
     confirmpasssword = TextEditingController();

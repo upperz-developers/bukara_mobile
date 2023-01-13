@@ -10,11 +10,9 @@ import 'package:velocity_x/velocity_x.dart';
 
 class DetailContrat extends StatefulWidget {
   static String routeName = "/detailContrat";
-
   const DetailContrat({
     Key? key,
   }) : super(key: key);
-
   @override
   State<DetailContrat> createState() => _DetailContrat();
 }
@@ -23,7 +21,6 @@ class _DetailContrat extends State<DetailContrat> {
   @override
   Widget build(BuildContext context) {
     Contrat contrat = ModalRoute.of(context)!.settings.arguments as Contrat;
-
     return AnnotatedRegion(
       value: const SystemUiOverlayStyle(
         systemNavigationBarColor: AppColors.SCAFFOLD_BACKGROUND_LIGHT,

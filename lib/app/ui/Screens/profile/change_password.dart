@@ -29,7 +29,6 @@ class _ChangePassword extends State<ChangePassword> {
   }
 
   bool changepasswordSubmitted = false;
-
   void _submit() {
     setState(() {
       changepasswordSubmitted = true;
@@ -97,7 +96,9 @@ class _ChangePassword extends State<ChangePassword> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              subtitle("Entrez l'ancien mot de passe"),
+                              const Text(
+                                "Entrez l'ancien mot de passe",
+                              ),
                               10.heightBox,
                               FormPassWordText(
                                 controller:
@@ -106,7 +107,9 @@ class _ChangePassword extends State<ChangePassword> {
                                 submitted: changepasswordSubmitted,
                               ),
                               20.heightBox,
-                              subtitle("Configurez un nouveau mot de passe"),
+                              const Text(
+                                "Configurez un nouveau mot de passe",
+                              ),
                               10.heightBox,
                               FormPassWordText(
                                 controller: changepasswordController.password,
@@ -126,7 +129,9 @@ class _ChangePassword extends State<ChangePassword> {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 30, vertical: 25),
+                          horizontal: 30,
+                          vertical: 25,
+                        ),
                         child: custormButton(
                           context,
                           color: AppColors.BLACK_COLOR,

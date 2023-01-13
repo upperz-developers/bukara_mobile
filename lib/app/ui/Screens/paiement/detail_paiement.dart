@@ -8,7 +8,6 @@ import '../../shared/utils/widget.dart';
 
 class DetailPaiement extends StatefulWidget {
   static String routeName = "/detailpaiement";
-
   const DetailPaiement({
     Key? key,
   }) : super(key: key);

@@ -5,7 +5,6 @@ abstract class AppState {}
 
 @immutable
 class SUCCESS implements AppState {
-  // this can be any model of data comming from api or the local database
   final dynamic value;
 
   const SUCCESS({this.value});

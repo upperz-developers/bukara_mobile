@@ -9,7 +9,6 @@ import 'package:velocity_x/velocity_x.dart';
 
 class Suite extends StatelessWidget {
   final SuiteModel? suite;
-
   const Suite({
     Key? key,
     this.suite,
@@ -112,7 +111,6 @@ class SuiteImage extends StatefulWidget {
   final List<ImageModel> images;
   const SuiteImage({Key? key, required this.images, required this.height})
       : super(key: key);
-
   @override
   State<SuiteImage> createState() => _SuiteImageState();
 }

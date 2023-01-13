@@ -8,7 +8,6 @@ import '../../../providers/tennant/modele.dart';
 
 class SuiteLocataire extends StatelessWidget {
   final TenantModel? suiteNotification;
-
   const SuiteLocataire({
     Key? key,
     this.suiteNotification,

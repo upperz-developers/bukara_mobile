@@ -15,7 +15,6 @@ import '../../../controller/app_state.dart';
 class ContratScreen extends StatefulWidget {
   static String routeName = "/contratbail";
   const ContratScreen({super.key});
-
   @override
   State<ContratScreen> createState() => _ContratScreen();
 }
@@ -158,7 +157,6 @@ class _ContratScreen extends State<ContratScreen> {
             ),
             10.widthBox,
             Column(
-              // crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
                   "${contrat.amount}\$",

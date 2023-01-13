@@ -39,7 +39,6 @@ class _LogoutState extends State<Logout> {
       listener: (context, state) {
         if (state is SUCCESS) {
           AppPref.prefs!.clear();
-
           Navigator.pushNamedAndRemoveUntil(
               context, LoginPage.routeName, (route) => false);
         }

@@ -9,15 +9,11 @@ import 'package:bukara/app/providers/user/model.dart' as u;
 import 'package:bukara/app/providers/user/repository.dart';
 import 'package:bukara/app/services/prefs/app_prefs.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../providers/paiement_modele/modele.dart';
 import '../providers/paiement_modele/repository.dart';
 import '../providers/recouvrenement/modele.dart';
 import '../providers/recouvrenement/repository.dart';
-
 import '../providers/tennant/modele.dart';
-
-//upperz
 
 class AppBloc extends Bloc<AppEvent, AppState> {
   AppBloc() : super(INITIALSTATE()) {
@@ -49,20 +45,15 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         hundleError(e: e, emit: emit);
       }
     });
-
-    // about singUp
-
     on<SINGUP>(
       ((event, emit) async {
         emit(const LOADING());
-
         try {
           await singup(
             email: event.email,
             password: event.password,
             confirmpassword: event.confirmepassword,
           );
-
           emit(const SUCCESS());
         } on Exception catch (e) {
           hundleError(e: e, emit: emit);
@@ -73,14 +64,12 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     on<CHANGEPASSWORD>(
       ((event, emit) async {
         emit(const LOADING());
-
         try {
           await changepassord(
             oldpassword: event.oldpassword,
             newpassword: event.newpassword,
             confirmpassword: event.confirmepassword,
           );
-
           emit(const SUCCESS());
         } on Exception catch (e) {
           hundleError(e: e, emit: emit);
@@ -91,7 +80,6 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     on<EDITERUSER>(
       ((event, emit) async {
         emit(const LOADING());
-
         try {
           var response = await editeruser(data: event.data);
 
@@ -115,7 +103,6 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     on<LOGOUT>(
       ((event, emit) async {
         emit(const LOADING());
-
         try {
           await logout(
             token: event.token,
@@ -178,7 +165,6 @@ class AppBloc extends Bloc<AppEvent, AppState> {
 
     on<GETPAYEMENT>((event, emit) async {
       emit(const LOADING());
-
       try {
         var response = await getPayement();
         ResultHistoricPaiements resultPayement =
@@ -191,7 +177,6 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     });
     on<GETPEYEMENTPERRECOVERY>((event, emit) async {
       emit(const LOADING());
-
       try {
         var response =
             await getPayementPerRecovery(recoverId: selectedRecoveryId);

@@ -32,7 +32,6 @@ class ApiInterceptor extends Interceptor {
             throw ValidationInternalServerErrorException(err.requestOptions,
                 data: err.response!.data);
         }
-
       case DioErrorType.cancel:
         break;
       case DioErrorType.other:

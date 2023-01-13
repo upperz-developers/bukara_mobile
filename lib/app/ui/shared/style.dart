@@ -1,9 +1,3 @@
-// const grandianColor1 = Color(0xFFE600B2);
-// const grandianColor2 = Color(0xFF00A3FF);
-// const onSecondContainer = Color(0xFF3EBEA8);
-// const onContainer = Color(0xFFFFFFFF);
-// const fillTextInputColor = Color(0xFFebebeb);
-
 // ignore_for_file: constant_identifier_names
 
 import 'package:flutter/material.dart';
@@ -45,7 +39,6 @@ class Style {
 }
 
 class AppColors {
-  //Light theme
   static const PRIMARY_COLOR = Color(0xFFF2E205);
   static const BACKGROUND = Color(0xFFFEF9E9);
   static const ACCENT_COLOR = Color.fromARGB(255, 248, 224, 37);
@@ -59,7 +52,6 @@ class AppColors {
   static const DISABLE_COLOR = Color(0xFFECECEC);
   static const SECOND_TEXT_COLOR = Colors.black45;
 
-  //Dark theme
   static const YELLOW_COLOR = Colors.amber;
   static const TRANSPARENT = Color(0x00000000);
   static const SCAFFOLD_BACKGROUND_DARK = Color(0xFF000000);
@@ -98,7 +90,9 @@ class _OnHoverEffectState extends State<OnHoverEffect> {
     );
   }
 
-  onEntered(bool isHovered) => setState(() {
-        this.isHovered = isHovered;
-      });
+  onEntered(bool isHovered) => setState(
+        () {
+          this.isHovered = isHovered;
+        },
+      );
 }

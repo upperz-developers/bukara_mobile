@@ -105,7 +105,7 @@ class _SingUpPage extends State<SingUpPage> {
                                 ),
                               ),
                               34.heightBox,
-                              subtitle("Adresse Mail"),
+                              const Text("Adresse Mail"),
                               10.heightBox,
                               FormText(
                                 controller: singupController.email.value,
@@ -113,7 +113,7 @@ class _SingUpPage extends State<SingUpPage> {
                                 submitted: singupSubmitted,
                               ),
                               20.heightBox,
-                              subtitle("Mots de passe"),
+                              const Text("Mots de passe"),
                               10.heightBox,
                               FormPassWordText(
                                 controller: singupController.password,
@@ -127,7 +127,7 @@ class _SingUpPage extends State<SingUpPage> {
                                 submitted: singupSubmitted,
                               ),
                               20.heightBox,
-                              subtitle("Code application"),
+                              const Text("Code application"),
                               10.heightBox,
                               FormText(
                                 controller: singupController.codeapp,

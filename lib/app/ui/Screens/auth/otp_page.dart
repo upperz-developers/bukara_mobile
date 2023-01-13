@@ -7,23 +7,15 @@ import 'package:velocity_x/velocity_x.dart';
 import '../../shared/style.dart';
 import '../../shared/utils/widget.dart';
 
-class AuthController {
-  AuthController._internal();
-  static final singleton = AuthController._internal();
-  factory AuthController() => singleton;
-}
-
 class Otp extends StatefulWidget {
   static String routeName = "/newpassword";
   const Otp({Key? key}) : super(key: key);
-
   @override
   State<Otp> createState() => _Otp();
 }
 
 class _Otp extends State<Otp> {
   TextEditingController? sendcode = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -64,7 +56,7 @@ class _Otp extends State<Otp> {
                       "Nous vous enverrons un code dans votre boite mail merci de le saisir dans le champ",
                     ),
                     25.heightBox,
-                    subtitle("Enter your code"),
+                    const Text("Enter your code"),
                     20.heightBox,
                     PinCodeTextField(
                       errorTextSpace: 0,
@@ -96,12 +88,7 @@ class _Otp extends State<Otp> {
                       backgroundColor: Colors.transparent,
                       autoFocus: true,
                       onCompleted: (otpCode) {},
-                      onChanged: (value) {
-                        // setState(() {
-                        //   hasCompleted = value.isNotEmpty;
-                        //   _currentValue = value;
-                        // });
-                      },
+                      onChanged: (value) {},
                       beforeTextPaste: (text) {
                         return true;
                       },

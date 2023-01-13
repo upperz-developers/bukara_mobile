@@ -7,7 +7,6 @@ class NoData extends StatelessWidget {
   final String message;
   final Function() onTap;
   const NoData({super.key, required this.message, required this.onTap});
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -24,7 +23,6 @@ class NoData extends StatelessWidget {
                 "assets/svg/no_data.svg",
               ),
             ),
-            // 15.heightBox,
             Text(
               message,
               style: const TextStyle(

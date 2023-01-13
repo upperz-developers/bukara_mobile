@@ -13,7 +13,6 @@ List<IconData> selectedicons = [
   Iconsax.task_square5,
   Iconsax.profile_circle5,
 ];
-
 List<IconData> unselectedicons = [
   Iconsax.home,
   Iconsax.activity,
@@ -24,14 +23,12 @@ List<IconData> unselectedicons = [
 class AppPage extends StatefulWidget {
   static String routeName = "/app";
   const AppPage({Key? key}) : super(key: key);
-
   @override
   State<AppPage> createState() => _AppPage();
 }
 
 class _AppPage extends State<AppPage> with SingleTickerProviderStateMixin {
   TabController? _tabController;
-
   String selectMenu = "home";
   @override
   void initState() {
@@ -41,7 +38,6 @@ class _AppPage extends State<AppPage> with SingleTickerProviderStateMixin {
   }
 
   int? selectedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion(
@@ -68,8 +64,9 @@ class _AppPage extends State<AppPage> with SingleTickerProviderStateMixin {
                   ],
                 ),
                 Align(
-                    alignment: Alignment.bottomCenter,
-                    child: bottomNavigation()),
+                  alignment: Alignment.bottomCenter,
+                  child: bottomNavigation(),
+                ),
               ],
             ),
           ),
@@ -88,15 +85,16 @@ class _AppPage extends State<AppPage> with SingleTickerProviderStateMixin {
         border: Border(top: BorderSide(color: AppColors.DISABLE_COLOR)),
       ),
       child: Wrap(
-          alignment: WrapAlignment.center,
-          children: List.generate(
-            selectedicons.length,
-            (index) => modelIcon(
-              selectedicon: selectedicons[index],
-              unselectedicon: unselectedicons[index],
-              index: index,
-            ),
-          )),
+        alignment: WrapAlignment.center,
+        children: List.generate(
+          selectedicons.length,
+          (index) => modelIcon(
+            selectedicon: selectedicons[index],
+            unselectedicon: unselectedicons[index],
+            index: index,
+          ),
+        ),
+      ),
     );
   }
 

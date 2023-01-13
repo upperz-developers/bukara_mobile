@@ -12,7 +12,6 @@ class AuthController {
 class AboutPage extends StatefulWidget {
   static String routeName = "/AboutPage";
   const AboutPage({Key? key}) : super(key: key);
-
   @override
   State<AboutPage> createState() => _AboutPage();
 }

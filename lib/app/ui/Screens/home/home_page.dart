@@ -13,7 +13,6 @@ import 'package:iconsax/iconsax.dart';
 class Home extends StatefulWidget {
   static String routeName = "/home";
   const Home({Key? key}) : super(key: key);
-
   @override
   State<Home> createState() => _Home();
 }
@@ -29,7 +28,6 @@ class _Home extends State<Home> with SingleTickerProviderStateMixin {
     bloc.add(
       GETSUITE(),
     );
-
     _scrollController = ScrollController()
       ..addListener(() {
         setState(() {

@@ -9,11 +9,9 @@ import '../../../providers/recouvrenement/modele.dart';
 
 class InfoRecouvrement extends StatefulWidget {
   static String routeName = "/inforecouvrement";
-
   const InfoRecouvrement({
     Key? key,
   }) : super(key: key);
-
   @override
   State<InfoRecouvrement> createState() => _InfoRecouvrement();
 }
