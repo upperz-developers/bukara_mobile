@@ -44,7 +44,7 @@ class _AppPage extends State<AppPage> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return AnnotatedRegion(
+    return AnnotatedRegion<SystemUiOverlayStyle>(
       value: const SystemUiOverlayStyle(
         systemNavigationBarColor: AppColors.SCAFFOLD_BACKGROUND_LIGHT,
         systemNavigationBarIconBrightness: Brightness.dark,
