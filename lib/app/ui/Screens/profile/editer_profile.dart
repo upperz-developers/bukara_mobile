@@ -171,11 +171,6 @@ class _EditerUser extends State<EditerUser> {
                               20.heightBox,
                               const Text(
                                 "Nom",
-                                style: TextStyle(
-                                  fontSize: 36,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xFFebebeb),
-                                ),
                               ),
                               10.heightBox,
                               FormText(
