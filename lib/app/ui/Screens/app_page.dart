@@ -52,7 +52,6 @@ class _AppPage extends State<AppPage> with SingleTickerProviderStateMixin {
         statusBarColor: AppColors.SCAFFOLD_BACKGROUND_LIGHT,
         statusBarIconBrightness: Brightness.dark,
       ),
-<<<<<<< HEAD
       child: CustormScaffold(
         body: Stack(
           children: [
@@ -68,30 +67,6 @@ class _AppPage extends State<AppPage> with SingleTickerProviderStateMixin {
             ),
             Align(alignment: Alignment.bottomCenter, child: bottomNavigation()),
           ],
-=======
-      child: Container(
-        color: AppColors.SCAFFOLD_BACKGROUND_LIGHT,
-        child: SafeArea(
-          child: Scaffold(
-            body: Stack(
-              children: [
-                TabBarView(
-                  controller: _tabController,
-                  physics: const NeverScrollableScrollPhysics(),
-                  children: const [
-                    Home(),
-                    TopTabBar(),
-                    LIsteLocataire(),
-                    Profile(),
-                  ],
-                ),
-                Align(
-                    alignment: Alignment.bottomCenter,
-                    child: bottomNavigation()),
-              ],
-            ),
-          ),
->>>>>>> a8c7d62fa240bfe7918c8dc3501f2ef6a94d1afb
         ),
       ),
     );
