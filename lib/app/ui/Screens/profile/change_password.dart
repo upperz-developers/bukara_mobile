@@ -2,6 +2,7 @@ import 'package:bukara/app/controller/app_event.dart';
 import 'package:bukara/app/controller/app_state.dart';
 import 'package:bukara/app/services/prefs/app_prefs.dart';
 import 'package:bukara/app/ui/Screens/auth/login_page.dart';
+import 'package:bukara/app/ui/screens/pop_up/pop_up_erreur.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:bukara/app/ui/shared/utils/custorm_scaffold.dart';
 import 'package:flutter/material.dart';
@@ -57,6 +58,8 @@ class _ChangePassword extends State<ChangePassword> {
             AppPref.prefs!.clear();
             Navigator.pushNamedAndRemoveUntil(
                 context, LoginPage.routeName, (route) => false);
+          } else if (state is ERROR) {
+            errorModel(context, dueTo: state.dueTo!.errors!);
           }
         },
         child: BlocBuilder<AppBloc, AppState>(
