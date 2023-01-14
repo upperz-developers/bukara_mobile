@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_collection_literals
+
 import 'package:bukara/app/providers/suite/modele.dart';
 
 import '../user/model.dart';

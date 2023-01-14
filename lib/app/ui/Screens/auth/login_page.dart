@@ -1,9 +1,9 @@
 import 'package:bukara/app/controller/app_bloc.dart';
 import 'package:bukara/app/controller/app_event.dart';
 import 'package:bukara/app/controller/app_state.dart';
-import 'package:bukara/app/ui/Screens/auth/check_mail.dart';
 import 'package:bukara/app/ui/Screens/auth/singup_page.dart';
 import 'package:bukara/app/ui/screens/app_page.dart';
+import 'package:bukara/app/ui/screens/auth/forgot_password/check_mail.dart';
 import 'package:bukara/app/ui/screens/pop_up/pop_up_erreur.dart';
 import 'package:bukara/app/ui/shared/utils/custorm_scaffold.dart';
 import 'package:flutter/gestures.dart';
@@ -128,7 +128,7 @@ class _LoginPage extends State<LoginPage> {
                               child: InkWell(
                                 onTap: (() {
                                   Navigator.pushNamed(
-                                      context, Checkmail.routeName);
+                                      context, ForgotPassword.routeName);
                                 }),
                                 child: const Text.rich(
                                   TextSpan(

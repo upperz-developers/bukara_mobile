@@ -61,6 +61,20 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       }),
     );
 
+    on<CHECKMAIL>(
+      ((event, emit) async {
+        emit(const LOADING());
+        try {
+          await checkmail(
+            email: event.email,
+          );
+          emit(const SUCCESS());
+        } on Exception catch (e) {
+          hundleError(e: e, emit: emit);
+        }
+      }),
+    );
+
     on<CHANGEPASSWORD>(
       ((event, emit) async {
         emit(const LOADING());

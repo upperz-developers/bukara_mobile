@@ -20,6 +20,7 @@ Future<Response> singup({
       "password": password,
       "password_confirmation": confirmpassword,
     });
+
 Future<Response> changepassord({
   String? oldpassword,
   String? newpassword,
@@ -41,4 +42,11 @@ Future<Response> logout({
 }) async =>
     await httpPost(endPoint: APIURL.LOGOUT, data: {
       "token": token,
+    });
+
+Future<Response> checkmail({
+  String? email,
+}) async =>
+    await httpPost(endPoint: APIURL.CHECKMAIL, data: {
+      "email": email,
     });

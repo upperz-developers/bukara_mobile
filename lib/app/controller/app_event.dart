@@ -22,6 +22,14 @@ class SINGUP implements AppEvent {
   });
 }
 
+class CHECKMAIL implements AppEvent {
+  final String? email;
+
+  const CHECKMAIL({
+    this.email,
+  });
+}
+
 class CHANGEPASSWORD implements AppEvent {
   final String? oldpassword;
   final String? newpassword;

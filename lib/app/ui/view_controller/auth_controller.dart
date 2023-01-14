@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:bukara/app/controller/app_bloc.dart';
 import 'package:bukara/app/controller/app_event.dart';
 import 'package:bukara/app/providers/shared/common_modele.dart';
@@ -10,6 +12,7 @@ class AuthViewController {
       ValueNotifier(TextEditingController());
   TextEditingController password = TextEditingController();
   TextEditingController passwordLogin = TextEditingController();
+  TextEditingController checkmail = TextEditingController();
   TextEditingController confirmpasssword = TextEditingController();
   TextEditingController codeapp = TextEditingController();
   TextEditingController oldpassword = TextEditingController();
@@ -22,13 +25,15 @@ class AuthViewController {
     confirmpasssword = TextEditingController();
     codeapp = TextEditingController();
     oldpassword = TextEditingController();
-
+    checkmail = TextEditingController();
     name = TextEditingController();
     lastname = TextEditingController();
     codeCountry = "+243";
 
     phonenumber = TextEditingController();
   }
+
+  bool get CheckmailValidation => checkmail.value.text.isNotEmpty;
 
   bool get changepasswordValidation =>
       oldpassword.value.text.isNotEmpty &&

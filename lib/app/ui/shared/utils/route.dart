@@ -1,11 +1,11 @@
 import 'package:bukara/app/ui/Screens/contrats%20de%20Bail/contrats.dart';
 import 'package:bukara/app/ui/screens/Recouvrement/detail_paiement_par_recouvrement.dart';
+import 'package:bukara/app/ui/screens/auth/forgot_password/check_mail.dart';
+import 'package:bukara/app/ui/screens/auth/forgot_password/new_password.dart';
+import 'package:bukara/app/ui/screens/auth/forgot_password/otp_page.dart';
 import 'package:bukara/app/ui/screens/paiement/detail_paiement.dart';
 import 'package:flutter/material.dart';
-import '../../Screens/auth/check_mail.dart';
 import '../../Screens/auth/login_page.dart';
-import '../../Screens/auth/new_password.dart';
-import '../../Screens/auth/otp_page.dart';
 import '../../Screens/auth/singup_page.dart';
 import '../../Screens/profile/about_page.dart';
 import '../../Screens/profile/change_password.dart';
@@ -26,7 +26,7 @@ Map<String, Widget Function(BuildContext)> routes = {
   Details.routeName: (context) => const Details(),
   AppPage.routeName: (context) => const AppPage(),
   SingUpPage.routeName: (context) => const SingUpPage(),
-  Checkmail.routeName: (context) => const Checkmail(),
+  ForgotPassword.routeName: (context) => const ForgotPassword(),
   Otp.routeName: (context) => const Otp(),
   Newpassword.routeName: (context) => const Newpassword(),
   ChangePassword.routeName: (context) => const ChangePassword(),
