@@ -95,13 +95,32 @@ class _ChangePassword extends State<ChangePassword> {
                           horizontal: 30,
                           vertical: 25,
                         ),
-                        child: custormButton(
-                          context,
-                          color: AppColors.BLACK_COLOR,
-                          title: "Changer mot de passe",
-                          colorText: Colors.white,
-                          state: state,
-                          onTap: _submit,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text("Ancien mote de passe"),
+                            15.heightBox,
+                            FormPassWordText(
+                              controller: changepasswordController.oldpassword,
+                              hint: "Entrez votre mot de passe",
+                              submitted: changepasswordSubmitted,
+                            ),
+                            20.heightBox,
+                            const Text("Configurez le mot de passe"),
+                            15.heightBox,
+                            FormPassWordText(
+                              controller: changepasswordController.password,
+                              hint: "Entrez votre le mot de passe",
+                              submitted: changepasswordSubmitted,
+                            ),
+                            10.heightBox,
+                            FormPassWordText(
+                              controller:
+                                  changepasswordController.confirmpasssword,
+                              hint: "Confirmez le mot de passe",
+                              submitted: changepasswordSubmitted,
+                            ),
+                          ],
                         ),
                       ),
                     ),
