@@ -60,7 +60,7 @@ class _AboutPage extends State<AboutPage> {
                   ),
                   10.heightBox,
                   const Text(
-                    "Builid by Devinna in partenship with\n Upperz",
+                    "Builid by Devinno in partenship with\n Upperz",
                     style: TextStyle(
                       color: AppColors.SECOND_TEXT_COLOR,
                       fontSize: 10,
