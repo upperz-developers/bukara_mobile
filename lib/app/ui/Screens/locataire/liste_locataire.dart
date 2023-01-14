@@ -11,7 +11,6 @@ import '../../../providers/tennant/modele.dart';
 
 class LIsteLocataire extends StatefulWidget {
   const LIsteLocataire({super.key});
-
   @override
   State<LIsteLocataire> createState() => _LIsteLocataireState();
 }
@@ -74,7 +73,7 @@ class _LIsteLocataireState extends State<LIsteLocataire> {
                           ]);
                         } else if (state is ERROR) {
                           return NoData(
-                            message: "Aucune connexion internet",
+                            dueTo: state.dueTo!.errors!,
                             onTap: (() {
                               bloc.add(
                                 GETTENANT(),

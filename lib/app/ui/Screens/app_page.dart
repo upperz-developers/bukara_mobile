@@ -2,7 +2,6 @@ import 'package:bukara/app/ui/Screens/profile/profile.dart';
 import 'package:bukara/app/ui/screens/Recouvrement/tabcontrol.dart';
 import 'package:bukara/app/ui/screens/home/home_page.dart';
 import 'package:bukara/app/ui/screens/locataire/liste_locataire.dart';
-import 'package:bukara/app/ui/shared/utils/custorm_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter/services.dart';
@@ -14,7 +13,6 @@ List<IconData> selectedicons = [
   Iconsax.task_square5,
   Iconsax.profile_circle5,
 ];
-
 List<IconData> unselectedicons = [
   Iconsax.home,
   Iconsax.activity,
@@ -25,14 +23,12 @@ List<IconData> unselectedicons = [
 class AppPage extends StatefulWidget {
   static String routeName = "/app";
   const AppPage({Key? key}) : super(key: key);
-
   @override
   State<AppPage> createState() => _AppPage();
 }
 
 class _AppPage extends State<AppPage> with SingleTickerProviderStateMixin {
   TabController? _tabController;
-
   String selectMenu = "home";
   @override
   void initState() {
@@ -42,7 +38,6 @@ class _AppPage extends State<AppPage> with SingleTickerProviderStateMixin {
   }
 
   int? selectedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
@@ -52,21 +47,29 @@ class _AppPage extends State<AppPage> with SingleTickerProviderStateMixin {
         statusBarColor: AppColors.SCAFFOLD_BACKGROUND_LIGHT,
         statusBarIconBrightness: Brightness.dark,
       ),
-      child: CustormScaffold(
-        body: Stack(
-          children: [
-            TabBarView(
-              controller: _tabController,
-              physics: const NeverScrollableScrollPhysics(),
-              children: const [
-                Home(),
-                TopTabBar(),
-                LIsteLocataire(),
-                Profile(),
+      child: Container(
+        color: AppColors.SCAFFOLD_BACKGROUND_LIGHT,
+        child: SafeArea(
+          child: Scaffold(
+            body: Stack(
+              children: [
+                TabBarView(
+                  controller: _tabController,
+                  physics: const NeverScrollableScrollPhysics(),
+                  children: const [
+                    Home(),
+                    TopTabBar(),
+                    LIsteLocataire(),
+                    Profile(),
+                  ],
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: bottomNavigation(),
+                ),
               ],
             ),
-            Align(alignment: Alignment.bottomCenter, child: bottomNavigation()),
-          ],
+          ),
         ),
       ),
     );
@@ -82,15 +85,16 @@ class _AppPage extends State<AppPage> with SingleTickerProviderStateMixin {
         border: Border(top: BorderSide(color: AppColors.DISABLE_COLOR)),
       ),
       child: Wrap(
-          alignment: WrapAlignment.center,
-          children: List.generate(
-            selectedicons.length,
-            (index) => modelIcon(
-              selectedicon: selectedicons[index],
-              unselectedicon: unselectedicons[index],
-              index: index,
-            ),
-          )),
+        alignment: WrapAlignment.center,
+        children: List.generate(
+          selectedicons.length,
+          (index) => modelIcon(
+            selectedicon: selectedicons[index],
+            unselectedicon: unselectedicons[index],
+            index: index,
+          ),
+        ),
+      ),
     );
   }
 

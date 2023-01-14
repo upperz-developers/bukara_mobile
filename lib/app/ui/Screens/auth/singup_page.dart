@@ -36,10 +36,7 @@ class _SingUpPage extends State<SingUpPage> {
 
   bool singupSubmitted = false;
   void _submit() {
-    setState(() {
-      singupSubmitted = true;
-    });
-    if (singupController.singupValidate) {
+    if (singupController.singupValidate(context)) {
       bloc!.add(
         SINGUP(
           email: singupController.email.value.text.trim(),
@@ -47,7 +44,11 @@ class _SingUpPage extends State<SingUpPage> {
           confirmepassword: singupController.confirmpasssword.text.trim(),
         ),
       );
+      return;
     }
+    setState(() {
+      singupSubmitted = true;
+    });
   }
 
   @override
@@ -78,14 +79,12 @@ class _SingUpPage extends State<SingUpPage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: const Icon(
-                          Iconsax.arrow_left,
-                        ),
-                        color: const Color.fromARGB(169, 32, 32, 32),
-                      ),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: const Icon(
+                            Iconsax.arrow_left,
+                          )),
                     ),
                     Expanded(
                       child: SingleChildScrollView(
@@ -102,7 +101,7 @@ class _SingUpPage extends State<SingUpPage> {
                               ),
                             ),
                             34.heightBox,
-                            subtitle("Adresse Mail"),
+                            const Text("Adresse Mail"),
                             10.heightBox,
                             FormText(
                               controller: singupController.email.value,
@@ -110,7 +109,7 @@ class _SingUpPage extends State<SingUpPage> {
                               submitted: singupSubmitted,
                             ),
                             20.heightBox,
-                            subtitle("Mots de passe"),
+                            const Text("Mots de passe"),
                             10.heightBox,
                             FormPassWordText(
                               controller: singupController.password,
@@ -124,7 +123,7 @@ class _SingUpPage extends State<SingUpPage> {
                               submitted: singupSubmitted,
                             ),
                             20.heightBox,
-                            subtitle("Code application"),
+                            const Text("Code application"),
                             10.heightBox,
                             FormText(
                               controller: singupController.codeapp,

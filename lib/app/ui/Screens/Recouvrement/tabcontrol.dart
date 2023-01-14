@@ -1,12 +1,10 @@
 import 'package:bukara/app/ui/screens/Recouvrement/recouvrement.dart';
 import 'package:flutter/material.dart';
-
 import '../../shared/style.dart';
 import '../paiement/historique_paiement.dart';
 
 class TopTabBar extends StatefulWidget {
   const TopTabBar({Key? key}) : super(key: key);
-
   @override
   State<TopTabBar> createState() => _TopTabBarState();
 }
@@ -43,7 +41,6 @@ class _TopTabBarState extends State<TopTabBar>
               indicator: const UnderlineTabIndicator(
                 borderSide: BorderSide(width: 2),
               ),
-              //indicatorColor: Colors.white,
               indicatorWeight: 5.0,
               labelColor: AppColors.BLACK_COLOR,
               tabs: const [

@@ -30,7 +30,6 @@ class _ChangePassword extends State<ChangePassword> {
   }
 
   bool changepasswordSubmitted = false;
-
   void _submit() {
     setState(() {
       changepasswordSubmitted = true;
@@ -93,33 +92,16 @@ class _ChangePassword extends State<ChangePassword> {
                     Expanded(
                       child: SingleChildScrollView(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 30, vertical: 25),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            subtitle("Entrez l'ancien mot de passe"),
-                            10.heightBox,
-                            FormPassWordText(
-                              controller: changepasswordController.oldpassword,
-                              hint: "Entrez votre ancient mot de passe",
-                              submitted: changepasswordSubmitted,
-                            ),
-                            20.heightBox,
-                            subtitle("Configurez un nouveau mot de passe"),
-                            10.heightBox,
-                            FormPassWordText(
-                              controller: changepasswordController.password,
-                              hint: "Entrez mot de passe",
-                              submitted: changepasswordSubmitted,
-                            ),
-                            10.heightBox,
-                            FormPassWordText(
-                              controller:
-                                  changepasswordController.confirmpasssword,
-                              hint: "Confirmez votre nouveau mot de passe",
-                              submitted: changepasswordSubmitted,
-                            ),
-                          ],
+                          horizontal: 30,
+                          vertical: 25,
+                        ),
+                        child: custormButton(
+                          context,
+                          color: AppColors.BLACK_COLOR,
+                          title: "Changer mot de passe",
+                          colorText: Colors.white,
+                          state: state,
+                          onTap: _submit,
                         ),
                       ),
                     ),

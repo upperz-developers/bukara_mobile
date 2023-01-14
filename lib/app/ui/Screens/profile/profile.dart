@@ -12,7 +12,6 @@ import 'package:velocity_x/velocity_x.dart';
 class Profile extends StatefulWidget {
   static String routeName = "/infoprofile";
   const Profile({Key? key}) : super(key: key);
-
   @override
   State<Profile> createState() => _Profile();
 }
@@ -83,17 +82,21 @@ class _Profile extends State<Profile> {
                                       user.phoneNumber == null ||
                                       user.name == null)
                                   ? "Completer le profile"
-                                  : "Editer Profile",
+                                  : "Modifier Profile",
                               onTap: () => Navigator.pushNamed(
-                                  context, EditerUser.routeName),
+                                context,
+                                EditerUser.routeName,
+                              ),
                             ),
                             profileActions(
                               title: "Changer mot de passe",
                               onTap: () => Navigator.pushNamed(
-                                  context, ChangePassword.routeName),
+                                context,
+                                ChangePassword.routeName,
+                              ),
                             ),
                             profileActions(
-                              title: "Deconnexion",
+                              title: "Déconnexion",
                               onTap: () {
                                 showDialog(
                                   context: context,
@@ -106,12 +109,16 @@ class _Profile extends State<Profile> {
                             profileActions(
                               title: "contrat de bail",
                               onTap: () => Navigator.pushNamed(
-                                  context, ContratScreen.routeName),
+                                context,
+                                ContratScreen.routeName,
+                              ),
                             ),
                             profileActions(
                               title: "Appropos de l'application",
                               onTap: () => Navigator.pushNamed(
-                                  context, AboutPage.routeName),
+                                context,
+                                AboutPage.routeName,
+                              ),
                             ),
                           ],
                         ),

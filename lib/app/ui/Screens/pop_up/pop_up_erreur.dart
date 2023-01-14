@@ -2,7 +2,6 @@ import 'package:bukara/app/providers/shared/common_modele.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:bukara/app/ui/shared/utils/widget.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 errorModel(BuildContext context, {required List<ErrorData> dueTo}) {
@@ -10,12 +9,20 @@ errorModel(BuildContext context, {required List<ErrorData> dueTo}) {
     context: context,
     builder: (context) => SimpleDialog(
       title: const Center(
-        child: Icon(Iconsax.refresh),
+        child: Text(
+          "Oups !!!",
+          style: TextStyle(
+            color: AppColors.BLACK_COLOR,
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+          padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ...List.generate(
                 dueTo.length,
@@ -23,32 +30,29 @@ errorModel(BuildContext context, {required List<ErrorData> dueTo}) {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     if (dueTo[index].field != null)
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "Champs : ",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            dueTo[index].field!,
-                          ),
-                        ],
+                      Text(
+                        dueTo[index].field!,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    if (dueTo[index].rule != null)
+                      Text(
+                        dueTo[index].rule!,
+                        style: const TextStyle(
+                          fontSize: 12,
+                        ),
                       ),
                     5.heightBox,
                     if (dueTo[index].message != null)
                       Text(
                         dueTo[index].message!,
+                        style: const TextStyle(
+                          height: 1.5,
+                        ),
                       ),
-                    5.heightBox,
-                    if (dueTo[index].rule != null)
-                      Text(
-                        dueTo[index].rule!,
-                      ),
-                    line(),
+                    if (index < dueTo.length - 1) line(),
                   ],
                 ),
               ),

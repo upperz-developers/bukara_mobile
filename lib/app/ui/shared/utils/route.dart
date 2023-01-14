@@ -7,7 +7,6 @@ import '../../Screens/auth/login_page.dart';
 import '../../Screens/auth/new_password.dart';
 import '../../Screens/auth/otp_page.dart';
 import '../../Screens/auth/singup_page.dart';
-import '../../Screens/home/suite/historique_page.dart';
 import '../../Screens/profile/about_page.dart';
 import '../../Screens/profile/change_password.dart';
 import '../../Screens/profile/profile.dart';
@@ -22,7 +21,6 @@ import '../../screens/profile/editer_profile.dart';
 Map<String, Widget Function(BuildContext)> routes = {
   LoginPage.routeName: (context) => const LoginPage(),
   Home.routeName: (context) => const Home(),
-  Historique.routeName: (context) => const Historique(),
   Profile.routeName: (context) => const Profile(),
   InfoLocataire.routeName: (context) => const InfoLocataire(),
   Details.routeName: (context) => const Details(),

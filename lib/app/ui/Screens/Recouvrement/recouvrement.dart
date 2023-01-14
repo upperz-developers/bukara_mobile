@@ -11,7 +11,6 @@ import '../../../providers/recouvrenement/modele.dart';
 
 class Recouvrement extends StatefulWidget {
   const Recouvrement({super.key});
-
   @override
   State<Recouvrement> createState() => _Recouvrement();
 }
@@ -68,7 +67,7 @@ class _Recouvrement extends State<Recouvrement> {
                           );
                         } else if (state is ERROR) {
                           return NoData(
-                            message: "Aucune connexion internet",
+                            dueTo: state.dueTo!.errors!,
                             onTap: (() {
                               bloc.add(
                                 GETRECOVERYINFO(),

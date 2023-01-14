@@ -10,8 +10,6 @@ Future<Response> loging({
       "email": email,
       "password": password,
     });
-// // test about singup
-
 Future<Response> singup({
   String? email,
   String? password,
@@ -22,7 +20,6 @@ Future<Response> singup({
       "password": password,
       "password_confirmation": confirmpassword,
     });
-
 Future<Response> changepassord({
   String? oldpassword,
   String? newpassword,

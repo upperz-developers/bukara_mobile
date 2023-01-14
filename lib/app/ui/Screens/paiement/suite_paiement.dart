@@ -8,7 +8,6 @@ import '../../shared/utils/widget.dart';
 
 class SuitePaiement extends StatelessWidget {
   final PayementHistoric? suitePaiement;
-
   const SuitePaiement({
     Key? key,
     this.suitePaiement,
@@ -29,7 +28,6 @@ class SuitePaiement extends StatelessWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(10),
         onTap: () {
-          /// Navigating to a new page.
           Navigator.pushNamed(context, DetailPaiement.routeName,
               arguments: suitePaiement);
         },

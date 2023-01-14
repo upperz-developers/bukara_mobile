@@ -16,7 +16,6 @@ import '../../../controller/app_state.dart';
 class ContratScreen extends StatefulWidget {
   static String routeName = "/contratbail";
   const ContratScreen({super.key});
-
   @override
   State<ContratScreen> createState() => _ContratScreen();
 }
@@ -88,7 +87,7 @@ class _ContratScreen extends State<ContratScreen> {
                     );
                   } else if (state is ERROR) {
                     return NoData(
-                      message: "Aucune connexion internet",
+                      dueTo: state.dueTo!.errors!,
                       onTap: (() {
                         bloc!.add(
                           GETCONTRAT(),
@@ -157,7 +156,6 @@ class _ContratScreen extends State<ContratScreen> {
             ),
             10.widthBox,
             Column(
-              // crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
                   "${contrat.amount}\$",
@@ -167,7 +165,7 @@ class _ContratScreen extends State<ContratScreen> {
                   ),
                 ),
                 const Text(
-                  "Par moi",
+                  "Par mois",
                   style: TextStyle(
                     color: AppColors.SECOND_TEXT_COLOR,
                     fontSize: 10,

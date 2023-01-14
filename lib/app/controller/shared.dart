@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:bukara/app/controller/app_state.dart';
 import 'package:bukara/app/providers/shared/common_modele.dart';
 import 'package:bukara/app/services/http/interceptor.dart';

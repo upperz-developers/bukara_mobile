@@ -1,6 +1,9 @@
 import 'package:bukara/app/controller/app_bloc.dart';
 import 'package:bukara/app/controller/app_state.dart';
+import 'package:bukara/app/ui/Screens/pop_up/pop_up_erreur.dart';
+import 'package:bukara/app/ui/shared/style.dart';
 import 'package:bukara/app/ui/shared/utils/custorm_scaffold.dart';
+import 'package:bukara/app/ui/shared/utils/widget.dart';
 import 'package:bukara/app/ui/view_controller/auth_controller.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
@@ -8,8 +11,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:velocity_x/velocity_x.dart';
-import '../../shared/style.dart';
-import '../../shared/utils/widget.dart';
 
 class EditerUser extends StatefulWidget {
   static String routeName = "/editerUser";
@@ -42,7 +43,7 @@ class _EditerUser extends State<EditerUser> {
           if (state is SUCCESS) {
             Navigator.pop(context);
           } else if (state is ERROR) {
-            // errorModel(context, dueTo: state.dueTo!);
+            errorModel(context, dueTo: state.dueTo!.errors!);
           }
         },
         child: BlocBuilder<AppBloc, AppState>(
@@ -66,7 +67,7 @@ class _EditerUser extends State<EditerUser> {
                         ),
                         const Expanded(
                           child: Text(
-                            "Editer Profile",
+                            "Modifier Profile",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.bold),
@@ -82,7 +83,9 @@ class _EditerUser extends State<EditerUser> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            subtitle("Numero Telephone"),
+                            const Text(
+                              "Numéro Téléphone",
+                            ),
                             10.heightBox,
                             Container(
                               decoration: BoxDecoration(
@@ -165,20 +168,22 @@ class _EditerUser extends State<EditerUser> {
                               ),
                             ),
                             20.heightBox,
-                            subtitle("Nom"),
+                            const Text(
+                              "Nom",
+                            ),
                             10.heightBox,
                             FormText(
                               controller: editerUserController.name,
                               hint: "Entrez votre Nom",
-                              //submitted: singupSubmitted,
                             ),
                             20.heightBox,
-                            subtitle("Post-nom"),
+                            const Text(
+                              "Postnom",
+                            ),
                             10.heightBox,
                             FormText(
                               controller: editerUserController.lastname,
-                              hint: "Entrez votre Prenom",
-                              //submitted: singupSubmitted,
+                              hint: "Entrez votre Postnom",
                             ),
                           ],
                         ),
@@ -190,7 +195,7 @@ class _EditerUser extends State<EditerUser> {
                       child: custormButton(
                         context,
                         color: AppColors.BLACK_COLOR,
-                        title: "Editer",
+                        title: "Modifier",
                         colorText: Colors.white,
                         state: state,
                         onTap: _submit,

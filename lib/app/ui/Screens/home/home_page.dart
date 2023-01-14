@@ -13,7 +13,6 @@ import 'package:iconsax/iconsax.dart';
 class Home extends StatefulWidget {
   static String routeName = "/home";
   const Home({Key? key}) : super(key: key);
-
   @override
   State<Home> createState() => _Home();
 }
@@ -23,13 +22,37 @@ class _Home extends State<Home> with SingleTickerProviderStateMixin {
   bool hasScrolled = false;
   int indexPage = 0;
   AppBloc bloc = AppBloc();
+  TextEditingController? seach;
+
+  List<SuiteModel> seachAppart = [];
+  List<SuiteModel> listeSuite = [];
+  bool isSearchStarted = false;
+
+  seachLinner() {
+    setState(() {
+      isSearchStarted = seach!.text.isNotEmpty;
+      if (isSearchStarted) {
+        seachAppart = listeSuite
+            .where(
+              (suite) =>
+                  suite.designation!.toLowerCase().contains(
+                        seach!.text.toLowerCase(),
+                      ) ||
+                  suite.price!.toString().toLowerCase().contains(
+                        seach!.text.toLowerCase(),
+                      ),
+            )
+            .toList();
+      }
+    });
+  }
 
   @override
   void initState() {
+    seach = TextEditingController()..addListener(seachLinner);
     bloc.add(
       GETSUITE(),
     );
-
     _scrollController = ScrollController()
       ..addListener(() {
         setState(() {
@@ -37,6 +60,12 @@ class _Home extends State<Home> with SingleTickerProviderStateMixin {
         });
       });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    seach!.removeListener(seachLinner);
+    super.dispose();
   }
 
   @override
@@ -72,16 +101,18 @@ class _Home extends State<Home> with SingleTickerProviderStateMixin {
                           (index) => const SuiteSqueletton(),
                         ));
                       } else if (state is SUCCESS) {
-                        List<SuiteModel> listeSuite =
-                            // ignore: unnecessary_type_check
-                            state is SUCCESS ? state.value : [];
+                        listeSuite = state.value;
                         return Column(
                           children: List.generate(
-                            listeSuite.length,
+                            isSearchStarted
+                                ? seachAppart.length
+                                : listeSuite.length,
                             (index) => Column(
                               children: [
                                 Suite(
-                                  suite: listeSuite[index],
+                                  suite: isSearchStarted
+                                      ? seachAppart[index]
+                                      : listeSuite[index],
                                 ),
                                 if (index != listeSuite.length - 1)
                                   Padding(
@@ -95,7 +126,7 @@ class _Home extends State<Home> with SingleTickerProviderStateMixin {
                         );
                       } else if (state is ERROR) {
                         return NoData(
-                          message: "Aucune connexion internet",
+                          dueTo: state.dueTo!.errors!,
                           onTap: (() {
                             bloc.add(
                               GETSUITE(),
@@ -129,13 +160,14 @@ class _Home extends State<Home> with SingleTickerProviderStateMixin {
         color: const Color.fromARGB(255, 255, 255, 255),
         borderRadius: BorderRadius.circular(50),
       ),
-      child: const TextField(
-        decoration: (InputDecoration(
+      child: TextField(
+        controller: seach,
+        decoration: const InputDecoration(
           isDense: true,
           border: InputBorder.none,
           hintText: "Recherchez votre apparement",
           icon: Icon(Iconsax.search_normal_1),
-        )),
+        ),
       ),
     );
   }

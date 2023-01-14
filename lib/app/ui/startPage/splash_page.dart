@@ -1,11 +1,10 @@
-// import 'package:community/views/auth/login.dart';
 import 'package:bukara/app/services/prefs/app_prefs.dart';
 import 'package:bukara/app/ui/Screens/auth/login_page.dart';
+import 'package:bukara/app/ui/shared/style.dart';
 import 'package:bukara/app/ui/shared/utils/custorm_scaffold.dart';
 import 'package:flutter/material.dart';
-
+import 'package:velocity_x/velocity_x.dart';
 import '../screens/app_page.dart';
-import '../shared/utils/widget.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -39,9 +38,56 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return CustormScaffold(
-      body: Center(
-        child: icon(),
+        body: Padding(
+      padding: const EdgeInsets.all(15),
+      child: Column(
+        children: [
+          Expanded(
+            child: Center(
+              child: Container(
+                margin: const EdgeInsets.only(bottom: 25),
+                height: 140,
+                width: 140,
+                decoration: const BoxDecoration(
+                  color: AppColors.DISABLE_COLOR,
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: AssetImage(
+                      'assets/icons/icon.png',
+                    ),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          30.heightBox,
+          const Text(
+            "BUKARA Sarl",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 12,
+            ),
+          ),
+          3.heightBox,
+          const Text(
+            "Build by Devinno in parternship with Upperz",
+            style: TextStyle(
+              fontSize: 10,
+              color: AppColors.SECOND_TEXT_COLOR,
+            ),
+          ),
+          3.heightBox,
+          const Text(
+            "V1.0.0",
+            style: TextStyle(
+              fontSize: 10,
+              color: AppColors.SECOND_TEXT_COLOR,
+            ),
+          ),
+        ],
       ),
-    );
+    ));
   }
 }

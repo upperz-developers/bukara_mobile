@@ -11,7 +11,6 @@ import '../../shared/squelleton/paiement_squeletton.dart';
 
 class Paiement extends StatefulWidget {
   const Paiement({super.key});
-
   @override
   State<Paiement> createState() => _Paiement();
 }
@@ -67,7 +66,7 @@ class _Paiement extends State<Paiement> {
                           ]);
                         } else if (state is ERROR) {
                           return NoData(
-                            message: "Aucune connexion internet",
+                            dueTo: state.dueTo!.errors!,
                             onTap: (() {
                               bloc!.add(
                                 GETSUITE(),

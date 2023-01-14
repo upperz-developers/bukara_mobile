@@ -16,14 +16,12 @@ class AuthController {
 class Checkmail extends StatefulWidget {
   static String routeName = "/Checkmail";
   const Checkmail({Key? key}) : super(key: key);
-
   @override
   State<Checkmail> createState() => _Checkmail();
 }
 
 class _Checkmail extends State<Checkmail> {
   TextEditingController? email = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return CustormScaffold(
@@ -63,7 +61,7 @@ class _Checkmail extends State<Checkmail> {
                     "Pour récupérer vos données, veuillez saisir votre adresse e-mail.",
                   ),
                   25.heightBox,
-                  subtitle("Adresse Mail"),
+                  const Text("Adresse Mail"),
                   10.heightBox,
                   Container(
                     padding: const EdgeInsets.only(left: 10),
