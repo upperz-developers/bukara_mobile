@@ -2,7 +2,6 @@ import 'package:bukara/app/controller/app_bloc.dart';
 import 'package:bukara/app/controller/app_event.dart';
 import 'package:bukara/app/controller/app_state.dart';
 import 'package:bukara/app/ui/screens/pop_up/pop_up_erreur.dart';
-
 import 'package:bukara/app/ui/shared/utils/custorm_scaffold.dart';
 import 'package:bukara/app/ui/view_controller/auth_controller.dart';
 import 'package:flutter/gestures.dart';

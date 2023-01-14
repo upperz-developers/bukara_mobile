@@ -40,6 +40,7 @@ class Contrat {
   String? startDate;
   String? endDate;
   bool? current;
+  Guarantee? guarantee;
   bool? status;
   String? createdAt;
   String? updatedAt;
@@ -55,6 +56,7 @@ class Contrat {
     this.startDate,
     this.endDate,
     this.current,
+    this.guarantee,
     this.status,
     this.createdAt,
     this.updatedAt,
@@ -78,6 +80,9 @@ class Contrat {
     status = json['status'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
+    guarantee = json['guarantee'] != null
+        ? Guarantee.fromJson(json['guarantee'])
+        : null;
   }
 }
 
@@ -96,5 +101,46 @@ class Landlord {
     lastname = json['lastname'];
     email = json['email'];
     profile = json['profile'];
+  }
+}
+
+class Guarantee {
+  String? id;
+  String? rentalContratId;
+  int? month;
+  int? amount;
+  String? currency;
+  String? createdAt;
+  String? updatedAt;
+
+  Guarantee(
+      {this.id,
+      this.rentalContratId,
+      this.month,
+      this.amount,
+      this.currency,
+      this.createdAt,
+      this.updatedAt});
+
+  Guarantee.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    rentalContratId = json['rental_contrat_id'];
+    month = json['month'];
+    amount = json['amount'];
+    currency = json['currency'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['id'] = id;
+    data['rental_contrat_id'] = rentalContratId;
+    data['month'] = month;
+    data['amount'] = amount;
+    data['currency'] = currency;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    return data;
   }
 }

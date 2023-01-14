@@ -1,3 +1,4 @@
+import 'package:bukara/app/ui/shared/utils/custorm_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -19,82 +20,77 @@ class _InfoLocataire extends State<InfoLocataire> {
   Widget build(BuildContext context) {
     TenantModel suiteDetailLocataire =
         ModalRoute.of(context)!.settings.arguments as TenantModel;
-    return SafeArea(
-      child: Scaffold(
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                IconButton(
-                  onPressed: (() => Navigator.pop(context)),
-                  icon: const Icon(
-                    Iconsax.arrow_left,
-                  ),
-                  color: const Color.fromARGB(169, 32, 32, 32),
+    return CustormScaffold(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              IconButton(
+                onPressed: (() => Navigator.pop(context)),
+                icon: const Icon(
+                  Iconsax.arrow_left,
                 ),
-                const Expanded(
-                  child: Text(
-                    "Détail locataire",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                ),
-                52.widthBox,
-              ],
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 15,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "${suiteDetailLocataire.name!} ${suiteDetailLocataire.lastname!}",
-                      style: const TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    ),
-                    8.heightBox,
-                    Text(
-                      "${suiteDetailLocataire.landlordType}",
-                      style: const TextStyle(
-                        color: AppColors.BLACK_COLOR,
-                      ),
-                    ),
-                    line(),
-                    const Text(
-                      "Appropos du locataire",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    30.heightBox,
-                    module(Iconsax.call,
-                        "${suiteDetailLocataire.phones![0].countryCode} (0) ${suiteDetailLocataire.phones![0].number}"),
-                    module(Iconsax.message, "${suiteDetailLocataire.email}"),
-                    module(
-                        Iconsax.home, "${suiteDetailLocataire.maritalStatus}"),
-                    module2(Iconsax.tag, "Dernière adresse",
-                        "${suiteDetailLocataire.lastAdress}"),
-                    module(Iconsax.wallet_check,
-                        "${suiteDetailLocataire.nationality}"),
-                    if (suiteDetailLocataire.landlordType !=
-                        'personne physique')
-                      moduleIsEntreprise(
-                          Iconsax.shapes4, "c'est une entreprise"),
-                    module2(Iconsax.tag, "${suiteDetailLocataire.cardTypeId}",
-                        "${suiteDetailLocataire.cardType}"),
-                  ],
+                color: const Color.fromARGB(169, 32, 32, 32),
+              ),
+              const Expanded(
+                child: Text(
+                  "Détail locataire",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
               ),
+              52.widthBox,
+            ],
+          ),
+          Expanded(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 24,
+                vertical: 15,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "${suiteDetailLocataire.name!} ${suiteDetailLocataire.lastname!}",
+                    style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                  8.heightBox,
+                  Text(
+                    "${suiteDetailLocataire.landlordType}",
+                    style: const TextStyle(
+                      color: AppColors.BLACK_COLOR,
+                    ),
+                  ),
+                  line(),
+                  const Text(
+                    "Appropos du locataire",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  30.heightBox,
+                  module(Iconsax.call,
+                      "${suiteDetailLocataire.phones![0].countryCode} (0) ${suiteDetailLocataire.phones![0].number}"),
+                  module(Iconsax.message, "${suiteDetailLocataire.email}"),
+                  module(Iconsax.home, "${suiteDetailLocataire.maritalStatus}"),
+                  module2(Iconsax.tag, "Dernière adresse",
+                      "${suiteDetailLocataire.lastAdress}"),
+                  module(Iconsax.wallet_check,
+                      "${suiteDetailLocataire.nationality}"),
+                  if (suiteDetailLocataire.landlordType != 'personne physique')
+                    moduleIsEntreprise(Iconsax.shapes4, "c'est une entreprise"),
+                  module2(Iconsax.tag, "${suiteDetailLocataire.cardTypeId}",
+                      "${suiteDetailLocataire.cardType}"),
+                ],
+              ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

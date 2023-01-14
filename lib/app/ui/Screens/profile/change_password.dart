@@ -102,7 +102,7 @@ class _ChangePassword extends State<ChangePassword> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Text("Ancien mote de passe"),
-                            15.heightBox,
+                            10.heightBox,
                             FormPassWordText(
                               controller: changepasswordController.oldpassword,
                               hint: "Entrez votre mot de passe",
@@ -110,7 +110,7 @@ class _ChangePassword extends State<ChangePassword> {
                             ),
                             20.heightBox,
                             const Text("Configurez le mot de passe"),
-                            15.heightBox,
+                            10.heightBox,
                             FormPassWordText(
                               controller: changepasswordController.password,
                               hint: "Entrez votre le mot de passe",

@@ -6,7 +6,6 @@ import 'package:bukara/app/ui/Screens/auth/singup_page.dart';
 import 'package:bukara/app/ui/screens/app_page.dart';
 import 'package:bukara/app/ui/screens/pop_up/pop_up_erreur.dart';
 import 'package:bukara/app/ui/shared/utils/custorm_scaffold.dart';
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

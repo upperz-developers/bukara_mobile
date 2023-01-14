@@ -75,11 +75,11 @@ class _DetailContrat extends State<DetailContrat> {
                         ],
                       ),
                     Text(
-                      "${contrat.amount}\$ le mois",
+                      "${contrat.guarantee!.amount}\$ le mois",
                     ),
                     20.heightBox,
-                    const Text(
-                      "3 mois de garantie",
+                    Text(
+                      "${contrat.guarantee!.month} mois de garantie",
                     ),
                     if (contrat.appartement != null)
                       Column(
