@@ -1,5 +1,5 @@
 import 'package:bukara/app/services/prefs/app_prefs.dart';
-import 'package:bukara/app/ui/Screens/contrats%20de%20Bail/contrats.dart';
+import 'package:bukara/app/ui/Screens/contrats_de_bail/contrats.dart';
 import 'package:bukara/app/ui/Screens/profile/about_page.dart';
 import 'package:bukara/app/ui/Screens/profile/change_password.dart';
 import 'package:bukara/app/ui/screens/profile/editer_profile.dart';

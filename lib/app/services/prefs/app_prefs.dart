@@ -11,6 +11,7 @@ class AppPref {
       ValueNotifier(UserPerfsInfo());
 
   static const String mobileUserInfo = "userInfo";
+  static const String permanentToken = "permanentToken";
 }
 
 UserPref getUserInfo() {
@@ -36,6 +37,25 @@ void setUserInfo(UserPref userInfo) {
   );
 }
 
+// Token getPermanentMobileToken() {
+//   var token = AppPref.prefs?.getString(AppPref.permanentToken) ?? '';
+//   if (token.isEmpty) {
+//     return Token(token: "");
+//   } else {
+//     var json = jsonDecode(token);
+//     return Token.fromJson(json);
+//   }
+// }
+
+// void setPermanentMobileToken(Token token) {
+//   AppPref.prefs!.setString(
+//     AppPref.permanentToken,
+//     jsonEncode(
+//       token.toJson(),
+//     ),
+//   );
+// }
+
 class UserPref {
   Token? token;
   UserPerfsInfo? userPerfsInfo;
@@ -51,7 +71,7 @@ class UserPref {
 
   toJson() => {
         "token": token,
-        "userPerfsInfo": userPerfsInfo!.toJson(),
+        "userPerfsInfo": userPerfsInfo?.toJson(),
       };
 }
 

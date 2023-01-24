@@ -74,13 +74,6 @@ class _DetailContrat extends State<DetailContrat> {
                           20.heightBox,
                         ],
                       ),
-                    Text(
-                      "${contrat.guarantee!.amount}\$ le mois",
-                    ),
-                    20.heightBox,
-                    Text(
-                      "${contrat.guarantee!.month} mois de garantie",
-                    ),
                     if (contrat.appartement != null)
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,

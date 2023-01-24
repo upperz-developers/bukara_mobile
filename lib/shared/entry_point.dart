@@ -25,8 +25,6 @@ class _App extends State<App> {
 
   void init() async {
     AppPref.prefs = await SharedPreferences.getInstance();
-
-    //AppPref.prefs!.clear();
   }
 
   @override
@@ -40,6 +38,7 @@ class _App extends State<App> {
       ),
     );
     return BlocProvider<AppBloc>(
+      // when we just comment a folder here
       create: (context) => AppBloc(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

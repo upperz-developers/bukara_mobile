@@ -1,5 +1,5 @@
 import 'package:bukara/app/providers/suite/modele.dart';
-import 'package:bukara/app/ui/Screens/contrats%20de%20Bail/detail_contrats.dart';
+import 'package:bukara/app/ui/Screens/contrats_de_bail/detail_contrats.dart';
 import 'package:bukara/app/ui/screens/home/suite/suite_model.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter/material.dart';

@@ -30,10 +30,10 @@ class _ForgotPassword extends State<ForgotPassword> {
 
   bool checkmailSubmitted = false;
   void _submit() {
-    if (checkmailController.CheckmailValidation) {
+    if (checkmailController.checkmailValidation()) {
       bloc!.add(
         CHECKMAIL(
-          email: checkmailController.email.value.text.trim(),
+          email: checkmailController.checkmail.text.trim(),
         ),
       );
       return;
@@ -52,7 +52,7 @@ class _ForgotPassword extends State<ForgotPassword> {
         listener: (context, state) {
           if (state is SUCCESS) {
             Navigator.pushNamed(context, Otp.routeName,
-                arguments: checkmailController.checkmail.value.text);
+                arguments: checkmailController.checkmail.text);
           } else if (state is ERROR) {
             errorModel(context, dueTo: state.dueTo!.errors!);
           }
@@ -101,8 +101,8 @@ class _ForgotPassword extends State<ForgotPassword> {
                             const Text("Adresse Mail"),
                             10.heightBox,
                             FormText(
-                              controller: checkmailController.email.value,
-                              hint: "nom@gmail.com",
+                              controller: checkmailController.checkmail,
+                              hint: "nom@domain.com",
                               submitted: checkmailSubmitted,
                             ),
                           ],
