@@ -8,9 +8,8 @@ import 'package:bukara/app/ui/screens/pop_up/pop_up_erreur.dart';
 import 'package:flutter/widgets.dart';
 
 class AuthViewController {
-  ValueNotifier<TextEditingController> email =
-      ValueNotifier(TextEditingController());
   TextEditingController password = TextEditingController();
+  TextEditingController email = TextEditingController();
   TextEditingController passwordLogin = TextEditingController();
   TextEditingController checkmail = TextEditingController();
   TextEditingController confirmpasssword = TextEditingController();
@@ -33,7 +32,9 @@ class AuthViewController {
     phonenumber = TextEditingController();
   }
 
-  bool get CheckmailValidation => checkmail.value.text.isNotEmpty;
+  bool checkmailValidation() {
+    return checkmail.text.isNotEmpty;
+  }
 
   bool get changepasswordValidation =>
       oldpassword.value.text.isNotEmpty &&

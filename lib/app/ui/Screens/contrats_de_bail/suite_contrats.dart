@@ -1,4 +1,4 @@
-import 'package:bukara/app/ui/screens/contrats%20de%20Bail/detail_contrats.dart';
+import 'package:bukara/app/ui/Screens/contrats_de_bail/detail_contrats.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';

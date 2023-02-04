@@ -203,5 +203,42 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         hundleError(e: e, emit: emit);
       }
     });
+
+    on<SENDCODE>((event, emit) async {
+      emit(const LOADING());
+      try {
+        var response = await validateCode(
+          email: event.email,
+          code: event.code,
+        );
+        u.ResultAuth resultAuth = u.ResultAuth.fromJson(response.data);
+        UserPref userPref = UserPref(
+          token: resultAuth.token,
+        );
+        setUserInfo(userPref);
+        emit(const SUCCESS());
+      } on Exception catch (e) {
+        hundleError(e: e, emit: emit);
+      }
+    });
+
+    on<RESETPASSWORD>((event, emit) async {
+      emit(const LOADING());
+      try {
+        await resetMotdepasse(
+          password: event.password,
+          confirmPassword: event.confirmPassword,
+          email: event.email,
+        );
+        // u.ResultAuth resultAuth = u.ResultAuth.fromJson(response.data);
+        // UserPref userPref = UserPref(
+        //   token: resultAuth.token,
+        // );
+        // setPermanentMobileToken(userPref.token!);
+        emit(const SUCCESS());
+      } on Exception catch (e) {
+        hundleError(e: e, emit: emit);
+      }
+    });
   }
 }

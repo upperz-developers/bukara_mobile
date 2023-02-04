@@ -107,7 +107,7 @@ class _SingUpPage extends State<SingUpPage> {
                             const Text("Adresse Mail"),
                             10.heightBox,
                             FormText(
-                              controller: singupController.email.value,
+                              controller: singupController.email,
                               hint: "nom@gmail.com",
                               submitted: singupSubmitted,
                             ),

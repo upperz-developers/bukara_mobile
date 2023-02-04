@@ -50,3 +50,28 @@ Future<Response> checkmail({
     await httpPost(endPoint: APIURL.CHECKMAIL, data: {
       "email": email,
     });
+
+Future<Response> validateCode({
+  String? email,
+  String? code,
+}) async =>
+    await httpPost(
+      endPoint: APIURL.SENDCODE,
+      data: {
+        "email": email,
+        "otp": code,
+      },
+    );
+
+Future<Response> resetMotdepasse({
+  String? password,
+  String? confirmPassword,
+  String? email,
+}) async =>
+    await httpPut(
+      endPoint: APIURL.RESETPASSWORD + email!,
+      data: {
+        "password": password,
+        "password_confirmation": confirmPassword,
+      },
+    );
