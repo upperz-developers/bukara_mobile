@@ -51,9 +51,7 @@ class _Recouvrement extends State<Recouvrement> {
                             (index) => const RecouvrementSquelleton(),
                           ));
                         } else if (state is SUCCESS) {
-                          List<ContratData> listeRecouvrement =
-                              // ignore: unnecessary_type_check
-                              state is SUCCESS ? state.value : [];
+                          List<ContratData> listeRecouvrement = state.value;
                           return Column(
                             children: [
                               20.heightBox,

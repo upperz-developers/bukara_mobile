@@ -95,7 +95,7 @@ class SuiteModel {
   }
 }
 
-// {bedroom: 4, interntoilet: 3, externtoilet: 1, livingroom: 1, other: [cuisine, toilette externe, cash power, toilette interne, courant normal, Piscine]}
+//  {bedroom: 4, interntoilet: 3, externtoilet: 1, livingroom: 1, other: [cuisine, toilette externe, cash power, toilette interne, courant normal, Piscine]}
 class SuiteFeature {
   int? bedroom;
   int? interntoilet;
