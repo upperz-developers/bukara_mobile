@@ -1,4 +1,5 @@
-import 'package:bukara/app/ui/Screens/contrats%20de%20Bail/contrats.dart';
+import 'package:bukara/app/ui/Screens/contrats_de_bail/contrats.dart';
+import 'package:bukara/app/ui/Screens/contrats_de_bail/detail_contrats.dart';
 import 'package:bukara/app/ui/screens/Recouvrement/detail_paiement_par_recouvrement.dart';
 import 'package:bukara/app/ui/screens/auth/forgot_password/check_mail.dart';
 import 'package:bukara/app/ui/screens/auth/forgot_password/new_password.dart';
@@ -12,7 +13,6 @@ import '../../Screens/profile/change_password.dart';
 import '../../Screens/profile/profile.dart';
 import '../../screens/Recouvrement/detail_information_recouvrement.dart';
 import '../../screens/app_page.dart';
-import '../../screens/contrats de Bail/detail_contrats.dart';
 import '../../screens/home/home_page.dart';
 import '../../screens/home/suite/deatil_page.dart';
 import '../../screens/locataire/detail_information_locataire.dart';

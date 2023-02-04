@@ -67,3 +67,18 @@ class GETCONTRAT implements AppEvent {}
 class GETPAYEMENT implements AppEvent {}
 
 class GETPEYEMENTPERRECOVERY implements AppEvent {}
+
+class SENDCODE implements AppEvent {
+  final String? email;
+  final String? code;
+
+  SENDCODE({this.email, this.code});
+}
+
+class RESETPASSWORD implements AppEvent {
+  final String? password;
+  final String? confirmPassword;
+  final String? email;
+
+  RESETPASSWORD({this.password, this.confirmPassword, this.email});
+}

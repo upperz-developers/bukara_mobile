@@ -52,12 +52,14 @@ Future<Response> httpPost(
 }
 
 Future<Response> httpPostWithToken({String? endPoint, var data}) async {
+  Token token = getUserInfo().token!;
+
   return await DioApi().dio.post(
         endPoint!,
         data: data,
         options: Options(
           headers: {
-            HttpHeaders.authorizationHeader: 'Bearer',
+            HttpHeaders.authorizationHeader: 'Bearer ${token.token}',
             'X-Requested-With': 'XMLHttpRequest',
           },
         ),
@@ -72,6 +74,18 @@ Future<Response> httpPutWithToken({String? endPoint, var data}) async {
         options: Options(
           headers: {
             HttpHeaders.authorizationHeader: 'Bearer ${token.token}',
+            'X-Requested-With': 'XMLHttpRequest',
+          },
+        ),
+      );
+}
+
+Future<Response> httpPut({String? endPoint, var data}) async {
+  return await DioApi().dio.put(
+        endPoint!,
+        data: data,
+        options: Options(
+          headers: {
             'X-Requested-With': 'XMLHttpRequest',
           },
         ),
