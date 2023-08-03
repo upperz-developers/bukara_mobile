@@ -1,5 +1,5 @@
 import 'package:bukara/app/services/prefs/app_prefs.dart';
-import 'package:bukara/app/ui/Screens/auth/login_page.dart';
+import 'package:bukara/app/ui/screens/auth/login_page.dart';
 import 'package:bukara/app/ui/shared/style.dart';
 import 'package:bukara/app/ui/shared/utils/custorm_scaffold.dart';
 import 'package:flutter/material.dart';

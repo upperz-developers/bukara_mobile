@@ -1,22 +1,23 @@
-import 'package:bukara/app/ui/Screens/contrats_de_bail/contrats.dart';
-import 'package:bukara/app/ui/Screens/contrats_de_bail/detail_contrats.dart';
+
+import 'package:bukara/app/ui/screens/Recouvrement/detail_information_recouvrement.dart';
 import 'package:bukara/app/ui/screens/Recouvrement/detail_paiement_par_recouvrement.dart';
+import 'package:bukara/app/ui/screens/app_page.dart';
 import 'package:bukara/app/ui/screens/auth/forgot_password/check_mail.dart';
 import 'package:bukara/app/ui/screens/auth/forgot_password/new_password.dart';
 import 'package:bukara/app/ui/screens/auth/forgot_password/otp_page.dart';
+import 'package:bukara/app/ui/screens/auth/login_page.dart';
+import 'package:bukara/app/ui/screens/auth/singup_page.dart';
+import 'package:bukara/app/ui/screens/contrats_de_bail/contrats.dart';
+import 'package:bukara/app/ui/screens/contrats_de_bail/detail_contrats.dart';
+import 'package:bukara/app/ui/screens/home/home_page.dart';
+import 'package:bukara/app/ui/screens/home/suite/deatil_page.dart';
+import 'package:bukara/app/ui/screens/locataire/detail_information_locataire.dart';
 import 'package:bukara/app/ui/screens/paiement/detail_paiement.dart';
+import 'package:bukara/app/ui/screens/profile/about_page.dart';
+import 'package:bukara/app/ui/screens/profile/change_password.dart';
+import 'package:bukara/app/ui/screens/profile/editer_profile.dart';
+import 'package:bukara/app/ui/screens/profile/profile.dart';
 import 'package:flutter/material.dart';
-import '../../Screens/auth/login_page.dart';
-import '../../Screens/auth/singup_page.dart';
-import '../../Screens/profile/about_page.dart';
-import '../../Screens/profile/change_password.dart';
-import '../../Screens/profile/profile.dart';
-import '../../screens/Recouvrement/detail_information_recouvrement.dart';
-import '../../screens/app_page.dart';
-import '../../screens/home/home_page.dart';
-import '../../screens/home/suite/deatil_page.dart';
-import '../../screens/locataire/detail_information_locataire.dart';
-import '../../screens/profile/editer_profile.dart';
 
 Map<String, Widget Function(BuildContext)> routes = {
   LoginPage.routeName: (context) => const LoginPage(),
